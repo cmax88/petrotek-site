@@ -8,4 +8,6 @@ export default defineConfig({
     react(),
     tailwindcss(),
   ],
+  // This must match your GitHub repository name exactly
+  base: '/petrotek-site/', 
 })
