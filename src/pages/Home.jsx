@@ -16,8 +16,9 @@ import {
   Pickaxe
 } from 'lucide-react';
 import ReCAPTCHA from "react-google-recaptcha";
+import emailjs from '@emailjs/browser';
 
-// Custom Oil Well Icon using your public SVG
+// Custom Oil Well Icon
 const OilWell = ({ className, style }) => (
   <img 
     src="/regular-oil-well.svg"
@@ -30,7 +31,7 @@ const OilWell = ({ className, style }) => (
   />
 );
 
-// Custom Uranium Icon Component
+// Custom Uranium Icon
 const UraniumIcon = ({ className }) => (
   <img 
     src="/database-zap.svg"
@@ -44,19 +45,16 @@ const UraniumIcon = ({ className }) => (
 
 const Home = () => {
   const [scrollOffset, setScrollOffset] = useState(0);
-  const [activeSection, setActiveSection] = useState("home"); // Track active section
+  const [activeSection, setActiveSection] = useState("home");
   const recaptchaRef = useRef();
 
   // Parallax & Scrollspy Logic
   useEffect(() => {
-    const handleScroll = () => {
-      setScrollOffset(window.scrollY);
-    };
+    const handleScroll = () => setScrollOffset(window.scrollY);
 
-    // Intersection Observer for highlighting nav items
     const observerOptions = {
       root: null,
-      rootMargin: '-25% 0px -65% 0px', // Trigger when section is in the middle-top area
+      rootMargin: '-25% 0px -65% 0px',
       threshold: 0
     };
 
@@ -69,7 +67,7 @@ const Home = () => {
     };
 
     const observer = new IntersectionObserver(observerCallback, observerOptions);
-    const sections = document.querySelectorAll('header[id], section[id], nav[id]');
+    const sections = document.querySelectorAll('header[id], section[id]');
     sections.forEach((section) => observer.observe(section));
 
     window.addEventListener('scroll', handleScroll);
@@ -82,7 +80,7 @@ const Home = () => {
   const scrollToId = (id) => {
     const element = document.getElementById(id.replace('#', ''));
     if (element) {
-      const offset = 120; // Accounts for sticky nav height
+      const offset = 120;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -93,6 +91,42 @@ const Home = () => {
         behavior: 'smooth'
       });
     }
+  };
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    
+    // 1. Verify reCAPTCHA
+    const token = recaptchaRef.current.getValue();
+    if (!token) {
+      alert("Please complete the reCAPTCHA verification.");
+      return;
+    }
+
+    // 2. EmailJS Configuration from .env
+    const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
+    const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
+    const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
+
+    // 3. Prepare Template Params
+    const templateParams = {
+      from_name: e.target.firstName.value + " " + e.target.lastName.value,
+      reply_to: e.target.email.value,
+      message: e.target.message.value,
+      'g-recaptcha-response': token,
+    };
+
+    // 4. Send Email
+    emailjs.send(serviceId, templateId, templateParams, publicKey)
+      .then((result) => {
+        console.log('Email successfully sent!', result.status, result.text);
+        alert("Message sent! I'll be in touch at cjmax88@gmail.com soon.");
+        e.target.reset();
+        recaptchaRef.current.reset();
+      }, (error) => {
+        console.error('Email failed to send:', error);
+        alert("Failed to send message. Please check the console for errors.");
+      });
   };
 
   const maroon = "#8B1E3F";
@@ -133,13 +167,6 @@ const Home = () => {
     { name: "Contact", href: "#contact" }
   ];
 
-  const handleFormSubmit = (e) => {
-    e.preventDefault();
-    const token = recaptchaRef.current.getValue();
-    if (!token) { alert("Please complete the reCAPTCHA"); return; }
-    console.log("Form submitted with token:", token);
-  };
-
   return (
     <>
       <style>
@@ -172,7 +199,7 @@ const Home = () => {
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4 tracking-tight">Injection Well and Subsurface Resources Consultants</h1>
               <p className="text-xl text-gray-200 mb-8 italic border-l-4 pl-4" style={{ borderColor: maroon }}>Building Relationships. Solving Problems. Adding Value.</p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <button onClick={() => scrollToId('#whatwedo')} className="px-8 py-4 text-white font-bold rounded-sm shadow-xl transition-all hover:brightness-110" style={{ backgroundColor: maroon }}>Explore Services</button>
+                <button onClick={() => scrollToId('#whoweare')} className="px-8 py-4 text-white font-bold rounded-sm shadow-xl transition-all hover:brightness-110" style={{ backgroundColor: maroon }}>Explore Services</button>
                 <Link to="/publications" className="px-8 py-4 bg-white text-gray-900 font-bold rounded-sm shadow-xl hover:bg-gray-100 transition-all text-center">Our Publications</Link>
               </div>
             </div>
@@ -189,7 +216,7 @@ const Home = () => {
         </div>
       </header>
 
-      {/* Sticky Sub-Navigation with Scrollspy */}
+      {/* Sticky Sub-Navigation */}
       <nav id="section-nav" className="hidden md:block sticky top-[72px] z-40 bg-white border-b border-gray-100 shadow-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
         <div className="container mx-auto px-6 py-4 flex justify-center">
           <ul className="flex items-center space-x-8 lg:space-x-12">
@@ -218,8 +245,8 @@ const Home = () => {
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Who We Are</h2>
               <div className="w-24 h-1 mb-8" style={{ backgroundColor: maroon }}></div>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">Petrotek Corporation is a results-oriented firm that specializes in engineering evaluation and field operations regarding subsurface fluid flow and injection well projects. We are a team of engineers and geoscientists experienced in a broad spectrum of professional disciplines.</p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">Our company was founded in 1993 with a mission of providing cost-effective contract services to industrial and governmental clients. Our firm takes pride in meeting that goal with the highest degree of integrity and professionalism. We insist on client satisfaction and prefer results-oriented approaches to problem solving. For more information on our capabilities, please review this site and contact any of the professionals on our staff. We look forward to working with you.</p>
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">Petrotek Corporation is a results-oriented firm that specializes in engineering evaluation and field operations regarding subsurface fluid flow and injection well projects.</p>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">Our company was founded in 1993 with a mission of providing cost-effective contract services to industrial and governmental clients. Our firm takes pride in meeting that goal with the highest degree of integrity and professionalism.</p>
               <div className="flex items-center space-x-6">
                 <img src={anniversaryGraphic} alt="33 Years" className="w-20 h-20 grayscale brightness-0 opacity-100" />
                 <span className="text-lg font-bold text-gray-800 uppercase tracking-wider border-l-2 border-[#8B1E3F] pl-6">Over Three Decades of <br /> Professional Excellence</span>
@@ -292,84 +319,42 @@ const Home = () => {
         </div>
       </section>
 
-{/* Contact Section */}
-<section id="contact" className="py-24 bg-gray-50 border-t border-gray-200 scroll-mt-20">
-  <div className="container mx-auto px-6">
-    <div className="bg-white rounded-2xl shadow-2xl overflow-hidden grid lg:grid-cols-5 border border-gray-100">
-      
-      {/* Sidebar Info */}
-      <div className="lg:col-span-2 p-12 text-white" style={{ backgroundColor: maroon }}>
-        <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
-        <div className="space-y-6">
-          <div className="flex items-start space-x-4"><MapPin className="w-6 h-6 mt-1 flex-shrink-0" /><p>5935 South Zang Street<br />Littleton, Colorado 80127</p></div>
-          <div className="flex items-center space-x-4"><Phone className="w-6 h-6 flex-shrink-0" /><p>(303) 290-9414</p></div>
-          <div className="flex items-center space-x-4"><Mail className="w-6 h-6 flex-shrink-0" /><p>info@petrotek.com</p></div>
-        </div>
-        
-        {/* Google Maps Embed */}
-        <div className="mt-10 rounded-xl overflow-hidden shadow-lg border border-white/20">
-          <iframe 
-            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3072.046892558451!2d-105.151322!3d39.610234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876b7e63b6a9359d%3A0x7d6c6e7b8b4b4b4b!2s5935%20S%20Zang%20St%2C%20Littleton%2C%20CO%2080127!5e0!3m2!1sen!2sus!4v1234567890"
-            width="100%" 
-            height="220" 
-            style={{ border: 0 }} 
-            allowFullScreen="" 
-            loading="lazy" 
-            title="Petrotek Office Location"
-          ></iframe>
-        </div>
-      </div>
-      
-      {/* Contact Form */}
-      <form onSubmit={handleFormSubmit} className="lg:col-span-3 p-12 space-y-6">
-        <div className="grid md:grid-cols-2 gap-6">
-          <div className="space-y-2">
-            <label className="text-sm font-bold text-gray-700">First Name</label>
-            <input name="firstName" required type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none" />
-          </div>
-          <div className="space-y-2">
-            <label className="text-sm font-bold text-gray-700">Last Name</label>
-            <input name="lastName" required type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none" />
+      <section id="contact" className="py-24 bg-gray-50 border-t border-gray-200 scroll-mt-20">
+        <div className="container mx-auto px-6">
+          <div className="bg-white rounded-2xl shadow-2xl overflow-hidden grid lg:grid-cols-5">
+            <div className="lg:col-span-2 p-12 text-white" style={{ backgroundColor: maroon }}>
+              <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4"><MapPin className="w-6 h-6 mt-1" /><p>5935 South Zang Street<br />Littleton, Colorado 80127</p></div>
+                <div className="flex items-center space-x-4"><Phone className="w-6 h-6" /><p>(303) 290-9414</p></div>
+                <div className="flex items-center space-x-4"><Mail className="w-6 h-6" /><p>info@petrotek.com</p></div>
+              </div>
+              <div className="mt-10 rounded-xl overflow-hidden shadow-lg border border-white/20">
+                <iframe 
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3072.764491953255!2d-105.15182932353066!3d39.632468403217496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876b7e61e6955555%3A0x7d7c67c52697b0d7!2s5935%20S%20Zang%20St%2C%20Littleton%2C%20CO%2080127!5e0!3m2!1sen!2sus!4v1700000000000"
+                  width="100%" height="220" style={{ border: 0 }} allowFullScreen="" loading="lazy" title="Office Location"
+                ></iframe>
+              </div>
+            </div>
+            <form className="lg:col-span-3 p-12 space-y-6" onSubmit={handleFormSubmit}>
+              <div className="grid md:grid-cols-2 gap-6">
+                <div className="space-y-2"><label className="text-sm font-bold">First Name</label><input required name="firstName" type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none" /></div>
+                <div className="space-y-2"><label className="text-sm font-bold">Last Name</label><input required name="lastName" type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none" /></div>
+              </div>
+              <div className="space-y-2"><label className="text-sm font-bold">Email Address</label><input required name="email" type="email" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none" /></div>
+              <div className="space-y-2"><label className="text-sm font-bold">Message</label><textarea required name="message" rows="4" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none"></textarea></div>
+              <div className="flex justify-center md:justify-start">
+                {import.meta.env.VITE_RECAPTCHA_SITE ? (
+                  <ReCAPTCHA ref={recaptchaRef} sitekey={import.meta.env.VITE_RECAPTCHA_SITE} />
+                ) : (
+                  <p className="text-red-500 text-sm italic">reCAPTCHA Key Missing (Check .env)</p>
+                )}
+              </div>
+              <button type="submit" className="w-full py-4 text-white font-bold rounded-sm uppercase tracking-widest shadow-lg hover:brightness-110 transition-all" style={{ backgroundColor: maroon }}>Send Message</button>
+            </form>
           </div>
         </div>
-        
-        <div className="space-y-2">
-          <label className="text-sm font-bold text-gray-700">Email Address</label>
-          <input name="email" required type="email" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none" />
-        </div>
-        
-        <div className="space-y-2">
-          <label className="text-sm font-bold text-gray-700">Message</label>
-          <textarea name="message" required rows="4" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none"></textarea>
-        </div>
-
-        {/* reCAPTCHA Widget */}
-        {/* Inside your Form in Home.jsx */}
-        <div className="flex justify-center md:justify-start">
-          {import.meta.env.VITE_RECAPTCHA_SITE ? (
-            <ReCAPTCHA
-              ref={recaptchaRef}
-              sitekey={import.meta.env.VITE_RECAPTCHA_SITE}
-            />
-          ) : (
-            <p className="text-red-500 text-sm italic">
-              reCAPTCHA Key Missing (Check .env)
-            </p>
-          )}
-        </div>
-
-        <button 
-          type="submit" 
-          className="w-full py-4 text-white font-bold rounded-sm uppercase tracking-widest shadow-lg hover:brightness-110 transition-all" 
-          style={{ backgroundColor: maroon }}
-        >
-          Send Message
-        </button>
-      </form>
-
-    </div>
-  </div>
-</section>
+      </section>
     </>
   );
 };
