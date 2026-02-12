@@ -39,9 +39,8 @@ const OilWell = ({ className, style }) => (
 
 const Home = () => {
   const [scrollOffset, setScrollOffset] = useState(0);
-  const recaptchaRef = React.useRef(); // Create a ref for the widget
+  const recaptchaRef = React.useRef();
 
-  // Parallax Effect Logic
   useEffect(() => {
     const handleScroll = () => {
       setScrollOffset(window.scrollY);
@@ -50,7 +49,6 @@ const Home = () => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  // Smooth Scroll Helper for on-page navigation
   const scrollToId = (id) => {
     const element = document.getElementById(id.replace('#', ''));
     if (element) {
@@ -59,46 +57,15 @@ const Home = () => {
   };
 
   const maroon = "#8B1E3F";
-  const anniversaryGraphic = "/33-years-service-graphic.png"; // Ensure this file exists in /public
+  const anniversaryGraphic = "/33-years-service-graphic.png";
 
-  // Service Data for the Cards (Updated with 'link' paths matching App.jsx)
   const services = [
-    {
-      title: "Injection Well Services",
-      description: "Our personnel have hundreds of years of combined injection well experience and are familiar with state and federal regulators throughout the country.",
-      icon: <Droplet className="w-8 h-8" style={{ color: maroon }} />,
-      link: "/injection-wells"
-    },
-    {
-      title: "Carbon Capture (CO2CCS)",
-      description: "Petrotek is a leader in conducting CCS feasibility studies and preparing Class VI UIC permits. We evaluate options for tax equity partnerships.",
-      icon: <CloudRain className="w-8 h-8" style={{ color: maroon }} />,
-      link: "/carbon-capture"
-    },
-    {
-      title: "Oil and Gas",
-      description: "We provide services regarding specialized technical issues including drilling spacing unit permitting, correlative rights, and reservoir simulation.",
-      icon: <OilWell className="w-8 h-8" style={{ color: maroon }} />,
-      link: "/oil-and-gas"
-    },
-    {
-      title: "ISR Uranium and Copper",
-      description: "Our experience in ISR uranium and copper mining spans more than 28 years and includes hydrogeological characterization and aquifer exemptions.",
-      icon: <Gem className="w-8 h-8" style={{ color: maroon }} />,
-      link: "/isr-uranium"
-    },
-    {
-      title: "Safety",
-      description: "Safety is our top priority. We maintain an impeccable safety record and full compliance with ISNetworld and Avetta contractor management services.",
-      icon: <HardHat className="w-8 h-8" style={{ color: maroon }} />,
-      link: "/safety"
-    },
-    {
-      title: "Mining",
-      description: "We have more than thirty years of experience in the mining industry related to groundwater characterization and modeling.",
-      icon: <Pickaxe className="w-8 h-8" style={{ color: maroon }} />,
-      link: "/mining"
-    }
+    { title: "Injection Well Services", description: "Our personnel have hundreds of years of combined injection well experience and are familiar with state and federal regulators throughout the country.", icon: <Droplet className="w-8 h-8" style={{ color: maroon }} />, link: "/injection-wells" },
+    { title: "Carbon Capture (CO2CCS)", description: "Petrotek is a leader in conducting CCS feasibility studies and preparing Class VI UIC permits. We evaluate options for tax equity partnerships.", icon: <CloudRain className="w-8 h-8" style={{ color: maroon }} />, link: "/carbon-capture" },
+    { title: "Oil and Gas", description: "We provide services regarding specialized technical issues including drilling spacing unit permitting, correlative rights, and reservoir simulation.", icon: <OilWell className="w-8 h-8" style={{ color: maroon }} />, link: "/oil-and-gas" },
+    { title: "ISR Uranium and Copper", description: "Our experience in ISR uranium and copper mining spans more than 28 years and includes hydrogeological characterization and aquifer exemptions.", icon: <Gem className="w-8 h-8" style={{ color: maroon }} />, link: "/isr-uranium" },
+    { title: "Safety", description: "Safety is our top priority. We maintain an impeccable safety record and full compliance with ISNetworld and Avetta contractor management services.", icon: <HardHat className="w-8 h-8" style={{ color: maroon }} />, link: "/safety" },
+    { title: "Mining", description: "We have more than thirty years of experience in the mining industry related to groundwater characterization and modeling.", icon: <Pickaxe className="w-8 h-8" style={{ color: maroon }} />, link: "/mining" }
   ];
 
   const industries = [
@@ -127,22 +94,18 @@ const Home = () => {
     { name: "Contact", href: "#contact" }
   ];
 
-    const handleFormSubmit = (e) => {
+  const handleFormSubmit = (e) => {
     e.preventDefault();
     const token = recaptchaRef.current.getValue();
-    
     if (!token) {
       alert("Please complete the reCAPTCHA");
       return;
     }
-
-    // Process form data here...
     console.log("Form submitted with token:", token);
   };
-  
+
   return (
     <>
-      {/* Global Animation Styles */}
       <style>
         {`
           @keyframes heroPan {
@@ -165,55 +128,51 @@ const Home = () => {
       </style>
 
       {/* Hero Section */}
-      <header id="home" className="relative h-screen flex items-center overflow-hidden bg-gray-900">
+      <header id="home" className="relative min-h-screen flex items-center overflow-hidden bg-gray-900">
         <div className="absolute inset-0 opacity-100 overflow-hidden">
-           <div className="absolute inset-0 bg-gradient-to-r from-black/85 to-transparent z-10"></div>
-           {/* Parallax Wrapper */}
-           <div 
-             className="absolute inset-0 w-full h-full"
-             style={{ 
-               transform: `translateY(${scrollOffset * 0.1}px)`,
-               transition: 'transform 0.1s linear'
-             }}
-           >
-             <img 
+          <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-black/40 to-transparent z-10"></div>
+          <div 
+            className="absolute inset-0 w-full h-full"
+            style={{ 
+              transform: `translateY(${scrollOffset * 0.15}px)`,
+              transition: 'transform 0.1s linear'
+            }}
+          >
+            <img 
               src="https://petrotek.com/wp-content/uploads/2023/08/FrontRange-from-RTD-fall_0.jpg" 
               alt="Petrotek Background" 
               className="h-full w-full object-cover animate-hero-pan will-change-transform" 
-             />
-           </div>
+            />
+          </div>
         </div>
         
-        <div className="w-full px-6 md:px-12 lg:px-20 relative z-20 flex flex-col lg:flex-row items-center h-full">
-          {/* Left Column: Text Content */}
-          <div className="lg:w-[55%] flex justify-start pt-20 lg:pt-0">
-            <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4 tracking-tight">
+        <div className="w-full px-6 md:px-12 lg:px-20 4k:px-40 relative z-20 flex flex-col lg:flex-row items-center py-20 lg:py-0">
+          <div className="lg:w-[60%] 4k:w-[50%] flex justify-start text-center lg:text-left">
+            <div className="max-w-4xl">
+              <h1 className="text-4xl md:text-6xl 4k:text-8xl font-black text-white leading-tight mb-6 tracking-tight">
                 Injection Well and Subsurface Resources Consultants
               </h1>
-              <p className="text-xl text-gray-200 mb-8 italic border-l-4 pl-4" style={{ borderColor: maroon }}>
+              <p className="text-xl md:text-2xl 4k:text-4xl text-gray-200 mb-10 italic border-l-4 pl-6 mx-auto lg:mx-0" style={{ borderColor: maroon }}>
                 Building Relationships. Solving Problems. Adding Value.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button onClick={() => scrollToId('#whatwedo')} className="px-8 py-4 text-white font-bold rounded-sm shadow-xl transition-all hover:brightness-110" style={{ backgroundColor: maroon }}>Explore Services</button>
-                <Link to="/publications" className="px-8 py-4 bg-white text-gray-900 font-bold rounded-sm shadow-xl hover:bg-gray-100 transition-all text-center">Our Publications</Link>
+              <div className="flex flex-col sm:flex-row justify-center lg:justify-start gap-6">
+                <button onClick={() => scrollToId('#whatwedo')} className="px-10 py-5 text-white font-bold rounded-sm shadow-2xl transition-all hover:scale-105 active:scale-95" style={{ backgroundColor: maroon }}>Explore Services</button>
+                <Link to="/publications" className="px-10 py-5 bg-white text-gray-900 font-bold rounded-sm shadow-2xl hover:bg-gray-100 transition-all text-center hover:scale-105 active:scale-95">Our Publications</Link>
               </div>
             </div>
           </div>
 
-          {/* Right Column: Anniversary Badge */}
-          <div className="lg:w-[45%] flex justify-center items-center h-full pt-10 lg:pt-0 animate-in fade-in zoom-in duration-1000 delay-300">
+          <div className="lg:w-[40%] 4k:w-[50%] flex justify-center items-center mt-16 lg:mt-0 animate-in fade-in zoom-in duration-1000 delay-300">
             <img 
               src={anniversaryGraphic} 
               alt="33 Years of UIC Service" 
-              className="w-25 h-25 md:w-40 md:h-40 lg:w-50 lg:h-50 xl:w-75 xl:h-75 object-contain filter drop-shadow-2xl opacity-90 transition-transform hover:scale-105"
+              className="w-48 h-48 md:w-64 md:h-64 lg:w-80 lg:h-80 4k:w-[600px] 4k:h-[600px] object-contain filter drop-shadow-2xl transition-transform hover:rotate-3"
               onError={(e) => { e.target.style.display = 'none'; }}
             />
           </div>
         </div>
 
-        {/* Scroll Indicator */}
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center">
+        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 hidden md:flex flex-col items-center">
           <button onClick={() => scrollToId('#section-nav')} className="text-white opacity-80 hover:opacity-100 transition-opacity flex flex-col items-center group">
             <span className="text-[10px] uppercase font-bold tracking-[0.3em] mb-2 group-hover:mb-3 transition-all duration-300">Scroll Down</span>
             <ChevronDown size={32} className="animate-bounce-down" />
@@ -223,13 +182,13 @@ const Home = () => {
 
       {/* Sticky Sub-Navigation */}
       <nav id="section-nav" className="sticky top-[60px] md:top-[72px] z-40 bg-white border-b border-gray-100 shadow-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
-        <div className="container mx-auto px-6 py-4 flex justify-center">
-          <ul className="flex items-center space-x-8 lg:space-x-12">
+        <div className="container mx-auto px-6 py-4 flex justify-center 4k:max-w-9xl">
+          <ul className="flex items-center space-x-6 md:space-x-12 4k:space-x-24">
             {subNavItems.map((item) => (
               <li key={item.name}>
                 <button 
                   onClick={() => scrollToId(item.href)}
-                  className="text-xs lg:text-sm font-bold uppercase tracking-widest text-gray-500 hover:text-[#8B1E3F] transition-colors relative group py-1"
+                  className="text-[10px] md:text-sm font-bold uppercase tracking-widest text-gray-500 hover:text-[#8B1E3F] transition-colors relative group py-1"
                 >
                   {item.name}
                   <span className="absolute bottom-0 left-0 w-0 h-0.5 bg-[#8B1E3F] transition-all duration-300 group-hover:w-full"></span>
@@ -241,40 +200,33 @@ const Home = () => {
       </nav>
 
       {/* Who We Are Section */}
-      <section id="whoweare" className="py-24 bg-gray-50 scroll-mt-20">
-        <div className="container mx-auto px-6">
-          <div className="grid md:grid-cols-2 gap-12 items-center">
-            <div>
-              <h2 className="text-center md:text-left text-3xl md:text-4xl font-bold text-gray-900 mb-4">Who We Are</h2>
-              <div className="w-24 h-1 mx-auto md:mx-0" style={{ backgroundColor: maroon }}></div>
-              <div className="mb-8"></div>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed text-left">
+      <section id="whoweare" className="py-24 4k:py-40 bg-gray-50 scroll-mt-20">
+        <div className="container mx-auto px-6 max-w-8xl 4k:max-w-9xl">
+          <div className="grid md:grid-cols-2 gap-16 lg:gap-24 items-center">
+            <div className="text-center md:text-left">
+              <h2 className="text-3xl md:text-5xl 4k:text-7xl font-bold text-gray-900 mb-6">Who We Are</h2>
+              <div className="w-24 h-1 mx-auto md:mx-0 mb-10" style={{ backgroundColor: maroon }}></div>
+              <p className="text-lg md:text-xl 4k:text-3xl text-gray-600 mb-8 leading-relaxed">
                 Petrotek Corporation is a results-oriented firm that specializes in engineering evaluation and field operations regarding subsurface fluid flow and injection well projects. We are a team of engineers and geoscientists experienced in a broad spectrum of professional disciplines.
               </p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed text-left">
-                Our company was founded in 1993 with a mission of providing cost-effective contract services to industrial and governmental clients. Our firm takes pride in meeting that goal with the highest degree of integrity and professionalism. We insist on client satisfaction and prefer results-oriented approaches to problem solving.
+              <p className="text-lg md:text-xl 4k:text-3xl text-gray-600 mb-12 leading-relaxed">
+                Our company was founded in 1993 with a mission of providing cost-effective contract services to industrial and governmental clients. Our firm takes pride in meeting that goal with the highest degree of integrity and professionalism.
               </p>
-              <div className="flex items-center space-x-6">
-                <div className="w-20 h-20 flex-shrink-0">
-                  <img 
-                    src={anniversaryGraphic} 
-                    alt="33 Years Badge" 
-                    className="w-full h-full object-contain filter grayscale brightness-0 contrast-125 opacity-100"
-                    onError={(e) => { e.target.style.display = 'none'; }}
-                  />
+              <div className="flex flex-col sm:flex-row items-center justify-center md:justify-start space-y-6 sm:space-y-0 sm:space-x-10">
+                <div className="w-24 h-24 4k:w-40 4k:h-40 flex-shrink-0">
+                  <img src={anniversaryGraphic} alt="33 Years Badge" className="w-full h-full object-contain filter grayscale opacity-50" />
                 </div>
-                <span className="text-lg font-bold text-gray-800 uppercase tracking-wider border-l-2 border-maroon pl-6">
-                  Over Three Decades of <br />
-                  Professional Excellence
+                <span className="text-lg 4k:text-3xl font-bold text-gray-800 uppercase tracking-wider border-l-2 border-maroon pl-6">
+                  Over Three Decades of <br className="hidden md:block" /> Professional Excellence
                 </span>
               </div>
             </div>
             <div className="flex justify-center">
-              <div className="relative max-w-sm w-full">
+              <div className="relative max-w-lg w-full">
                 <img 
                   src="https://petrotek.com/wp-content/uploads/elementor/thumbs/Injection-Well-3D-qg3dwrpdvagdnjryarnr1gnw6cokhg4cmbgdmeshz4.png" 
                   alt="3D Injection Well Model" 
-                  className="relative rounded-lg shadow-2xl z-10 w-full h-auto object-contain"
+                  className="rounded-lg shadow-2xl z-10 w-full h-auto object-contain hover:scale-105 transition-transform duration-500"
                 />
               </div>
             </div>
@@ -282,79 +234,71 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Core Capabilities (Updated with Router Links) */}
-      <section id="whatwedo" className="py-24 bg-white scroll-mt-20">
-        <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Core Capabilities</h2>
+      {/* Core Capabilities */}
+      <section id="whatwedo" className="py-24 4k:py-40 bg-white scroll-mt-20">
+        <div className="container mx-auto px-6 max-w-8xl 4k:max-w-9xl">
+          <div className="text-center mb-16 md:mb-24">
+            <h2 className="text-4xl md:text-6xl 4k:text-8xl font-bold text-gray-900 mb-6">Our Core Capabilities</h2>
             <div className="w-24 h-1 mx-auto" style={{ backgroundColor: maroon }}></div>
           </div>
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 4k:gap-16">
             {services.map((service, index) => (
-              <div key={index} className="group p-8 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col h-full">
-                <div className="mb-6">{service.icon}</div>
-                <h3 className="text-xl font-bold mb-4 text-gray-800">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed mb-6 flex-grow">{service.description}</p>
-                
-                {/* Router Link Component */}
-                <Link 
-                  to={service.link}
-                  className="flex items-center text-sm font-bold uppercase tracking-wider group-hover:underline text-left" 
-                  style={{ color: maroon }}
-                >
-                  Learn More <ChevronRight className="w-4 h-4 ml-1" />
-                </Link>
-              </div>
+              <Link key={index} to={service.link} className="group p-10 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 flex flex-col h-full">
+                <div className="mb-8 p-4 bg-gray-50 inline-block rounded-xl group-hover:bg-[#8B1E3F]/10 transition-colors">{service.icon}</div>
+                <h3 className="text-2xl 4k:text-4xl font-bold mb-6 text-gray-800">{service.title}</h3>
+                <p className="text-gray-600 4k:text-2xl leading-relaxed mb-8 flex-grow">{service.description}</p>
+                <div className="flex items-center text-sm 4k:text-xl font-bold uppercase tracking-wider" style={{ color: maroon }}>
+                  Learn More <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
+                </div>
+              </Link>
             ))}
           </div>
         </div>
       </section>
 
       {/* Client Map Section */}
-      <section id="clientsserved" className="py-20 bg-gray-50 border-y border-gray-100 scroll-mt-20">
-        <div className="container mx-auto px-6 text-center">
-          <div className="mb-12">
-            <Globe className="w-12 h-12 mx-auto mb-4 opacity-80" style={{ color: maroon }} />
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Clients Served</h2>
-            <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: maroon }}></div>
-            <p className="max-w-2xl mx-auto text-lg text-gray-700">Petrotek serves a diverse range of clients across North America and beyond, providing specialized engineering and geological expertise.</p>
+      <section id="clientsserved" className="py-24 4k:py-40 bg-gray-50 border-y border-gray-100 scroll-mt-20">
+        <div className="container mx-auto px-6 text-center max-w-8xl 4k:max-w-9xl">
+          <div className="mb-16">
+            <Globe className="w-16 h-16 mx-auto mb-6 opacity-80" style={{ color: maroon }} />
+            <h2 className="text-4xl md:text-6xl 4k:text-8xl font-bold text-gray-900 mb-6">Clients Served</h2>
+            <div className="w-24 h-1 mx-auto mb-10" style={{ backgroundColor: maroon }}></div>
+            <p className="max-w-3xl mx-auto text-xl 4k:text-3xl text-gray-700">Petrotek serves a diverse range of clients across North America and beyond, providing specialized engineering and geological expertise.</p>
           </div>
-          <div className="relative max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-gray-100 bg-white p-4">
+          <div className="relative max-w-6xl mx-auto rounded-3xl overflow-hidden shadow-2xl border border-white bg-white p-6 4k:p-12">
             <img 
               src="https://petrotek.com/wp-content/uploads/2023/09/USA_Map3-1024x706.png" 
               alt="Client Map" 
               className="w-full h-auto"
-              onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=2000"; }}
             />
           </div>
         </div>
       </section>
 
-      {/* Industries Served Reveal */}
-      <section id="industries" className="py-24 bg-white scroll-mt-20">
-        <div className="container mx-auto px-6 text-center">
-          <div className="mb-16">
-            <Activity className="w-12 h-12 mx-auto mb-4 opacity-80" style={{ color: maroon }} />
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Industries Served</h2>
-            <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: maroon }}></div>
-            <p className="max-w-4xl mx-auto text-lg text-gray-700">Petrotek provides consulting services to many industries for managing wastewater that is protective of drinking water sources and the environment.</p>
-            <br></br>
-            <p className="text-lg text-gray-600 italic">Some of the industries we serve include:</p>
+      {/* Industries Served */}
+      <section id="industries" className="py-24 4k:py-40 bg-white scroll-mt-20">
+        <div className="container mx-auto px-6 text-center max-w-8xl 4k:max-w-9xl">
+          <div className="mb-20">
+            <Activity className="w-16 h-16 mx-auto mb-6 opacity-80" style={{ color: maroon }} />
+            <h2 className="text-4xl md:text-6xl 4k:text-8xl font-bold text-gray-900 mb-6">Industries Served</h2>
+            <div className="w-24 h-1 mx-auto mb-10" style={{ backgroundColor: maroon }}></div>
+            <p className="max-w-4xl mx-auto text-xl 4k:text-3xl text-gray-700 leading-relaxed mb-10">Petrotek provides consulting services to many industries for managing wastewater that is protective of drinking water sources and the environment.</p>
+            <p className="text-lg 4k:text-2xl text-gray-500 font-medium uppercase tracking-widest">Global Industry Partnerships</p>
           </div>
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start text-left">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 4k:gap-12 text-left">
             {industries.map((item, index) => (
-              <div key={index} className="group relative flex flex-col bg-white rounded-xl shadow-sm border border-gray-100 hover:border-[#8B1E3F] transition-all duration-500 overflow-hidden">
-                <div className="flex items-center justify-between p-5 z-10 bg-white">
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle2 className="w-5 h-5 flex-shrink-0" style={{ color: maroon }} />
-                    <span className="text-gray-800 font-bold group-hover:text-[#8B1E3F] transition-colors">{item.name}</span>
+              <div key={index} className="group relative flex flex-col bg-white rounded-2xl shadow-sm border border-gray-100 hover:shadow-xl transition-all duration-500 overflow-hidden">
+                <div className="flex items-center justify-between p-6 z-10 bg-white">
+                  <div className="flex items-center space-x-4">
+                    <CheckCircle2 className="w-6 h-6 flex-shrink-0" style={{ color: maroon }} />
+                    <span className="text-lg 4k:text-3xl font-bold text-gray-800 group-hover:text-[#8B1E3F] transition-colors">{item.name}</span>
                   </div>
-                  <ChevronDown className="w-4 h-4 text-gray-300 group-hover:rotate-180 transition-transform duration-500" />
+                  <ChevronDown className="w-5 h-5 text-gray-300 group-hover:rotate-180 transition-transform duration-500" />
                 </div>
-                <div className="max-h-0 group-hover:max-h-64 transition-all duration-500 ease-in-out">
-                  <div className="relative h-48 w-full">
-                    <img src={item.img} alt={item.name} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                <div className="max-h-0 group-hover:max-h-72 transition-all duration-700 ease-in-out">
+                  <div className="relative h-56 w-full">
+                    <img src={item.img} alt={item.name} className="w-full h-full object-cover" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent"></div>
                   </div>
                 </div>
               </div>
@@ -364,57 +308,79 @@ const Home = () => {
       </section>
 
       {/* Contact Section */}
-      <section id="contact" className="py-24 bg-gray-50 border-t border-gray-200 scroll-mt-20">
-        <div className="container mx-auto px-6">
-          <div className="bg-white rounded-2xl shadow-2xl overflow-hidden grid lg:grid-cols-5 border border-gray-100">
-            <div className="lg:col-span-2 p-12 text-white" style={{ backgroundColor: maroon }}>
-              <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4"><MapPin className="w-6 h-6 mt-1 flex-shrink-0" /><p>5935 South Zang Street<br />Littleton, Colorado 80127</p></div>
-                <div className="flex items-center space-x-4"><Phone className="w-6 h-6 flex-shrink-0" /><p>(303) 290-9414</p></div>
-                <div className="flex items-center space-x-4"><Mail className="w-6 h-6 flex-shrink-0" /><p>info@petrotek.com</p></div>
+      <section id="contact" className="py-24 4k:py-40 bg-gray-50 scroll-mt-20">
+        <div className="container mx-auto px-6 max-w-8xl 4k:max-w-9xl">
+          <div className="bg-white rounded-3xl shadow-2xl overflow-hidden grid lg:grid-cols-5 border border-gray-100">
+            <div className="lg:col-span-2 p-12 md:p-16 text-white flex flex-col justify-between" style={{ backgroundColor: maroon }}>
+              <div>
+                <h2 className="text-4xl 4k:text-6xl font-black mb-12 tracking-tight">Get In Touch</h2>
+                <div className="space-y-10 4k:space-y-16">
+                  <div className="flex items-start space-x-6">
+                    <MapPin className="w-8 h-8 4k:w-12 4k:h-12 flex-shrink-0" />
+                    <p className="text-lg 4k:text-3xl leading-relaxed">5935 South Zang Street<br />Littleton, Colorado 80127</p>
+                  </div>
+                  <div className="flex items-center space-x-6">
+                    <Phone className="w-8 h-8 4k:w-12 4k:h-12 flex-shrink-0" />
+                    <a href="tel:3032909414" className="text-lg 4k:text-3xl hover:underline">(303) 290-9414</a>
+                  </div>
+                  <div className="flex items-center space-x-6">
+                    <Mail className="w-8 h-8 4k:w-12 4k:h-12 flex-shrink-0" />
+                    <a href="mailto:info@petrotek.com" className="text-lg 4k:text-3xl hover:underline">info@petrotek.com</a>
+                  </div>
+                </div>
               </div>
               
-              {/* Google Maps Embed */}
-              <div className="mt-10 rounded-xl overflow-hidden shadow-lg border border-white/20">
+              <div className="mt-16 rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 h-64 4k:h-[500px]">
                 <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3074.453473187122!2d-105.1507294242135!3d39.58434270529815!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876b77209e25c03b%3A0x67396c34827018c1!2s5935%20S%20Zang%20St%2C%20Littleton%2C%20CO%2080127!5e0!3m2!1sen!2sus!4v1707682300000!5m2!1sen!2sus"
                   width="100%" 
-                  height="220" 
+                  height="100%" 
                   style={{ border: 0 }} 
                   allowFullScreen="" 
                   loading="lazy" 
-                  referrerPolicy="no-referrer-when-downgrade"
                   title="Petrotek Office Location"
                 ></iframe>
               </div>
             </div>
             
-            <form className="lg:col-span-3 p-12 space-y-6">
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2"><label className="text-sm font-bold text-gray-700">First Name</label><input type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none" /></div>
-                <div className="space-y-2"><label className="text-sm font-bold text-gray-700">Last Name</label><input type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none" /></div>
+            <form className="lg:col-span-3 p-12 md:p-20 space-y-8" onSubmit={handleFormSubmit}>
+              <div className="grid md:grid-cols-2 gap-8">
+                <div className="space-y-3">
+                  <label className="text-sm 4k:text-2xl font-bold text-gray-700 uppercase tracking-widest">First Name</label>
+                  <input type="text" className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-lg focus:ring-4 focus:ring-[#8B1E3F]/20 focus:border-[#8B1E3F] outline-none transition-all 4k:text-3xl" required />
+                </div>
+                <div className="space-y-3">
+                  <label className="text-sm 4k:text-2xl font-bold text-gray-700 uppercase tracking-widest">Last Name</label>
+                  <input type="text" className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-lg focus:ring-4 focus:ring-[#8B1E3F]/20 focus:border-[#8B1E3F] outline-none transition-all 4k:text-3xl" required />
+                </div>
               </div>
-              <div className="space-y-2"><label className="text-sm font-bold text-gray-700">Email Address</label><input type="email" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none" /></div>
-              <div className="space-y-2"><label className="text-sm font-bold text-gray-700">Message</label><textarea rows="4" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none"></textarea></div>
-              <div className="flex justify-center md:justify-start">
+              <div className="space-y-3">
+                <label className="text-sm 4k:text-2xl font-bold text-gray-700 uppercase tracking-widest">Email Address</label>
+                <input type="email" className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-lg focus:ring-4 focus:ring-[#8B1E3F]/20 focus:border-[#8B1E3F] outline-none transition-all 4k:text-3xl" required />
+              </div>
+              <div className="space-y-3">
+                <label className="text-sm 4k:text-2xl font-bold text-gray-700 uppercase tracking-widest">Message</label>
+                <textarea rows="6" className="w-full px-6 py-4 bg-gray-50 border border-gray-200 rounded-lg focus:ring-4 focus:ring-[#8B1E3F]/20 focus:border-[#8B1E3F] outline-none transition-all 4k:text-3xl" required></textarea>
+              </div>
+              
+              <div className="flex justify-center lg:justify-start pt-4 scale-90 md:scale-100 origin-left">
                 {import.meta.env.VITE_RECAPTCHA_SITE ? (
-                  <div className="flex justify-center md:justify-start">
-                    <ReCAPTCHA
-                      ref={recaptchaRef}
-                      sitekey={import.meta.env.VITE_RECAPTCHA_SITE}
-                    />
-                  </div>
+                  <ReCAPTCHA
+                    ref={recaptchaRef}
+                    sitekey={import.meta.env.VITE_RECAPTCHA_SITE}
+                  />
                 ) : (
-                  <p className="text-red-500 text-sm">reCAPTCHA Configuration Missing</p>
+                  <p className="text-red-500 text-sm font-bold">reCAPTCHA Configuration Missing</p>
                 )}
               </div>
-              <button type="submit" className="w-full py-4 text-white font-bold rounded-sm uppercase tracking-widest shadow-lg hover:brightness-110 transition-all" style={{ backgroundColor: maroon }}>Send Message</button>
+
+              <button type="submit" className="w-full py-5 text-white font-black rounded-lg uppercase tracking-widest shadow-2xl hover:brightness-110 active:scale-[0.98] transition-all 4k:text-3xl 4k:py-10" style={{ backgroundColor: maroon }}>
+                Send Message
+              </button>
             </form>
           </div>
         </div>
       </section>
-      <form className="lg:col-span-3 p-12 space-y-6" onSubmit={handleFormSubmit}></form>
     </>
   );
 };
