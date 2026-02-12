@@ -13,6 +13,19 @@ import {
   Activity
 } from 'lucide-react';
 
+// Custom Uranium Icon Component
+const UraniumIcon = ({ className }) => (
+  <img 
+    src="/database-zap.svg" // <--- REPLACE THIS with your actual filename (e.g., "atom.svg")
+    alt="Uranium Service Icon"
+    className={className}
+    // Optional: Add this filter if your SVG is black and you want it Maroon
+    style={{ 
+      filter: 'brightness(0) saturate(100%) invert(18%) sepia(48%) saturate(1982%) hue-rotate(320deg) brightness(89%) contrast(92%)'  
+    }}
+  />
+);
+
 const ISR = () => {
   const maroon = "#8B1E3F";
 
@@ -30,7 +43,7 @@ const ISR = () => {
           {/* Header Section */}
           <div className="mb-12">
             <div className="mb-6 p-4 bg-gray-50 inline-block rounded-2xl border border-gray-100 shadow-sm">
-              <Gem className="w-10 h-10" style={{ color: maroon }} />
+              <UraniumIcon className="w-8 h-8" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">ISR Uranium & Copper</h1>
             <p className="text-xl text-[#8B1E3F] font-bold mb-6">In-Situ Recovery Permitting, Design, and Operations</p>

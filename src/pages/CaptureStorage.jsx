@@ -115,7 +115,7 @@ const CaptureStorage = () => {
           </div>
 
           {/* Detailed Content with Side-by-Side Image */}
-          <div className="flex flex-col lg:flex-row gap-12 mb-20">
+          <div className="flex flex-col lg:flex-row gap-12 mb-20 items-start">
             {/* Left Column: Text Content & List */}
             <div className="lg:w-3/5">
               <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed mb-8">
@@ -138,8 +138,8 @@ const CaptureStorage = () => {
             </div>
 
             {/* Right Column: Image */}
-            <div className="lg:w-5/5">
-              <div className="relative rounded-2xl shadow-2xl overflow-hidden border border-gray-100 sticky top-32">
+            <div className="lg:w-5/5 sticky top-32">
+              <div className="relative rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
                 <img 
                   src="/CO2 Capture and Storage.png"
                   alt="Carbon Capture Facility" 

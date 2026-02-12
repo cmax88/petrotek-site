@@ -12,23 +12,17 @@ import {
   BarChart3
 } from 'lucide-react';
 
-// Custom Oil Well Icon Component
+// Custom Oil Well Icon using your public SVG
 const OilWell = ({ className, style }) => (
-  <svg 
-    viewBox="0 0 24 24" 
-    fill="none" 
-    stroke="currentColor" 
-    strokeWidth="2" 
-    strokeLinecap="round" 
-    strokeLinejoin="round" 
+  <img 
+    src="/regular-oil-well.svg" // Use the exact filename from your public folder
+    alt="Oil Well Icon"
     className={className}
-    style={style}
-  >
-    <path d="M12 2L5 22h14L12 2z" />
-    <path d="M7 15h10" />
-    <path d="M9 10h6" />
-    <path d="M12 5v10" />
-  </svg>
+    style={{ 
+      ...style, 
+      filter: 'brightness(0) saturate(100%) invert(18%) sepia(48%) saturate(1982%) hue-rotate(320deg) brightness(89%) contrast(92%)' 
+    }} 
+  />
 );
 
 const OilGas = () => {

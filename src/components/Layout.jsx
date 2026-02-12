@@ -57,7 +57,7 @@ const Layout = () => {
   `;
 
   return (
-    <div className="min-h-screen bg-white font-sans text-gray-900 flex flex-col overflow-x-hidden">
+    <div className="min-h-screen bg-white font-sans text-gray-900 flex flex-col overflow-self-start">
       
       {/* --- NAVIGATION --- */}
       <nav className={navClass}>
