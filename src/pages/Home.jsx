@@ -292,36 +292,84 @@ const Home = () => {
         </div>
       </section>
 
-      <section id="contact" className="py-24 bg-gray-50 border-t border-gray-200 scroll-mt-20">
-        <div className="container mx-auto px-6">
-          <div className="bg-white rounded-2xl shadow-2xl overflow-hidden grid lg:grid-cols-5">
-            <div className="lg:col-span-2 p-12 text-white" style={{ backgroundColor: maroon }}>
-              <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4"><MapPin className="w-6 h-6 mt-1" /><p>5935 South Zang Street<br />Littleton, Colorado 80127</p></div>
-                <div className="flex items-center space-x-4"><Phone className="w-6 h-6" /><p>(303) 290-9414</p></div>
-                <div className="flex items-center space-x-4"><Mail className="w-6 h-6" /><p>info@petrotek.com</p></div>
-              </div>
-            </div>
-            <form className="lg:col-span-3 p-12 space-y-6" onSubmit={handleFormSubmit}>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2"><label className="text-sm font-bold">First Name</label><input type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none" /></div>
-                <div className="space-y-2"><label className="text-sm font-bold">Last Name</label><input type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none" /></div>
-              </div>
-              <div className="space-y-2"><label className="text-sm font-bold">Email Address</label><input type="email" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none" /></div>
-              <div className="space-y-2"><label className="text-sm font-bold">Message</label><textarea rows="4" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none"></textarea></div>
-              <div className="flex justify-center md:justify-start">
-                {import.meta.env.VITE_RECAPTCHA_SITE ? (
-                  <ReCAPTCHA ref={recaptchaRef} sitekey={import.meta.env.VITE_RECAPTCHA_SITE} />
-                ) : (
-                  <p className="text-red-500 text-sm">reCAPTCHA Configuration Missing</p>
-                )}
-              </div>
-              <button type="submit" className="w-full py-4 text-white font-bold rounded-sm uppercase tracking-widest shadow-lg hover:brightness-110 transition-all" style={{ backgroundColor: maroon }}>Send Message</button>
-            </form>
+{/* Contact Section */}
+<section id="contact" className="py-24 bg-gray-50 border-t border-gray-200 scroll-mt-20">
+  <div className="container mx-auto px-6">
+    <div className="bg-white rounded-2xl shadow-2xl overflow-hidden grid lg:grid-cols-5 border border-gray-100">
+      
+      {/* Sidebar Info */}
+      <div className="lg:col-span-2 p-12 text-white" style={{ backgroundColor: maroon }}>
+        <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
+        <div className="space-y-6">
+          <div className="flex items-start space-x-4"><MapPin className="w-6 h-6 mt-1 flex-shrink-0" /><p>5935 South Zang Street<br />Littleton, Colorado 80127</p></div>
+          <div className="flex items-center space-x-4"><Phone className="w-6 h-6 flex-shrink-0" /><p>(303) 290-9414</p></div>
+          <div className="flex items-center space-x-4"><Mail className="w-6 h-6 flex-shrink-0" /><p>info@petrotek.com</p></div>
+        </div>
+        
+        {/* Google Maps Embed */}
+        <div className="mt-10 rounded-xl overflow-hidden shadow-lg border border-white/20">
+          <iframe 
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3072.046892558451!2d-105.151322!3d39.610234!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876b7e63b6a9359d%3A0x7d6c6e7b8b4b4b4b!2s5935%20S%20Zang%20St%2C%20Littleton%2C%20CO%2080127!5e0!3m2!1sen!2sus!4v1234567890"
+            width="100%" 
+            height="220" 
+            style={{ border: 0 }} 
+            allowFullScreen="" 
+            loading="lazy" 
+            title="Petrotek Office Location"
+          ></iframe>
+        </div>
+      </div>
+      
+      {/* Contact Form */}
+      <form onSubmit={handleFormSubmit} className="lg:col-span-3 p-12 space-y-6">
+        <div className="grid md:grid-cols-2 gap-6">
+          <div className="space-y-2">
+            <label className="text-sm font-bold text-gray-700">First Name</label>
+            <input name="firstName" required type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none" />
+          </div>
+          <div className="space-y-2">
+            <label className="text-sm font-bold text-gray-700">Last Name</label>
+            <input name="lastName" required type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none" />
           </div>
         </div>
-      </section>
+        
+        <div className="space-y-2">
+          <label className="text-sm font-bold text-gray-700">Email Address</label>
+          <input name="email" required type="email" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none" />
+        </div>
+        
+        <div className="space-y-2">
+          <label className="text-sm font-bold text-gray-700">Message</label>
+          <textarea name="message" required rows="4" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none"></textarea>
+        </div>
+
+        {/* reCAPTCHA Widget */}
+        <div className="flex justify-center md:justify-start">
+          {import.meta.env.VITE_RECAPTCHA_SITE ? (
+            <ReCAPTCHA
+              ref={recaptchaRef}
+              sitekey={import.meta.env.VITE_RECAPTCHA_SITE}
+              // onChange={(val) => console.log("Captcha value:", val)}
+            />
+          ) : (
+            <div className="p-4 bg-red-50 text-red-600 rounded-md border border-red-100 text-xs">
+              <strong>Error:</strong> reCAPTCHA site key missing in .env
+            </div>
+          )}
+        </div>
+
+        <button 
+          type="submit" 
+          className="w-full py-4 text-white font-bold rounded-sm uppercase tracking-widest shadow-lg hover:brightness-110 transition-all" 
+          style={{ backgroundColor: maroon }}
+        >
+          Send Message
+        </button>
+      </form>
+
+    </div>
+  </div>
+</section>
     </>
   );
 };
