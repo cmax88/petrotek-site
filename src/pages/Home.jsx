@@ -344,17 +344,17 @@ const Home = () => {
         </div>
 
         {/* reCAPTCHA Widget */}
+        {/* Inside your Form in Home.jsx */}
         <div className="flex justify-center md:justify-start">
           {import.meta.env.VITE_RECAPTCHA_SITE ? (
             <ReCAPTCHA
               ref={recaptchaRef}
               sitekey={import.meta.env.VITE_RECAPTCHA_SITE}
-              // onChange={(val) => console.log("Captcha value:", val)}
             />
           ) : (
-            <div className="p-4 bg-red-50 text-red-600 rounded-md border border-red-100 text-xs">
-              <strong>Error:</strong> reCAPTCHA site key missing in .env
-            </div>
+            <p className="text-red-500 text-sm italic">
+              reCAPTCHA Key Missing (Check .env)
+            </p>
           )}
         </div>
 
