@@ -278,13 +278,22 @@ const Home = () => {
         </div>
       </section>
 
+      {/* Client Map Section */}
       <section id="clientsserved" className="py-20 bg-gray-50 border-y border-gray-100 scroll-mt-20">
         <div className="container mx-auto px-6 text-center">
-          <Globe className="w-12 h-12 mx-auto mb-4" style={{ color: maroon }} />
-          <h2 className="text-4xl font-bold text-gray-900 mb-4">Clients Served</h2>
-          <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: maroon }}></div>
-          <div className="relative max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl bg-white p-4">
-            <img src="https://petrotek.com/wp-content/uploads/2023/09/USA_Map3-1024x706.png" alt="Map" className="w-full h-auto" />
+          <div className="mb-12">
+            <Globe className="w-12 h-12 mx-auto mb-4 opacity-80" style={{ color: maroon }} />
+            <h2 className="text-4xl font-bold text-gray-900 mb-4">Clients Served</h2>
+            <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: maroon }}></div>
+            <p className="max-w-2xl mx-auto text-lg text-gray-700">Petrotek serves a diverse range of clients across North America and beyond, providing specialized engineering and geological expertise.</p>
+          </div>
+          <div className="relative max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-gray-100 bg-white p-4">
+            <img 
+              src="https://petrotek.com/wp-content/uploads/2023/09/USA_Map3-1024x706.png" 
+              alt="Client Map" 
+              className="w-full h-auto"
+              onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=2000"; }}
+            />
           </div>
         </div>
       </section>
@@ -294,6 +303,10 @@ const Home = () => {
           <Activity className="w-12 h-12 mx-auto mb-4" style={{ color: maroon }} />
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Industries Served</h2>
           <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: maroon }}></div>
+                      <p className="max-w-4xl mx-auto text-lg text-gray-700">Petrotek provides consulting services to many industries for managing wastewater that is protective of drinking water sources and the environment.</p>
+            <br></br>
+            <p className="text-lg text-gray-600 italic">Some of the industries we serve include:</p>
+            <br></br>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
             {industries.map((item, index) => (
               <div key={index} className="group h-[280px] [perspective:1000px]">
