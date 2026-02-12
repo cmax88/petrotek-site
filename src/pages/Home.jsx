@@ -190,7 +190,7 @@ const Home = () => {
       </header>
 
       {/* Sticky Sub-Navigation with Scrollspy */}
-      <nav id="section-nav" className="sticky top-[60px] md:top-[72px] z-40 bg-white border-b border-gray-100 shadow-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
+      <nav id="section-nav" className="hidden md:block sticky top-[72px] z-40 bg-white border-b border-gray-100 shadow-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
         <div className="container mx-auto px-6 py-4 flex justify-center">
           <ul className="flex items-center space-x-8 lg:space-x-12">
             {subNavItems.map((item) => {
