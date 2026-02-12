@@ -28,8 +28,8 @@ const Layout = () => {
     { title: "Carbon Capture", id: "/carbon-capture" },
     { title: "Oil & Gas", id: "/oil-and-gas" },
     { title: "ISR Uranium", id: "/isr-uranium" },
-    { title: "Mining", id: "/mining" },
-    { title: "Safety", id: "/safety" }
+     { title: "Safety", id: "/safety" },
+    { title: "Mining", id: "/mining" }
   ];
 
   const handleContactClick = () => {
