@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
-import { Menu, X, ChevronDown, MapPin, Phone, Mail, Globe } from 'lucide-react';
+import { Menu, X, ChevronDown, MapPin, Phone, Mail } from 'lucide-react';
 
 const Layout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -51,8 +51,8 @@ const Layout = () => {
   }`;
 
   const linkClass = (isMobile = false) => `
-    text-sm font-bold uppercase tracking-wider transition-all duration-300
-    ${isMobile ? 'text-gray-800 text-xl py-4 border-b border-gray-100' : 
+    text-sm font-bold uppercase tracking-widest transition-all duration-300
+    ${isMobile ? 'text-gray-800 text-xl py-6 border-b border-gray-100' : 
       (scrolled || location.pathname !== '/' ? 'text-gray-800 hover:text-[#8B1E3F]' : 'text-white hover:opacity-70')}
   `;
 
@@ -61,10 +61,8 @@ const Layout = () => {
       
       {/* --- NAVIGATION --- */}
       <nav className={navClass}>
-        {/* The outer <nav> now handles the full-width background.
-            The inner <div> handles the centered content constraint.
-        */}
-        <div className="w-full px-6 md:px-12 4k:px-24 mx-auto max-w-[1440px] 2k:max-w-[1920px] 4k:max-w-[3840px] flex justify-between items-center">
+        {/* Full-width wrapper with horizontal padding for extreme widths */}
+        <div className="w-full px-6 md:px-12 2k:px-20 4k:px-32 mx-auto max-w-[1728px] 4k:max-w-[2560px] flex justify-between items-center">
           
           {/* Logo */}
           <Link to="/" onClick={() => window.scrollTo(0,0)} className="z-50 shrink-0">
@@ -89,11 +87,15 @@ const Layout = () => {
                 What We Do <ChevronDown className={`ml-1 w-4 h-4 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} />
               </button>
               
-              {/* Dropdown Menu */}
               {isDropdownOpen && (
                 <div className="absolute top-full left-0 w-64 4k:w-96 bg-white shadow-2xl rounded-xl py-4 border border-gray-100 animate-in fade-in slide-in-from-top-2 duration-200">
                   {services.map((s) => (
-                    <Link key={s.id} to={s.id} className="px-6 py-3 hover:bg-gray-50 text-gray-700 text-xs 4k:text-lg font-bold uppercase tracking-widest hover:text-[#8B1E3F] transition-colors block">
+                    <Link 
+                      key={s.id} 
+                      to={s.id} 
+                      onClick={() => window.scrollTo(0,0)}
+                      className="px-6 py-3 hover:bg-gray-50 text-gray-700 text-xs 4k:text-lg font-bold uppercase tracking-widest hover:text-[#8B1E3F] transition-colors block"
+                    >
                       {s.title}
                     </Link>
                   ))}
@@ -101,8 +103,8 @@ const Layout = () => {
               )}
             </div>
 
-            <Link to="/team" className={linkClass()}>Our Team</Link>
-            <Link to="/publications" className={linkClass()}>Publications</Link>
+            <Link to="/team" onClick={() => window.scrollTo(0,0)} className={linkClass()}>Our Team</Link>
+            <Link to="/publications" onClick={() => window.scrollTo(0,0)} className={linkClass()}>Publications</Link>
             
             <button 
               onClick={handleContactClick}
@@ -121,8 +123,30 @@ const Layout = () => {
             {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
           </button>
         </div>
-        
-        {/* ... (Mobile Menu Overlay stays the same) ... */}
+
+        {/* Mobile Full-Screen Overlay */}
+        <div className={`fixed inset-0 bg-white z-40 flex flex-col p-8 transition-transform duration-500 ease-in-out md:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+          <div className="mt-20 flex flex-col">
+            <Link to="/" className={linkClass(true)}>Home</Link>
+            <div className="py-6 border-b border-gray-100">
+              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400 mb-6">Our Services</p>
+              <div className="grid grid-cols-1 gap-6 pl-4">
+                {services.map(s => (
+                  <Link key={s.id} to={s.id} className="text-gray-700 font-bold uppercase text-lg hover:text-[#8B1E3F] transition-colors">{s.title}</Link>
+                ))}
+              </div>
+            </div>
+            <Link to="/team" className={linkClass(true)}>Our Team</Link>
+            <Link to="/publications" className={linkClass(true)}>Publications</Link>
+            <button 
+              onClick={handleContactClick}
+              className="mt-12 w-full py-6 text-white font-bold uppercase tracking-widest text-center shadow-lg"
+              style={{ backgroundColor: maroon }}
+            >
+              Contact Us
+            </button>
+          </div>
+        </div>
       </nav>
 
       {/* --- CONTENT --- */}
@@ -131,8 +155,8 @@ const Layout = () => {
       </main>
 
       {/* --- GLOBAL FOOTER --- */}
-      <footer className="bg-gray-950 text-gray-400 py-16 md:py-24 4k:py-40 border-t border-gray-800/50">
-        <div className="container mx-auto px-6 max-w-8xl 4k:max-w-9xl">
+      <footer className="bg-gray-950 text-gray-400 py-20 4k:py-40 border-t border-gray-800/50">
+        <div className="w-full px-6 md:px-12 2k:px-20 4k:px-32 mx-auto max-w-[1728px] 4k:max-w-[2560px]">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 4k:gap-32 mb-16 md:mb-24">
             
             {/* Brand */}
