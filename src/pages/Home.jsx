@@ -330,32 +330,58 @@ const Home = () => {
         </div>
       </section>
 
-      {/* Industries Served Reveal */}
+      {/* Industries Served Section */}
       <section id="industries" className="py-24 bg-white scroll-mt-20">
-        <div className="container mx-auto px-6 text-center">
+        <div className="w-full px-6 md:px-12 2k:px-20 4k:px-32 mx-auto max-w-[1728px] 4k:max-w-[2560px] text-center">
           <div className="mb-16">
             <Activity className="w-12 h-12 mx-auto mb-4 opacity-80" style={{ color: maroon }} />
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Industries Served</h2>
+            <h2 className="text-3xl md:text-4xl 4k:text-6xl font-bold text-gray-900 mb-4">Industries Served</h2>
             <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: maroon }}></div>
-            <p className="max-w-4xl mx-auto text-lg text-gray-700">Petrotek provides consulting services to many industries for managing wastewater that is protective of drinking water sources and the environment.</p>
-            <br></br>
-            <p className="text-lg text-gray-600 italic">Some of the industries we serve include:</p>
+            <p className="max-w-4xl mx-auto text-lg 4k:text-2xl text-gray-700">
+              Petrotek provides consulting services to many industries for managing wastewater that is protective of drinking water sources and the environment.
+            </p>
           </div>
-          <div className="max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 items-start text-left">
+
+          {/* Flip Card Grid - Adjusted for 5 in a row */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 4k:gap-8">
             {industries.map((item, index) => (
-              <div key={index} className="group relative flex flex-col bg-white rounded-xl shadow-sm border border-gray-100 hover:border-[#8B1E3F] transition-all duration-500 overflow-hidden">
-                <div className="flex items-center justify-between p-5 z-10 bg-white">
-                  <div className="flex items-center space-x-3">
-                    <CheckCircle2 className="w-5 h-5 flex-shrink-0" style={{ color: maroon }} />
-                    <span className="text-gray-800 font-bold group-hover:text-[#8B1E3F] transition-colors">{item.name}</span>
+              <div 
+                key={index} 
+                className="group h-[280px] 4k:h-[400px] [perspective:1000px]"
+              >
+                {/* Flipper Container */}
+                <div className="relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+                  
+                  {/* FRONT SIDE */}
+                  <div className="absolute inset-0 h-full w-full rounded-xl overflow-hidden shadow-sm border border-gray-100 [backface-visibility:hidden]">
+                    <img 
+                      src={item.img} 
+                      alt={item.name} 
+                      className="h-full w-full object-cover" 
+                    />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex items-end p-4">
+                      <div className="flex items-center space-x-2 text-white">
+                        <CheckCircle2 className="w-4 h-4 shrink-0" style={{ color: maroon }} />
+                        <span className="text-sm 4k:text-lg font-bold tracking-tight text-left leading-tight">{item.name}</span>
+                      </div>
+                    </div>
                   </div>
-                  <ChevronDown className="w-4 h-4 text-gray-300 group-hover:rotate-180 transition-transform duration-500" />
-                </div>
-                <div className="max-h-0 group-hover:max-h-64 transition-all duration-500 ease-in-out">
-                  <div className="relative h-48 w-full">
-                    <img src={item.img} alt={item.name} className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-700" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+
+                  {/* BACK SIDE */}
+                  <div className="absolute inset-0 h-full w-full rounded-xl bg-gray-50 p-6 flex flex-col justify-center items-center text-center [backface-visibility:hidden] [transform:rotateY(180deg)] border-2" style={{ borderColor: maroon }}>
+                    <h3 className="text-base 4k:text-xl font-bold mb-2 uppercase tracking-tighter" style={{ color: maroon }}>{item.name}</h3>
+                    <p className="text-[11px] 4k:text-base text-gray-600 leading-snug">
+                      Expert subsurface engineering and regulatory compliance for the {item.name.toLowerCase()} sector.
+                    </p>
+                    <button 
+                      onClick={() => scrollToId('#contact')}
+                      className="mt-4 text-[10px] 4k:text-sm font-bold uppercase tracking-widest border-b border-maroon hover:opacity-70 transition-opacity"
+                      style={{ color: maroon }}
+                    >
+                      Inquire
+                    </button>
                   </div>
+
                 </div>
               </div>
             ))}
