@@ -287,11 +287,11 @@ const Home = () => {
             <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: maroon }}></div>
             <p className="max-w-2xl mx-auto text-lg text-gray-700">Petrotek serves a diverse range of clients across North America and beyond, providing specialized engineering and geological expertise.</p>
           </div>
-          <div className="relative max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-gray-100 bg-white p-4">
+          <div className="relative max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-gray-100">
             <img 
-              src="https://petrotek.com/wp-content/uploads/2023/09/USA_Map3-1024x706.png" 
+              src="/PEC Client Map.png" 
               alt="Client Map" 
-              className="w-full h-auto"
+              className="w-full h-full"
               onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=2000"; }}
             />
           </div>
