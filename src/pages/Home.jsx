@@ -218,8 +218,8 @@ const Home = () => {
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Who We Are</h2>
               <div className="w-24 h-1 mb-8" style={{ backgroundColor: maroon }}></div>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">Petrotek Corporation is a results-oriented firm that specializes in engineering evaluation and field operations regarding subsurface fluid flow and injection well projects.</p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">Our company was founded in 1993 with a mission of providing cost-effective contract services to industrial and governmental clients.</p>
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">Petrotek Corporation is a results-oriented firm that specializes in engineering evaluation and field operations regarding subsurface fluid flow and injection well projects. We are a team of engineers and geoscientists experienced in a broad spectrum of professional disciplines.</p>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">Our company was founded in 1993 with a mission of providing cost-effective contract services to industrial and governmental clients. Our firm takes pride in meeting that goal with the highest degree of integrity and professionalism. We insist on client satisfaction and prefer results-oriented approaches to problem solving. For more information on our capabilities, please review this site and contact any of the professionals on our staff. We look forward to working with you.</p>
               <div className="flex items-center space-x-6">
                 <img src={anniversaryGraphic} alt="33 Years" className="w-20 h-20 grayscale brightness-0 opacity-100" />
                 <span className="text-lg font-bold text-gray-800 uppercase tracking-wider border-l-2 border-[#8B1E3F] pl-6">Over Three Decades of <br /> Professional Excellence</span>
