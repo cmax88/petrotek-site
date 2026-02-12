@@ -1,6 +1,7 @@
 // src/pages/Home.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
+import ReCAPTCHA from "react-google-recaptcha";
 import { 
   ChevronDown, 
   ChevronRight, 
@@ -38,6 +39,20 @@ const OilWell = ({ className, style }) => (
 
 const Home = () => {
   const [scrollOffset, setScrollOffset] = useState(0);
+  const recaptchaRef = React.useRef(); // Create a ref for the widget
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+    const token = recaptchaRef.current.getValue();
+    
+    if (!token) {
+      alert("Please complete the reCAPTCHA");
+      return;
+    }
+
+    // Process form data here...
+    console.log("Form submitted with token:", token);
+  };
 
   // Parallax Effect Logic
   useEffect(() => {
@@ -127,6 +142,7 @@ const Home = () => {
 
   return (
     <>
+      <form className="lg:col-span-3 p-12 space-y-6" onSubmit={handleFormSubmit}></form>
       {/* Global Animation Styles */}
       <style>
         {`
@@ -382,6 +398,12 @@ const Home = () => {
               </div>
               <div className="space-y-2"><label className="text-sm font-bold text-gray-700">Email Address</label><input type="email" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none" /></div>
               <div className="space-y-2"><label className="text-sm font-bold text-gray-700">Message</label><textarea rows="4" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none"></textarea></div>
+              <div className="flex justify-center md:justify-start">
+                <ReCAPTCHA
+                  ref={recaptchaRef}
+                  sitekey="6LdgF40rAAAAAN2D45ja0SSK5LERDtFbvWHLtEOo" // Paste your Site Key here
+                />
+              </div>
               <button type="submit" className="w-full py-4 text-white font-bold rounded-sm uppercase tracking-widest shadow-lg hover:brightness-110 transition-all" style={{ backgroundColor: maroon }}>Send Message</button>
             </form>
           </div>
