@@ -138,14 +138,13 @@ const CaptureStorage = () => {
             </div>
 
             {/* Right Column: Image */}
-            <div className="lg:w-5/5 sticky top-32">
-              <div className="relative rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
+              <div className="lg:w-5/5 sticky top-32" >
+              <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
                 <img 
-                  src="/CO2 Capture and Storage.png"
-                  alt="Carbon Capture Facility" 
-                  className="w-full h-full object-cover"
+                  src="/CO2 Capture and Storage.png" 
+                  alt="Petrotek Field Operations" 
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent"></div>
               </div>
             </div>
           </div>

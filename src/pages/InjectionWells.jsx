@@ -216,7 +216,7 @@ const InjectionWells = () => {
           </div>
 
           {/* Detailed Content with Side-by-Side Image */}
-          <div className="flex flex-col lg:flex-row gap-12 mb-20 items-center">
+          <div className="flex flex-col lg:flex-row gap-12 mb-20 items-start">
             {/* Left Column: Text Content */}
             <div className="lg:w-3/5 prose prose-lg max-w-none text-gray-600 leading-relaxed">
               <p>
