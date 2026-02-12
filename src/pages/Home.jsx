@@ -401,7 +401,7 @@ const Home = () => {
               <div className="flex justify-center md:justify-start">
                 <ReCAPTCHA
                   ref={recaptchaRef}
-                  sitekey="6LdgF40rAAAAAN2D45ja0SSK5LERDtFbvWHLtEOo" // Paste your Site Key here
+                  sitekey={import.meta.env.VITE_RECAPTCHA_SITE}
                 />
               </div>
               <button type="submit" className="w-full py-4 text-white font-bold rounded-sm uppercase tracking-widest shadow-lg hover:brightness-110 transition-all" style={{ backgroundColor: maroon }}>Send Message</button>
