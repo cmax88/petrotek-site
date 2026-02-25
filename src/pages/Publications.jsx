@@ -114,25 +114,31 @@ const Publications = () => {
           </div>
         </div>
 
-        {/* Filters */}
-        <div className="bg-white sticky top-24 z-30 py-6 border-b border-gray-100 mb-12">
-          <div className="flex flex-col lg:flex-row gap-6 items-center justify-between">
-            <div className="relative w-full lg:max-w-md">
-              <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
+        {/* Filters Section - Single Line Layout */}
+        <div className="bg-white sticky top-[72px] z-30 py-6 border-b border-gray-100 mb-12">
+          <div className="flex flex-row items-center justify-between gap-4">
+            
+            {/* 1. Shortened Search Box */}
+            <div className="relative w-full max-w-[240px] shrink-0">
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400 w-4 h-4" />
               <input 
                 type="text" 
-                placeholder="Search titles or authors..."
-                className="w-full pl-12 pr-4 py-3 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#8B1E3F] outline-none"
+                placeholder="Search..."
+                className="w-full pl-10 pr-4 py-2.5 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#8B1E3F] outline-none text-sm"
                 onChange={(e) => setSearchTerm(e.target.value)}
               />
             </div>
-            <div className="flex items-center gap-2 overflow-x-auto pb-2 w-full lg:w-auto no-scrollbar">
+
+            {/* 2. Static Category Row - No Wrap, No Scroll */}
+            <div className="flex flex-1 items-center justify-end gap-1.5 overflow-hidden">
               {categories.map(cat => (
                 <button
                   key={cat}
                   onClick={() => setActiveFilter(cat)}
-                  className={`px-4 py-2 rounded-full text-xs font-bold whitespace-nowrap border transition-all ${
-                    activeFilter === cat ? 'bg-[#8B1E3F] text-white' : 'bg-white text-gray-500 hover:border-[#8B1E3F]'
+                  className={`px-3 py-1.5 rounded-full text-[11px] font-bold whitespace-nowrap border transition-all ${
+                    activeFilter === cat 
+                      ? 'bg-[#8B1E3F] text-white border-[#8B1E3F]' 
+                      : 'bg-white text-gray-500 border-gray-200 hover:border-[#8B1E3F] hover:text-[#8B1E3F]'
                   }`}
                 >
                   {cat}
@@ -140,7 +146,8 @@ const Publications = () => {
               ))}
             </div>
           </div>
-          <div className="mt-4 text-xs font-bold text-gray-400 uppercase tracking-widest">
+
+          <div className="mt-4 text-[10px] font-bold text-gray-400 uppercase tracking-widest">
             Showing {filteredPubs.length} Publications
           </div>
         </div>
