@@ -63,7 +63,7 @@ const linkClass = (isMobile = false) => `
           {/* Logo */}
           <Link to="/" onClick={() => window.scrollTo(0,0)} className="z-50 shrink-0">
             <img 
-              src="https://petrotek.com/wp-content/uploads/2023/12/logo_full.png" 
+              src="/Petrotek.png" 
               alt="Petrotek" 
               className="h-8 md:h-10 4k:h-20 w-auto transition-all"
             />
@@ -156,7 +156,7 @@ const linkClass = (isMobile = false) => `
             
             {/* Brand */}
             <div className="flex flex-col items-start">
-              <img src="https://petrotek.com/wp-content/uploads/2023/12/logo_full.png" alt="Petrotek" className="h-10 4k:h-20 w-auto brightness-125 mb-8" />
+              <img src="/Petrotek.png" alt="Petrotek" className="h-10 4k:h-20 w-auto brightness-125 mb-8" />
               <p className="text-sm 4k:text-xl leading-relaxed max-w-xs mb-8">
                 Petrotek Corporation specializes in engineering evaluation and field operations for subsurface fluid flow.
               </p>
