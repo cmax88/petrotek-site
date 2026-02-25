@@ -32,13 +32,13 @@ const Safety = () => {
     <div className="pt-32 pb-20 px-6 bg-white min-h-screen">
       <div className="container mx-auto">
         
+        <div className="max-w-6xl mx-auto">
+
         {/* Navigation - Back to Home */}
         <Link to="/" className="flex items-center text-[#8B1E3F] font-bold mb-8 hover:underline group w-fit">
           <ArrowRight className="rotate-180 w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" /> Back to Home
-        </Link>
-        
-        <div className="max-w-6xl mx-auto">
-          
+        </Link>  
+
           {/* Header Section */}
           <div className="mb-12">
             <div className="mb-6 p-4 bg-gray-50 inline-block rounded-2xl border border-gray-100 shadow-sm">

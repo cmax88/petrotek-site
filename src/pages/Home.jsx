@@ -252,7 +252,7 @@ const Home = () => {
   >
     <div className="text-center px-4 md:px-6">
       <p 
-        className="text-lg md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold border-y-2 py-2 md:py-3 [@media(min-width:1600px)]:py-5 px-6 md:px-12 [@media(min-width:1600px)]:px-24 border-white/20 leading-tight inline-block"
+        className="text-lg md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold py-2 md:py-3 [@media(min-width:1600px)]:py-5 px-6 md:px-12 [@media(min-width:1600px)]:px-24 border-white/20 leading-tight inline-block"
       >
         Building Relationships. Solving Problems. Adding Value.
       </p>
