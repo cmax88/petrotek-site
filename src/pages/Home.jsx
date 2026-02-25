@@ -185,10 +185,10 @@ const Home = () => {
         `}
       </style>
 
-{/* Hero Section - Fixed to the remaining viewport height */}
+{/* Hero Section */}
 <header id="home" className="relative flex flex-col h-[calc(100vh-72px)] overflow-hidden bg-white">
   
-  {/* 1. Background Image Container - Fixed at 75% of the header */}
+  {/* 1. Background Image Container */}
   <div className="relative h-[85%] w-full overflow-hidden bg-gray-900 shrink-0">
     <div className="absolute inset-0 opacity-100 overflow-hidden">
       <div className="absolute inset-0 bg-black/20 z-10"></div>
@@ -204,57 +204,55 @@ const Home = () => {
       </div>
     </div>
 
-{/* Hero Text Content - Refined for Mobile Fit */}
-<div className="w-full px-6 md:px-12 lg:px-20 relative z-20 flex flex-col lg:flex-row items-center justify-center h-full"> 
-  
-  <div className="lg:w-[55%] flex flex-col justify-center text-center lg:text-left pt-12 lg:pt-0">
-    <div className="max-w-3xl">
-      {/* Adjusted from text-4xl to text-3xl on mobile */}
-      <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 lg:mb-8 tracking-tight">
-        Injection Well and Subsurface Resources Consultants
-      </h1>
+    {/* Hero Text Content - Using ultra-specific media queries for 2K+ */}
+    <div className="w-full px-6 md:px-12 lg:px-20 [@media(min-width:1600px)]:px-40 relative z-20 flex flex-col lg:flex-row items-center justify-center h-full max-w-[2000px] mx-auto"> 
       
-<div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start items-center lg:items-start">
-  {/* Explore Services Button */}
-  <button 
-    onClick={() => scrollToId('#whoweare')} 
-    className="w-[180px] sm:w-auto px-4 sm:px-8 py-3 md:py-4 text-white text-xs sm:text-base font-bold rounded-sm shadow-xl transition-all hover:brightness-110 text-center" 
-    style={{ backgroundColor: maroon }}
-  >
-    Explore Services
-  </button>
+      <div className="lg:w-[55%] flex flex-col justify-center text-center lg:text-left pt-12 lg:pt-0">
+        <div className="max-w-3xl [@media(min-width:1600px)]:max-w-5xl">
+          {/* Headline: Only scales up past 1600px wide */}
+          <h1 className="text-3xl md:text-5xl lg:text-6xl [@media(min-width:1600px)]:text-7xl font-extrabold text-white leading-tight mb-6 lg:mb-8 [@media(min-width:1600px)]:mb-12 tracking-tight">
+            Injection Well and Subsurface Resources Consultants
+          </h1>
+          
+          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 [@media(min-width:1600px)]:gap-8 justify-center lg:justify-start items-center lg:items-start">
+            <button 
+              onClick={() => scrollToId('#whoweare')} 
+              className="w-[180px] sm:w-auto px-4 sm:px-8 [@media(min-width:1600px)]:px-14 py-3 md:py-4 [@media(min-width:1600px)]:py-6 text-white text-xs sm:text-base [@media(min-width:1600px)]:text-xl font-bold rounded-sm shadow-xl transition-all hover:brightness-110 text-center" 
+              style={{ backgroundColor: maroon }}
+            >
+              Explore Services
+            </button>
 
-  {/* Our Publications Button */}
-  <Link 
-    to="/publications" 
-    className="w-[180px] sm:w-auto px-4 sm:px-8 py-3 md:py-4 bg-white text-gray-900 text-xs sm:text-base font-bold rounded-sm shadow-xl hover:bg-gray-100 transition-all text-center"
-  >
-    Our Publications
-  </Link>
-</div>
+            <Link 
+              to="/publications" 
+              className="w-[180px] sm:w-auto px-4 sm:px-8 [@media(min-width:1600px)]:px-14 py-3 md:py-4 [@media(min-width:1600px)]:py-6 bg-white text-gray-900 text-xs sm:text-base [@media(min-width:1600px)]:text-xl font-bold rounded-sm shadow-xl hover:bg-gray-100 transition-all text-center"
+            >
+              Our Publications
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Anniversary Graphic: Only scales up past 1600px wide */}
+      <div className="lg:w-[45%] flex justify-center items-center pt-8 lg:pt-0">
+        <img 
+          src={anniversaryGraphic} 
+          alt="33 Years of UIC Service" 
+          className="w-24 h-24 md:w-48 md:h-48 lg:w-64 lg:h-64 [@media(min-width:1600px)]:w-[400px] [@media(min-width:1600px)]:h-[400px] object-contain filter drop-shadow-2xl opacity-90 transition-transform hover:scale-105" 
+          onError={(e) => { e.target.style.display = 'none'; }} 
+        />
+      </div>
     </div>
   </div>
 
-  {/* Anniversary Graphic - Slightly smaller on mobile to preserve space */}
-  <div className="lg:w-[45%] flex justify-center items-center pt-8 lg:pt-0">
-    <img 
-      src={anniversaryGraphic} 
-      alt="33 Years of UIC Service" 
-      className="w-24 h-24 md:w-48 md:h-48 lg:w-64 lg:h-64 xl:w-80 xl:h-80 object-contain filter drop-shadow-2xl opacity-90 transition-transform hover:scale-105" 
-      onError={(e) => { e.target.style.display = 'none'; }} 
-    />
-  </div>
-</div>
-  </div>
-
-{/* Slogan Section - Mathematical 25% height with refined internal spacing */}
+  {/* 2. Slogan Section */}
   <div 
     className="w-full h-[15%] flex justify-center items-center" 
     style={{ backgroundColor: maroon }}
   >
     <div className="text-center px-4 md:px-6">
       <p 
-        className="text-lg md:text-2xl lg:text-3xl text-white italic font-bold border-y-2 py-2 md:py-3 px-6 md:px-12 border-white/20 leading-tight inline-block"
+        className="text-lg md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold border-y-2 py-2 md:py-3 [@media(min-width:1600px)]:py-5 px-6 md:px-12 [@media(min-width:1600px)]:px-24 border-white/20 leading-tight inline-block"
       >
         Building Relationships. Solving Problems. Adding Value.
       </p>
