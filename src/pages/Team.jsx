@@ -1,20 +1,17 @@
-// src/pages/OurTeam.jsx
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ArrowRight, 
   Users, 
   GraduationCap, 
-  Search, 
   X,
   ChevronRight,
-  ShieldCheck,
   Scale
 } from 'lucide-react';
 
 const OurTeam = () => {
   const maroon = "#8B1E3F";
-  const [searchTerm, setSearchTerm] = useState("");
+  // Logic: searchTerm state has been removed
   const [selectedMember, setSelectedMember] = useState(null);
 
   const teamData = [
@@ -43,6 +40,14 @@ const OurTeam = () => {
       personal: "Ken likes spending time with his wife, hiking, four-wheeling, and an occasional good craft beer. He hopes to visit all seven continents."
     },
     {
+      name: "David Huffington, M.S., P.G.",
+      role: "Principal, Managing Geologist",
+      education: "M.S. Reservoir Systems, Colorado School of Mines",
+      tags: ["Wireline", "MIT", "Geologic Testimony", "Cased Hole Logs"],
+      bio: "David's work focuses on feasibility studies, MIT interpretation, and geologic testimony. He previously worked for Halliburton as a wireline field engineer.",
+      personal: "David is a member of the Society of Petrophysicists and Well Log Analysts."
+    },
+    {
       name: "Ken Schlieper, B.S.",
       role: "Lead Technical Contributor",
       education: "B.S. Environmental Studies, Slippery Rock University",
@@ -64,14 +69,6 @@ const OurTeam = () => {
       education: "PhD Law (CEPMLP), M.S. Economics (Oxford)",
       tags: ["Class VI", "Carbon Capture", "Regulatory Law", "FSA Credentialed"],
       bio: "Dr. Burton assists with Class VI permit applications and advises on carbon capture and storage markets, including market credits, offsets valuation, and financial incentives.",
-      personal: ""
-    },
-    {
-      name: "Connie Walker, M.S.",
-      role: "Senior Geologist",
-      education: "B.S. & M.S. Geology, Colorado School of Mines",
-      tags: ["Regulatory Compliance", "RCRA", "Land Ban Petitions", "NEPA"],
-      bio: "Connie has over 35 years of experience in geology and regulatory analysis. She served as program director for contracts supporting the US EPA HQ Office of Radiation and Indoor Air.",
       personal: ""
     },
     {
@@ -131,14 +128,6 @@ const OurTeam = () => {
       personal: ""
     },
     {
-      name: "David Huffington, M.S., P.G.",
-      role: "Senior Geologist",
-      education: "M.S. Reservoir Systems, Colorado School of Mines",
-      tags: ["Wireline", "MIT", "Geologic Testimony", "Cased Hole Logs"],
-      bio: "David's work focuses on feasibility studies, MIT interpretation, and geologic testimony. He previously worked for Halliburton as a wireline field engineer.",
-      personal: "David is a member of the Society of Petrophysicists and Well Log Analysts."
-    },
-    {
       name: "James Klutho, B.S., P.E.",
       role: "Senior Reservoir Engineer",
       education: "B.S. Geological Engineering, Missouri S&T",
@@ -180,12 +169,6 @@ const OurTeam = () => {
     }
   ];
 
-  const filteredTeam = teamData.filter(member => 
-    member.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    member.tags.some(tag => tag.toLowerCase().includes(searchTerm.toLowerCase())) ||
-    member.role.toLowerCase().includes(searchTerm.toLowerCase())
-  );
-
   return (
     <div className="pt-32 pb-20 px-6 bg-white min-h-screen">
       <div className="container mx-auto max-w-7xl">
@@ -207,26 +190,13 @@ const OurTeam = () => {
           <div className="w-24 h-1 mt-8" style={{ backgroundColor: maroon }}></div>
         </div>
 
-        {/* Search & Filter */}
-        <div className="sticky top-24 z-30 bg-white/80 backdrop-blur-md py-4 mb-12 border-b border-gray-100">
-          <div className="relative max-w-xl">
-            <Search className="absolute left-4 top-1/2 -translate-y-1/2 text-gray-400 w-5 h-5" />
-            <input 
-              type="text" 
-              placeholder="Search by name, state, or expertise (e.g. 'Class VI', 'GIS')..."
-              className="w-full pl-12 pr-4 py-4 bg-gray-50 border border-gray-200 rounded-xl focus:ring-2 focus:ring-[#8B1E3F] outline-none transition-all shadow-sm"
-              onChange={(e) => setSearchTerm(e.target.value)}
-            />
-          </div>
-        </div>
-
-        {/* Professional Grid */}
+        {/* Professional Grid - Now uses teamData directly */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {filteredTeam.map((member, idx) => (
+          {teamData.map((member, idx) => (
             <div 
               key={idx} 
               className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all cursor-pointer group flex flex-col border-t-4"
-              style={{ borderTopColor: idx < 3 ? maroon : 'transparent' }}
+              style={{ borderTopColor: idx < 4 ? maroon : 'transparent' }}
               onClick={() => setSelectedMember(member)}
             >
               <div className="flex-grow">
