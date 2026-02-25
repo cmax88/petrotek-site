@@ -222,13 +222,6 @@ const Home = () => {
             >
               Explore Services
             </button>
-
-            <Link 
-              to="/publications" 
-              className="w-[180px] sm:w-auto px-4 sm:px-8 [@media(min-width:1600px)]:px-14 py-3 md:py-4 [@media(min-width:1600px)]:py-6 bg-white text-gray-900 text-xs sm:text-base [@media(min-width:1600px)]:text-xl font-bold rounded-sm shadow-xl hover:bg-gray-100 transition-all text-center"
-            >
-              Our Publications
-            </Link>
           </div>
         </div>
       </div>

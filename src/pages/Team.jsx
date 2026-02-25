@@ -48,14 +48,6 @@ const OurTeam = () => {
       personal: "David is a member of the Society of Petrophysicists and Well Log Analysts, Rocky Mountain Association of Geologists, and the Denver Well Logging Society."
     },
     {
-      name: "Connie Walker, M.S.",
-      role: "Senior Geologist",
-      education: "B.S. & M.S. Geology, Colorado School of Mines",
-      tags: ["RCRA", "CERCLA", "Waste Analysis", "Land Ban"],
-      bio: "Connie Walker has over 35 years of experience in the fields of geology, regulatory analysis and compliance, and waste analysis, as well as hazardous, non-hazardous, mixed and radioactive waste characterization, management and disposal. Mrs. Walker served as program director and manager for contracts supporting the US EPA Headquarters Office of Radiation and Indoor Air, and has managed State and regional RCRA, CERCLA, and NEPA contracts. She has performed and managed every aspect of RCRA support from RFAs, RFIs, CMSs, groundwater monitoring/corrective action development to permitting, including preparation of hazardous and non-hazardous treatment, storage, and disposal permit applications, closure, and post closure plans. She has prepared and reviewed Land Ban Exemption Petition requests for both the UIC and RCRA programs. Most recently, Mrs. Walker prepared permit applications and Land Ban Petitions for commercial clients throughout the country, with emphasis on site geologic feasibility, hydrologic conditions, well design, construction, testing, monitoring, operation, and waste analysis. She provides regulatory analysis and training with an emphasis on RCRA and UIC regulations on both a state and federal level.",
-      personal: "Connie was involved with corrective action rulemaking for EPA Office of Solid Waste and rulemaking for Waste Isolation Pilot Plant waste characterization."
-    },
-    {
       name: "Ken Schlieper, B.S.",
       role: "Lead Technical Contributor",
       education: "B.S. Environmental Studies, Slippery Rock University",
@@ -171,7 +163,7 @@ const OurTeam = () => {
       name: "Connor Maxwell, B.S.",
       role: "GIS Analyst",
       education: "B.S. Geography, Slippery Rock University",
-      tags: ["GIS", "Cartography", "Spatial Analysis", "Sound Design"],
+      tags: ["GIS", "Spatial Analysis", "UIC Permits", "Cartography"],
       bio: "Connor joined Petrotek as a GIS Analyst to support the execution of injection well projects, ranging from feasibility studies to permit renewals. He uses his background in GIS for spatial analysis and to generate detailed mapping deliverables. Connor is a member of the North American Cartographic Information Society (NACIS).",
       personal: "In his free time, he enjoys electronic sound design and snowboarding."
     }
@@ -193,7 +185,7 @@ const OurTeam = () => {
           </div>
           <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Meet Our Professionals</h1>
           <p className="text-xl text-gray-600 max-w-4xl leading-relaxed">
-            Our team consists of dedicated professionals with relevant project experience related to the subsurface injection of wastewater, <span className="text-[#8B1E3F] font-bold">CO2</span>, and fluids for mining operations.
+            Our team consists of dedicated professionals with relevant project experience related to the subsurface injection of wastewater, CO2, and fluids for mining operations.
           </p>
           <div className="w-24 h-1 mt-8" style={{ backgroundColor: maroon }}></div>
         </div>
