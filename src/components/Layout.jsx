@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, MapPin, Phone, Mail } from 'lucide-react';
+import { SpeedInsights } from "@vercel/speed-insights/react";
+import { Analytics } from "@vercel/analytics/react";
 
 const Layout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -44,10 +46,11 @@ const Layout = () => {
     }
   };
 
-const navClass = `sticky top-0 w-full z-50 transition-all duration-500 bg-white shadow-lg py-3`;
+  const navClass = `sticky top-0 w-full z-50 transition-all duration-500 bg-white shadow-lg py-3`;
 
-const linkClass = (isMobile = false) => `
+  const linkClass = (isMobile = false) => `
     text-sm font-bold uppercase tracking-widest transition-all duration-300
+    [@media(min-width:1600px)]:text-base
     ${isMobile ? 'text-gray-800 text-xl py-6 border-b border-gray-100' : 
       'text-gray-800 hover:text-[#8B1E3F]'}
   `;
@@ -57,20 +60,19 @@ const linkClass = (isMobile = false) => `
       
       {/* --- NAVIGATION --- */}
       <nav className={navClass}>
-        {/* Full-width wrapper with horizontal padding for extreme widths */}
-        <div className="w-full px-6 md:px-12 2k:px-20 4k:px-32 mx-auto max-w-[1728px] 4k:max-w-[2560px] flex justify-between items-center">
+        <div className="w-full px-6 md:px-12 [@media(min-width:1600px)]:px-40 mx-auto max-w-[2000px] flex justify-between items-center">
           
           {/* Logo */}
           <Link to="/" onClick={() => window.scrollTo(0,0)} className="z-50 shrink-0">
             <img 
               src="/Petrotek.png" 
               alt="Petrotek" 
-              className="h-8 md:h-10 4k:h-20 w-auto transition-all"
+              className="h-8 md:h-10 [@media(min-width:1600px)]:h-16 w-auto transition-all"
             />
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8 lg:space-x-12 4k:space-x-24 items-center">
+          <div className="hidden md:flex space-x-8 lg:space-x-12 [@media(min-width:1600px)]:space-x-16 items-center">
             <Link to="/" className={linkClass()}>Home</Link>
             
             <div 
@@ -83,13 +85,13 @@ const linkClass = (isMobile = false) => `
               </button>
               
               {isDropdownOpen && (
-                <div className="absolute top-full left-0 w-64 4k:w-96 bg-white shadow-2xl rounded-xl py-4 border border-gray-100 animate-in fade-in slide-in-from-top-2 duration-200">
+                <div className="absolute top-full left-0 w-64 [@media(min-width:1600px)]:w-80 bg-white shadow-2xl rounded-xl py-4 border border-gray-100 animate-in fade-in slide-in-from-top-2 duration-200">
                   {services.map((s) => (
                     <Link 
                       key={s.id} 
                       to={s.id} 
                       onClick={() => window.scrollTo(0,0)}
-                      className="px-6 py-3 hover:bg-gray-50 text-gray-700 text-xs 4k:text-lg font-bold uppercase tracking-widest hover:text-[#8B1E3F] transition-colors block"
+                      className="px-6 py-3 hover:bg-gray-50 text-gray-700 text-xs [@media(min-width:1600px)]:text-sm font-bold uppercase tracking-widest hover:text-[#8B1E3F] transition-colors block"
                     >
                       {s.title}
                     </Link>
@@ -103,7 +105,7 @@ const linkClass = (isMobile = false) => `
             
             <button 
               onClick={handleContactClick}
-              className="px-6 py-2.5 4k:px-12 4k:py-6 rounded-sm text-white text-xs 4k:text-xl font-extrabold uppercase tracking-widest transition-all hover:brightness-110 active:scale-95 shadow-md" 
+              className="px-6 py-2.5 [@media(min-width:1600px)]:px-10 [@media(min-width:1600px)]:py-4 rounded-sm text-white text-xs [@media(min-width:1600px)]:text-base font-extrabold uppercase tracking-widest transition-all hover:brightness-110 active:scale-95 shadow-md" 
               style={{ backgroundColor: maroon }}
             >
               Contact
@@ -150,17 +152,17 @@ const linkClass = (isMobile = false) => `
       </main>
 
       {/* --- GLOBAL FOOTER --- */}
-      <footer className="bg-gray-950 text-gray-400 py-20 4k:py-40 border-t border-gray-800/50">
-        <div className="w-full px-6 md:px-12 2k:px-20 4k:px-32 mx-auto max-w-[1728px] 4k:max-w-[2560px]">
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 4k:gap-32 mb-16 md:mb-24">
+      <footer className="bg-gray-950 text-gray-400 py-20 border-t border-gray-800/50">
+        <div className="w-full px-6 md:px-12 [@media(min-width:1600px)]:px-40 mx-auto max-w-[2000px]">
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 md:mb-24">
             
             {/* Brand */}
             <div className="flex flex-col items-start">
-              <img src="/Petrotek.png" alt="Petrotek" className="h-10 4k:h-20 w-auto brightness-125 mb-8" />
-              <p className="text-sm 4k:text-xl leading-relaxed max-w-xs mb-8">
+              <img src="/Petrotek.png" alt="Petrotek" className="h-10 w-auto brightness-125 mb-8" />
+              <p className="text-sm leading-relaxed max-w-xs mb-8">
                 Petrotek Corporation specializes in engineering evaluation and field operations for subsurface fluid flow.
               </p>
-              <div className="flex items-center space-x-3 text-[15px] 4k:text-base font-bold uppercase tracking-widest text-gray-500">
+              <div className="flex items-center space-x-3 text-[15px] font-bold uppercase tracking-widest text-gray-500">
                 <div className="h-px w-8 bg-[#8B1E3F]"></div>
                 <span>Established 1993</span>
               </div>
@@ -168,8 +170,8 @@ const linkClass = (isMobile = false) => `
 
             {/* Navigation */}
             <div>
-              <h4 className="text-white font-bold uppercase tracking-widest text-[10px] 4k:text-sm mb-8 opacity-50">Sitemap</h4>
-              <nav className="flex flex-col space-y-4 text-sm 4k:text-lg">
+              <h4 className="text-white font-bold uppercase tracking-widest text-[10px] mb-8 opacity-50">Sitemap</h4>
+              <nav className="flex flex-col space-y-4 text-sm">
                 <Link to="/" onClick={() => window.scrollTo(0,0)} className="hover:text-white transition-colors w-fit">Home</Link>
                 <Link to="/team" onClick={() => window.scrollTo(0,0)} className="hover:text-white transition-colors w-fit">Our Team</Link>
                 <Link to="/publications" onClick={() => window.scrollTo(0,0)} className="hover:text-white transition-colors w-fit">Publications</Link>
@@ -179,8 +181,8 @@ const linkClass = (isMobile = false) => `
 
             {/* Expertise */}
             <div>
-              <h4 className="text-white font-bold uppercase tracking-widest text-[10px] 4k:text-sm mb-8 opacity-50">Expertise</h4>
-              <div className="flex flex-col space-y-4 text-sm 4k:text-lg">
+              <h4 className="text-white font-bold uppercase tracking-widest text-[10px] mb-8 opacity-50">Expertise</h4>
+              <div className="flex flex-col space-y-4 text-sm">
                 {services.map(s => (
                   <Link key={s.id} to={s.id} onClick={() => window.scrollTo(0,0)} className="hover:text-white transition-colors w-fit">{s.title}</Link>
                 ))}
@@ -189,8 +191,8 @@ const linkClass = (isMobile = false) => `
 
             {/* Contact */}
             <div>
-              <h4 className="text-white font-bold uppercase tracking-widest text-[10px] 4k:text-sm mb-8 opacity-50">Headquarters</h4>
-              <div className="text-sm 4k:text-lg space-y-6">
+              <h4 className="text-white font-bold uppercase tracking-widest text-[10px] mb-8 opacity-50">Headquarters</h4>
+              <div className="text-sm space-y-6">
                 <div className="flex items-start space-x-3">
                   <MapPin size={18} className="text-[#8B1E3F] shrink-0" />
                   <span>5935 South Zang Street, Suite 200<br />Littleton, Colorado USA 80127</span>
@@ -199,21 +201,29 @@ const linkClass = (isMobile = false) => `
                   <Phone size={18} className="text-[#8B1E3F] shrink-0" />
                   <a href="tel:3032909414" className="hover:text-white transition-colors">(303) 290-9414</a>
                 </div>
+                <div className="flex items-center space-x-3">
+                  <Mail size={18} className="text-[#8B1E3F] shrink-0" />
+                  <a href="mailto:info@petrotek.com" className="hover:text-white transition-colors">info@petrotek.com</a>
+                </div>
               </div>
             </div>
           </div>
 
           {/* Bottom */}
           <div className="pt-12 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-[10px] 4k:text-sm uppercase tracking-widest text-gray-600">
+            <p className="text-[10px] uppercase tracking-widest text-gray-600">
               &copy; {new Date().getFullYear()} Petrotek Engineering Corporation
             </p>
-            <p className="text-[10px] 4k:text-sm font-bold text-white uppercase tracking-[0.3em] italic opacity-60">
+            <p className="text-[10px] font-bold text-white uppercase tracking-[0.3em] italic opacity-60">
               Building Relationships. Solving Problems. Adding Value.
             </p>
           </div>
         </div>
       </footer>
+
+      {/* Vercel Monitoring */}
+      <Analytics />
+      <SpeedInsights />
     </div>
   );
 };
