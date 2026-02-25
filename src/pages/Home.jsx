@@ -234,7 +234,7 @@ const Home = () => {
       </div>
 
       {/* Anniversary Graphic: Only scales up past 1600px wide */}
-      <div className="lg:w-[45%] flex justify-center items-center pt-8 lg:pt-0">
+      <div className="lg:w-[30%] flex justify-center items-center pt-8 lg:pt-0">
         <img 
           src={anniversaryGraphic} 
           alt="33 Years of UIC Service" 
