@@ -204,41 +204,47 @@ const Home = () => {
       </div>
     </div>
 
-    {/* Hero Text Content */}
-    <div className="w-full px-6 md:px-12 lg:px-20 relative z-20 flex flex-col lg:flex-row items-center justify-center h-full"> 
-      <div className="lg:w-[55%] flex flex-col justify-center h-full">
-        <div className="max-w-3xl">
-          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-8 tracking-tight">
-            Injection Well and Subsurface Resources Consultants
-          </h1>
-          <div className="flex flex-col sm:flex-row gap-4">
-            <button 
-              onClick={() => scrollToId('#whoweare')} 
-              className="px-8 py-4 text-white font-bold rounded-sm shadow-xl transition-all hover:brightness-110" 
-              style={{ backgroundColor: maroon }}
-            >
-              Explore Services
-            </button>
-            <Link 
-              to="/publications" 
-              className="px-8 py-4 bg-white text-gray-900 font-bold rounded-sm shadow-xl hover:bg-gray-100 transition-all text-center"
-            >
-              Our Publications
-            </Link>
-          </div>
-        </div>
-      </div>
+{/* Hero Text Content - Refined for Mobile Fit */}
+<div className="w-full px-6 md:px-12 lg:px-20 relative z-20 flex flex-col lg:flex-row items-center justify-center h-full"> 
+  
+  <div className="lg:w-[55%] flex flex-col justify-center text-center lg:text-left pt-12 lg:pt-0">
+    <div className="max-w-3xl">
+      {/* Adjusted from text-4xl to text-3xl on mobile */}
+      <h1 className="text-3xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-6 lg:mb-8 tracking-tight">
+        Injection Well and Subsurface Resources Consultants
+      </h1>
+      
+<div className="flex flex-col sm:flex-row gap-3 md:gap-4 justify-center lg:justify-start items-center lg:items-start">
+  {/* Explore Services Button */}
+  <button 
+    onClick={() => scrollToId('#whoweare')} 
+    className="w-[180px] sm:w-auto px-4 sm:px-8 py-3 md:py-4 text-white text-xs sm:text-base font-bold rounded-sm shadow-xl transition-all hover:brightness-110 text-center" 
+    style={{ backgroundColor: maroon }}
+  >
+    Explore Services
+  </button>
 
-      {/* Anniversary Graphic */}
-      <div className="lg:w-[45%] flex justify-center items-center h-full">
-        <img 
-          src={anniversaryGraphic} 
-          alt="33 Years of UIC Service" 
-          className="w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 xl:w-80 xl:h-80 object-contain filter drop-shadow-2xl opacity-90 transition-transform hover:scale-105" 
-          onError={(e) => { e.target.style.display = 'none'; }} 
-        />
-      </div>
+  {/* Our Publications Button */}
+  <Link 
+    to="/publications" 
+    className="w-[180px] sm:w-auto px-4 sm:px-8 py-3 md:py-4 bg-white text-gray-900 text-xs sm:text-base font-bold rounded-sm shadow-xl hover:bg-gray-100 transition-all text-center"
+  >
+    Our Publications
+  </Link>
+</div>
     </div>
+  </div>
+
+  {/* Anniversary Graphic - Slightly smaller on mobile to preserve space */}
+  <div className="lg:w-[45%] flex justify-center items-center pt-8 lg:pt-0">
+    <img 
+      src={anniversaryGraphic} 
+      alt="33 Years of UIC Service" 
+      className="w-24 h-24 md:w-48 md:h-48 lg:w-64 lg:h-64 xl:w-80 xl:h-80 object-contain filter drop-shadow-2xl opacity-90 transition-transform hover:scale-105" 
+      onError={(e) => { e.target.style.display = 'none'; }} 
+    />
+  </div>
+</div>
   </div>
 
 {/* Slogan Section - Mathematical 25% height with refined internal spacing */}
