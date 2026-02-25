@@ -216,7 +216,7 @@ const Home = () => {
           
           <div className="flex flex-col sm:flex-row gap-3 md:gap-4 [@media(min-width:1600px)]:gap-8 justify-center lg:justify-start items-center lg:items-start">
             <button 
-              onClick={() => scrollToId('#whoweare')} 
+              onClick={() => scrollToId('#whatwedo')} 
               className="w-[180px] sm:w-auto px-4 sm:px-8 [@media(min-width:1600px)]:px-14 py-3 md:py-4 [@media(min-width:1600px)]:py-6 text-white text-xs sm:text-base [@media(min-width:1600px)]:text-xl font-bold rounded-sm shadow-xl transition-all hover:brightness-110 text-center" 
               style={{ backgroundColor: maroon }}
             >
