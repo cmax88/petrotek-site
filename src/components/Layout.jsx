@@ -44,16 +44,12 @@ const Layout = () => {
     }
   };
 
-  const navClass = `fixed w-full z-50 transition-all duration-500 ${
-    scrolled || location.pathname !== '/' 
-      ? 'bg-white shadow-lg py-3' 
-      : 'bg-transparent py-6'
-  }`;
+const navClass = `sticky top-0 w-full z-50 transition-all duration-500 bg-white shadow-lg py-3`;
 
-  const linkClass = (isMobile = false) => `
+const linkClass = (isMobile = false) => `
     text-sm font-bold uppercase tracking-widest transition-all duration-300
     ${isMobile ? 'text-gray-800 text-xl py-6 border-b border-gray-100' : 
-      (scrolled || location.pathname !== '/' ? 'text-gray-800 hover:text-[#8B1E3F]' : 'text-white hover:opacity-70')}
+      'text-gray-800 hover:text-[#8B1E3F]'}
   `;
 
   return (
@@ -70,7 +66,6 @@ const Layout = () => {
               src="https://petrotek.com/wp-content/uploads/2023/12/logo_full.png" 
               alt="Petrotek" 
               className="h-8 md:h-10 4k:h-20 w-auto transition-all"
-              style={{ filter: (scrolled || location.pathname !== '/') ? 'none' : 'brightness(1.1) drop-shadow(0px 2px 4px rgba(0,0,0,0.3))' }}
             />
           </Link>
 
@@ -118,7 +113,7 @@ const Layout = () => {
           {/* Mobile Menu Toggle */}
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)} 
-            className={`md:hidden z-50 p-2 transition-colors ${isMenuOpen ? 'text-gray-900' : (scrolled || location.pathname !== '/' ? 'text-gray-900' : 'text-white')}`}
+            className="md:hidden z-50 p-2 text-gray-900 transition-colors"
           >
             {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
           </button>

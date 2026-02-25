@@ -172,8 +172,8 @@ const Home = () => {
       <style>
         {`
           @keyframes heroPan {
-            0% { transform: scale(1.3) translateX(5%); }
-            100% { transform: scale(1.3) translateX(-5%); }
+            0% { transform: scale(1.2) translateX(5%); }
+            100% { transform: scale(1.2) translateX(-5%); }
           }
           .animate-hero-pan { animation: heroPan 30s ease-in-out infinite alternate; width: 100%; }
           @keyframes bounceDown {
@@ -185,36 +185,76 @@ const Home = () => {
         `}
       </style>
 
-      {/* Hero Section */}
-      <header id="home" className="relative h-screen flex items-center overflow-hidden bg-gray-900">
-        <div className="absolute inset-0 opacity-100 overflow-hidden">
-           <div className="absolute inset-0 bg-gradient-to-r from-black/85 to-transparent z-10"></div>
-           <div className="absolute inset-0 w-full h-full" style={{ transform: `translateY(${scrollOffset * 0.1}px)`, transition: 'transform 0.1s linear' }}>
-             <img src="https://petrotek.com/wp-content/uploads/2023/08/FrontRange-from-RTD-fall_0.jpg" alt="Petrotek Background" className="h-full w-full object-cover animate-hero-pan will-change-transform" />
-           </div>
-        </div>
-        <div className="w-full px-6 md:px-12 lg:px-20 relative z-20 flex flex-col lg:flex-row items-center h-full">
-          <div className="lg:w-[55%] flex justify-start pt-20 lg:pt-0">
-            <div className="max-w-3xl">
-              <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-4 tracking-tight">Injection Well and Subsurface Resources Consultants</h1>
-              <p className="text-xl text-gray-200 mb-8 italic border-l-4 pl-4" style={{ borderColor: maroon }}>Building Relationships. Solving Problems. Adding Value.</p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button onClick={() => scrollToId('#whoweare')} className="px-8 py-4 text-white font-bold rounded-sm shadow-xl transition-all hover:brightness-110" style={{ backgroundColor: maroon }}>Explore Services</button>
-                <Link to="/publications" className="px-8 py-4 bg-white text-gray-900 font-bold rounded-sm shadow-xl hover:bg-gray-100 transition-all text-center">Our Publications</Link>
-              </div>
-            </div>
+{/* Hero Section - Fixed to the remaining viewport height */}
+<header id="home" className="relative flex flex-col h-[calc(100vh-72px)] overflow-hidden bg-white">
+  
+  {/* 1. Background Image Container - Fixed at 75% of the header */}
+  <div className="relative h-[85%] w-full overflow-hidden bg-gray-900 shrink-0">
+    <div className="absolute inset-0 opacity-100 overflow-hidden">
+      <div className="absolute inset-0 bg-black/20 z-10"></div>
+      <div 
+        className="absolute inset-0 w-full h-full" 
+        style={{ transform: `translateY(${scrollOffset * 0.1}px)`, transition: 'transform 0.1s linear' }}
+      >
+        <img 
+          src="/Hero.jpg" 
+          alt="Petrotek Background" 
+          className="h-full w-full object-cover animate-hero-pan will-change-transform" 
+        />
+      </div>
+    </div>
+
+    {/* Hero Text Content */}
+    <div className="w-full px-6 md:px-12 lg:px-20 relative z-20 flex flex-col lg:flex-row items-center justify-center h-full"> 
+      <div className="lg:w-[55%] flex flex-col justify-center h-full">
+        <div className="max-w-3xl">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl font-extrabold text-white leading-tight mb-8 tracking-tight">
+            Injection Well and Subsurface Resources Consultants
+          </h1>
+          <div className="flex flex-col sm:flex-row gap-4">
+            <button 
+              onClick={() => scrollToId('#whoweare')} 
+              className="px-8 py-4 text-white font-bold rounded-sm shadow-xl transition-all hover:brightness-110" 
+              style={{ backgroundColor: maroon }}
+            >
+              Explore Services
+            </button>
+            <Link 
+              to="/publications" 
+              className="px-8 py-4 bg-white text-gray-900 font-bold rounded-sm shadow-xl hover:bg-gray-100 transition-all text-center"
+            >
+              Our Publications
+            </Link>
           </div>
-          <div className="lg:w-[45%] flex justify-center items-center h-full pt-10 lg:pt-0">
-            <img src={anniversaryGraphic} alt="33 Years of UIC Service" className="w-25 h-25 md:w-40 md:h-40 lg:w-50 lg:h-50 xl:w-75 xl:h-75 object-contain filter drop-shadow-2xl opacity-90 transition-transform hover:scale-105" onError={(e) => { e.target.style.display = 'none'; }} />
-          </div>
         </div>
-        <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-20 flex flex-col items-center">
-          <button onClick={() => scrollToId('#whoweare')} className="text-white opacity-80 hover:opacity-100 transition-opacity flex flex-col items-center group">
-            <span className="text-[10px] uppercase font-bold tracking-[0.3em] mb-2 group-hover:mb-3 transition-all duration-300">Scroll Down</span>
-            <ChevronDown size={32} className="animate-bounce-down" />
-          </button>
-        </div>
-      </header>
+      </div>
+
+      {/* Anniversary Graphic */}
+      <div className="lg:w-[45%] flex justify-center items-center h-full">
+        <img 
+          src={anniversaryGraphic} 
+          alt="33 Years of UIC Service" 
+          className="w-32 h-32 md:w-48 md:h-48 lg:w-64 lg:h-64 xl:w-80 xl:h-80 object-contain filter drop-shadow-2xl opacity-90 transition-transform hover:scale-105" 
+          onError={(e) => { e.target.style.display = 'none'; }} 
+        />
+      </div>
+    </div>
+  </div>
+
+{/* Slogan Section - Mathematical 25% height with refined internal spacing */}
+  <div 
+    className="w-full h-[15%] flex justify-center items-center" 
+    style={{ backgroundColor: maroon }}
+  >
+    <div className="text-center px-4 md:px-6">
+      <p 
+        className="text-lg md:text-2xl lg:text-3xl text-white italic font-bold border-y-2 py-2 md:py-3 px-6 md:px-12 border-white/20 leading-tight inline-block"
+      >
+        Building Relationships. Solving Problems. Adding Value.
+      </p>
+    </div>
+  </div>
+</header>
 
       {/* Sticky Sub-Navigation */}
       <nav id="section-nav" className="hidden md:block sticky top-[72px] z-40 bg-white border-b border-gray-100 shadow-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
