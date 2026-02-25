@@ -347,7 +347,7 @@ const InjectionWells = () => {
                onClick={() => setTimeout(() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'}), 100)}
                className="inline-flex items-center px-8 py-4 bg-[#8B1E3F] text-white font-bold rounded-lg hover:brightness-110 transition-all shadow-lg"
              >
-               Contact Our Engineers <ChevronRight className="ml-2 w-5 h-5" />
+               Contact Our Team <ChevronRight className="ml-2 w-5 h-5" />
              </Link>
           </div>
 

@@ -82,7 +82,7 @@ const Publications = () => {
     { title: "Applications of Transient Pressure Interference Tests to Fractured and Unfractured Injection Wells", authors: "Cooper, K.J. and Collins, R.E.", citation: "SPE 19785, presented at the 64th Annual Technical Conference of the SPE, October 8 – 11, 1989; San Antonio, Texas.", year: 1989, category: "Engineering" }
   ];
 
-  const categories = ["All", "CCUS", "Class I", "Uranium", "Engineering", "Oil & Gas", "Mining", "Regulatory", "Safety"];
+  const categories = ["All", "Class I", "Uranium", "Engineering", "Oil & Gas", "CCUS", "Mining", "Regulatory", "Safety"];
 
   const filteredPubs = pubData.filter(pub => {
     const matchesSearch = pub.title.toLowerCase().includes(searchTerm.toLowerCase()) || 

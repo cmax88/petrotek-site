@@ -134,9 +134,9 @@ const Home = () => {
 
   const services = [
     { title: "Injection Well Services", description: "Our personnel have hundreds of years of combined injection well experience and are familiar with state and federal regulators throughout the country.", icon: <Droplet className="w-8 h-8" style={{ color: maroon }} />, link: "/injection-wells" },
-    { title: "Carbon Capture (CO2CCS)", description: "Petrotek is a leader in conducting CCS feasibility studies and preparing Class VI UIC permits. We evaluate options for tax equity partnerships.", icon: <CloudRain className="w-8 h-8" style={{ color: maroon }} />, link: "/carbon-capture" },
-    { title: "Oil and Gas", description: "We provide services regarding specialized technical issues including drilling spacing unit permitting, correlative rights, and reservoir simulation.", icon: <OilWell className="w-8 h-8" style={{ color: maroon }} />, link: "/oil-and-gas" },
     { title: "ISR Uranium and Copper", description: "Our experience in ISR uranium and copper mining spans more than 28 years and includes hydrogeological characterization and aquifer exemptions.", icon: <UraniumIcon className="w-8 h-8" />, link: "/isr-uranium" },
+    { title: "Oil and Gas", description: "We provide services regarding specialized technical issues including drilling spacing unit permitting, correlative rights, and reservoir simulation.", icon: <OilWell className="w-8 h-8" style={{ color: maroon }} />, link: "/oil-and-gas" },
+    { title: "Carbon Capture (CO2CCS)", description: "Petrotek is a leader in conducting CCS feasibility studies and preparing Class VI UIC permits. We evaluate options for tax equity partnerships.", icon: <CloudRain className="w-8 h-8" style={{ color: maroon }} />, link: "/carbon-capture" },
     { title: "Safety", description: "Safety is our top priority. We maintain an impeccable safety record and full compliance with ISNetworld and Avetta contractor management services.", icon: <HardHat className="w-8 h-8" style={{ color: maroon }} />, link: "/safety" },
     { title: "Mining", description: "We have more than thirty years of experience in the mining industry related to groundwater characterization and modeling.", icon: <Pickaxe className="w-8 h-8" style={{ color: maroon }} />, link: "/mining" }
   ];
@@ -375,14 +375,13 @@ const Home = () => {
             <div className="lg:col-span-2 p-12 text-white" style={{ backgroundColor: maroon }}>
               <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
               <div className="space-y-6">
-                <div className="flex items-start space-x-4"><MapPin className="w-6 h-6 mt-1" /><p>5935 South Zang Street<br />Littleton, Colorado 80127</p></div>
+                <div className="flex items-start space-x-4"><MapPin className="w-6 h-6 mt-1" /><p>5935 South Zang Street, Suite 200<br />Littleton, Colorado USA 80127</p></div>
                 <div className="flex items-center space-x-4"><Phone className="w-6 h-6" /><p>(303) 290-9414</p></div>
-                <div className="flex items-center space-x-4"><Mail className="w-6 h-6" /><p>info@petrotek.com</p></div>
               </div>
               <div className="mt-10 rounded-xl overflow-hidden shadow-lg border border-white/20">
                 <iframe 
                   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3072.764491953255!2d-105.15182932353066!3d39.632468403217496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876b7e61e6955555%3A0x7d7c67c52697b0d7!2s5935%20S%20Zang%20St%2C%20Littleton%2C%20CO%2080127!5e0!3m2!1sen!2sus!4v1700000000000"
-                  width="100%" height="220" style={{ border: 0 }} allowFullScreen="" loading="lazy" title="Office Location"
+                  width="100%" height="325" style={{ border: 0 }} allowFullScreen="" loading="lazy" title="Office Location"
                 ></iframe>
               </div>
             </div>

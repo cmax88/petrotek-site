@@ -25,10 +25,10 @@ const Layout = () => {
 
   const services = [
     { title: "Injection Wells", id: "/injection-wells" },
-    { title: "Carbon Capture", id: "/carbon-capture" },
-    { title: "Oil & Gas", id: "/oil-and-gas" },
     { title: "ISR Uranium", id: "/isr-uranium" },
-     { title: "Safety", id: "/safety" },
+    { title: "Oil & Gas", id: "/oil-and-gas" },
+    { title: "Carbon Capture", id: "/carbon-capture" },
+    { title: "Safety", id: "/safety" },
     { title: "Mining", id: "/mining" }
   ];
 
@@ -160,7 +160,7 @@ const linkClass = (isMobile = false) => `
               <p className="text-sm 4k:text-xl leading-relaxed max-w-xs mb-8">
                 Petrotek Corporation specializes in engineering evaluation and field operations for subsurface fluid flow.
               </p>
-              <div className="flex items-center space-x-3 text-[10px] 4k:text-base font-bold uppercase tracking-widest text-gray-500">
+              <div className="flex items-center space-x-3 text-[15px] 4k:text-base font-bold uppercase tracking-widest text-gray-500">
                 <div className="h-px w-8 bg-[#8B1E3F]"></div>
                 <span>Established 1993</span>
               </div>
@@ -193,15 +193,11 @@ const linkClass = (isMobile = false) => `
               <div className="text-sm 4k:text-lg space-y-6">
                 <div className="flex items-start space-x-3">
                   <MapPin size={18} className="text-[#8B1E3F] shrink-0" />
-                  <span>5935 South Zang Street<br />Littleton, Colorado 80127</span>
+                  <span>5935 South Zang Street, Suite 200<br />Littleton, Colorado USA 80127</span>
                 </div>
                 <div className="flex items-center space-x-3">
                   <Phone size={18} className="text-[#8B1E3F] shrink-0" />
                   <a href="tel:3032909414" className="hover:text-white transition-colors">(303) 290-9414</a>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Mail size={18} className="text-[#8B1E3F] shrink-0" />
-                  <a href="mailto:info@petrotek.com" className="hover:text-white transition-colors">info@petrotek.com</a>
                 </div>
               </div>
             </div>
