@@ -230,7 +230,7 @@ const industries = [
       </style>
 
 {/* Hero Section */}
-<header id="home" className="relative flex flex-col h-[calc(100vh-72px)] overflow-hidden bg-white">
+<header id="home" className="relative flex flex-col h-screen overflow-hidden bg-white">
   
   {/* 1. Background Image Container */}
   <div className="relative h-[85%] w-full overflow-hidden bg-gray-900 shrink-0">
@@ -298,7 +298,7 @@ const industries = [
 </header>
 
       {/* Sticky Sub-Navigation */}
-      <nav id="section-nav" className="hidden md:block sticky top-[5rem] z-40 bg-white border-b border-gray-100 shadow-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
+      <nav id="section-nav" className="hidden md:block sticky top-[5rem] z-40 bg-white/70 backdrop-blur-xl border-b border-gray-100 shadow-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
         <div className="container mx-auto px-6 py-4 flex justify-center">
           <ul className="flex items-center space-x-8 lg:space-x-12">
             {subNavItems.map((item) => {

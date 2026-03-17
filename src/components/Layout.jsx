@@ -46,9 +46,9 @@ const Layout = () => {
     }
   };
 
-  const navClass = `sticky top-0 w-full z-50 transition-all duration-500 py-3 ${
-  scrolled ? 'bg-white/90 backdrop-blur-md shadow-lg' : 'bg-white'
-}`;
+// Update this variable in your Layout component
+const navClass = `fixed top-0 w-full z-50 transition-all duration-500 py-3 
+  bg-white/70 backdrop-blur-xl border-b border-white/20 shadow-lg`;
 
   const linkClass = (isMobile = false) => `
     text-sm font-bold uppercase tracking-widest transition-all duration-300
@@ -69,7 +69,7 @@ const Layout = () => {
             <img 
               src="/Petrotek.png" 
               alt="Petrotek" 
-              className="h-8 md:h-10 [@media(min-width:1600px)]:h-16 w-auto transition-all"
+              className="h-8 md:h-10 [@media(min-width:1600px)]:h-12 w-auto transition-all"
             />
           </Link>
 
