@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 
 const CaptureStorage = () => {
-  const maroon = "#8B1E3F";
+  const maroon = "#22C55E";
   const [openIndex, setOpenIndex] = useState(null);
 
   // Placeholder Image for CCS - Replace with your specific CCS image
@@ -64,8 +64,8 @@ const CaptureStorage = () => {
       content: (
         <>
           <p className="mb-4">Throughout the United States, the Environmental Protection Agency (USEPA) provides oversight and closely monitors Class VI injection well operations. Laws, policies and regulations have matured over the past 100 years to enhance the safety of both non-hazardous and hazardous injection well operation. In 2 cases (ND & WY; LA pending), state governments have been granted primary authority to conduct the Class VI Underground Injection Control (UIC) program. In others, the federal government directly implements the regulations. In all cases, strict standards are enforced by law to ensure that environmentally protective practices are followed. Regulations for Class II injection in EOR projects is mature in most states. Geologic and engineering information is carefully evaluated before injection well construction can begin and is reviewed after drilling has been completed, and before injection operations are authorized. Continuous protection of all usable groundwater is accomplished by rigid construction and monitoring requirements. In addition to strict construction requirements, annual testing and limitation of waste type, disposal volume and injection well pressure are required to further promote protection of the accessible environment. Detailed records of wastes disposed and all site operations must be submitted to the EPA regulators and made available to the public. Twenty-four-hour monitoring of operations is required to verify safe operation and permit compliance.</p>
-          <p className="mb-2">You can learn more about Class VI injection wells by visiting the EPA website at: <a href="https://www.epa.gov/uic/class-vi-wells-used-geologic-sequestration-co2" className="text-[#8B1E3F] font-bold hover:underline" target="_blank" rel="noopener noreferrer">https://www.epa.gov/uic/class-vi-wells-used-geologic-sequestration-co2</a></p>
-          <p>You can learn more about Class II EOR wells by visiting the EPA website at: <a href="https://www.epa.gov/uic/class-ii-oil-and-gas-related-injection-wells" className="text-[#8B1E3F] font-bold hover:underline" target="_blank" rel="noopener noreferrer">https://www.epa.gov/uic/class-ii-oil-and-gas-related-injection-wells</a></p>
+          <p className="mb-2">You can learn more about Class VI injection wells by visiting the EPA website at: <a href="https://www.epa.gov/uic/class-vi-wells-used-geologic-sequestration-co2" className="text-[#22C55E] font-bold hover:underline" target="_blank" rel="noopener noreferrer">https://www.epa.gov/uic/class-vi-wells-used-geologic-sequestration-co2</a></p>
+          <p>You can learn more about Class II EOR wells by visiting the EPA website at: <a href="https://www.epa.gov/uic/class-ii-oil-and-gas-related-injection-wells" className="text-[#22C55E] font-bold hover:underline" target="_blank" rel="noopener noreferrer">https://www.epa.gov/uic/class-ii-oil-and-gas-related-injection-wells</a></p>
         </>
       )
     },
@@ -110,7 +110,7 @@ const CaptureStorage = () => {
               <CloudRain className="w-10 h-10" style={{ color: maroon }} />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Carbon Capture & Storage (CCS)</h1>
-            <p className="text-xl text-[#8B1E3F] font-bold mb-6">Geologic Sequestration and Class VI Permitting</p>
+            <p className="text-xl text-[#22C55E] font-bold mb-6">Geologic Sequestration and Class VI Permitting</p>
             <div className="w-24 h-1 mb-8" style={{ backgroundColor: maroon }}></div>
           </div>
 
@@ -129,7 +129,7 @@ const CaptureStorage = () => {
                 <ul className="space-y-3">
                   {servicesList.map((item, i) => (
                     <li key={i} className="flex items-start">
-                      <CheckCircle2 className="w-5 h-5 mr-3 mt-0.5 text-[#8B1E3F] flex-shrink-0" />
+                      <CheckCircle2 className="w-5 h-5 mr-3 mt-0.5 text-[#22C55E] flex-shrink-0" />
                       <span className="text-gray-700 font-medium text-sm leading-relaxed">{item}</span>
                     </li>
                   ))}
@@ -151,7 +151,7 @@ const CaptureStorage = () => {
 
           {/* CCS Well FYI Accordion Section */}
           <div className="max-w-4xl mx-auto mb-20">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#8B1E3F] mb-8 flex items-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#22C55E] mb-8 flex items-center">
               <HelpCircle className="mr-3" /> CCS Well FYI
             </h2>
             
@@ -163,7 +163,7 @@ const CaptureStorage = () => {
                     className="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
                   >
                     <span className="font-bold text-lg text-gray-900">{item.question}</span>
-                    <span className="ml-4 text-[#8B1E3F]">
+                    <span className="ml-4 text-[#22C55E]">
                       {openIndex === index ? <Minus size={24} /> : <Plus size={24} />}
                     </span>
                   </button>
@@ -188,7 +188,7 @@ const CaptureStorage = () => {
              <Link 
                to="/" 
                onClick={() => setTimeout(() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'}), 100)}
-               className="inline-flex items-center px-8 py-4 bg-[#8B1E3F] text-white font-bold rounded-lg hover:brightness-110 transition-all shadow-lg"
+               className="inline-flex items-center px-8 py-4 bg-[#22C55E] text-white font-bold rounded-lg hover:brightness-110 transition-all shadow-lg"
              >
                Contact Our CCS Experts <ChevronRight className="ml-2 w-5 h-5" />
              </Link>

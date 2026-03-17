@@ -14,20 +14,21 @@ import {
   Scale
 } from 'lucide-react';
 
-// Custom Uranium Icon Component
-const UraniumIcon = ({ className }) => (
-  <img 
-    src="/database-zap.svg"
-    alt="Uranium Service Icon"
+// Updated to use a mask so it inherits the parent color
+const UraniumIcon = ({ className, style }) => (
+  <div 
     className={className}
     style={{ 
-      filter: 'brightness(0) saturate(100%) invert(18%) sepia(48%) saturate(1982%) hue-rotate(320deg) brightness(89%) contrast(92%)'  
-    }}
+      ...style, 
+      backgroundColor: 'currentColor',
+      mask: 'url("/database-zap.svg") no-repeat center / contain',
+      WebkitMask: 'url("/database-zap.svg") no-repeat center / contain',
+    }} 
   />
 );
 
 const ISR = () => {
-  const maroon = "#8B1E3F";
+  const maroon = "#EAB308";
 
   const isrServices = [
     { title: "Strategic Planning", icon: <FileCheck className="w-5 h-5" />, items: ["Feasibility studies", "Hydrogeologic support for NI-43-101 (PEA/PFS)", "Expert testimony"] },
@@ -49,11 +50,11 @@ const ISR = () => {
 
           {/* Header Section */}
           <div className="mb-12">
-            <div className="mb-6 p-4 bg-gray-50 inline-block rounded-2xl border border-gray-100 shadow-sm">
-              <UraniumIcon className="w-10 h-10" />
+            <div className="mb-6 p-4 bg-gray-50 inline-block rounded-2xl border border-gray-100 shadow-sm text-[#EAB308]">
+                <UraniumIcon className="w-10 h-10" />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">ISR Uranium & Copper</h1>
-            <p className="text-xl text-[#8B1E3F] font-bold mb-6">Uniting Fluid Flow, Petroleum Engineering, and Hydrology</p>
+            <p className="text-xl text-[#EAB308] font-bold mb-6">Uniting Fluid Flow, Petroleum Engineering, and Hydrology</p>
             <div className="w-24 h-1 mb-8" style={{ backgroundColor: maroon }}></div>
           </div>
 
@@ -136,7 +137,7 @@ const ISR = () => {
              <Link 
                to="/" 
                onClick={() => setTimeout(() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'}), 100)}
-               className="inline-flex items-center px-8 py-4 bg-[#8B1E3F] text-white font-bold rounded-lg hover:brightness-110 transition-all shadow-lg"
+               className="inline-flex items-center px-8 py-4 bg-[#EAB308] text-white font-bold rounded-lg hover:brightness-110 transition-all shadow-lg"
              >
                Consult with our ISR Experts <ChevronRight className="ml-2 w-5 h-5" />
              </Link>

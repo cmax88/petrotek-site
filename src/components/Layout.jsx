@@ -46,7 +46,9 @@ const Layout = () => {
     }
   };
 
-  const navClass = `sticky top-0 w-full z-50 transition-all duration-500 bg-white shadow-lg py-3`;
+  const navClass = `sticky top-0 w-full z-50 transition-all duration-500 py-3 ${
+  scrolled ? 'bg-white/90 backdrop-blur-md shadow-lg' : 'bg-white'
+}`;
 
   const linkClass = (isMobile = false) => `
     text-sm font-bold uppercase tracking-widest transition-all duration-300
@@ -72,7 +74,7 @@ const Layout = () => {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex space-x-8 lg:space-x-12 [@media(min-width:1600px)]:space-x-16 items-center">
+          <div className="hidden min-[1001px]:flex space-x-8 lg:space-x-12 [@media(min-width:1600px)]:space-x-16 items-center">
             <Link to="/" className={linkClass()}>Home</Link>
             
             <div 
@@ -115,14 +117,14 @@ const Layout = () => {
           {/* Mobile Menu Toggle */}
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)} 
-            className="md:hidden z-50 p-2 text-gray-900 transition-colors"
+            className="min-[1001px]:hidden z-50 p-2 text-gray-900 transition-colors"
           >
             {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
           </button>
         </div>
 
         {/* Mobile Full-Screen Overlay */}
-        <div className={`fixed inset-0 bg-white z-40 flex flex-col p-8 transition-transform duration-500 ease-in-out md:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
+        <div className={`fixed inset-0 bg-white z-40 flex flex-col p-8 transition-transform duration-500 ease-in-out min-[1001px]:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
           <div className="mt-20 flex flex-col">
             <Link to="/" className={linkClass(true)}>Home</Link>
             <div className="py-6 border-b border-gray-100">
@@ -200,10 +202,6 @@ const Layout = () => {
                 <div className="flex items-center space-x-3">
                   <Phone size={18} className="text-[#8B1E3F] shrink-0" />
                   <a href="tel:3032909414" className="hover:text-white transition-colors">(303) 290-9414</a>
-                </div>
-                <div className="flex items-center space-x-3">
-                  <Mail size={18} className="text-[#8B1E3F] shrink-0" />
-                  <a href="mailto:info@petrotek.com" className="hover:text-white transition-colors">info@petrotek.com</a>
                 </div>
               </div>
             </div>

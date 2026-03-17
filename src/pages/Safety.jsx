@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 
 const Safety = () => {
-  const maroon = "#8B1E3F";
+  const maroon = "#F97316";
 
   const safetyCommitments = [
     { title: "Wellsite Excellence", icon: <HardHat className="w-5 h-5" />, text: "Maintain safe and healthy wellsite workplaces for our employees, contractors, and clients." },
@@ -45,7 +45,7 @@ const Safety = () => {
               <ShieldCheck className="w-10 h-10" style={{ color: maroon }} />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Safety</h1>
-            <p className="text-xl text-[#8B1E3F] font-bold mb-6">Safety is Everyone's Responsibility</p>
+            <p className="text-xl text-[#F97316] font-bold mb-6">Safety is Everyone's Responsibility</p>
             <div className="w-24 h-1 mb-8" style={{ backgroundColor: maroon }}></div>
           </div>
 
@@ -129,7 +129,7 @@ const Safety = () => {
             <Link 
                 to="/" 
                 onClick={() => setTimeout(() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'}), 100)}
-                 className="inline-flex items-center px-8 py-4 bg-[#8B1E3F] text-white font-bold rounded-lg hover:brightness-110 transition-all shadow-lg"
+                 className="inline-flex items-center px-8 py-4 bg-[#F97316] text-white font-bold rounded-lg hover:brightness-110 transition-all shadow-lg"
              >
                Contact Our HSE Team <ChevronRight className="ml-2 w-5 h-5" />
              </Link>

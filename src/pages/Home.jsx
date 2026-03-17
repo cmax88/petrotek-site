@@ -18,27 +18,28 @@ import {
 import ReCAPTCHA from "react-google-recaptcha";
 import emailjs from '@emailjs/browser';
 
-// Custom Oil Well Icon
+// Custom Oil Well Icon - Now uses a mask to inherit color
 const OilWell = ({ className, style }) => (
-  <img 
-    src="/regular-oil-well.svg"
-    alt="Oil Well Icon"
+  <div 
     className={className}
     style={{ 
       ...style, 
-      filter: 'brightness(0) saturate(100%) invert(18%) sepia(48%) saturate(1982%) hue-rotate(320deg) brightness(89%) contrast(92%)' 
+      backgroundColor: 'currentColor',
+      mask: 'url("/regular-oil-well.svg") no-repeat center / contain',
+      WebkitMask: 'url("/regular-oil-well.svg") no-repeat center / contain',
     }} 
   />
 );
 
-// Custom Uranium Icon
-const UraniumIcon = ({ className }) => (
-  <img 
-    src="/database-zap.svg"
-    alt="Uranium Service Icon"
+// Custom Uranium Icon - Now uses a mask to inherit color
+const UraniumIcon = ({ className, style }) => (
+  <div 
     className={className}
     style={{ 
-      filter: 'brightness(0) saturate(100%) invert(18%) sepia(48%) saturate(1982%) hue-rotate(320deg) brightness(89%) contrast(92%)'  
+      ...style, 
+      backgroundColor: 'currentColor',
+      mask: 'url("/database-zap.svg") no-repeat center / contain',
+      WebkitMask: 'url("/database-zap.svg") no-repeat center / contain',
     }}
   />
 );
@@ -132,30 +133,73 @@ const Home = () => {
   const maroon = "#8B1E3F";
   const anniversaryGraphic = "/33-years-service-graphic.png";
 
-  const services = [
-    { title: "Injection Well Services", description: "Our personnel have hundreds of years of combined injection well experience and are familiar with state and federal regulators throughout the country.", icon: <Droplet className="w-8 h-8" style={{ color: maroon }} />, link: "/injection-wells" },
-    { title: "ISR Uranium and Copper", description: "Our experience in ISR uranium and copper mining spans more than 28 years and includes hydrogeological characterization and aquifer exemptions.", icon: <UraniumIcon className="w-8 h-8" />, link: "/isr-uranium" },
-    { title: "Oil and Gas", description: "We provide services regarding specialized technical issues including drilling spacing unit permitting, correlative rights, and reservoir simulation.", icon: <OilWell className="w-8 h-8" style={{ color: maroon }} />, link: "/oil-and-gas" },
-    { title: "Carbon Capture (CO2CCS)", description: "Petrotek is a leader in conducting CCS feasibility studies and preparing Class VI UIC permits. We evaluate options for tax equity partnerships.", icon: <CloudRain className="w-8 h-8" style={{ color: maroon }} />, link: "/carbon-capture" },
-    { title: "Safety", description: "Safety is our top priority. We maintain an impeccable safety record and full compliance with ISNetworld and Avetta contractor management services.", icon: <HardHat className="w-8 h-8" style={{ color: maroon }} />, link: "/safety" },
-    { title: "Mining", description: "We have more than thirty years of experience in the mining industry related to groundwater characterization and modeling.", icon: <Pickaxe className="w-8 h-8" style={{ color: maroon }} />, link: "/mining" }
+const services = [
+    { 
+      title: "Injection Well Services", 
+      description: "Our personnel have hundreds of years of combined injection well experience and are familiar with state and federal regulators throughout the country.", 
+      icon: <Droplet className="w-8 h-8" />, 
+      link: "/injection-wells",
+      accent: "#8B1E3F" // Maroon
+    },
+    { 
+      title: "ISR Uranium and Copper", 
+      description: "Our experience in ISR uranium and copper mining spans more than 28 years and includes hydrogeological characterization and aquifer exemptions.", 
+      icon: <UraniumIcon className="w-8 h-8" />, 
+      link: "/isr-uranium",
+      accent: "#EAB308" // Yellow (Tailwind yellow-500)
+    },
+    { 
+      title: "Oil and Gas", 
+      description: "We provide services regarding specialized technical issues including drilling spacing unit permitting, correlative rights, and reservoir simulation.", 
+      icon: <OilWell className="w-8 h-8" />, 
+      link: "/oil-and-gas",
+      accent: "#EF4444" // Red (Tailwind red-500)
+    },
+    { 
+      title: "Carbon Capture (CO2CCS)", 
+      description: "Petrotek is a leader in conducting CCS feasibility studies and preparing Class VI UIC permits. We evaluate options for tax equity partnerships.", 
+      icon: <CloudRain className="w-8 h-8" />, 
+      link: "/carbon-capture",
+      accent: "#22C55E" // Green (Tailwind green-500)
+    },
+    { 
+      title: "Safety", 
+      description: "Safety is our top priority. We maintain an impeccable safety record and full compliance with ISNetworld and Avetta contractor management services.", 
+      icon: <HardHat className="w-8 h-8" />, 
+      link: "/safety",
+      accent: "#F97316" // Orange (Tailwind orange-500)
+    },
+    { 
+      title: "Mining", 
+      description: "We have more than thirty years of experience in the mining industry related to groundwater characterization and modeling.", 
+      icon: <Pickaxe className="w-8 h-8" />, 
+      link: "/mining",
+      accent: "#78350F" // Brown (Tailwind amber-900)
+    }
   ];
 
-  const industries = [
-    { name: "Food Production", img: "https://images.unsplash.com/photo-1516594798947-e65505dbb29d?auto=format&fit=crop&q=80&w=400" },
-    { name: "Pharmaceuticals", img: "https://plus.unsplash.com/premium_photo-1661374914839-a84dc1314c86?w=600&auto=format&fit=crop&q=60" },
-    { name: "Heavy Manufacturing", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400" },
-    { name: "Chemical Plants", img: "https://images.unsplash.com/photo-1704130092069-30ae33e2def0?q=80&w=1170&auto=format&fit=crop" },
-    { name: "Ethanol Plants", img: "https://www.iowacorn.org/wp-content/uploads/2024/05/24138_ICGA_DRONE_ETHANOLPLANT_-21-scaled.jpg" },
-    { name: "Gas Storage", img: "https://diversegy.com/wp-content/uploads/2024/07/lng-storage-containers.png" },
-    { name: "Oil and Gas", img: "https://images.unsplash.com/photo-1516199423456-1f1e91b06f25?q=80&w=1149&auto=format&fit=crop" },
-    { name: "Cosmetics", img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=400" },
+const industries = [
+    // TIER 1: PRIMARY FOCUS (Waste & Landfills)
+    { name: "Waste Management", img: "https://images.unsplash.com/photo-1604187351574-c75ca79f5807?q=80&w=1170&auto=format&fit=crop" },
     { name: "Environmental Remediation", img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=400" },
     { name: "Municipal Water Supply", img: "https://images.unsplash.com/photo-1600965487524-8b8c37f6c394?q=80&w=1170&auto=format&fit=crop" },
-    { name: "Refineries", img: "https://images.unsplash.com/photo-1611581372056-30cf28a7bd2e?q=80&w=1074&auto=format&fit=crop" },
-    { name: "Waste Management", img: "https://images.unsplash.com/photo-1604187351574-c75ca79f5807?q=80&w=1170&auto=format&fit=crop" },
+
+    // TIER 2: HIGH-STAKE INDUSTRIAL & RESOURCES
+    { name: "Chemical Plants", img: "https://images.unsplash.com/photo-1704130092069-30ae33e2def0?q=80&w=1170&auto=format&fit=crop" },
+    { name: "Oil and Gas", img: "https://images.unsplash.com/photo-1516199423456-1f1e91b06f25?q=80&w=1149&auto=format&fit=crop" },
     { name: "Mining", img: "https://images.unsplash.com/photo-1571223641822-b82408a0e705?q=80&w=1402&auto=format&fit=crop" },
+    { name: "Refineries", img: "https://images.unsplash.com/photo-1611581372056-30cf28a7bd2e?q=80&w=1074&auto=format&fit=crop" },
+
+    // TIER 3: SPECIALIZED MANUFACTURING & ENERGY
+    { name: "Pharmaceuticals", img: "https://plus.unsplash.com/premium_photo-1661374914839-a84dc1314c86?w=600&auto=format&fit=crop&q=60" },
     { name: "Power Generation", img: "https://images.unsplash.com/photo-1694551073674-f8809f1685f4?q=80&w=1170&auto=format&fit=crop" },
+    { name: "Gas Storage", img: "https://diversegy.com/wp-content/uploads/2024/07/lng-storage-containers.png" },
+    { name: "Ethanol Plants", img: "https://www.iowacorn.org/wp-content/uploads/2024/05/24138_ICGA_DRONE_ETHANOLPLANT_-21-scaled.jpg" },
+
+    // TIER 4: GENERAL MANUFACTURING
+    { name: "Heavy Manufacturing", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400" },
+    { name: "Food Production", img: "https://images.unsplash.com/photo-1516594798947-e65505dbb29d?auto=format&fit=crop&q=80&w=400" },
+    { name: "Cosmetics", img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=400" },
     { name: "Cloth Manufacturing", img: "https://images.unsplash.com/photo-1612685179841-3965cf0c3f70?q=80&w=1378&auto=format&fit=crop" }
   ];
 
@@ -254,7 +298,7 @@ const Home = () => {
 </header>
 
       {/* Sticky Sub-Navigation */}
-      <nav id="section-nav" className="hidden md:block sticky top-[72px] z-40 bg-white border-b border-gray-100 shadow-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
+      <nav id="section-nav" className="hidden md:block sticky top-[5rem] z-40 bg-white border-b border-gray-100 shadow-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
         <div className="container mx-auto px-6 py-4 flex justify-center">
           <ul className="flex items-center space-x-8 lg:space-x-12">
             {subNavItems.map((item) => {
@@ -305,10 +349,22 @@ const Home = () => {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
               <div key={index} className="group p-8 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col h-full">
-                <div className="mb-6">{service.icon}</div>
+                
+                {/* This container sets the color for both Lucide and Custom Mask icons */}
+                <div className="mb-6" style={{ color: service.accent }}>
+                  {service.icon}
+                </div>
+
                 <h3 className="text-xl font-bold mb-4 text-gray-800">{service.title}</h3>
                 <p className="text-gray-600 leading-relaxed mb-6 flex-grow">{service.description}</p>
-                <Link to={service.link} className="flex items-center text-sm font-bold uppercase tracking-wider group-hover:underline" style={{ color: maroon }}>Learn More <ChevronRight className="w-4 h-4 ml-1" /></Link>
+                
+                <Link 
+                  to={service.link} 
+                  className="flex items-center text-sm font-bold uppercase tracking-wider group-hover:underline" 
+                  style={{ color: service.accent }}
+                >
+                  Learn More <ChevronRight className="w-4 h-4 ml-1" />
+                </Link>
               </div>
             ))}
           </div>
@@ -376,7 +432,7 @@ const Home = () => {
               <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
               <div className="space-y-6">
                 <div className="flex items-start space-x-4"><MapPin className="w-6 h-6 mt-1" /><p>5935 South Zang Street, Suite 200<br />Littleton, Colorado USA 80127</p></div>
-                <div className="flex items-center space-x-4"><Phone className="w-6 h-6" /><p>(303) 290-9414</p></div>
+                <div className="flex items-center space-x-4"><Phone className="w-6 h-6" /><p><a href="tel:3032909414">(303) 290-9414</a></p></div>
               </div>
               <div className="mt-10 rounded-xl overflow-hidden shadow-lg border border-white/20">
                 <iframe 

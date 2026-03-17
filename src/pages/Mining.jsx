@@ -17,7 +17,7 @@ import {
 } from 'lucide-react';
 
 const Mining = () => {
-  const maroon = "#8B1E3F";
+  const maroon = "#78350F";
 
   const miningExpertise = [
     { 
@@ -59,7 +59,7 @@ const Mining = () => {
               <Pickaxe className="w-10 h-10" style={{ color: maroon }} />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Mining</h1>
-            <p className="text-xl text-[#8B1E3F] font-bold mb-6">Characterization, Modeling, and Regulatory Compliance</p>
+            <p className="text-xl text-[#78350F] font-bold mb-6">Characterization, Modeling, and Regulatory Compliance</p>
             <div className="w-24 h-1 mb-8" style={{ backgroundColor: maroon }}></div>
           </div>
 
@@ -157,13 +157,13 @@ const Mining = () => {
                  <p className="text-gray-300 text-lg leading-relaxed mb-6">
                    From baseline studies for new permits to long-term monitoring for active operations and post-operational closures, we provide the technical depth required for the industry's most challenging subsurface environments.
                  </p>
-                 <div className="flex items-center space-x-2 text-[#8B1E3F] font-bold">
+                 <div className="flex items-center space-x-2 text-[#78350F] font-bold">
                     <TrendingUp className="w-5 h-5" />
                     <span>Compliance & Operational Stability</span>
                  </div>
               </div>
               <div className="hidden md:flex justify-center">
-                <div className="w-32 h-32 border-4 border-[#8B1E3F] rounded-full flex items-center justify-center">
+                <div className="w-32 h-32 border-4 border-[#78350F] rounded-full flex items-center justify-center">
                   <span className="text-3xl font-bold text-white">100+</span>
                   <span className="text-[10px] absolute mt-12 uppercase tracking-widest text-gray-400">Combined Exp.</span>
                 </div>
@@ -177,7 +177,7 @@ const Mining = () => {
              <Link 
                to="/" 
                onClick={() => setTimeout(() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'}), 100)}
-               className="inline-flex items-center px-8 py-4 bg-[#8B1E3F] text-white font-bold rounded-lg hover:brightness-110 transition-all shadow-lg"
+               className="inline-flex items-center px-8 py-4 bg-[#78350F] text-white font-bold rounded-lg hover:brightness-110 transition-all shadow-lg"
              >
                Contact Our Mining Team <ChevronRight className="ml-2 w-5 h-5" />
              </Link>
