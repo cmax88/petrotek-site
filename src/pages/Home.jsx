@@ -236,16 +236,11 @@ const industries = [
   <div className="relative h-[85%] w-full overflow-hidden bg-gray-900 shrink-0">
     <div className="absolute inset-0 opacity-100 overflow-hidden">
       <div className="absolute inset-0 bg-black/20 z-10"></div>
-      <div 
-        className="absolute inset-0 w-full h-full" 
-        style={{ transform: `translateY(${scrollOffset * 0.1}px)`, transition: 'transform 0.1s linear' }}
-      >
         <img 
           src="/Hero.jpg" 
           alt="Petrotek Background" 
           className="h-full w-full object-cover animate-hero-pan will-change-transform" 
         />
-      </div>
     </div>
 
     {/* Hero Text Content - Using ultra-specific media queries for 2K+ */}

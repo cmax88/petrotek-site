@@ -76,14 +76,13 @@ const OilGas = () => {
                 </p>
               </div>
             </div>
-            <div className="lg:w-5/5" >
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+          {/* Right Column: Image - REMOVED WRAPPER DIV STYLING */}
+              <div className="lg:w-5/5 sticky top-32" >
                 <img 
                   src="/Oil Field Ops and Disposal Well.png" 
-                  alt="Petrotek Field Operations" 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  alt="Upstream Oil Field Operations" 
+                  className="w-full h-auto object-cover" // Changed h-full to h-auto to maintain aspect ratio without wrapper
                 />
-              </div>
             </div>
           </div>
 

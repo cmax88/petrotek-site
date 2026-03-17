@@ -16,6 +16,37 @@ import {
   HelpCircle
 } from 'lucide-react';
 
+const epaQuotes = [
+  { 
+    text: "Injection proved to be a safe and inexpensive option for the disposal of unwanted and often hazardous industrial byproducts.", 
+    source: "US EPA UIC Program" 
+  },
+  { 
+    text: "Class I wells are strictly regulated to ensure injected fluids stay within the intended injection zone and do not endanger drinking water.", 
+    source: "EPA 40 CFR Part 144" 
+  },
+  { 
+    text: "Disposers must demonstrate that waste will remain isolated for as long as it remains hazardous—defined as 10,000 years by regulation.", 
+    source: "EPA RCRA Land Disposal Restrictions" 
+  },
+  { 
+    text: "UIC regulations mandate multiple layers of protective casing and cement to provide redundant safeguards for public health.", 
+    source: "EPA Safe Drinking Water Act" 
+  },
+  { 
+    text: "Deep well technology has been proven through wide use over more than 50 years with an excellent record of environmental protection.", 
+    source: "TCEQ / EPA Oversight" 
+  },
+  { 
+    text: "Class VI requirements ensure safe and secure sequestration of CO2 through comprehensive site characterization and modeling.", 
+    source: "EPA Geologic Sequestration Regulations" 
+  },
+  { 
+    text: "Continuous monitoring of injection pressure and flow rate provides real-time verification of well integrity and permit compliance.", 
+    source: "EPA UIC Fact Sheet" 
+  }
+];
+
 const InjectionWells = () => {
   const maroon = "#8B1E3F";
   
@@ -215,30 +246,60 @@ const InjectionWells = () => {
             <div className="w-24 h-1 mb-8" style={{ backgroundColor: maroon }}></div>
           </div>
 
-          {/* Detailed Content with Side-by-Side Image */}
+          {/* Intro Section & Image */}
           <div className="flex flex-col lg:flex-row gap-12 mb-20 items-start">
-            {/* Left Column: Text Content */}
-            <div className="lg:w-3/5 prose prose-lg max-w-none text-gray-600 leading-relaxed">
-              <p>
-                Our personnel have hundreds of years of combined injection well experience and are familiar with state and federal regulators throughout the country. Petrotek offers engineering and geology services where licensed. On a continual basis, our staff provides technical consulting and field services regarding a wide variety of issues to ensure the continued safe and responsible operation of all classes of waste injection wells.
-              </p>
-              <br></br>
-              <p>
-                Team professionals provide technical services to operators of deep injection wells throughout the United States. Staff members have prepared underground injection control (UIC) permits and Land Ban Petitions that have been accepted by state and federal regulatory agencies; conducted reservoir modeling studies; and provided field activity supervision for facilities that require injection wells throughout the country. We have experience regarding all aspects of deepwells ranging from feasibility studies to design; installation; maintenance; testing and contract operations. Petrotek staff are experienced with deepwell permitting issues related to existing and new facilities throughout the United States.
-              </p>
-            </div>
+            <div className="lg:w-3/5 flex flex-col">
+              <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed mb-10">
+                <p>
+                  Our personnel have hundreds of years of combined injection well experience and are familiar with state and federal regulators throughout the country. Petrotek offers engineering and geology services where licensed. On a continual basis, our staff provides technical consulting and field services regarding a wide variety of issues to ensure the continued safe and responsible operation of all classes of waste injection wells.
+                </p>
+                <p>
+                  Petrotek staff are experienced with deepwell permitting issues related to existing and new facilities throughout the United States, providing underground injection control (UIC) permits and Land Ban Petitions that have been accepted by state and federal regulatory agencies.
+                </p>
+              </div>
 
-            {/* Right Column: Image */}
-            <div className="lg:w-2/5">
-              <div className="relative rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
-                <img 
-                  src={injectionWellImage} 
-                  alt="Injection Well Diagram" 
-                  className="w-full h-full object-cover"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent"></div>
+          {/* --- EPA MARQUEE SECTION (Vertical) --- */}
+          <div className="relative bg-white rounded-xl border border-gray-100 overflow-hidden py-8 px-6 shadow-sm">
+            {/* Fade effect top and bottom */}
+            <div className="absolute top-0 left-0 w-full h-12 bg-gradient-to-b from-white to-transparent z-10"></div>
+            <div className="absolute bottom-0 left-0 w-full h-12 bg-gradient-to-t from-white to-transparent z-10"></div>
+            
+            <div className="flex flex-col h-[250px]"> {/* Explicit height for the vertical box */}
+              <div className="mb-6 flex items-center gap-2 relative z-20">
+                <ShieldCheck size={18} className="text-[#8B1E3F]" />
+                <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">EPA Regulatory Perspectives</span>
+              </div>
+
+              <div className="overflow-hidden relative h-full">
+                <div className="animate-marquee-vertical flex flex-col gap-8">
+                  {[...epaQuotes, ...epaQuotes].map((quote, i) => (
+                    <div key={i} className="flex flex-col border-l-2 border-gray-100 pl-4 py-1">
+                      <p className="text-gray-800 font-medium text-base italic leading-relaxed whitespace-normal">
+                        "{quote.text}"
+                      </p>
+                      <p className="text-[10px] font-bold text-[#8B1E3F] mt-2 uppercase tracking-widest">
+                        — {quote.source}
+                      </p>
+                    </div>
+                  ))}
+                </div>
               </div>
             </div>
+          </div>
+          </div>
+
+          {/* Right Column: Image */}
+          <div className="lg:w-2/5">
+            <div className="relative rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
+              <img 
+                src={injectionWellImage} 
+                alt="Injection Well Diagram" 
+                className="w-full h-full object-cover cursor-zoom-in"
+              />
+              {/* ADDED pointer-events-none BELOW */}
+              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
+            </div>
+          </div>
           </div>
 
           {/* Service Categories Grid */}

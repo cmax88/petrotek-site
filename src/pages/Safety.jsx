@@ -66,30 +66,59 @@ const Safety = () => {
                 </p>
               </div>
 
-              {/* Verified Compliance Badges */}
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex items-center p-4 bg-gray-50 rounded-xl border border-gray-100">
-                  <div className="w-12 h-12 bg-orange-500 rounded-lg flex items-center justify-center text-white font-bold mr-4">ISN</div>
-                  <div>
-                    <div className="text-sm font-bold text-gray-900">ISNetworld®</div>
-                    <div className="text-xs text-green-600 font-bold flex items-center"><CheckCircle2 className="w-3 h-3 mr-1"/> Grade A Compliant</div>
-                  </div>
-                </div>
-                <div className="flex items-center p-4 bg-gray-50 rounded-xl border border-gray-100">
-                  <div className="w-12 h-12 bg-green-600 rounded-lg flex items-center justify-center text-white font-bold mr-4 text-[10px]">AVETTA</div>
-                  <div>
-                    <div className="text-sm font-bold text-gray-900">Avetta</div>
-                    <div className="text-xs text-green-600 font-bold flex items-center"><CheckCircle2 className="w-3 h-3 mr-1"/> Active Status</div>
-                  </div>
-                </div>
-                                <div className="flex items-center p-4 bg-gray-50 rounded-xl border border-gray-100">
-                  <div className="w-12 h-12 bg-blue-900 rounded-lg flex items-center justify-center text-white font-bold mr-4">DISA</div>
-                  <div>
-                    <div className="text-sm font-bold text-gray-900">DISA</div>
-                    <div className="text-xs text-green-600 font-bold flex items-center"><CheckCircle2 className="w-3 h-3 mr-1"/> Active Status</div>
-                  </div>
+          {/* Verified Compliance Badges */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"> {/* Changed grid columns and gap */}
+            {/* ISNetworld */}
+            <div className="flex flex-col items-center p-8 bg-white rounded-3xl border border-gray-100 shadow-xl hover:shadow-2xl transition-shadow text-center h-full"> {/* Made boxes vertical and much larger, added bigger shadows */}
+              <div className="w-32 h-20 flex items-center justify-center mb-6 no-zoom p-2"> {/* Made logo container significantly larger */}
+                <img 
+                  src="/isn.png" 
+                  alt="ISNetworld Logo" 
+                  className="max-h-full max-w-full object-contain no-zoom" // Ensured logo fills container well
+                />
+              </div>
+              <div className="flex-grow flex flex-col justify-center"> {/* Added vertical alignment for content */}
+                <div className="text-xl font-bold text-gray-950 mb-3">ISNetworld®</div> {/* Increased name font size */}
+                <div className="text-sm text-green-700 font-extrabold flex items-center justify-center bg-green-50 px-4 py-2 rounded-full"> {/* Enhanced status bar */}
+                  <CheckCircle2 className="w-5 h-5 mr-2 stroke-[3]"/> Grade A Compliant
                 </div>
               </div>
+            </div>
+
+            {/* Avetta */}
+            <div className="flex flex-col items-center p-8 bg-white rounded-3xl border border-gray-100 shadow-xl hover:shadow-2xl transition-shadow text-center h-full"> {/* Made boxes vertical and much larger, added bigger shadows */}
+              <div className="w-32 h-20 flex items-center justify-center mb-6 no-zoom p-2"> {/* Made logo container significantly larger */}
+                <img 
+                  src="/avetta.png" 
+                  alt="Avetta Logo" 
+                  className="max-h-full max-w-full object-contain no-zoom" // Ensured logo fills container well
+                />
+              </div>
+              <div className="flex-grow flex flex-col justify-center"> {/* Added vertical alignment for content */}
+                <div className="text-xl font-bold text-gray-950 mb-3">Avetta</div> {/* Increased name font size */}
+                <div className="text-sm text-green-700 font-extrabold flex items-center justify-center bg-green-50 px-4 py-2 rounded-full"> {/* Enhanced status bar */}
+                  <CheckCircle2 className="w-5 h-5 mr-2 stroke-[3]"/> Active Status
+                </div>
+              </div>
+            </div>
+
+            {/* DISA */}
+            <div className="flex flex-col items-center p-8 bg-white rounded-3xl border border-gray-100 shadow-xl hover:shadow-2xl transition-shadow text-center h-full"> {/* Made boxes vertical and much larger, added bigger shadows */}
+              <div className="w-32 h-20 flex items-center justify-center mb-6 no-zoom p-2"> {/* Made logo container significantly larger */}
+                <img 
+                  src="/disa.png" 
+                  alt="DISA Logo" 
+                  className="max-h-full max-w-full object-contain no-zoom" // Ensured logo fills container well
+                />
+              </div>
+              <div className="flex-grow flex flex-col justify-center"> {/* Added vertical alignment for content */}
+                <div className="text-xl font-bold text-gray-950 mb-3">DISA</div> {/* Increased name font size */}
+                <div className="text-sm text-green-700 font-extrabold flex items-center justify-center bg-green-50 px-4 py-2 rounded-full"> {/* Enhanced status bar */}
+                  <CheckCircle2 className="w-5 h-5 mr-2 stroke-[3]"/> Active Status
+                </div>
+              </div>
+            </div>
+          </div>
             </div>
 
             {/* Right Column: Image */}

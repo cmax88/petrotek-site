@@ -82,15 +82,13 @@ const ISR = () => {
               </p>
             </div>
 
-            {/* Right Column: Image */}
+          {/* Right Column: Image - REMOVED WRAPPER DIV STYLING */}
               <div className="lg:w-5/5 sticky top-32" >
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
                 <img 
                   src="/InSitu Uranium or Copper Recovery-01.png" 
                   alt="Petrotek Field Operations" 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                  className="w-full h-auto object-cover" // Changed h-full to h-auto to maintain aspect ratio without wrapper
                 />
-              </div>
             </div>
           </div>
 
