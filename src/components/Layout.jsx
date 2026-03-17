@@ -117,33 +117,56 @@ const navClass = `fixed top-0 w-full z-50 transition-all duration-500 py-3
           {/* Mobile Menu Toggle */}
           <button 
             onClick={() => setIsMenuOpen(!isMenuOpen)} 
-            className="min-[1001px]:hidden z-50 p-2 text-gray-900 transition-colors"
+            className="min-[1001px]:hidden p-2 text-gray-900 transition-colors"
+            style={{ zIndex: 9999 }}
           >
             {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
           </button>
         </div>
 
         {/* Mobile Full-Screen Overlay */}
-        <div className={`fixed inset-0 bg-white z-40 flex flex-col p-8 transition-transform duration-500 ease-in-out min-[1001px]:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}>
-          <div className="mt-20 flex flex-col">
-            <Link to="/" className={linkClass(true)}>Home</Link>
-            <div className="py-6 border-b border-gray-100">
-              <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-gray-400 mb-6">Our Services</p>
-              <div className="grid grid-cols-1 gap-6 pl-4">
-                {services.map(s => (
-                  <Link key={s.id} to={s.id} className="text-gray-700 font-bold uppercase text-lg hover:text-[#8B1E3F] transition-colors">{s.title}</Link>
-                ))}
+        <div 
+          className={`fixed inset-0 w-screen h-screen transition-transform duration-500 ease-in-out min-[1001px]:hidden ${
+            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+          style={{ 
+            zIndex: 9998, // Just below the toggle button but above everything else
+            backgroundColor: 'rgba(255, 255, 255, 1)', // Increased opacity slightly for visibility
+            backdropFilter: 'blur(20px)',
+            WebkitBackdropFilter: 'blur(20px)'
+          }}
+        >
+          {/* Inner content wrapper to handle the padding and scroll */}
+          <div className="flex flex-col h-full w-full p-8 overflow-y-auto">
+            <div className="mt-24 flex flex-col">
+              <Link to="/" className={linkClass(true)}>Home</Link>
+              
+              <div className="py-6 border-b border-gray-900/10">
+                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 mb-6">Our Services</p>
+                <div className="grid grid-cols-1 gap-6 pl-4">
+                  {services.map(s => (
+                    <Link 
+                      key={s.id} 
+                      to={s.id} 
+                      className="text-gray-900 font-bold uppercase text-lg hover:text-[#8B1E3F] transition-colors"
+                    >
+                      {s.title}
+                    </Link>
+                  ))}
+                </div>
               </div>
+
+              <Link to="/team" className={linkClass(true)}>Our Team</Link>
+              <Link to="/publications" className={linkClass(true)}>Publications</Link>
+              
+              <button 
+                onClick={handleContactClick}
+                className="mt-12 w-full py-6 text-white font-bold rounded-sm uppercase tracking-widest text-center shadow-2xl"
+                style={{ backgroundColor: maroon }}
+              >
+                Contact Us
+              </button>
             </div>
-            <Link to="/team" className={linkClass(true)}>Our Team</Link>
-            <Link to="/publications" className={linkClass(true)}>Publications</Link>
-            <button 
-              onClick={handleContactClick}
-              className="mt-12 w-full py-6 text-white font-bold uppercase tracking-widest text-center shadow-lg"
-              style={{ backgroundColor: maroon }}
-            >
-              Contact Us
-            </button>
           </div>
         </div>
       </nav>
