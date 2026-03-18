@@ -372,7 +372,7 @@ const industries = [
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div key={index} className="group p-8 bg-white border border-gray-100 rounded-lg shadow-sm hover:shadow-xl transition-all duration-300 hover:-translate-y-2 flex flex-col h-full">
+              <div key={index} className="group p-8 bg-white/40 backdrop-blur-sm border border-white/20 rounded-2xl shadow-sm hover:shadow-2xl hover:bg-white/60 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
                 
                 {/* This container sets the color for both Lucide and Custom Mask icons */}
                 <div className="mb-6" style={{ color: service.accent }}>
