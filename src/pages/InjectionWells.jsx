@@ -252,7 +252,7 @@ const InjectionWells = () => {
               <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed mb-10">
                 <p>
                   Our personnel have hundreds of years of combined injection well experience and are familiar with state and federal regulators throughout the country. Petrotek offers engineering and geology services where licensed. On a continual basis, our staff provides technical consulting and field services regarding a wide variety of issues to ensure the continued safe and responsible operation of all classes of waste injection wells.
-                </p>
+                </p><br></br>
                 <p>
                   Petrotek staff are experienced with deepwell permitting issues related to existing and new facilities throughout the United States, providing underground injection control (UIC) permits and Land Ban Petitions that have been accepted by state and federal regulatory agencies.
                 </p>
