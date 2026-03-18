@@ -14,7 +14,8 @@ import {
   CloudRain,
   HardHat,
   Pickaxe,
-  Recycle
+  Recycle,
+  Leaf
 } from 'lucide-react';
 import ReCAPTCHA from "react-google-recaptcha";
 import emailjs from '@emailjs/browser';
@@ -167,7 +168,7 @@ const services = [
     { 
       title: "Carbon Capture (CO2CCS)", 
       description: "Petrotek is a leader in conducting CCS feasibility studies and preparing Class VI UIC permits. We evaluate options for tax equity partnerships.", 
-      icon: <CloudRain className="w-8 h-8" />, 
+      icon: <Leaf className="w-8 h-8" />, 
       link: "/carbon-capture",
       accent: "#22C55E" // Green (Tailwind green-500)
     },

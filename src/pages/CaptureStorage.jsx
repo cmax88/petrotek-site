@@ -9,6 +9,7 @@ import {
   HelpCircle,
   Plus,
   Minus,
+  Leaf,
   ChevronRight
 } from 'lucide-react';
 
@@ -107,7 +108,7 @@ const CaptureStorage = () => {
           {/* Header Section */}
           <div className="mb-12">
             <div className="mb-6 p-4 bg-gray-50 inline-block rounded-2xl border border-gray-100 shadow-sm">
-              <CloudRain className="w-10 h-10" style={{ color: maroon }} />
+              <Leaf className="w-10 h-10" style={{ color: maroon }} />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Carbon Capture & Storage (CCS)</h1>
             <p className="text-xl text-[#22C55E] font-bold mb-6">Geologic Sequestration and Class VI Permitting</p>
