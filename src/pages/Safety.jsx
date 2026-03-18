@@ -127,7 +127,6 @@ const Safety = () => {
                 <img 
                   src="/safety.jpg" 
                   alt="Petrotek Field Operations" 
-                  className="w-auto h-auto object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
             </div>

@@ -189,7 +189,6 @@ const MiningAndISR = () => {
                 <img 
                   src="/mining.jpg" 
                   alt="Petrotek Field Operations" 
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
             </div>

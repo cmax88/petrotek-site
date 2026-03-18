@@ -66,7 +66,7 @@ const ImageModal = ({ src, alt, isOpen, onClose }) => {
         <X size={28} />
       </button>
 
-      {/* Controls Overlay */}
+      {/* Controls Overlay - Force user to use these to zoom */}
       <div 
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/40 backdrop-blur-xl p-2 rounded-2xl border border-white/10 z-[10001] shadow-2xl"
         onClick={(e) => e.stopPropagation()}
@@ -97,9 +97,11 @@ const ImageModal = ({ src, alt, isOpen, onClose }) => {
           className="max-w-[90%] max-h-[90%] object-contain transition-transform duration-200 ease-out select-none"
           style={{ 
             transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
-            cursor: scale > 1 ? (isDragging ? 'grabbing' : 'grab') : 'zoom-in'
+            // Set the cursor to a default state, and allow for 'grab' when scaled in.
+            cursor: scale > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default'
           }}
           draggable="false"
+          // Removed onClick handler that previously allowed for click-to-zoom
         />
       </div>
     </div>
