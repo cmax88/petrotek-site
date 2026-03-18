@@ -13,7 +13,8 @@ import {
   Droplet,
   CloudRain,
   HardHat,
-  Pickaxe
+  Pickaxe,
+  Recycle
 } from 'lucide-react';
 import ReCAPTCHA from "react-google-recaptcha";
 import emailjs from '@emailjs/browser';
@@ -142,11 +143,19 @@ const services = [
       accent: "#8B1E3F" // Maroon
     },
     { 
-      title: "ISR Uranium and Copper", 
-      description: "Our experience in ISR uranium and copper mining spans more than 28 years and includes hydrogeological characterization and aquifer exemptions.", 
+      title: "Landill Leachate Services", 
+      description: "Expert engineering and geological services for Class I deep well injection. We help landfill operators secure reliable, high-capacity leachate disposal solutions that meet rigorous UIC standards.", 
+      icon: <Recycle className="w-8 h-8" />, 
+      link: "/leachate-services",
+      accent: "#28beb2"
+    },
+    { 
+      // MERGED ITEM
+      title: "ISR and Conventional Mining", 
+      description: "Over 30 years of experience in groundwater characterization and modeling for both In-Situ Recovery (Uranium/Copper) and hard rock mining operations.", 
       icon: <UraniumIcon className="w-8 h-8" />, 
-      link: "/isr-uranium",
-      accent: "#EAB308" // Yellow (Tailwind yellow-500)
+      link: "/mining-and-isr", // Update this to your new route
+      accent: "#EAB308" 
     },
     { 
       title: "Oil and Gas", 
@@ -168,13 +177,6 @@ const services = [
       icon: <HardHat className="w-8 h-8" />, 
       link: "/safety",
       accent: "#F97316" // Orange (Tailwind orange-500)
-    },
-    { 
-      title: "Mining", 
-      description: "We have more than thirty years of experience in the mining industry related to groundwater characterization and modeling.", 
-      icon: <Pickaxe className="w-8 h-8" />, 
-      link: "/mining",
-      accent: "#78350F" // Brown (Tailwind amber-900)
     }
   ];
 

@@ -13,10 +13,10 @@ import Publications from './pages/Publications';
 
 // Service Page Imports
 import InjectionWells from './pages/InjectionWells';
+import Leachate from './pages/Leachate';
 import CaptureStorage from './pages/CaptureStorage';
 import OilGas from './pages/OilGas';
-import ISR from './pages/ISR';
-import Mining from './pages/Mining';
+import MiningAndISR from './pages/MiningAndISR';
 import Safety from './pages/Safety';
 
 const App = () => {
@@ -34,10 +34,10 @@ const App = () => {
           {/* Service Routes */}
           {/* You can choose to make these /services/mining or just /mining */}
           <Route path="injection-wells" element={<InjectionWells />} />
+          <Route path="/leachate-services" element={<Leachate />} />
           <Route path="carbon-capture" element={<CaptureStorage />} />
           <Route path="oil-and-gas" element={<OilGas />} />
-          <Route path="isr-uranium" element={<ISR />} />
-          <Route path="mining" element={<Mining />} />
+          <Route path="/mining-and-isr" element={<MiningAndISR />} />
           <Route path="safety" element={<Safety />} />
 
         </Route>

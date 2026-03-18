@@ -151,11 +151,11 @@ const Layout = () => {
 
   const services = [
     { title: "Injection Wells", id: "/injection-wells" },
-    { title: "ISR Uranium", id: "/isr-uranium" },
+    { title: "Leachate Services", id: "/leachate-services" },
+    { title: "Mining & ISR", id: "/mining-and-isr" },
     { title: "Oil & Gas", id: "/oil-and-gas" },
     { title: "Carbon Capture", id: "/carbon-capture" },
-    { title: "Safety", id: "/safety" },
-    { title: "Mining", id: "/mining" }
+    { title: "Safety", id: "/safety" }
   ];
 
   const handleContactClick = () => {
