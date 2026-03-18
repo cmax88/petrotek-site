@@ -96,6 +96,42 @@ const Home = () => {
     }
   };
 
+// Counter State
+// 1. Initialize the states for the numbers
+  const [counts, setCounts] = useState({ clients: 0, projects: 0 });
+  const [hasCounted, setHasCounted] = useState(false);
+  
+  // 2. Define the ref to fix the 'ReferenceError'
+  const statsRef = useRef(null);
+
+  // 3. The Counter Animation Logic
+  useEffect(() => {
+    // Trigger when the Scrollspy highlights 'clientsserved' in the nav
+    if (activeSection === 'clientsserved' && !hasCounted) {
+      setHasCounted(true);
+      
+      let frame = 0;
+      const duration = 5000; // Animation lasts 2 seconds
+      const frameDuration = 1000 / 60; // 60fps
+      const totalFrames = Math.round(duration / frameDuration);
+      
+      const timer = setInterval(() => {
+        frame++;
+        const progress = frame / totalFrames;
+        
+        // Apple-style ease-out formula (fast start, smooth finish)
+        const easeOut = 1 - Math.pow(1 - progress, 4); 
+        
+        setCounts({
+          clients: Math.floor(easeOut * 100),
+          projects: Math.floor(easeOut * 300)
+        });
+
+        if (frame === totalFrames) clearInterval(timer);
+      }, frameDuration);
+    }
+  }, [activeSection, hasCounted]);
+
   const handleFormSubmit = (e) => {
     e.preventDefault();
     
@@ -395,20 +431,54 @@ const industries = [
         </div>
       </section>
 
-      {/* Client Map Section */}
-      <section id="clientsserved" className="py-20 bg-gray-50 border-y border-gray-100 scroll-mt-20">
-        <div className="container mx-auto px-6 text-center">
-          <div className="mb-12">
-            <Globe className="w-12 h-12 mx-auto mb-4 opacity-80" style={{ color: maroon }} />
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Clients Served</h2>
+      {/* Client Map & Stats Section */}
+      <section id="clientsserved" className="py-24 bg-white relative overflow-hidden scroll-mt-20">
+        <div className="container mx-auto px-6 relative z-10">
+          <div className="text-center mb-20">
+            <Globe className="w-12 h-12 mx-auto mb-4" style={{ color: maroon }} />
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Clients Served</h2>
             <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: maroon }}></div>
-            <p className="max-w-2xl mx-auto text-lg text-gray-700">Petrotek serves a diverse range of clients across North America and beyond, providing specialized engineering and geological expertise.</p>
+            <p className="max-w-2xl mx-auto text-lg text-gray-600 leading-relaxed">
+              Petrotek provides specialized engineering for complex subsurface challenges across North America and beyond.
+            </p>
           </div>
-          <div className="relative max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-2xl border border-gray-100">
+
+          {/* Numerical Stats - No Boxes, Centered Typography */}
+          <div ref={statsRef} className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-32 mb-20">
+            <div className="text-center">
+              <div 
+                className="text-7xl md:text-8xl font-black tracking-tighter mb-2 transition-all duration-300" 
+                style={{ 
+                  color: maroon
+                }}
+              >
+                {counts.clients}+
+              </div>
+              <div className="text-sm font-bold uppercase tracking-[0.3em] text-gray-400">Clients Served</div>
+            </div>
+            
+            <div className="hidden md:block w-px h-24 bg-gray-100"></div>
+
+            <div className="text-center">
+              <div 
+                className="text-7xl md:text-8xl font-black tracking-tighter mb-2 transition-all duration-300" 
+                style={{ 
+                  color: maroon,
+                }}
+              >
+                {counts.projects}+
+              </div>
+              <div className="text-sm font-bold uppercase tracking-[0.3em] text-gray-400">Projects Supported</div>
+            </div>
+          </div>
+
+          {/* Map Container - Large Radius Glass Look */}
+          <div className="relative max-w-5xl mx-auto rounded-[1rem] overflow-hidden shadow-2xl border border-gray-100 bg-white group">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/10 pointer-events-none"></div>
             <img 
               src="/PEC Client Map.png" 
               alt="Client Map" 
-              className="w-full h-full"
+              className="w-full h-auto object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 ease-in-out"
               onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=2000"; }}
             />
           </div>
