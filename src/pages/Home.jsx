@@ -279,42 +279,68 @@ const industries = [
     </div>
   </div>
 
-  {/* 2. Slogan Section */}
-  <div 
-    className="w-full h-[15%] flex justify-center items-center" 
-    style={{ backgroundColor: maroon }}
-  >
-    <div className="text-center px-4 md:px-6">
-      <p 
-        className="text-lg md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold py-2 md:py-3 [@media(min-width:1600px)]:py-5 px-6 md:px-12 [@media(min-width:1600px)]:px-24 border-white/20 leading-tight inline-block"
+      {/* 2. Slogan Section - Fixed 15% height */}
+      <div 
+        className="w-full h-[15%] flex justify-center items-center overflow-hidden" 
+        style={{ backgroundColor: maroon }}
       >
-        Building Relationships. Solving Problems. Adding Value.
-      </p>
-    </div>
-  </div>
+        <div className="w-full px-4 md:px-12 lg:px-20 mx-auto max-w-[2000px] h-full flex items-center">
+          {/* Grid Logic:
+              - Mobile: Stacked with smaller gaps and fluid font scaling
+              - Desktop: Side-by-side with borders
+          */}
+          <div className="grid grid-cols-1 md:grid-cols-3 w-full items-center gap-y-1 md:gap-y-0">
+            
+            {/* Slot 1 */}
+            <div className="flex items-center justify-center md:border-r md:border-white/20 px-2">
+              <span className="text-[5vw] md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold tracking-tight text-center leading-tight">
+                Building Relationships
+              </span>
+            </div>
+
+            {/* Slot 2 */}
+            <div className="flex items-center justify-center md:border-r md:border-white/20 px-2">
+              <span className="text-[5vw] md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold tracking-tight text-center leading-tight">
+                Solving Problems
+              </span>
+            </div>
+
+            {/* Slot 3 */}
+            <div className="flex items-center justify-center px-2">
+              <span className="text-[5vw] md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold tracking-tight text-center leading-tight">
+                Adding Value
+              </span>
+            </div>
+
+          </div>
+        </div>
+      </div>
 </header>
 
-      {/* Sticky Sub-Navigation */}
-      <nav id="section-nav" className="hidden md:block sticky top-[5rem] z-40 bg-white/70 backdrop-blur-xl border-b border-gray-100 shadow-sm overflow-x-auto whitespace-nowrap scrollbar-hide">
-        <div className="container mx-auto px-6 py-4 flex justify-center">
-          <ul className="flex items-center space-x-8 lg:space-x-12">
-            {subNavItems.map((item) => {
-              const isActive = activeSection === item.href.replace('#', '');
-              return (
-                <li key={item.name}>
-                  <button 
-                    onClick={() => scrollToId(item.href)}
-                    className={`text-xs lg:text-sm font-bold uppercase tracking-widest transition-colors relative group py-1 ${isActive ? 'text-[#8B1E3F]' : 'text-gray-500 hover:text-[#8B1E3F]'}`}
-                  >
-                    {item.name}
-                    <span className={`absolute bottom-0 left-0 h-0.5 bg-[#8B1E3F] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-                  </button>
-                </li>
-              );
-            })}
-          </ul>
-        </div>
-      </nav>
+{/* Sticky Sub-Navigation */}
+<nav 
+  id="section-nav" 
+  className="hidden md:block sticky top-[4rem] lg:top-[5rem] z-40 bg-white/80 backdrop-blur-xl border-b border-gray-100 shadow-sm overflow-x-auto whitespace-nowrap scrollbar-hide"
+>
+  <div className="container mx-auto px-6 flex justify-center">
+    <ul className="flex items-center space-x-8 lg:space-x-12">
+      {subNavItems.map((item) => {
+        const isActive = activeSection === item.href.replace('#', '');
+        return (
+          <li key={item.name}>
+            <button 
+              onClick={() => scrollToId(item.href)}
+              className={`text-xs lg:text-sm font-bold uppercase tracking-widest transition-colors relative group py-5 ${isActive ? 'text-[#8B1E3F]' : 'text-gray-500 hover:text-[#8B1E3F]'}`}
+            >
+              {item.name}
+              <span className={`absolute bottom-4 left-0 h-0.5 bg-[#8B1E3F] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+            </button>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</nav>
 
       {/* Sections */}
       <section id="whoweare" className="py-24 bg-gray-50 scroll-mt-20">
