@@ -180,7 +180,7 @@ const services = [
       accent: "#8B1E3F" // Maroon
     },
     { 
-      title: "Landill Leachate Services", 
+      title: "Landfill Leachate Services", 
       description: "Expert engineering and geological services for Class I deep well injection. We help landfill operators secure reliable, high-capacity leachate disposal solutions that meet rigorous UIC standards.", 
       icon: <Recycle className="w-8 h-8" />, 
       link: "/leachate-services",

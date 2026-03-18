@@ -153,8 +153,8 @@ const Layout = () => {
 
   const services = [
     { title: "Injection Wells", id: "/injection-wells" },
-    { title: "Leachate Services", id: "/leachate-services" },
-    { title: "Mining & ISR", id: "/mining-and-isr" },
+    { title: "Landfill Services", id: "/leachate-services" },
+    { title: "ISR & Mining", id: "/mining-and-isr" },
     { title: "Oil & Gas", id: "/oil-and-gas" },
     { title: "Carbon Capture", id: "/carbon-capture" },
     { title: "Safety", id: "/safety" }
