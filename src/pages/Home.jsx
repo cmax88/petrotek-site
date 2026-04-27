@@ -15,6 +15,7 @@ import {
   HardHat,
   Pickaxe,
   Recycle,
+  Rotate3d,
   Leaf
 } from 'lucide-react';
 import ReCAPTCHA from "react-google-recaptcha";
@@ -522,21 +523,39 @@ const industries = [
             <br></br>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {industries.map((item, index) => {
-            // Add a local state for each card to handle the flip toggle
             const [isFlipped, setIsFlipped] = useState(false);
+            const [hasInteracted, setHasInteracted] = useState(false);
+
+            const handleFlip = () => {
+              setIsFlipped(!isFlipped);
+              setHasInteracted(true);
+            };
 
             return (
               <div 
                 key={index} 
                 className="group h-[280px] [perspective:1000px] cursor-pointer"
-                onClick={() => setIsFlipped(!isFlipped)}
+                onClick={handleFlip}
               >
                 <div className={`relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''} md:group-hover:[transform:rotateY(180deg)]`}>
                   
                   {/* Front Side */}
                   <div className="absolute inset-0 h-full w-full rounded-xl overflow-hidden shadow-sm [backface-visibility:hidden]">
                     <img src={item.img} alt={item.name} className="h-full w-full object-cover" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex items-end p-4">
+                    
+                    {/* Flip Indicator Icon */}
+                    <div className="absolute top-3 right-3 bg-black/40 backdrop-blur-md p-1.5 rounded-full text-white/80 md:hidden">
+                      <Rotate3d className="w-3 h-3 animate-pulse" />
+                    </div>
+
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4">
+                      {/* Pulsing Hint for Mobile - Disappears after first tap */}
+                      {!hasInteracted && (
+                        <span className="text-[10px] text-white/60 uppercase tracking-widest mb-2 md:hidden animate-pulse">
+                          Tap to flip
+                        </span>
+                      )}
+                      
                       <div className="flex items-center space-x-2 text-white">
                         <CheckCircle2 className="w-4 h-4" style={{ color: maroon }} />
                         <span className="text-sm font-bold">{item.name}</span>
@@ -550,7 +569,7 @@ const industries = [
                     <p className="text-[11px] text-gray-600">Subsurface engineering for {item.name.toLowerCase()}.</p>
                     <button 
                       onClick={(e) => {
-                        e.stopPropagation(); // Prevents the card from flipping back when clicking the button
+                        e.stopPropagation();
                         scrollToId('#contact');
                       }} 
                       className="mt-4 text-[10px] font-bold uppercase tracking-widest border-b border-[#8B1E3F]" 
