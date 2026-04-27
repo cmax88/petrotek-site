@@ -21,7 +21,7 @@ const Safety = () => {
 
   const safetyCommitments = [
     { title: "Wellsite Excellence", icon: <HardHat className="w-5 h-5" />, text: "Maintain safe and healthy wellsite workplaces for our employees, contractors, and clients." },
-    { title: "Rigorous Training", icon: <Users className="w-5 h-5" />, text: "Provide appropriate HSE training to our staff including OSHA, Wild Well Control, and PEC Safeland." },
+    { title: "Rigorous Training", icon: <Users className="w-5 h-5" />, text: "Provide appropriate HSE training to our staff for operations under many different regulatory bodies, clients, locations, and conditions." },
     { title: "Field Readiness", icon: <ShieldCheck className="w-5 h-5" />, text: "Provide appropriate PPE and perform daily job hazard assessments during all field activities." },
     { title: "Stop Work Authority", icon: <AlertTriangle className="w-5 h-5" />, text: "Ensuring all employees understand they have the authority to stop any task to prevent an unsafe act." },
     { title: "Continuous Improvement", icon: <Activity className="w-5 h-5" />, text: "Periodically review and update HSE procedures to ensure they comply with evolving client requirements." },

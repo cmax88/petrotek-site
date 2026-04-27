@@ -123,8 +123,8 @@ const Home = () => {
         const easeOut = 1 - Math.pow(1 - progress, 4); 
         
         setCounts({
-          clients: Math.floor(easeOut * 100),
-          projects: Math.floor(easeOut * 300)
+          clients: Math.floor(easeOut * 270),
+          projects: Math.floor(easeOut * 1200)
         });
 
         if (frame === totalFrames) clearInterval(timer);
@@ -219,14 +219,14 @@ const services = [
 
 const industries = [
     // TIER 1: PRIMARY FOCUS (Waste & Landfills)
-    { name: "Waste Management", img: "https://images.unsplash.com/photo-1604187351574-c75ca79f5807?q=80&w=1170&auto=format&fit=crop" },
+    { name: "Landfill Services", img: "https://img.canarymedia.com/content/uploads/coffin-butte-hero.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=1492&q=80&w=3360&s=cfb58f4b133c5cdb0328a2411fac82fc" },
     { name: "Environmental Remediation", img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=400" },
     { name: "Municipal Water Supply", img: "https://images.unsplash.com/photo-1600965487524-8b8c37f6c394?q=80&w=1170&auto=format&fit=crop" },
 
     // TIER 2: HIGH-STAKE INDUSTRIAL & RESOURCES
     { name: "Chemical Plants", img: "https://images.unsplash.com/photo-1704130092069-30ae33e2def0?q=80&w=1170&auto=format&fit=crop" },
     { name: "Oil and Gas", img: "https://images.unsplash.com/photo-1516199423456-1f1e91b06f25?q=80&w=1149&auto=format&fit=crop" },
-    { name: "Mining", img: "https://images.unsplash.com/photo-1571223641822-b82408a0e705?q=80&w=1402&auto=format&fit=crop" },
+    { name: "Mining", img: "https://www.canadianminingjournal.com/wp-content/uploads/2022/06/xCamp-at-Denisons-Wheeler-River-project-in-Sask.png.pagespeed.ic.7Fv4LDs1Xx.webp" },
     { name: "Refineries", img: "https://images.unsplash.com/photo-1611581372056-30cf28a7bd2e?q=80&w=1074&auto=format&fit=crop" },
 
     // TIER 3: SPECIALIZED MANUFACTURING & ENERGY
@@ -272,7 +272,7 @@ const industries = [
 <header id="home" className="relative flex flex-col h-screen overflow-hidden bg-white">
   
   {/* 1. Background Image Container */}
-  <div className="relative h-[85%] w-full overflow-hidden bg-gray-900 shrink-0">
+  <div className="relative h-[90%] w-full overflow-hidden bg-gray-900 shrink-0">
     <div className="absolute inset-0 opacity-100 overflow-hidden">
       <div className="absolute inset-0 bg-black/20 z-10"></div>
         <img 
@@ -316,35 +316,31 @@ const industries = [
     </div>
   </div>
 
-      {/* 2. Slogan Section - Fixed 15% height */}
+      {/* 2. Slogan Section - Improved Responsive Text */}
       <div 
-        className="w-full h-[15%] flex justify-center items-center overflow-hidden" 
+        className="w-full h-[10%] min-h-[80px] flex justify-center items-center overflow-hidden" 
         style={{ backgroundColor: maroon }}
       >
         <div className="w-full px-4 md:px-12 lg:px-20 mx-auto max-w-[2000px] h-full flex items-center">
-          {/* Grid Logic:
-              - Mobile: Stacked with smaller gaps and fluid font scaling
-              - Desktop: Side-by-side with borders
-          */}
-          <div className="grid grid-cols-1 md:grid-cols-3 w-full items-center gap-y-1 md:gap-y-0">
+          <div className="grid grid-cols-1 md:grid-cols-3 w-full items-center gap-y-0 md:gap-y-0 h-full">
             
             {/* Slot 1 */}
-            <div className="flex items-center justify-center md:border-r md:border-white/20 px-2">
-              <span className="text-[5vw] md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold tracking-tight text-center leading-tight">
+            <div className="flex items-center justify-center h-full md:border-r md:border-white/20 px-2">
+              <span className="text-[1rem] sm:text-[1.25rem] md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold tracking-tight text-center leading-none">
                 Building Relationships
               </span>
             </div>
 
             {/* Slot 2 */}
-            <div className="flex items-center justify-center md:border-r md:border-white/20 px-2">
-              <span className="text-[5vw] md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold tracking-tight text-center leading-tight">
+            <div className="flex items-center justify-center h-full md:border-r md:border-white/20 px-2">
+              <span className="text-[1rem] sm:text-[1.25rem] md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold tracking-tight text-center leading-none">
                 Solving Problems
               </span>
             </div>
 
             {/* Slot 3 */}
-            <div className="flex items-center justify-center px-2">
-              <span className="text-[5vw] md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold tracking-tight text-center leading-tight">
+            <div className="flex items-center justify-center h-full px-2">
+              <span className="text-[1rem] sm:text-[1.25rem] md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold tracking-tight text-center leading-none">
                 Adding Value
               </span>
             </div>
@@ -380,21 +376,42 @@ const industries = [
 </nav>
 
       {/* Sections */}
+      {/* Who We Are Section */}
       <section id="whoweare" className="py-24 bg-gray-50 scroll-mt-20">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Who We Are</h2>
               <div className="w-24 h-1 mb-8" style={{ backgroundColor: maroon }}></div>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">Petrotek Corporation is a results-oriented firm that specializes in engineering evaluation and field operations regarding subsurface fluid flow and injection well projects.</p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">Our company was founded in 1993 with a mission of providing cost-effective contract services to industrial and governmental clients. Our firm takes pride in meeting that goal with the highest degree of integrity and professionalism.</p>
-              <div className="flex items-center space-x-6">
+              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+                Petrotek Corporation is a results-oriented firm that specializes in engineering evaluation and field operations regarding subsurface fluid flow and injection well projects.
+              </p>
+              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+                Our company was founded in 1993 with a mission of providing cost-effective contract services to industrial and governmental clients. Our firm takes pride in meeting that goal with the highest degree of integrity and professionalism.
+              </p>
+              
+              <div className="flex items-center space-x-6 mb-8">
                 <img src={anniversaryGraphic} alt="33 Years" className="w-20 h-20 grayscale brightness-0 opacity-100" />
-                <span className="text-lg font-bold text-gray-800 uppercase tracking-wider border-l-2 border-[#8B1E3F] pl-6">Over Three Decades of <br /> Professional Excellence</span>
+                <span className="text-lg font-bold text-gray-800 uppercase tracking-wider border-l-2 border-[#8B1E3F] pl-6">
+                  Over Three Decades of <br /> Professional Excellence
+                </span>
+              </div>
+
+              {/* Short Mission Box */}
+              <div className="p-6 rounded-lg text-white" style={{ backgroundColor: maroon }}>
+                <p className="text-lg font-bold leading-tight">
+                  Our mission is to provide industry-leading technical expertise and innovative subsurface solutions for every client, every time.
+                </p>
               </div>
             </div>
-            <div className="flex justify-center">
-              <img src="https://petrotek.com/wp-content/uploads/elementor/thumbs/Injection-Well-3D-qg3dwrpdvagdnjryarnr1gnw6cokhg4cmbgdmeshz4.png" alt="3D Model" className="rounded-lg shadow-2xl w-full max-w-sm h-auto" />
+
+            {/* Enlarged, "clean" image container */}
+            <div className="flex justify-center items-center">
+              <img 
+                src="https://petrotek.com/wp-content/uploads/elementor/thumbs/Injection-Well-3D-qg3dwrpdvagdnjryarnr1gnw6cokhg4cmbgdmeshz4.png" 
+                alt="3D Model" 
+                className="w-full max-w-xl h-auto drop-shadow-xl" // Increased to max-w-xl, removed shadow/border classes
+              />
             </div>
           </div>
         </div>
@@ -408,22 +425,26 @@ const industries = [
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div key={index} className="group p-8 bg-white/40 backdrop-blur-sm border border-white/20 rounded-2xl shadow-sm hover:shadow-2xl hover:bg-white/60 transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
+              <div key={index} className="group p-8 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
                 
-                {/* This container sets the color for both Lucide and Custom Mask icons */}
-                <div className="mb-6" style={{ color: service.accent }}>
-                  {service.icon}
+                {/* Icon Container: Larger size with a subtle background "halo" */}
+                <div className="mb-8 relative inline-flex items-center justify-center w-20 h-20 rounded-2xl transition-transform duration-500 group-hover:scale-110" style={{ backgroundColor: `${service.accent}15` }}> 
+                  {/* The "15" at the end of the hex adds ~8% transparency for a soft background tint */}
+                  <div style={{ color: service.accent }}>
+                    {/* Cloning the icon to force a larger size */}
+                    {React.cloneElement(service.icon, { className: "w-10 h-10 stroke-[1.5]" })}
+                  </div>
                 </div>
 
-                <h3 className="text-xl font-bold mb-4 text-gray-800">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed mb-6 flex-grow">{service.description}</p>
+                <h3 className="text-2xl font-extrabold mb-4 text-gray-900 tracking-tight">{service.title}</h3>
+                <p className="text-gray-600 leading-relaxed mb-6 flex-grow text-lg">{service.description}</p>
                 
                 <Link 
                   to={service.link} 
-                  className="flex items-center text-sm font-bold uppercase tracking-wider group-hover:underline" 
+                  className="flex items-center text-sm font-bold uppercase tracking-widest group-hover:gap-2 transition-all" 
                   style={{ color: service.accent }}
                 >
-                  Learn More <ChevronRight className="w-4 h-4 ml-1" />
+                  Learn More <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
             ))}
@@ -432,7 +453,7 @@ const industries = [
       </section>
 
       {/* Client Map & Stats Section */}
-      <section id="clientsserved" className="py-24 bg-white relative overflow-hidden scroll-mt-20">
+      <section id="clientsserved" className="py-24 bg-gray-50 relative overflow-hidden scroll-mt-20">
         <div className="container mx-auto px-6 relative z-10">
           <div className="text-center mb-20">
             <Globe className="w-12 h-12 mx-auto mb-4" style={{ color: maroon }} />
