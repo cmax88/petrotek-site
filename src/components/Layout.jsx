@@ -292,7 +292,7 @@ const Layout = () => {
           </div>
           <div className="pt-12 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center gap-6">
             <p className="text-[10px] uppercase tracking-widest text-gray-600">&copy; {new Date().getFullYear()} Petrotek Engineering Corporation</p>
-            <p className="text-[10px] font-bold text-white uppercase tracking-[0.3em] italic opacity-60">Building Relationships. Solving Problems. Adding Value.</p>
+            <p className="text-[10px] font-bold text-white uppercase tracking-[0.3em] italic opacity-60">Building Relationships | Solving Problems | Adding Value</p>
           </div>
         </div>
       </footer>

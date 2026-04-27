@@ -316,31 +316,36 @@ const industries = [
     </div>
   </div>
 
-      {/* 2. Slogan Section - Improved Responsive Text */}
+      {/* 2. Slogan Section - Forced Single Line with Inset Separators */}
       <div 
-        className="w-full h-[10%] min-h-[80px] flex justify-center items-center overflow-hidden" 
+        className="w-full h-[10%] min-h-[60px] flex justify-center items-center overflow-hidden" 
         style={{ backgroundColor: maroon }}
       >
-        <div className="w-full px-4 md:px-12 lg:px-20 mx-auto max-w-[2000px] h-full flex items-center">
-          <div className="grid grid-cols-1 md:grid-cols-3 w-full items-center gap-y-0 md:gap-y-0 h-full">
+        <div className="w-full px-2 sm:px-6 md:px-12 lg:px-20 mx-auto max-w-[2000px] h-full flex items-center">
+          
+          <div className="flex flex-row w-full items-center justify-evenly h-full">
             
             {/* Slot 1 */}
-            <div className="flex items-center justify-center h-full md:border-r md:border-white/20 px-2">
-              <span className="text-[1rem] sm:text-[1.25rem] md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold tracking-tight text-center leading-none">
+            <div className="flex-1 flex items-center justify-center h-full relative px-1">
+              <span className="text-[2.8vw] sm:text-[2.5vw] md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold tracking-tighter sm:tracking-tight text-center leading-none">
                 Building Relationships
               </span>
+              {/* Separator Line */}
+              <div className="absolute right-0 h-1/2 w-px bg-white/30"></div>
             </div>
 
             {/* Slot 2 */}
-            <div className="flex items-center justify-center h-full md:border-r md:border-white/20 px-2">
-              <span className="text-[1rem] sm:text-[1.25rem] md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold tracking-tight text-center leading-none">
+            <div className="flex-1 flex items-center justify-center h-full relative px-1">
+              <span className="text-[2.8vw] sm:text-[2.5vw] md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold tracking-tighter sm:tracking-tight text-center leading-none">
                 Solving Problems
               </span>
+              {/* Separator Line */}
+              <div className="absolute right-0 h-1/2 w-px bg-white/30"></div>
             </div>
 
             {/* Slot 3 */}
-            <div className="flex items-center justify-center h-full px-2">
-              <span className="text-[1rem] sm:text-[1.25rem] md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold tracking-tight text-center leading-none">
+            <div className="flex-1 flex items-center justify-center h-full px-1">
+              <span className="text-[2.8vw] sm:text-[2.5vw] md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold tracking-tighter sm:tracking-tight text-center leading-none">
                 Adding Value
               </span>
             </div>
