@@ -521,9 +521,19 @@ const industries = [
             <p className="text-lg text-gray-600 italic">Some of the industries we serve include:</p>
             <br></br>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-            {industries.map((item, index) => (
-              <div key={index} className="group h-[280px] [perspective:1000px]">
-                <div className="relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] group-hover:[transform:rotateY(180deg)]">
+          {industries.map((item, index) => {
+            // Add a local state for each card to handle the flip toggle
+            const [isFlipped, setIsFlipped] = useState(false);
+
+            return (
+              <div 
+                key={index} 
+                className="group h-[280px] [perspective:1000px] cursor-pointer"
+                onClick={() => setIsFlipped(!isFlipped)}
+              >
+                <div className={`relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''} md:group-hover:[transform:rotateY(180deg)]`}>
+                  
+                  {/* Front Side */}
                   <div className="absolute inset-0 h-full w-full rounded-xl overflow-hidden shadow-sm [backface-visibility:hidden]">
                     <img src={item.img} alt={item.name} className="h-full w-full object-cover" />
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent flex items-end p-4">
@@ -533,14 +543,26 @@ const industries = [
                       </div>
                     </div>
                   </div>
+
+                  {/* Back Side */}
                   <div className="absolute inset-0 h-full w-full rounded-xl bg-gray-50 p-6 flex flex-col justify-center items-center text-center [backface-visibility:hidden] [transform:rotateY(180deg)] border-2" style={{ borderColor: maroon }}>
                     <h3 className="text-base font-bold mb-2 uppercase" style={{ color: maroon }}>{item.name}</h3>
                     <p className="text-[11px] text-gray-600">Subsurface engineering for {item.name.toLowerCase()}.</p>
-                    <button onClick={() => scrollToId('#contact')} className="mt-4 text-[10px] font-bold uppercase tracking-widest border-b border-[#8B1E3F]" style={{ color: maroon }}>Inquire</button>
+                    <button 
+                      onClick={(e) => {
+                        e.stopPropagation(); // Prevents the card from flipping back when clicking the button
+                        scrollToId('#contact');
+                      }} 
+                      className="mt-4 text-[10px] font-bold uppercase tracking-widest border-b border-[#8B1E3F]" 
+                      style={{ color: maroon }}
+                    >
+                      Inquire
+                    </button>
                   </div>
                 </div>
               </div>
-            ))}
+            );
+          })}
           </div>
         </div>
       </section>
