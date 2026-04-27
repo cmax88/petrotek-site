@@ -542,11 +542,6 @@ const industries = [
                   {/* Front Side */}
                   <div className="absolute inset-0 h-full w-full rounded-xl overflow-hidden shadow-sm [backface-visibility:hidden]">
                     <img src={item.img} alt={item.name} className="h-full w-full object-cover" />
-                    
-                    {/* Flip Indicator Icon */}
-                    <div className="absolute top-3 right-3 bg-black/40 backdrop-blur-md p-1.5 rounded-full text-white/80 md:hidden">
-                      <Rotate3d className="w-3 h-3 animate-pulse" />
-                    </div>
 
                     <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4">
                       {/* Pulsing Hint for Mobile - Disappears after first tap */}
