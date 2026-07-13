@@ -1,3 +1,4 @@
+// src/pages/Publications.jsx
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
@@ -7,7 +8,8 @@ import {
   Download, 
   User, 
   Mail,
-  ArrowUp
+  ArrowUp,
+  X // Added X for the modal close button
 } from 'lucide-react';
 
 const Publications = () => {
@@ -15,6 +17,9 @@ const Publications = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
   const [showBackToTop, setShowBackToTop] = useState(false);
+  
+  // New state for the modal
+  const [selectedPub, setSelectedPub] = useState(null);
 
   useEffect(() => {
     const handleScroll = () => setShowBackToTop(window.scrollY > 400);
@@ -28,7 +33,14 @@ const Publications = () => {
       authors: "Kerr, C., Cooper, K.J., and Wandke, L.", 
       citation: "presented at the 2026 Ground Water Protection Council Annual UIC Conference, February 12, 2026; Fort Worth, Texas.", 
       year: 2026, 
-      tags: ["Engineering", "Class I"] 
+      tags: ["Engineering", "Class I"],
+      abstract: (
+      <>
+        <p>The injection of fluids into the subsurface through a well results in an increase in downhole reservoir pressure due to the compression of resident fluids due to the fluid mass added to the injection zone pore space. The distribution, magnitude, and speed at which pressure rise propagates through the reservoir are the result of a combination of fluid and rock properties, elapsed time, well location, and boundary conditions. How pressure propagates through a reservoir is also a function of how a well of interest is operated, but can be altered by the operation of offset wells injecting into the same reservoir. Pressure interference from offset wells can influence apparent well injectivity, and with sufficient time and a close enough proximity, will alter the potentiometric surface of pressure rise in an injection reservoir. In some cases this can affect well test interpretation. In addition, boundary effects due to geologic heterogeneity in an injection reservoir can produce effects similar to an offset well. Since interference effects can vary from negligible to significant, understanding the circumstances under which they become important is critical for determining when they must be incorporated into well test analyses. In this sense, misconceptions may arise regarding the extent to which these factors influence well performance, reservoir behavior, and test results. Robust well test evaluations require that these influences are properly understood and are taken into consideration when they are important.</p> 
+        <br></br>
+        <p>There are many factors that contribute to well interference, and to address each in detail would exceed the allotted presentation time. Therefore, several of the most common and variable factors are discussed herein. This presentation provides an introduction to the fundamentals of pressure interference and more specifically, how it can influence apparent injectivity and well test results. Overviews of several common scenarios are outlined to demonstrate when offset wells might need to be considered in an analysis, and when their effects can be safely discounted without introducing significant uncertainty. Pressure distributions in reservoirs and associated controlling factors are described in terminology and with visual aids that will assist both technical and non-technical staff grasp the process of pressure interference. Examples are presented to illustrate real-world impacts on regulatory requirements and falloff test analyses. Practical observations about collecting data that characterizes these factors, and complications to be aware of, are presented based on Class I operating and falloff test analysis experience.</p>
+      </>
+      )
     },
     { 
       title: "Injection Well Seminar: A Primer for Injection Well Mechanical Integrity Testing", 
@@ -162,7 +174,11 @@ const Publications = () => {
         {/* List */}
         <div className="space-y-6">
           {filteredPubs.map((pub, idx) => (
-            <div key={idx} className="group p-8 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row gap-6">
+            <div 
+              key={idx} 
+              onClick={() => setSelectedPub(pub)}
+              className="group p-8 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-md transition-all flex flex-col md:flex-row gap-6 cursor-pointer"
+            >
               <div className="hidden md:flex flex-col items-center pt-1 w-16">
                 <div className="w-12 h-12 rounded-full bg-gray-50 flex items-center justify-center text-[#8B1E3F] mb-2 group-hover:bg-[#8B1E3F] group-hover:text-white transition-colors">
                   <FileText className="w-6 h-6" />
@@ -189,7 +205,10 @@ const Publications = () => {
               </div>
               <div className="md:self-center">
                 <button 
-                  onClick={() => setTimeout(() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'}), 100)}
+                  onClick={(e) => {
+                    e.stopPropagation(); // Prevents the modal from opening if they just click "Request"
+                    setTimeout(() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'}), 100);
+                  }}
                   className="flex items-center gap-2 text-xs font-bold uppercase text-gray-400 hover:text-[#8B1E3F] whitespace-nowrap"
                 >
                   Request <Download className="w-4 h-4" />
@@ -198,6 +217,70 @@ const Publications = () => {
             </div>
           ))}
         </div>
+
+        {/* Abstract Modal Overlay */}
+        {selectedPub && (
+          <div 
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm transition-opacity" 
+            onClick={() => setSelectedPub(null)}
+          >
+            <div 
+              className="bg-white w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300" 
+              onClick={(e) => e.stopPropagation()} // Prevents clicks inside the modal from closing it
+            >
+              <div className="p-8 md:p-12 relative max-h-[90vh] overflow-y-auto">
+                <button 
+                  onClick={() => setSelectedPub(null)}
+                  className="absolute top-6 right-6 p-2 hover:bg-gray-100 rounded-full transition-colors"
+                >
+                  <X className="w-6 h-6 text-gray-400" />
+                </button>
+
+                <div className="mb-8 border-b border-gray-100 pb-6 pr-8">
+                  <div className="flex flex-wrap items-center gap-2 mb-3">
+                    {selectedPub.tags.map(tag => (
+                      <span key={tag} className="px-2 py-0.5 bg-[#8B1E3F]/5 text-[#8B1E3F] text-[10px] font-black uppercase rounded">
+                        {tag}
+                      </span>
+                    ))}
+                    <span className="px-2 py-0.5 bg-gray-100 text-gray-500 text-[10px] font-black tracking-widest rounded ml-auto">
+                      {selectedPub.year}
+                    </span>
+                  </div>
+                  <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-4">{selectedPub.title}</h2>
+                  <div className="flex items-center text-gray-700 font-bold mb-2">
+                    <User className="w-5 h-5 mr-3 text-[#8B1E3F]" />
+                    {selectedPub.authors}
+                  </div>
+                  <p className="text-sm text-gray-500 italic border-l-2 border-gray-200 pl-3 ml-1 mt-3">
+                    {selectedPub.citation}
+                  </p>
+                </div>
+
+                <div className="space-y-6 text-gray-600 leading-relaxed">
+                  <h4 className="font-bold text-gray-900 uppercase tracking-widest text-sm flex items-center">
+                    <FileText className="w-4 h-4 mr-2 text-[#8B1E3F]" /> Abstract
+                  </h4>
+                  <p className="text-lg">
+                    {selectedPub.abstract || "The abstract for this publication is currently unavailable. Please contact us for more details or to request a full copy of the publication."}
+                  </p>
+
+                  <div className="pt-8 mt-8 border-t border-gray-100">
+                    <button
+                      onClick={() => {
+                        setSelectedPub(null);
+                        setTimeout(() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'}), 100);
+                      }}
+                      className="inline-flex items-center px-6 py-3 bg-[#8B1E3F] text-white font-bold rounded-lg hover:brightness-110 transition-all shadow-md"
+                    >
+                      Request Full Publication <Download className="w-4 h-4 ml-2" />
+                    </button>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
 
         {showBackToTop && (
           <button 
