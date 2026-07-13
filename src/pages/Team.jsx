@@ -131,7 +131,7 @@ const OurTeam = () => {
       name: "Don McLeod, B.S.",
       role: "Senior Process Engineer",
       education: "B.S. Chemical Engineering; MBA",
-      tags: ["Drilling", "Field Operations", "Class VI", "Well Planning"],
+      tags: [],
       bio: "Placeholder",
       personal: "Placeholder"
     },
@@ -163,7 +163,7 @@ const OurTeam = () => {
       name: "Michael Kinney, B.S.",
       role: "Wellsite Supervisor/Specialist",
       education: "B.S. Chemical Engineering, Colorado School of Mines",
-      tags: ["Water Recycling", "Uranium Mining", "Patents", "Process Engineering"],
+      tags: [],
       bio: "Placeholder",
       personal: "Placeholder"
     },
