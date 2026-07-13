@@ -189,9 +189,9 @@ const services = [
     },
     { 
       // MERGED ITEM
-      title: "ISR and Conventional Mining", 
+      title: "Mining", 
       description: "Over 30 years of experience in groundwater characterization and modeling for both In-Situ Recovery (Uranium/Copper) and hard rock mining operations.", 
-      icon: <UraniumIcon className="w-8 h-8" />, 
+      icon: <Pickaxe className="w-8 h-8" />, 
       link: "/mining-and-isr", // Update this to your new route
       accent: "#EAB308" 
     },
@@ -227,7 +227,7 @@ const industries = [
     // TIER 2: HIGH-STAKE INDUSTRIAL & RESOURCES
     { name: "Chemical Plants", img: "https://images.unsplash.com/photo-1704130092069-30ae33e2def0?q=80&w=1170&auto=format&fit=crop" },
     { name: "Oil and Gas", img: "https://images.unsplash.com/photo-1516199423456-1f1e91b06f25?q=80&w=1149&auto=format&fit=crop" },
-    { name: "Mining", img: "https://www.canadianminingjournal.com/wp-content/uploads/2022/06/xCamp-at-Denisons-Wheeler-River-project-in-Sask.png.pagespeed.ic.7Fv4LDs1Xx.webp" },
+    { name: "Mining", img: "/mining.jpg" },
     { name: "Refineries", img: "https://images.unsplash.com/photo-1611581372056-30cf28a7bd2e?q=80&w=1074&auto=format&fit=crop" },
 
     // TIER 3: SPECIALIZED MANUFACTURING & ENERGY
@@ -423,7 +423,7 @@ const industries = [
         </div>
       </section>
 
-      <section id="whatwedo" className="py-24 bg-white scroll-mt-20">
+<section id="whatwedo" className="py-24 bg-white scroll-mt-20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Core Capabilities</h2>
@@ -435,7 +435,6 @@ const industries = [
                 
                 {/* Icon Container: Larger size with a subtle background "halo" */}
                 <div className="mb-8 relative inline-flex items-center justify-center w-20 h-20 rounded-2xl transition-transform duration-500 group-hover:scale-110" style={{ backgroundColor: `${service.accent}15` }}> 
-                  {/* The "15" at the end of the hex adds ~8% transparency for a soft background tint */}
                   <div style={{ color: service.accent }}>
                     {/* Cloning the icon to force a larger size */}
                     {React.cloneElement(service.icon, { className: "w-10 h-10 stroke-[1.5]" })}
@@ -445,12 +444,13 @@ const industries = [
                 <h3 className="text-2xl font-extrabold mb-4 text-gray-900 tracking-tight">{service.title}</h3>
                 <p className="text-gray-600 leading-relaxed mb-6 flex-grow text-lg">{service.description}</p>
                 
+                {/* UPDATED BUTTON LINK */}
                 <Link 
                   to={service.link} 
-                  className="flex items-center text-sm font-bold uppercase tracking-widest group-hover:gap-2 transition-all" 
-                  style={{ color: service.accent }}
+                  className="inline-flex items-center w-max px-6 py-3 mt-auto text-sm font-bold text-white uppercase tracking-widest rounded-sm shadow-sm transition-all hover:brightness-110" 
+                  style={{ backgroundColor: service.accent }}
                 >
-                  Learn More <ChevronRight className="w-5 h-5 transition-transform group-hover:translate-x-1" />
+                  Learn More <ChevronRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
                 </Link>
               </div>
             ))}

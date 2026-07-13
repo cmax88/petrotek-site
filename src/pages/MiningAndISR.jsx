@@ -70,7 +70,7 @@ const MiningAndISR = () => {
           {/* Header & Tab Switcher */}
           <div className="mb-12">
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
-              {activeTab === 'isr' ? 'ISR Uranium & Copper' : 'Conventional Mining'}
+              {activeTab === 'isr' ? 'In-Situ Recovery: Uranium & Copper' : 'Conventional Mining'}
             </h1>
             
             <div className="flex flex-wrap gap-4 p-1 bg-gray-50 rounded-xl w-fit border border-gray-100 mb-8">
@@ -254,7 +254,7 @@ const MiningAndISR = () => {
 
 // Extracted Sub-component for Service Cards
 const ServiceCard = ({ service, color }) => (
-  <div className="p-8 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+  <div className="p-8 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow hover:border-[#EAB308]">
     <div className="flex items-center mb-6">
       <div className="p-2 rounded-lg bg-gray-50 mr-4" style={{ color }}>
         {service.icon}

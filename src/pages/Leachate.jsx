@@ -101,7 +101,7 @@ const Leachate = () => {
             <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Comprehensive Leachate Management</h2>
             <div className="grid md:grid-cols-2 gap-8">
               {leachateServices.map((service, idx) => (
-                <div key={idx} className="p-8 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow">
+                <div key={idx} className="p-8 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow hover:border-[#0D9488]">
                   <div className="flex items-center mb-6">
                     <div className="p-2 rounded-lg bg-gray-50 mr-4" style={{ color: themeColor }}>
                       {service.icon}

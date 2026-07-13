@@ -68,53 +68,53 @@ const Safety = () => {
 
           {/* Verified Compliance Badges */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-16"> {/* Changed grid columns and gap */}
-            {/* ISNetworld */}
-            <div className="flex flex-col items-center p-8 bg-white rounded-3xl border border-gray-100 shadow-xl hover:shadow-2xl transition-shadow text-center h-full"> {/* Made boxes vertical and much larger, added bigger shadows */}
-              <div className="w-32 h-20 flex items-center justify-center mb-6 no-zoom p-2"> {/* Made logo container significantly larger */}
+          {/* ISNetworld */}
+            <div className="flex flex-col items-center p-8 bg-white rounded-3xl border-2 border-gray-200 hover:border-[#F97316] shadow-xl hover:shadow-2xl transition-all duration-300 text-center h-full"> 
+              <div className="w-32 h-20 flex items-center justify-center mb-6 no-zoom p-2"> 
                 <img 
                   src="/isn.png" 
                   alt="ISNetworld Logo" 
-                  className="max-h-full max-w-full object-contain no-zoom" // Ensured logo fills container well
+                  className="max-h-full max-w-full object-contain no-zoom" 
                 />
               </div>
-              <div className="flex-grow flex flex-col justify-center"> {/* Added vertical alignment for content */}
-                <div className="text-xl font-bold text-gray-950 mb-3">ISNetworld®</div> {/* Increased name font size */}
-                <div className="text-sm text-green-700 font-extrabold flex items-center justify-center bg-green-50 px-4 py-2 rounded-full"> {/* Enhanced status bar */}
-                  <CheckCircle2 className="w-5 h-5 mr-2 stroke-[3]"/> Grade A Compliant
+              <div className="flex-grow flex flex-col justify-center w-full"> 
+                <div className="text-xl font-bold text-gray-950 mb-3">ISNetworld®</div> 
+                <div className="text-sm text-green-700 font-extrabold flex items-center justify-center bg-green-50 px-4 py-2 rounded-full w-full"> 
+                  Grade A Compliant
                 </div>
               </div>
             </div>
 
             {/* Avetta */}
-            <div className="flex flex-col items-center p-8 bg-white rounded-3xl border border-gray-100 shadow-xl hover:shadow-2xl transition-shadow text-center h-full"> {/* Made boxes vertical and much larger, added bigger shadows */}
-              <div className="w-32 h-20 flex items-center justify-center mb-6 no-zoom p-2"> {/* Made logo container significantly larger */}
+            <div className="flex flex-col items-center p-8 bg-white rounded-3xl border-2 border-gray-200 hover:border-[#F97316] shadow-xl hover:shadow-2xl transition-all duration-300 text-center h-full"> 
+              <div className="w-32 h-20 flex items-center justify-center mb-6 no-zoom p-2"> 
                 <img 
                   src="/avetta.png" 
                   alt="Avetta Logo" 
-                  className="max-h-full max-w-full object-contain no-zoom" // Ensured logo fills container well
+                  className="max-h-full max-w-full object-contain no-zoom" 
                 />
               </div>
-              <div className="flex-grow flex flex-col justify-center"> {/* Added vertical alignment for content */}
-                <div className="text-xl font-bold text-gray-950 mb-3">Avetta</div> {/* Increased name font size */}
-                <div className="text-sm text-green-700 font-extrabold flex items-center justify-center bg-green-50 px-4 py-2 rounded-full"> {/* Enhanced status bar */}
-                  <CheckCircle2 className="w-5 h-5 mr-2 stroke-[3]"/> Active Status
+              <div className="flex-grow flex flex-col justify-center w-full"> 
+                <div className="text-xl font-bold text-gray-950 mb-3">Avetta</div> 
+                <div className="text-sm text-green-700 font-extrabold flex items-center justify-center bg-green-50 px-4 py-2 rounded-full w-full"> 
+                  Active Status
                 </div>
               </div>
             </div>
 
             {/* DISA */}
-            <div className="flex flex-col items-center p-8 bg-white rounded-3xl border border-gray-100 shadow-xl hover:shadow-2xl transition-shadow text-center h-full"> {/* Made boxes vertical and much larger, added bigger shadows */}
-              <div className="w-32 h-20 flex items-center justify-center mb-6 no-zoom p-2"> {/* Made logo container significantly larger */}
+            <div className="flex flex-col items-center p-8 bg-white rounded-3xl border-2 border-gray-200 hover:border-[#F97316] shadow-xl hover:shadow-2xl transition-all duration-300 text-center h-full"> 
+              <div className="w-32 h-20 flex items-center justify-center mb-6 no-zoom p-2"> 
                 <img 
                   src="/disa.png" 
                   alt="DISA Logo" 
-                  className="max-h-full max-w-full object-contain no-zoom" // Ensured logo fills container well
+                  className="max-h-full max-w-full object-contain no-zoom" 
                 />
               </div>
-              <div className="flex-grow flex flex-col justify-center"> {/* Added vertical alignment for content */}
-                <div className="text-xl font-bold text-gray-950 mb-3">DISA</div> {/* Increased name font size */}
-                <div className="text-sm text-green-700 font-extrabold flex items-center justify-center bg-green-50 px-4 py-2 rounded-full"> {/* Enhanced status bar */}
-                  <CheckCircle2 className="w-5 h-5 mr-2 stroke-[3]"/> Active Status
+              <div className="flex-grow flex flex-col justify-center w-full"> 
+                <div className="text-xl font-bold text-gray-950 mb-3">DISA</div> 
+                <div className="text-sm text-green-700 font-extrabold flex items-center justify-center bg-green-50 px-4 py-2 rounded-full w-full"> 
+                  Active Status
                 </div>
               </div>
             </div>
@@ -137,7 +137,7 @@ const Safety = () => {
             <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Our Commitment to You</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {safetyCommitments.map((item, idx) => (
-                <div key={idx} className="p-8 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all group">
+                <div key={idx} className="p-8 hover:border-[#F97316] bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all group">
                   <div className="mb-4 p-3 bg-gray-50 rounded-lg w-fit transition-colors">
                     {React.cloneElement(item.icon, { className: "w-6 h-6 group-hover:text-white transition-colors", style: { color: maroon } })}
                   </div>

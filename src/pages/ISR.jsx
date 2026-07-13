@@ -53,7 +53,7 @@ const ISR = () => {
             <div className="mb-6 p-4 bg-gray-50 inline-block rounded-2xl border border-gray-100 shadow-sm text-[#EAB308]">
                 <UraniumIcon className="w-10 h-10" />
             </div>
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">ISR Uranium & Copper</h1>
+            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">In-Situ Recovery: Uranium & Copper</h1>
             <p className="text-xl text-[#EAB308] font-bold mb-6">Uniting Fluid Flow, Petroleum Engineering, and Hydrology</p>
             <div className="w-24 h-1 mb-8" style={{ backgroundColor: maroon }}></div>
           </div>

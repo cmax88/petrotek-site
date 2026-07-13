@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import { 
   ArrowRight, 
   CloudRain, 
-  CheckCircle2, 
   Info, 
   HelpCircle,
   Plus,
@@ -130,7 +129,8 @@ const CaptureStorage = () => {
                 <ul className="space-y-3">
                   {servicesList.map((item, i) => (
                     <li key={i} className="flex items-start">
-                      <CheckCircle2 className="w-5 h-5 mr-3 mt-0.5 text-[#22C55E] flex-shrink-0" />
+                      {/* Replaced CheckCircle2 with a custom styled bullet point */}
+                      <span className="w-2 h-2 mt-2 mr-3 bg-[#22C55E] rounded-full flex-shrink-0"></span>
                       <span className="text-gray-700 font-medium text-sm leading-relaxed">{item}</span>
                     </li>
                   ))}
@@ -156,7 +156,7 @@ const CaptureStorage = () => {
             
             <div className="space-y-4">
               {accordionData.map((item, index) => (
-                <div key={index} className="border border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white">
+                <div key={index} className="border border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white hover:border-[#22C55E]">
                   <button
                     onClick={() => toggleAccordion(index)}
                     className="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"

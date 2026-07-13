@@ -70,6 +70,8 @@ const InjectionWells = () => {
     {
       title: "Permitting and Feasibility",
       icon: <ClipboardCheck className="w-6 h-6" style={{ color: maroon }} />,
+      // ADDED BACKGROUND IMAGE HERE
+      bgImage: "https://www.napawatersheds.org/img/managed/AppPage/11088/image.jpg", 
       items: [
         "Permitting for all well classes (I, II, III, V, VI)",
         "Fluid flow and transport modeling",
@@ -83,6 +85,8 @@ const InjectionWells = () => {
     {
       title: "Well Testing and Assessment",
       icon: <Beaker className="w-6 h-6" style={{ color: maroon }} />,
+      // ADDED BACKGROUND IMAGE HERE
+      bgImage: "https://testwells.com/wp-content/uploads/simple-well-test-analysis-.jpg",
       items: [
         "Part I and Part II mechanical integrity testing",
         "Falloff/step-rate pressure transient testing",
@@ -94,6 +98,8 @@ const InjectionWells = () => {
     {
       title: "Field Operations",
       icon: <Settings className="w-6 h-6" style={{ color: maroon }} />,
+      // ADDED BACKGROUND IMAGE HERE
+      bgImage: "https://www.emag.com/blog/en/wp-content/uploads/sites/2/2025/06/Blog_How-does-it-work_drill-rig_1170x781-px-1024x684.jpg",
       items: [
         "Workovers, maintenance and repair",
         "Wellsite drilling and workover supervision",
@@ -105,6 +111,8 @@ const InjectionWells = () => {
     {
       title: "Operations and Regulatory Support",
       icon: <ShieldCheck className="w-6 h-6" style={{ color: maroon }} />,
+      // ADDED BACKGROUND IMAGE HERE
+      bgImage: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop",
       items: [
         "Operations and compliance training",
         "State and Federal monitoring reports",
@@ -296,26 +304,52 @@ const InjectionWells = () => {
                 alt="Injection Well Diagram" 
                 className="w-full h-full object-cover cursor-zoom-in"
               />
-              {/* ADDED pointer-events-none BELOW */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
             </div>
           </div>
           </div>
 
-          {/* Service Categories Grid */}
+          {/* Service Categories Grid - Image Top, Text Bottom */}
           <div className="grid md:grid-cols-2 gap-8 mb-20">
             {categories.map((cat, idx) => (
-              <div key={idx} className="bg-gray-50 p-8 rounded-2xl border border-gray-100 hover:shadow-lg transition-shadow">
-                <div className="mb-6 bg-white p-3 inline-block rounded-lg shadow-sm">{cat.icon}</div>
-                <h3 className="text-xl font-bold mb-6 text-gray-900">{cat.title}</h3>
-                <ul className="space-y-3">
-                  {cat.items.map((item, i) => (
-                    <li key={i} className="flex items-start">
-                      <CheckCircle2 className="w-4 h-4 mr-3 mt-1 text-[#8B1E3F] opacity-60 shrink-0" />
-                      <span className="text-gray-700 font-medium text-sm leading-relaxed">{item}</span>
-                    </li>
-                  ))}
-                </ul>
+              <div key={idx} className="flex flex-col group rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 bg-white shadow-sm hover:border-[#8B1E3F]">
+                
+                {/* Top Image Section */}
+                <div className="relative h-56 w-full overflow-hidden shrink-0">
+                  <img 
+                    src={cat.bgImage} 
+                    alt={cat.title} 
+                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+                  />
+                  {/* Subtle gradient to anchor the image */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+                </div>
+
+                {/* Bottom Content Section */}
+                <div className="relative p-8 flex flex-col flex-grow">
+                  
+                  {/* Floating Icon over the image seam */}
+                  <div className="absolute -top-8 left-8 bg-white p-4 rounded-xl shadow-md border border-gray-50 flex items-center justify-center">
+                    {React.cloneElement(cat.icon, { style: { color: maroon }, className: "w-7 h-7" })}
+                  </div>
+
+                  {/* Add top margin to account for the floating icon */}
+                  <h3 className="text-xl font-bold mb-6 mt-4 text-gray-900 transition-colors group-hover:text-[#8B1E3F]">
+                    {cat.title}
+                  </h3>
+                  
+                  <ul className="space-y-3 flex-grow">
+                    {cat.items.map((item, i) => (
+                      <li key={i} className="flex items-start">
+                        {/* Bullet Icon: Back to Maroon */}
+                        <CheckCircle2 className="w-4 h-4 mr-3 mt-1 shrink-0" style={{ color: maroon }} />
+                        {/* Text: Back to Gray */}
+                        <span className="text-gray-600 font-medium text-sm leading-relaxed">{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  
+                </div>
               </div>
             ))}
           </div>
