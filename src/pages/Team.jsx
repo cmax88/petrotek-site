@@ -6,21 +6,29 @@ import {
   GraduationCap, 
   X,
   ChevronRight,
-  Scale
+  Scale,
+  History
 } from 'lucide-react';
 
 const OurTeam = () => {
   const maroon = "#8B1E3F";
   // Logic: searchTerm state has been removed
   const [selectedMember, setSelectedMember] = useState(null);
+  const [showCredits, setShowCredits] = useState(false);
 
   const teamData = [
     {
       name: "Wes Janes, B.S., P.G.",
       role: "Operations Manager/Geologist and Principal",
       education: "B.S. Geology, University of South Alabama; M.S. Hydrogeology, Colorado School of Mines",
-      tags: ["Geology", "Field Operations", "Wellsite Supervision", "Texas", "Wyoming"],
-      bio: "Wes is one of the managing principals of Petrotek and serves as the Field Operations Manager. He holds a B.S. degree in Geology from the University of South Alabama. Wes has more than 21 years of experience with wellsite field work and the application of geology to permitting for all classes of well projects. He also has experience supervising well drilling, completion, testing and stimulation work throughout the country and conducting aquifer testing for site characterization of ISR uranium operations in Texas and Wyoming. Wes has been actively involved in the permitting, design, installation, reservoir fluid sampling, testing, and remediation of disposal wells across the country. Wes is an active member of the Rocky Mountain Association of Geologists, the Society of Petroleum Engineers, the American Association of Petroleum Geologists, and is a Licensed Professional Geologist in Wyoming, Indiana, Kansas, Nebraska, Texas, Louisiana, Illinois, Florida, and Utah.",
+      tags: ["Geology", "Field Operations", "Wellsite Supervision", "Contract Negotiations", "Corporate Operations"],
+      bio: (
+      <>
+        <p>Wes is one of the managing principals of Petrotek and serves as Director of Field Operations. He holds a B.S. degree in Geology from the University of South Alabama. Wes has more than twenty years of experience with wellsite field work and the application of geology to permitting for all classes of injection well projects. He also has experience in contract negotiations, business relationship optimization, and Corporate operations. His Field Director position includes supervising complex projects and operations along with well drilling, completion, testing and stimulation work throughout the country. He regularly leads staff to get efficient results for clients in feasibility and permitting efforts. Wes has been actively involved in all facets of the permitting, design, installation, sampling, testing, maintenance, and remediation of disposal wells across thecountry.</p> 
+        <br></br>
+        <p>Wes is an active member of the Rocky Mountain Association of Geologists, the Society of Petroleum Engineers, the American Association of Petroleum Geologists, and is a Licensed Professional Geologist in Wyoming, Indiana, Kansas, Nebraska, Texas, Louisiana, Illinois, Florida, and Utah. He has published and given a variety of talks regarding subsurface injection, and is an active member of the Rocky Mountain Association of Geologists, the Society of Petroleum Engineers, and the American Association of Petroleum Geologists.</p>
+      </>
+      ),
       personal: "Wes and his family reside in the foothills west of Denver. In his spare time, he enjoys hunting, skiing, hiking, and camping with his wife and three daughters."
     },
     {
@@ -240,6 +248,27 @@ const OurTeam = () => {
               </div>
             </div>
           ))}
+
+          {/* NEW: Historical Credits Card - Centered at the bottom */}
+          <div className="md:col-span-2 lg:col-span-3 flex justify-center mt-8">
+            <div 
+              className="w-full max-w-lg bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all cursor-pointer group flex flex-col items-center justify-center text-center"
+              onClick={() => setShowCredits(true)}
+            >
+              <div className="w-12 h-12 rounded-full bg-gray-200 flex items-center justify-center mb-4 group-hover:bg-[#8B1E3F] transition-colors">
+                <History className="w-6 h-6 text-gray-500 group-hover:text-white" />
+              </div>
+              <h3 className="text-xl font-bold text-gray-900 group-hover:text-[#8B1E3F] transition-colors mb-2">
+                Historical Credits & Thanks
+              </h3>
+              <p className="text-sm text-gray-500">
+                Honoring our founders and past staff members who contributed to Petrotek's success.
+              </p>
+              <div className="flex items-center text-[10px] font-bold text-[#8B1E3F] uppercase tracking-[0.2em] mt-6">
+                Read Acknowledgements <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
+              </div>
+            </div>
+            </div>
         </div>
 
         {/* Bio Modal Overlay */}
@@ -283,6 +312,59 @@ const OurTeam = () => {
                         </span>
                       ))}
                     </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* NEW: Historical Credits Modal Overlay */}
+        {showCredits && (
+          <div 
+            className="fixed inset-0 z-[100] flex items-center justify-center p-4 bg-gray-900/60 backdrop-blur-sm transition-opacity"
+            onClick={() => setShowCredits(false)}
+          >
+            <div 
+              className="bg-white w-full max-w-3xl rounded-3xl shadow-2xl overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-300"
+              onClick={(e) => e.stopPropagation()} // Prevent clicks inside from closing
+            >
+              <div className="p-8 md:p-12 relative max-h-[90vh] overflow-y-auto">
+                <button 
+                  onClick={() => setShowCredits(false)}
+                  className="absolute top-6 right-6 p-2 hover:bg-gray-100 rounded-full transition-colors"
+                >
+                  <X className="w-6 h-6 text-gray-400" />
+                </button>
+
+                <div className="mb-8 border-b border-gray-100 pb-6">
+                  <h2 className="text-3xl font-bold text-gray-900 mb-2">Historical Credits and Thanks</h2>
+                  <p className="text-xl text-[#8B1E3F] font-bold">Honoring Our Past</p>
+                </div>
+
+                <div className="space-y-6 text-gray-600 leading-relaxed text-lg">
+                  <p>
+                    Petrotek has both current team members and numerous prior staff members that have contributed to the growth and success of our company. Our current crew thanks everyone that has historically been a part of our organization for their contributions.
+                  </p>
+                  
+                  <div className="bg-gray-50 p-6 rounded-2xl border-l-4 border-gray-300">
+                    <h4 className="font-bold text-gray-900 mb-2 text-xl">In Memoria: Rick Lyle</h4>
+                    <p className="mb-4">
+                      Rick Lyle was one of the original founders of Petrotek in 1993. He played an early role in the establishment of the firm’s Colorado office and served as a lead engineer for many field projects over his career.
+                    </p>
+                    <p className="mb-4">
+                      Outside of his thirty-year practice as a petroleum engineer, Rick loved to travel and is remembered for his sense of adventure and efforts to always find a way to have fun.
+                    </p>
+                    <p>
+                      Rick passed away in 2024 after a long battle with health complications from a stroke that disabled him in 2011.
+                    </p>
+                  </div>
+
+                  <div className="bg-gray-50 p-6 rounded-2xl border-l-4 border-gray-300">
+                    <h4 className="font-bold text-gray-900 mb-2 text-xl">James Junkin & Mark Sippel</h4>
+                    <p>
+                      James Junkin and Mark Sippel were also part of the original four founding engineers that set-up Petrotek in 1993 when their former employer, Research and Engineering Consultants, Inc., closed its doors. Mark left to return to working for an oil producer in Colorado early in the history of Petrotek, and James continued helping Petrotek with IT for over 30 years after he began an independent computer programming career in the mid-1990s.
+                    </p>
                   </div>
                 </div>
               </div>
