@@ -79,7 +79,7 @@ const OilGas = () => {
           {/* Right Column: Image - REMOVED WRAPPER DIV STYLING */}
               <div className="lg:w-5/5 sticky top-32" >
                 <img 
-                  src="/Oil Field Ops and Disposal Well.png" 
+                  src="/Oil Field Ops and Disposal Well.jpg" 
                   alt="Upstream Oil Field Operations" 
                   className="w-full h-auto object-cover" // Changed h-full to h-auto to maintain aspect ratio without wrapper
                 />

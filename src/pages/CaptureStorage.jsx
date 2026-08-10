@@ -141,7 +141,7 @@ const CaptureStorage = () => {
           {/* Right Column: Image - REMOVED WRAPPER DIV STYLING */}
               <div className="lg:w-5/5 sticky top-32" >
                 <img 
-                  src="/CO2 Capture and Storage.png" 
+                  src="/CO2 Capture and Storage.jpg" 
                   alt="CO2 Storage Options" 
                   className="w-full h-auto object-cover" // Changed h-full to h-auto to maintain aspect ratio without wrapper
                 />

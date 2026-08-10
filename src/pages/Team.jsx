@@ -36,8 +36,8 @@ const OurTeam = () => {
       role: "Managing Principal and Senior Engineer/Hydrogeologist",
       education: "B.S. Petroleum Engineering, University of Tulsa; M.S. Hydrogeology, University of Idaho",
       tags: ["Hydrogeology", "Petroleum Engineering", "ISR Uranium", "Expert Witness"],
-      bio: "Hal is one of the managing principals of Petrotek and is a Senior Engineer and Hydrogeologist. He has more than 35 years of applied industry experience, and holds a B.S. degree in Petroleum Engineering and an M.S. degree in Hydrogeology. He is passionate about the application of creative technical and regulatory solutions to assist clients with complex projects. He is a Technical Team Leader for produced water and wastewater management via Class I, Class II and Class V injection wells for oil and gas production across the United States. His drilling and completions experience includes vertical, directional and horizontal wells in the Gulf of Mexico, Alaska, and the continental U.S. Hal leads the technical team for ISR uranium Class III permitting and operations support for projects in Wyoming, Texas, Nebraska and South Dakota. His ISR uranium experience includes the majority of projects in the US as well as selected projects overseas. His team has also completed groundwater characterization and assessment projects for conventional hard rock mines (silver, lead/zinc, copper) and rare earth element mining projects in the U.S. Hal has provided expert witness testimony for oil and gas operators and ISR uranium operations related to technical, regulatory and contractual issues in Federal and State Courts.",
-      personal: "Hal is the proud husband of Monette and father of 11 children. He and his family reside in the foothills west of Denver. In his spare time, he enjoys hiking, hunting and skiing."
+      bio: "Hal is one of the managing principals of Petrotek and is a Senior Engineer and Hydrogeologist. He has more than 40 years of applied industry experience, and holds a B.S. degree in Petroleum Engineering and an M.S. degree in Hydrogeology. He is passionate about the application of creative technical and regulatory solutions to assist clients with complex projects. He is a Technical Team Leader for produced water and wastewater management via Class I, Class II and Class V injection wells for oil and gas production across the United States. His drilling and completions experience includes vertical, directional and horizontal wells in the Gulf of America, Alaska, and the continental U.S. Hal leads the technical team for ISR uranium Class III permitting and operations support for projects in Wyoming, Texas, Nebraska and South Dakota. His ISR uranium experience includes the majority of projects in the US as well as selected projects overseas. His team has also completed groundwater characterization and assessment projects for conventional hard rock mines (silver, lead/zinc, copper) and rare earth element mining projects in the U.S. Hal has provided expert witness testimony for oil and gas operators and ISR uranium operations related to technical, regulatory and contractual issues in Federal and State Courts.",
+      personal: "Hal and his wife reside in the foothills west of Denver. In his spare time, he enjoys hiking, hunting, skiing and sharing the good news of the Gospel of Jesus Christ."
     },
     {
       name: "Ken Cooper, M.S., P.E.",
@@ -172,8 +172,8 @@ const OurTeam = () => {
       role: "Wellsite Supervisor/Specialist",
       education: "B.S. Chemical Engineering, Colorado School of Mines",
       tags: [],
-      bio: "Placeholder",
-      personal: "Placeholder"
+      bio: "Mike Kenney has over 35 years of experience in well testing operations, well test analysis, and Class I and Class II wellsite supervision (drilling, completions, testing, stimulations, workovers). Mike has completed classes at Colorado School of Mines (Chemical Engineering).",
+      personal: "Mike and his wife reside in northeastern Colorado. In his spare time, Mike enjoys spending time with family and time outdoors fishing, camping, hiking, playing tennis and golfing."
     },
     {
       name: "Will Kinsey, B.S.",
