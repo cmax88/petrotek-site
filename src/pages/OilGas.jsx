@@ -71,6 +71,7 @@ const OilGas = () => {
                 <p className="mb-4">
                   Our backgrounds encompass the full lifecycle of the well, involving <strong>well operation, drilling, reservoir engineering, geology, and environmental compliance.</strong>
                 </p>
+                <br></br>
                 <p className="font-semibold text-gray-800 border-l-4 pl-4" style={{ borderColor: maroon }}>
                   Please contact us to discuss how we can help with project efficiency and economics in the current price environment.
                 </p>
