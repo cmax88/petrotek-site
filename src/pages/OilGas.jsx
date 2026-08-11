@@ -128,17 +128,17 @@ const OilGas = () => {
           </div>
 
           {/* Brine Disposal Callout */}
-          <div className="bg-gray-900 text-white rounded-2xl p-10 md:p-14 shadow-2xl relative overflow-hidden mb-16">
+          <div className="bg-gray-300 text-white rounded-2xl p-10 md:p-14 shadow-2xl relative overflow-hidden mb-16">
             <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
               <div className="flex-shrink-0 bg-[#8B1E3F] p-5 rounded-full">
                 <Droplet className="w-10 h-10 text-white" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold mb-2">Class II Brine Disposal Wells</h3>
-                <p className="text-gray-300 leading-relaxed mb-4">
+                <h3 className="text-2xl font-bold mb-2 text-black">Class II Brine Disposal Wells</h3>
+                <p className="text-gray-600 leading-relaxed mb-4">
                   Petrotek handles all aspects of Class II brine disposal, from siting and permitting to construction oversight and regulatory compliance.
                 </p>
-                <Link to="/injection-wells" className="text-white font-bold flex items-center hover:underline">
+                <Link to="/injection-wells" className="text-[#8B1E3F] font-bold flex items-center hover:underline">
                   Explore our full Injection Well Services <ArrowRight className="ml-2 w-4 h-4" />
                 </Link>
               </div>
