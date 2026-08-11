@@ -27,7 +27,7 @@ const OilWell = ({ className, style }) => (
 );
 
 const OilGas = () => {
-  const maroon = "#EF4444";
+  const maroon = "#8B1E3F";
 
   const upstreamServices = [
     { title: "Regulatory & Permitting", icon: <Gavel className="w-5 h-5" />, items: ["Permitting of well drilling and spacing units", "Regulatory hearings and expert testimony", "Correlative rights, pooling and flaring"] },
@@ -53,7 +53,7 @@ const OilGas = () => {
               <OilWell className="w-10 h-10" style={{ color: maroon }} />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Oil & Gas Upstream E&P</h1>
-            <p className="text-xl text-[#EF4444] font-bold mb-6">Expertise Rooted in Decades of Field and Reservoir Experience</p>
+            <p className="text-xl text-[#8B1E3F] font-bold mb-6">Expertise Rooted in Decades of Field and Reservoir Experience</p>
             <div className="w-24 h-1 mb-8" style={{ backgroundColor: maroon }}></div>
           </div>
 
@@ -91,7 +91,7 @@ const OilGas = () => {
             <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">E&P Operations & Services</h2>
             <div className="grid md:grid-cols-2 gap-8">
               {upstreamServices.map((service, idx) => (
-                <div key={idx} className="p-8 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow hover:border-[#EF4444]">
+                <div key={idx} className="p-8 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow hover:border-[#8B1E3F]">
                   <div className="flex items-center mb-6">
                     <div className="p-2 rounded-lg bg-gray-50 mr-4" style={{ color: maroon }}>
                       {service.icon}
@@ -129,7 +129,7 @@ const OilGas = () => {
           {/* Brine Disposal Callout */}
           <div className="bg-gray-900 text-white rounded-2xl p-10 md:p-14 shadow-2xl relative overflow-hidden mb-16">
             <div className="relative z-10 flex flex-col md:flex-row items-center gap-8">
-              <div className="flex-shrink-0 bg-[#EF4444] p-5 rounded-full">
+              <div className="flex-shrink-0 bg-[#8B1E3F] p-5 rounded-full">
                 <Droplet className="w-10 h-10 text-white" />
               </div>
               <div>
@@ -150,7 +150,7 @@ const OilGas = () => {
              <Link 
                to="/" 
                onClick={() => setTimeout(() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'}), 100)}
-               className="inline-flex items-center px-8 py-4 bg-[#EF4444] text-white font-bold rounded-lg hover:brightness-110 transition-all shadow-lg"
+               className="inline-flex items-center px-8 py-4 bg-[#8B1E3F] text-white font-bold rounded-lg hover:brightness-110 transition-all shadow-lg"
              >
                Consult Our E&P Experts <ChevronRight className="ml-2 w-5 h-5" />
              </Link>

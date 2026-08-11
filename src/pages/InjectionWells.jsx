@@ -48,7 +48,7 @@ const epaQuotes = [
 ];
 
 const InjectionWells = () => {
-  const maroon = "#8B1E3F";
+  const maroon = "#1E40AF" // Dark Blue;
   
   // State for the first accordion (Technology)
   const [techOpenIndex, setTechOpenIndex] = useState(null);
@@ -128,28 +128,28 @@ const InjectionWells = () => {
       content: (
         <>
           <p className="mb-4 text-gray-600 leading-relaxed">
-            A wide variety of liquid wastes can be managed using deep injection well technology. Typically, these wastes are large water volume, low concentration waste streams that are aqueous and comprised of more than 95% water. Often these liquids have already been recycled or pre-treated and are not usable as a resource since they have little economic or energy value. Some common dilute wastes now managed via deep well disposal include:
+            A wide variety of liquid wastes can be managed using deep injection well technology. Typically, these wastes are low-concentration waste streams that that have been pre-treated and cannot be discharged to surface waters. Some common dilute wastes now managed via deep well disposal include:
           </p>
           <div className="grid md:grid-cols-2 gap-4 mb-6">
             <ul className="space-y-2">
-              {["Salt Water Brines", "Dilute Hydrocarbons and Solvents", "Heavy Metal Solutions", "Agricultural Waste Waters", "Storm Water and Municipal Waste"].map((item, i) => (
+              {["Salt Water Brines", "PFAS/PFOS Waste Waters", "Landfill Leachate", "Dilute Hydrocarbons and Solvents", "Heavy Metal Solutions", "Agricultural Waste Waters"].map((item, i) => (
                 <li key={i} className="flex items-start text-sm text-gray-700">
-                  <span className="w-1.5 h-1.5 bg-[#8B1E3F] rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                  <span className="w-1.5 h-1.5 bg-[#1E40AF] rounded-full mt-2 mr-2 flex-shrink-0"></span>
                   {item}
                 </li>
               ))}
             </ul>
             <ul className="space-y-2">
-              {["Meat & Crop Processing Liquids", "Inorganic Solutions from Manufacturing", "Industrial Cleaning Solutions", "Groundwater Clean-ups"].map((item, i) => (
+              {["Storm Water and Municipal Water Supply RO Brine", "Meat & Crop Processing Liquids", "Inorganic and Organic Solutions", "Industrial Cleaning Solutions", "Groundwater Remediation/Clean-up Waters"].map((item, i) => (
                 <li key={i} className="flex items-start text-sm text-gray-700">
-                  <span className="w-1.5 h-1.5 bg-[#8B1E3F] rounded-full mt-2 mr-2 flex-shrink-0"></span>
+                  <span className="w-1.5 h-1.5 bg-[#1E40AF] rounded-full mt-2 mr-2 flex-shrink-0"></span>
                   {item}
                 </li>
               ))}
             </ul>
           </div>
-          <p className="text-gray-600 italic border-l-4 border-[#8B1E3F] pl-4">
-            For comparison, the concentrations of disposed materials in many of these injected wastes are similar to mixing a two-gallon can of a product like salt into a large tank of fresh water (2 gallons / 4000 gallons ~ 500 parts per million).
+          <p className="text-gray-600 italic border-l-4 border-[#1E40AF] pl-4">
+            For comparison, the concentrations of disposed materials in many of these injected wastes are similar to mixing a two-gallon can of a product like salt into a large tank of fresh water (10 gallons / 4000 gallons ~ 5000 parts per million).
           </p>
         </>
       )
@@ -169,7 +169,7 @@ const InjectionWells = () => {
                "Potable Water-treatment", "Food Production", "Steel Mills", "Clothing Manufacturing"
              ].map((industry, i) => (
                <div key={i} className="flex items-center text-sm font-medium text-gray-700 bg-gray-50 px-3 py-2 rounded-lg border border-gray-100">
-                 <CheckCircle2 className="w-4 h-4 mr-2 text-[#8B1E3F] opacity-70" />
+                 <CheckCircle2 className="w-4 h-4 mr-2 text-[#1E40AF] opacity-70" />
                  {industry}
                </div>
              ))}
@@ -202,9 +202,9 @@ const InjectionWells = () => {
       question: "Who regulates Class I, III, V and VI disposal wells?",
       content: (
         <>
-          <p className="mb-4">Throughout the United States, the Environmental Protection Agency provides oversight and closely monitors deep well disposal operations under the Safe Drinking Water Act regulations. Laws, policies and regulations have matured over the past 100 years to enhance the safety of both non-hazardous and hazardous injection well operation. In many cases, state governments have been granted primary authority to conduct an Underground Injection Control (UIC) program. In others, the federal government directly implements the regulations. In all cases, strict standards are enforced by law to ensure that environmentally protective practices are followed. Geologic and engineering information is carefully evaluated and approved by regulators before deep well construction can begin and is reviewed after drilling has been completed, and before injection operations are authorized. Continuous protection of all usable groundwater is accomplished by rigid construction and monitoring requirements that provide at least four separate layers of protection. In addition to strict construction requirements, annual testing and limitation of waste type, disposal volume and injection well pressure are required to further promote protection of the subsurface environment. Detailed records of wastes disposed and all site operations must be submitted to the EPA or state regulators. Twenty-four-hour monitoring of operations is required to verify safe operation and permit compliance.</p>
+          <p className="mb-4">Throughout the United States, the Environmental Protection Agency and approved State Underground Injection Control (UIC) programs provide oversight and closely monitor deep well disposal operations under the Safe Drinking Water Act regulations. Laws, policies and regulations have matured over the past 70 years to enhance the safety of both non-hazardous and hazardous injection well operation. In all cases, strict standards are enforced by law to ensure that environmentally protective practices are followed. Geologic and engineering information is carefully evaluated and approved by regulators before deep well construction can begin.  After drilling has been completed, the data are further reviewed and final approval granted by the regulators before injection operations begin. Continuous protection of all usable (&lt;10,000 mg/l TDS) groundwater is accomplished by rigid construction and monitoring requirements that provide at least four separate layers of protection. In addition to strict construction requirements, annual testing and limitation of waste type, disposal volume and injection well pressure are required to further promote protection of the subsurface environment. Detailed records of wastes disposed and all site operations must be submitted to the EPA or state regulators. Twenty-four-hour monitoring of operations is required to verify safe operation and permit compliance.</p>
           <p>
-            You can learn more about Class I injection wells by visiting the EPA website at: <a href="https://www.epa.gov/uic" target="_blank" rel="noopener noreferrer" className="text-[#8B1E3F] hover:underline font-bold">https://www.epa.gov/uic</a>
+            You can learn more about Class I injection wells by visiting the EPA website at: <a href="https://www.epa.gov/uic" target="_blank" rel="noopener noreferrer" className="text-[#1E40AF] hover:underline font-bold">https://www.epa.gov/uic</a>
           </p>
         </>
       )
@@ -214,20 +214,21 @@ const InjectionWells = () => {
       content: "By almost any definition, the naturally occurring waters typically present in injection zones are highly saline and unfit for use. The salinity of the native brines is often several times the concentration of normal seawater. In fact, the natural waters often demonstrate many similarities to some of the wastes that are injected into the zones for disposal."
     },
     {
-      question: "How do well operators prevent liquid backing up into the pipe and having nowhere to go?",
-      content: "The pore space (void space inside the rock [picture a hard sponge]) in the formations at several thousand feet of depth in the vicinity of disposal wells are already 100% saturated with natural brines. In many injection zones, these brines have specific gravities of between 1.05 and 1.2. This brine can be several times the salinity of seawater. When operated, Class I wells have fluid inside the tubing from the surface all the way down to the injection zone. By adding a carefully controlled amount of pressure to the fluid by pumping during disposal operations, wells can be used to add the injectate to the brine already present in the injection formation. This is accomplished by pushing natural fluids out of the rock pore spaces near the well and into neighboring pore spaces by compressing these moving fluids and the fluid already contained inside those rock spaces to a higher pressure. This effect continues radially away from the well."
+      question: "How do well operators inject wastewater into the ground?",
+      content: "The pore space (void space inside the rock [picture a hard sponge]) in the formations at several thousand feet of depth in the vicinity of disposal wells is already 100% saturated with natural salt water called brine. In many injection zones, the brine has a specific gravity of between 1.05 and 1.2 (i.e., several times the salinity of seawater).  When operated, Class I wells have fluid inside the tubing from the surface all the way down to the injection zone. By adding a controlled amount of pressure to the fluid by pumping during disposal operations, wells can be used to add the injectate to the brine already present in the injection formation. This is accomplished by pushing natural fluids out of the rock pore spaces near the well and into neighboring pore spaces.  This is accomplished by compressing the injection fluids and the native fluid inside the rock spaces to a higher pressure. This effect continues radially away from the well."
     },
     {
       question: "Does the permitting process consider how long such a well can be used?",
-      content: "Yes. The permitting process considers a wide variety of factors regarding injection well operations and site suitability which includes a determination of how long a well can be used and how much liquid can be disposed in a well. These limitations are determined based on the capacity of the disposal reservoir and the expected operational lifetime of the well components. Fortunately, these issues are also monitored on a daily, monthly and annual basis. If well monitoring shows any problems with system performance, the well must be shut down and repaired or permanently abandoned to make certain that waste stays in the injection zone according to the permitted well design. Clauses describing this monitoring, repair or abandonment, and the financial assurance to follow the specified procedures, are required as permit conditions before injection operations can begin."
+      content: "Yes. The permitting process considers a wide variety of factors regarding injection well operations and site suitability which includes a determination of how long a well can be used and how much liquid can be disposed in a well. These limitations are determined based on the capacity of the disposal reservoir, the anticipated injection rate, and the expected operational lifetime of the well components. Injection pressure and injection rate and reservoir pressure are monitored on daily and an annual basis, respectively. If well monitoring shows any problems with system performance, the well must be shut down and repaired or permanently abandoned to make certain that waste remains in the injection zone according to the permitted well design and permit conditions. UIC permits stipulate  monitoring requirements, financial assurance requirements, operational repair or well abandonment conditions, and reporting requirements for the well operation."
     },
     {
       question: "How are injection wells monitored to ensure safety and compliance with the law?",
       content: (
         <>
-          <p className="mb-4">Monitoring conducted to verify the suitability of the well for continued injection of waste is essentially of two types: continuous and periodic. Continuous monitoring provides data regarding how the well is operated, and is used to document operational changes that could signal any change in the well condition. Periodic monitoring is used to validate the continuous monitoring, and to more thoroughly investigate well and disposal reservoir conditions to verify waste containment.</p>
-          <p className="mb-4">Periodic mechanical integrity testing of well systems is conducted as required by regulations. Based on initial completion as a non-hazardous well, Part I annual testing may consist of standard annulus pressure testing and an associated reservoir falloff test. The annulus pressure test measurements are recorded using a calibrated pressure gauge on the wellhead, and are often witnessed by a regulatory inspector. A maximum change in pressure is allowed during the one-hour test. The gauges used to monitor pressure during the casing/tubing annular pressure tests are calibrated with a deadweight tester which is accurate to 0.1% of indicated pressure. Copies of gauge certifications are included with the pressure test records and reports.</p>
-          <p>Part II periodic mechanical integrity testing is completed before wells become operational and thereafter on a five-year cycle or as required by permit. For wells used to inject non-hazardous waste, this testing consists of a radioactive tracer survey or equivalent acceptable method to verify the adequacy of the cement at the base of the long-string casing. In addition, well logging designed to investigate vertical movement of fluids behind pipe will be conducted in the form of temperature, noise, oxygen activation logging or equivalent acceptable testing. Part II periodic mechanical integrity testing is required on an annual basis for wells used to dispose of hazardous wastes. Continuous monitoring of infection rate and other parameters will also be accomplished as required by regulation. Analysis of the waste stream for chemical and physical parameters is also completed on a case-by-case basis as required by permit.</p>
+          <p className="mb-4">Monitoring conducted to verify the suitability of the well for continued injection of waste is includes two types: continuous and periodic. Continuous monitoring provides data regarding how the well is operated, and is used to document operational changes that could signal any change in the well condition. Periodic monitoring is used to validate the continuous monitoring, and to more thoroughly investigate well and disposal reservoir conditions to verify waste containment.</p>
+          <p className="mb-4">Continuous monitoring of injection rate, injection pressure and annulus pressure and other parameters will also be accomplished as required by regulation. Analysis of the waste stream for chemical and physical parameters is also completed on a case-by-case basis as required by permit.</p>
+          <p className="mb-4">Periodic mechanical integrity testing of well systems is conducted as required by regulations. Based on initial completion as a non-hazardous well, Part I annual testing may consist of standard annulus pressure testing and an associated reservoir falloff test. The annulus pressure test measurements are recorded using a calibrated pressure gauge on the wellhead, and are often witnessed by a regulatory inspector. A maximum change in pressure is allowed during the 30- to 60-minute test. The gauges used to monitor pressure during the casing/tubing annular pressure tests are calibrated with a deadweight tester which is accurate to 0.1% of indicated pressure. Copies of gauge certifications are included with the pressure test records and reports.</p>
+          <p>Part II periodic mechanical integrity testing is completed before wells become operational and thereafter on a two- to five-year cycle or as required by permit. For wells used to inject non-hazardous waste, this testing consists of a radioactive tracer survey or equivalent acceptable method to verify the adequacy of the cement at the base of the long-string casing. In addition, well logging designed to investigate vertical movement of fluids behind pipe will be conducted in the form of temperature, noise, oxygen activation logging or equivalent acceptable testing. Part II periodic mechanical integrity testing generally is required on an annual basis for wells used to dispose of hazardous wastes and every 2 to 5 years for non-hazardous waste wells.</p>
         </>
       )
     }
@@ -250,16 +251,26 @@ const InjectionWells = () => {
               <Droplet className="w-10 h-10" style={{ color: maroon }} />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Injection Well Services</h1>
-            <p className="text-xl text-[#8B1E3F] font-bold mb-6">Class I Hazardous and Class I, II, III, V, and VI Non-Hazardous</p>
+            <p className="text-xl text-[#1E40AF] font-bold mb-6">Class I Hazardous and Class I, II, III, V, and VI Non-Hazardous</p>
             <div className="w-24 h-1 mb-8" style={{ backgroundColor: maroon }}></div>
           </div>
 
           {/* Intro Section & Image */}
           <div className="flex flex-col lg:flex-row gap-12 mb-20 items-start">
             <div className="lg:w-3/5 flex flex-col">
+              {/* WHY DEEP WELL INJECTION CALLOUT BOX */}
+              <div className="mb-10 p-6 bg-gray-50 rounded-xl border-l-4" style={{ borderColor: maroon }}>
+                <div className="flex items-center mb-3">
+                  <HelpCircle className="w-6 h-6 mr-3" style={{ color: maroon }} />
+                  <h3 className="text-lg font-bold text-gray-900 m-0">Why Are Injection Wells Important?</h3>
+                </div>
+                <p className="text-sm text-gray-600 leading-relaxed m-0">
+                  Most industrial processes generate low-concentration waste streams called wastewater. Often these liquids are pre-treated but some or all of the volume cannot be discharged to the surface environment and must be isolated from any potential underground drinking water sources. For these reasons, many liquid wastes are managed via non-hazardous or hazardous deep injection wells. These wells inject liquids into geologic intervals isolated from any potential drinking water aquifers. According to EPA (April 20, 2026) deep injection wells provide an option for waste management of PFAS with a lower potential for release than other technologies. The same rationale applies to and has been proven for other waste streams.
+                </p>
+              </div>
               <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed mb-10">
                 <p>
-                  Our personnel have hundreds of years of combined injection well experience and are familiar with state and federal regulators throughout the country. Petrotek offers engineering and geology services where licensed. On a continual basis, our staff provides technical consulting and field services regarding a wide variety of issues to ensure the continued safe and responsible operation of all classes of waste injection wells.
+                  Our personnel have hundreds of years of combined injection well experience and are familiar with state and federal regulators and regulations throughout the country. Petrotek offers engineering and geology services where licensed. On a continual basis, our staff provides technical consulting and field services regarding a wide variety of issues to ensure the continued safe and responsible operation of all classes of waste injection wells.
                 </p><br></br>
                 <p>
                   Petrotek staff are experienced with deepwell permitting issues related to existing and new facilities throughout the United States, providing underground injection control (UIC) permits and Land Ban Petitions that have been accepted by state and federal regulatory agencies.
@@ -274,7 +285,7 @@ const InjectionWells = () => {
             
             <div className="flex flex-col h-[250px]"> {/* Explicit height for the vertical box */}
               <div className="mb-6 flex items-center gap-2 relative z-20">
-                <ShieldCheck size={18} className="text-[#8B1E3F]" />
+                <ShieldCheck size={18} className="text-[#1E40AF]" />
                 <span className="text-[10px] font-black uppercase tracking-[0.2em] text-gray-400">EPA Regulatory Perspectives</span>
               </div>
 
@@ -285,7 +296,7 @@ const InjectionWells = () => {
                       <p className="text-gray-800 font-medium text-base italic leading-relaxed whitespace-normal">
                         "{quote.text}"
                       </p>
-                      <p className="text-[10px] font-bold text-[#8B1E3F] mt-2 uppercase tracking-widest">
+                      <p className="text-[10px] font-bold text-[#1E40AF] mt-2 uppercase tracking-widest">
                         — {quote.source}
                       </p>
                     </div>
@@ -297,7 +308,7 @@ const InjectionWells = () => {
           </div>
 
           {/* Right Column: Image */}
-          <div className="lg:w-2/5">
+          <div className="lg:w-3/5 sticky top-32">
             <div className="relative rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
               <img 
                 src={injectionWellImage} 
@@ -312,7 +323,7 @@ const InjectionWells = () => {
           {/* Service Categories Grid - Image Top, Text Bottom */}
           <div className="grid md:grid-cols-2 gap-8 mb-20">
             {categories.map((cat, idx) => (
-              <div key={idx} className="flex flex-col group rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 bg-white shadow-sm hover:border-[#8B1E3F]">
+              <div key={idx} className="flex flex-col group rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 bg-white shadow-sm hover:border-[#1E40AF]">
                 
                 {/* Top Image Section */}
                 <div className="relative h-56 w-full overflow-hidden shrink-0">
@@ -334,7 +345,7 @@ const InjectionWells = () => {
                   </div>
 
                   {/* Add top margin to account for the floating icon */}
-                  <h3 className="text-xl font-bold mb-6 mt-4 text-gray-900 transition-colors group-hover:text-[#8B1E3F]">
+                  <h3 className="text-xl font-bold mb-6 mt-4 text-gray-900 transition-colors group-hover:text-[#1E40AF]">
                     {cat.title}
                   </h3>
                   
@@ -356,19 +367,19 @@ const InjectionWells = () => {
 
           {/* Technology Accordion Section */}
           <div className="max-w-4xl mx-auto mb-20">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#8B1E3F] mb-8 flex items-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1E40AF] mb-8 flex items-center">
               <Info className="mr-3" /> Learn more about Injection Well Technology
             </h2>
             
             <div className="space-y-4">
               {techAccordionData.map((item, index) => (
-                <div key={index} className="border border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white">
+                <div key={index} className="border border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white hover:border-[#1E40AF]">
                   <button
                     onClick={() => toggleTechAccordion(index)}
                     className="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
                   >
                     <span className="font-bold text-lg text-gray-900">{item.question}</span>
-                    <span className="ml-4 text-[#8B1E3F]">
+                    <span className="ml-4 text-[#1E40AF]">
                       {techOpenIndex === index ? <Minus size={24} /> : <Plus size={24} />}
                     </span>
                   </button>
@@ -403,19 +414,19 @@ const InjectionWells = () => {
 
           {/* NEW: Disposal Well FYI Accordion Section */}
           <div className="max-w-4xl mx-auto mb-20">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#8B1E3F] mb-8 flex items-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#1E40AF] mb-8 flex items-center">
               <HelpCircle className="mr-3" /> Disposal Well FYI
             </h2>
             
             <div className="space-y-4">
               {fyiAccordionData.map((item, index) => (
-                <div key={index} className="border border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white">
+                <div key={index} className="border border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white hover:border-[#1E40AF]">
                   <button
                     onClick={() => toggleFyiAccordion(index)}
                     className="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
                   >
                     <span className="font-bold text-lg text-gray-900">{item.question}</span>
-                    <span className="ml-4 text-[#8B1E3F]">
+                    <span className="ml-4 text-[#1E40AF]">
                       {fyiOpenIndex === index ? <Minus size={24} /> : <Plus size={24} />}
                     </span>
                   </button>
@@ -440,7 +451,7 @@ const InjectionWells = () => {
              <Link 
                to="/" 
                onClick={() => setTimeout(() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'}), 100)}
-               className="inline-flex items-center px-8 py-4 bg-[#8B1E3F] text-white font-bold rounded-lg hover:brightness-110 transition-all shadow-lg"
+               className="inline-flex items-center px-8 py-4 bg-[#1E40AF] text-white font-bold rounded-lg hover:brightness-110 transition-all shadow-lg"
              >
                Contact Our Team <ChevronRight className="ml-2 w-5 h-5" />
              </Link>

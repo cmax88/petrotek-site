@@ -21,18 +21,35 @@ import {
 import ReCAPTCHA from "react-google-recaptcha";
 import emailjs from '@emailjs/browser';
 
-// Custom Oil Well Icon - Now uses a mask to inherit color
-const OilWell = ({ className, style }) => (
-  <div 
-    className={className}
-    style={{ 
-      ...style, 
-      backgroundColor: 'currentColor',
-      mask: 'url("/regular-oil-well.svg") no-repeat center / contain',
-      WebkitMask: 'url("/regular-oil-well.svg") no-repeat center / contain',
-    }} 
-  />
+// Custom Oil Derrick Icon - Built to match Lucide's stroke style
+const OilDerrick = ({ className, style }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className} 
+    style={style}
+  >
+    {/* Derrick Legs */}
+    <path d="M10 2L5 22" />
+    <path d="M14 2L19 22" />
+    {/* Center Drill Pipe */}
+    <path d="M12 2v20" />
+    {/* Top Platform */}
+    <path d="M8 2h8" />
+    {/* Ground */}
+    <path d="M3 22h18" />
+    {/* Cross Braces */}
+    <path d="M8.75 7h6.5" />
+    <path d="M7.5 12h9" />
+    <path d="M6.25 17h11.5" />
+  </svg>
 );
+
 
 // Custom Uranium Icon - Now uses a mask to inherit color
 const UraniumIcon = ({ className, style }) => (
@@ -175,17 +192,17 @@ const Home = () => {
 const services = [
     { 
       title: "Injection Well Services", 
-      description: "Our personnel have hundreds of years of combined injection well experience and are familiar with state and federal regulators throughout the country.", 
+      description: "Our personnel have hundreds of years of combined injection well experience and are familiar with state and federal regulators and regulations throughout the country.", 
       icon: <Droplet className="w-8 h-8" />, 
       link: "/injection-wells",
-      accent: "#8B1E3F" // Maroon
+      accent: "#1E40AF" // Dark Blue
     },
     { 
       title: "Landfill Leachate Services", 
       description: "Expert engineering and geological services for Class I deep well injection. We help landfill operators secure reliable, high-capacity leachate disposal solutions that meet rigorous UIC standards.", 
       icon: <Recycle className="w-8 h-8" />, 
       link: "/leachate-services",
-      accent: "#28beb2"
+      accent: "#0F766E" // Richer Teal
     },
     { 
       // MERGED ITEM
@@ -198,16 +215,16 @@ const services = [
     { 
       title: "Oil and Gas", 
       description: "We provide services regarding specialized technical issues including drilling spacing unit permitting, correlative rights, and reservoir simulation.", 
-      icon: <OilWell className="w-8 h-8" />, 
+      icon: <OilDerrick className="w-8 h-8" />, 
       link: "/oil-and-gas",
-      accent: "#EF4444" // Red (Tailwind red-500)
+      accent: "#8B1E3F" // Maroon
     },
     { 
-      title: "Carbon Capture (CO2CCS)", 
-      description: "Petrotek is a leader in conducting CCS feasibility studies and preparing Class VI UIC permits. We evaluate options for tax equity partnerships.", 
+      title: "Carbon Capture (CO2 CCS)", 
+      description: "Petrotek is a leader in conducting CCS feasibility studies and preparing Class VI UIC permit applications. We evaluate options for tax equity partnerships.", 
       icon: <Leaf className="w-8 h-8" />, 
       link: "/carbon-capture",
-      accent: "#22C55E" // Green (Tailwind green-500)
+      accent: "#166534" // Forest Green
     },
     { 
       title: "Safety", 
@@ -255,11 +272,6 @@ const industries = [
     <>
       <style>
         {`
-          @keyframes heroPan {
-            0% { transform: scale(1.2) translateX(5%); }
-            100% { transform: scale(1.2) translateX(-5%); }
-          }
-          .animate-hero-pan { animation: heroPan 30s ease-in-out infinite alternate; width: 100%; }
           @keyframes bounceDown {
             0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
             40% { transform: translateY(-10px); }
@@ -279,17 +291,17 @@ const industries = [
         <img 
           src="/Hero.jpg" 
           alt="Petrotek Background" 
-          className="h-full w-full object-cover animate-hero-pan will-change-transform" 
+          className="h-full w-full object-cover"
         />
     </div>
 
-    {/* Hero Text Content - Using ultra-specific media queries for 2K+ */}
+  {/* Hero Text Content - Using ultra-specific media queries for 2K+ */}
     <div className="w-full px-6 md:px-12 lg:px-20 [@media(min-width:1600px)]:px-40 relative z-20 flex flex-col lg:flex-row items-center justify-center h-full max-w-[2000px] mx-auto"> 
       
       <div className="lg:w-[55%] flex flex-col justify-center text-center lg:text-left pt-12 lg:pt-0">
         <div className="max-w-3xl [@media(min-width:1600px)]:max-w-5xl">
-          {/* Headline: Only scales up past 1600px wide */}
-          <h1 className="text-3xl md:text-5xl lg:text-6xl [@media(min-width:1600px)]:text-7xl font-extrabold text-white leading-tight mb-6 lg:mb-8 [@media(min-width:1600px)]:mb-12 tracking-tight">
+          {/* Headline: Added heavy custom text-shadow for readability */}
+          <h1 className="text-4xl md:text-5xl lg:text-6xl [@media(min-width:1600px)]:text-7xl font-extrabold text-white leading-tight mb-6 lg:mb-8 [@media(min-width:1600px)]:mb-12 tracking-tight [text-shadow:_0_4px_8px_rgb(0_0_0_/_0.8)]">
             Injection Well and Subsurface Resources Consultants
           </h1>
           
@@ -387,8 +399,10 @@ const industries = [
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
+              <div className="w-fit mb-8">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Who We Are</h2>
-              <div className="w-24 h-1 mb-8" style={{ backgroundColor: maroon }}></div>
+              <div className="w-full h-1 mb-8" style={{ backgroundColor: maroon }}></div>
+              </div>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
                 Petrotek Corporation is a results-oriented firm that specializes in engineering evaluation and field operations regarding subsurface fluid flow and injection well projects.
               </p>
@@ -425,9 +439,11 @@ const industries = [
 
 <section id="whatwedo" className="py-24 bg-white scroll-mt-20">
         <div className="container mx-auto px-6">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Core Capabilities</h2>
-            <div className="w-24 h-1 mx-auto" style={{ backgroundColor: maroon }}></div>
+          <div className="text-center mb-16 flex justify-center">
+            <div className="w-fit">
+              <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Core Capabilities</h2>
+              <div className="w-full h-1" style={{ backgroundColor: maroon }}></div>
+            </div>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
@@ -461,10 +477,12 @@ const industries = [
       {/* Client Map & Stats Section */}
       <section id="clientsserved" className="py-24 bg-gray-50 relative overflow-hidden scroll-mt-20">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-20">
-            <Globe className="w-12 h-12 mx-auto mb-4" style={{ color: maroon }} />
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Clients Served</h2>
-            <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: maroon }}></div>
+          <div className="text-center mb-20 flex flex-col items-center">
+            <Globe className="w-12 h-12 mb-4" style={{ color: maroon }} />
+            <div className="w-fit mb-8">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Clients Served</h2>
+              <div className="w-full h-1" style={{ backgroundColor: maroon }}></div>
+            </div>
             <p className="max-w-2xl mx-auto text-lg text-gray-600 leading-relaxed">
               Petrotek provides specialized engineering for complex subsurface challenges across North America and beyond.
             </p>
@@ -513,13 +531,18 @@ const industries = [
       </section>
 
       <section id="industries" className="py-24 bg-white scroll-mt-20">
-        <div className="w-full px-6 md:px-12 mx-auto max-w-[1728px] text-center">
-          <Activity className="w-12 h-12 mx-auto mb-4" style={{ color: maroon }} />
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Industries Served</h2>
-          <div className="w-24 h-1 mx-auto mb-8" style={{ backgroundColor: maroon }}></div>
-                      <p className="max-w-4xl mx-auto text-lg text-gray-700">Petrotek provides consulting services to many industries for managing wastewater that is protective of drinking water sources and the environment.</p>
+      <div className="w-full px-6 md:px-12 mx-auto max-w-[1728px] text-center">
+        <div className="flex flex-col items-center mb-8">
+          <Activity className="w-12 h-12 mb-4" style={{ color: maroon }} />
+          <div className="w-fit">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Industries Served</h2>
+            <div className="w-full h-1" style={{ backgroundColor: maroon }}></div>
+          </div>
+        </div>
+          <p className="max-w-4xl mx-auto text-lg text-gray-700">Petrotek provides consulting services to many industries for managing wastewater that is protective of drinking water sources and the environment.</p>
             <br></br>
             <p className="text-lg text-gray-600 italic">Some of the industries we serve include:</p>
+            <br></br>
             <br></br>
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
           {industries.map((item, index) => {
@@ -561,7 +584,7 @@ const industries = [
                   {/* Back Side */}
                   <div className="absolute inset-0 h-full w-full rounded-xl bg-gray-50 p-6 flex flex-col justify-center items-center text-center [backface-visibility:hidden] [transform:rotateY(180deg)] border-2" style={{ borderColor: maroon }}>
                     <h3 className="text-base font-bold mb-2 uppercase" style={{ color: maroon }}>{item.name}</h3>
-                    <p className="text-[11px] text-gray-600">Subsurface engineering for {item.name.toLowerCase()}.</p>
+                    <p className="text-[11px] text-gray-600">Subsurface support for {item.name.toLowerCase()}.</p>
                     <button 
                       onClick={(e) => {
                         e.stopPropagation();

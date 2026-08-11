@@ -20,8 +20,8 @@ const OurTeam = () => {
     {
       name: "Wes Janes, B.S., P.G.",
       role: "Operations Manager/Geologist and Principal",
-      education: "B.S. Geology, University of South Alabama; M.S. Hydrogeology, Colorado School of Mines",
-      tags: ["Geology", "Field Operations", "Wellsite Supervision", "Contract Negotiations", "Corporate Operations"],
+      education: "B.S. Geology, University of South Alabama",
+      tags: ["Geology", "Field Operations", "Corporate Operations", "Contract Negotiations"],
       bio: (
       <>
         <p>Wes is one of the managing principals of Petrotek and serves as Director of Field Operations. He holds a B.S. degree in Geology from the University of South Alabama. Wes has more than twenty years of experience with wellsite field work and the application of geology to permitting for all classes of injection well projects. He also has experience in contract negotiations, business relationship optimization, and Corporate operations. His Field Director position includes supervising complex projects and operations along with well drilling, completion, testing and stimulation work throughout the country. He regularly leads staff to get efficient results for clients in feasibility and permitting efforts. Wes has been actively involved in all facets of the permitting, design, installation, sampling, testing, maintenance, and remediation of disposal wells across thecountry.</p> 
@@ -51,7 +51,7 @@ const OurTeam = () => {
       name: "David Huffington, M.S., P.G.",
       role: "Principal, Managing Geologist",
       education: "B.S. Geophysical Engineering, Colorado School of Mines; M.S. Petroleum Reservoir Systems, Colorado School of Mines",
-      tags: ["Wireline", "MIT", "Geologic Testimony", "Cased Hole Logs"],
+      tags: ["Geologic Feasability", "Wireline", "Geologic Testimony", "Cased Hole Logs"],
       bio: "David is a Senior Geologist at Petrotek Corporation with more than ten years of industry experience. He holds Professional Geology licenses in multiple states. His work primarily focuses on injection well feasibility studies, new Class I, Class II, and Class VI permits, Class I permit renewals, land ban petition exemption renewals, mechanical integrity testing, drilling, and geologic testimony. David has designed, supervised, and interpreted many different types of mechanical integrity tests in a wide variety of well circumstances. Prior to Petrotek, David worked for Halliburton as a wireline field engineer, running a variety of cased hole logs including pulse neutron, cement evaluation, flow profiles, perforating, and casing cuts. David Has a Bachelor of Science in Geophysical Engineering and a Master’s degree in Petroleum Reservoir Systems from the Colorado School of Mines.",
       personal: "David is a member of the Society of Petrophysicists and Well Log Analysts, Rocky Mountain Association of Geologists, and the Denver Well Logging Society."
     },
@@ -59,7 +59,7 @@ const OurTeam = () => {
       name: "Ken Schlieper, B.S.",
       role: "Hydrogeology Field Manager and Senior Scientist",
       education: "B.S. Environmental Studies, Slippery Rock University",
-      tags: ["CERCLA", "RCRA", "Hydrogeologic Characterization", "Class I"],
+      tags: ["CERCLA", "RCRA", "Hydrogeologic Characterization", "Class I", "Operations"],
       bio: "Ken has extensive multi-disciplinary skills gained through more than 31 years of field and project management experience in hydrogeologic characterization at numerous CERCLA, RCRA, and other regulated sites throughout the U.S. He has performed numerous aquifer tests for uranium ISR operations throughout the country. More recently, he has been a lead technical contributor to numerous Class I hazardous and nonhazardous injection well projects across the country related to permitting, supervision of workovers, stimulations, drilling operations, and mechanical integrity testing.",
       personal: "In his spare time, Ken enjoys photography and spending time with his family on the ski slopes or in the backcountry."
     },
@@ -67,7 +67,7 @@ const OurTeam = () => {
       name: "Brian Ault, B.S.",
       role: "Senior Technical and Project Manager",
       education: "B.S. Petroleum Engineering, Marietta College",
-      tags: ["Project Management", "Well Completions", "Production", "San Juan Basin"],
+      tags: ["Project Management", "Well Completions", "Production"],
       bio: "Brian began his career in the oilfield service industry spending five years working for The Western Company of North America. He then spent five years working for Meridian Oil/Burlington Resources in the San Juan Basin. After more than eight years with Ultra Petroleum; working in permitting, reservoir evaluation, drilling, completions, production and regulatory reporting; helping to guide them to over seven billion dollars of market capitalization, he joined Petrotek. Brian gained extensive experience primarily in the areas of well completions and production. Brian’s expertise relates to his vast experience across many disciplines within the oil and gas arena, but primarily in his ability to deliver projects safely, on schedule, on budget, and aligned with business goals.",
       personal: "Brian enjoys spending time with his five kids and crawling over the rocks around Moab, Utah in his Jeep."
     },
@@ -75,7 +75,7 @@ const OurTeam = () => {
       name: "Tyler Burton, PhD",
       role: "Senior Technical and Business Advisor",
       education: "PhD Law (CEPMLP), M.S. Economics (Oxford)",
-      tags: ["Class VI", "Carbon Capture", "Regulatory Law", "Sustainability"],
+      tags: ["Class VI CCS", "Risk and Economic Evaluation", "Regulatory Law", "Sustainability"],
       bio: "Dr. Burton has degrees in Petroleum Engineering from the University of Alaska, a graduate degree in economics from the University of Oxford, and graduate degrees in law from the CEPMLP where he continued as a Research Fellow with concentration on corporate & regulatory climate law, policy, & economics. With Petrotek, Tyler assists with Class VI permit applications, advises on carbon capture and storage markets including market credits, offsets valuation, and financial incentives. He is an FSA credentialed Sustainability Accounting Professional at the Sustainability Accounting Standards Board.",
       personal: ""
     },
@@ -115,8 +115,8 @@ const OurTeam = () => {
       name: "Anthony Pennino, B.S.",
       role: "Regional Coordinator (AK) - CCS",
       education: "B.S. Professional Chemistry, University of Idaho",
-      tags: ["CCUS", "Natural Resources", "Permitting", "Alaska"],
-      bio: "Anthony has almost twenty years of experience providing regulatory and permitting support for major projects associated with natural resources development. Since obtaining a degree in chemistry he has worked for several large multinational producers and provided consulting services to a variety of clients. His experience includes planning and acquiring local, state and federal permits required for a variety of project types. At Petrotek, Anthony is supporting CCUS permitting and Class I injection well installation in Alaska and the lower 48.",
+      tags: ["CCUS", "Natural Resources", "Permitting", "Class I"],
+      bio: "Anthony has more than twenty years of experience providing regulatory and permitting support for major projects associated with natural resources development. Since obtaining a degree in chemistry he has worked for several large multinational producers and provided consulting services to a variety of clients. His experience includes planning and acquiring local, state and federal permits required for a variety of project types. At Petrotek, Anthony is supporting CCUS permitting and Class I injection well installation in Alaska and the lower 48.",
       personal: ""
     },
     {
@@ -147,7 +147,7 @@ const OurTeam = () => {
       name: "James Klutho, B.S., P.E.",
       role: "Senior Reservoir Engineer",
       education: "B.S. Geological Engineering, University of Missouri-Rolla; B.A. Psychology, University of Missouri-Columbia",
-      tags: ["A&D", "Economic Evaluation", "DSU Reserves", "Aries/Mosaic"],
+      tags: ["A&D", "Economic Evaluation", "DSU Reserves"],
       bio: "Jim has over 40 years of experience in reservoir engineering, production engineering, property acquisitions and operations. He is an expert on the Aries and Mosaic economic evaluation packages and has extensive experience with property evaluations for A&D. Jim is an integral part of the DSU reserve evaluation and EUR team at Petrotek, providing engineering analyses and testimony support documents for DSU permitting. He has worked as lead evaluator of major acquisitions and reserves process.",
       personal: "Jim lives in Centennial, Colorado and has interests in woodworking, computer programming and music, especially the guitar and piano."
     },
@@ -303,7 +303,7 @@ const OurTeam = () => {
 
                   <div className="pt-6">
                     <p className="font-bold text-gray-900 mb-3 flex items-center text-sm uppercase tracking-widest">
-                      <Scale className="w-4 h-4 mr-2" /> Key Expertise & Basins
+                      <Scale className="w-4 h-4 mr-2" /> Key Expertise
                     </p>
                     <div className="flex flex-wrap gap-2">
                       {selectedMember.tags.map(tag => (

@@ -97,11 +97,9 @@ const ImageModal = ({ src, alt, isOpen, onClose }) => {
           className="max-w-[90%] max-h-[90%] object-contain transition-transform duration-200 ease-out select-none"
           style={{ 
             transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
-            // Set the cursor to a default state, and allow for 'grab' when scaled in.
             cursor: scale > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default'
           }}
           draggable="false"
-          // Removed onClick handler that previously allowed for click-to-zoom
         />
       </div>
     </div>
@@ -249,50 +247,57 @@ const Layout = () => {
         <Outlet />
       </main>
 
-      <footer className="bg-gray-950 text-gray-400 py-20 border-t border-gray-800/50">
+      {/* UPDATED DARKER GREY FOOTER */}
+      <footer className="bg-gray-800 text-gray-200 py-20 border-t border-gray-700">
         <div className="w-full px-6 md:px-12 [@media(min-width:1600px)]:px-40 mx-auto max-w-[2000px]">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 md:mb-24">
+            
             <div className="flex flex-col items-start">
-              <img src="/Petrotek.png" alt="Petrotek" className="h-10 w-auto brightness-125 mb-8 no-zoom" />
-              <p className="text-sm leading-relaxed max-w-xs mb-8">Petrotek Corporation specializes in engineering evaluation and field operations for subsurface fluid flow.</p>
-              <div className="flex items-center space-x-3 text-[15px] font-bold uppercase tracking-widest text-gray-500">
+              <img src="/Petrotek.png" alt="Petrotek" className="h-12 w-auto brightness-125 mb-8 no-zoom" />
+              <p className="text-base md:text-lg leading-relaxed max-w-sm mb-8 text-gray-300">Petrotek Corporation specializes in engineering evaluation and field operations for subsurface fluid flow.</p>
+              <div className="flex items-center space-x-3 text-sm md:text-base font-bold uppercase tracking-widest text-gray-400">
                 <div className="h-px w-8 bg-[#8B1E3F]"></div><span>Established 1993</span>
               </div>
             </div>
+            
             <div>
-              <h4 className="text-white font-bold uppercase tracking-widest text-[10px] mb-8 opacity-50">Sitemap</h4>
-              <nav className="flex flex-col space-y-4 text-sm">
+              <h4 className="text-white font-bold uppercase tracking-widest text-sm mb-8 opacity-70">Sitemap</h4>
+              <nav className="flex flex-col space-y-4 text-base md:text-lg">
                 <Link to="/" onClick={() => window.scrollTo(0,0)} className="hover:text-white transition-colors w-fit">Home</Link>
                 <Link to="/team" onClick={() => window.scrollTo(0,0)} className="hover:text-white transition-colors w-fit">Our Team</Link>
                 <Link to="/publications" onClick={() => window.scrollTo(0,0)} className="hover:text-white transition-colors w-fit">Publications</Link>
                 <button onClick={handleContactClick} className="text-left hover:text-white transition-colors w-fit">Contact</button>
               </nav>
             </div>
+            
             <div>
-              <h4 className="text-white font-bold uppercase tracking-widest text-[10px] mb-8 opacity-50">Expertise</h4>
-              <div className="flex flex-col space-y-4 text-sm">
+              <h4 className="text-white font-bold uppercase tracking-widest text-sm mb-8 opacity-70">Expertise</h4>
+              <div className="flex flex-col space-y-4 text-base md:text-lg">
                 {services.map(s => (
                   <Link key={s.id} to={s.id} onClick={() => window.scrollTo(0,0)} className="hover:text-white transition-colors w-fit">{s.title}</Link>
                 ))}
               </div>
             </div>
+            
             <div>
-              <h4 className="text-white font-bold uppercase tracking-widest text-[10px] mb-8 opacity-50">Headquarters</h4>
-              <div className="text-sm space-y-6">
+              <h4 className="text-white font-bold uppercase tracking-widest text-sm mb-8 opacity-70">Headquarters</h4>
+              <div className="text-base md:text-lg space-y-6">
                 <div className="flex items-start space-x-3">
-                  <MapPin size={18} className="text-[#8B1E3F] shrink-0" />
-                  <span>5935 South Zang Street, Suite 200<br />Littleton, Colorado USA 80127</span>
+                  <MapPin size={22} className="text-[#8B1E3F] shrink-0 mt-1" />
+                  <span className="text-gray-300">5935 South Zang Street, Suite 200<br />Littleton, Colorado USA 80127</span>
                 </div>
                 <div className="flex items-center space-x-3">
-                  <Phone size={18} className="text-[#8B1E3F] shrink-0" />
-                  <a href="tel:3032909414" className="hover:text-white transition-colors">(303) 290-9414</a>
+                  <Phone size={22} className="text-[#8B1E3F] shrink-0" />
+                  <a href="tel:3032909414" className="hover:text-white transition-colors text-gray-300">(303) 290-9414</a>
                 </div>
               </div>
             </div>
+            
           </div>
-          <div className="pt-12 border-t border-gray-900 flex flex-col md:flex-row justify-between items-center gap-6">
-            <p className="text-[10px] uppercase tracking-widest text-gray-600">&copy; {new Date().getFullYear()} Petrotek Engineering Corporation</p>
-            <p className="text-[10px] font-bold text-white uppercase tracking-[0.3em] italic opacity-60">Building Relationships | Solving Problems | Adding Value</p>
+          
+          <div className="pt-12 border-t border-gray-700 flex flex-col md:flex-row justify-between items-center gap-6 text-center md:text-left">
+            <p className="text-xs md:text-sm uppercase tracking-widest text-gray-400">&copy; {new Date().getFullYear()} Petrotek Engineering Corporation</p>
+            <p className="text-xs md:text-sm font-bold text-white uppercase tracking-[0.2em] italic opacity-80">Building Relationships | Solving Problems | Adding Value</p>
           </div>
         </div>
       </footer>

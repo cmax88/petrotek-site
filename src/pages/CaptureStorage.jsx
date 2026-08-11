@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 
 const CaptureStorage = () => {
-  const maroon = "#22C55E";
+  const maroon = "#166534";
   const [openIndex, setOpenIndex] = useState(null);
 
   // Placeholder Image for CCS - Replace with your specific CCS image
@@ -32,7 +32,7 @@ const CaptureStorage = () => {
     "Migration and containment simulation and evaluation",
     "Federal and state Class VI UIC permits",
     "Regulatory evaluation for CCS planning and regulatory negotiations",
-    "Financial assurance",
+    "Financial assurance evaluations",
     "Tax equity partnership support",
     "45Q qualification and determination",
     "Injection well design and preliminary surface facility design",
@@ -47,15 +47,14 @@ const CaptureStorage = () => {
       question: "Are CCS wells safe?",
       content: (
         <>
-          <p className="mb-4">Disposal wells are the safest, most effective way to remove CO2 from the environment and safely store in the subsurface. Protection of drinking and irrigation water is the primary concern in the construction, operation and regulatory oversight of such wells. Deep well technology has been proven through wide use of over more than 50 years and is suitable for removing CO2 from the environment. Class VI wells, used for injecting CO2 will be constructed to similar standards as Class I wells, using compatible materials. Additional monitoring is employed for Class VI wells that requires periodic monitoring of ground water quality and geochemical changes above the confining zone(s) and direct monitoring of the pressure front in the injection zone.</p>
+          <p className="mb-4">Disposal wells are the safest, most effective way to remove CO2 from the environment and safely store in the subsurface. Protection of potential drinking water sources is the primary concern in the construction, operation and regulatory oversight of such wells. Deep well technology has been proven through wide use of over more than 50 years and is suitable for removing CO2 from the environment. Class VI wells, used for injecting CO2 must be constructed to similar but more stringent standards as compared to Class I wells. Additional monitoring is employed for Class VI wells that requires periodic monitoring of shallow ground water quality and geochemical changes above the confining zone(s) and direct monitoring of the pressure front in the injection zone.</p>
           <p className="mb-4">There has never been an instance of surface or drinking water contamination due to operation of a Class I disposal well that was sited, constructed and operated according to current US EPA standards.</p>
           <p className="mb-4">The US Government has found Class I wells are safer than virtually all other waste disposal practices. The US EPA reports that approximately 20 billion gallons of liquid waste is safely and permanently disposed of each year in the United States using Class I disposal wells.</p>
           <p className="mb-4">Based on a number of academic studies and the collection of data from existing well sites, waste concentrations are reduced by natural processes in the disposal formation after injection. In addition to dilution by mixing with natural brines, neutralization, adsorption, precipitation, other reactions and microbial degradation occur in the injection zone. This serves as waste treatment underground.</p>
           <p className="mb-4">Disposal wells of various types are used in countries throughout the world to safely manage liquid waste by permanently isolating it from the environment. Environment Canada, the primary environmental regulatory agency in Canada, approves and permits disposal into deep wells in appropriate areas as a responsible option for the management of liquid wastes.</p>
           <p className="mb-4">The Kansas Department of Health and Environment says that “injection into a Class I well is considered an environmentally sound practice”. The state of Kansas has several hundred oil and gas disposal wells and almost 50 Class I industrial disposal wells.</p>
           <p className="mb-4">The Michigan Department of Natural Resources (MDNR) has documentation that no instances of well failure or contamination have occurred due to Class I well operation in the state. In addition, the Michigan Deep Well Injection Committee reported that “Most of Michigan has the subsurface geologic conditions required for proper waste disposal by deep well injection”.</p>
-          <p className="mb-4">The largest concentration of disposal wells in the United States is in Texas (including almost 100 Class I wells). The Texas Natural Resources Conservation Commission that regulates these injection systems says that deep well injection has “an excellent record of environmental protection”.</p>
-          <p>Currently there are 2 permitted Class VI wells in the U.S.; other Class VI applications are in process.</p>
+          <p>The largest concentration of disposal wells in the United States is in Texas (including almost 100 Class I wells). The Texas Natural Resources Conservation Commission that regulates these injection systems says that deep well injection has “an excellent record of environmental protection”.</p>
         </>
       )
     },
@@ -63,9 +62,9 @@ const CaptureStorage = () => {
       question: "Who regulates CCS wells?",
       content: (
         <>
-          <p className="mb-4">Throughout the United States, the Environmental Protection Agency (USEPA) provides oversight and closely monitors Class VI injection well operations. Laws, policies and regulations have matured over the past 100 years to enhance the safety of both non-hazardous and hazardous injection well operation. In 2 cases (ND & WY; LA pending), state governments have been granted primary authority to conduct the Class VI Underground Injection Control (UIC) program. In others, the federal government directly implements the regulations. In all cases, strict standards are enforced by law to ensure that environmentally protective practices are followed. Regulations for Class II injection in EOR projects is mature in most states. Geologic and engineering information is carefully evaluated before injection well construction can begin and is reviewed after drilling has been completed, and before injection operations are authorized. Continuous protection of all usable groundwater is accomplished by rigid construction and monitoring requirements. In addition to strict construction requirements, annual testing and limitation of waste type, disposal volume and injection well pressure are required to further promote protection of the accessible environment. Detailed records of wastes disposed and all site operations must be submitted to the EPA regulators and made available to the public. Twenty-four-hour monitoring of operations is required to verify safe operation and permit compliance.</p>
-          <p className="mb-2">You can learn more about Class VI injection wells by visiting the EPA website at: <a href="https://www.epa.gov/uic/class-vi-wells-used-geologic-sequestration-co2" className="text-[#22C55E] font-bold hover:underline" target="_blank" rel="noopener noreferrer">https://www.epa.gov/uic/class-vi-wells-used-geologic-sequestration-co2</a></p>
-          <p>You can learn more about Class II EOR wells by visiting the EPA website at: <a href="https://www.epa.gov/uic/class-ii-oil-and-gas-related-injection-wells" className="text-[#22C55E] font-bold hover:underline" target="_blank" rel="noopener noreferrer">https://www.epa.gov/uic/class-ii-oil-and-gas-related-injection-wells</a></p>
+          <p className="mb-4">Throughout the United States, the Environmental Protection Agency (USEPA) provides oversight and closely monitors Class VI injection well operations. Laws, policies and regulations have matured over the past 100 years to enhance the safety of both non-hazardous and hazardous injection well operation. In some cases State governments have been granted primary authority to conduct the Class VI Underground Injection Control (UIC) program. In others, the Federal government directly implements the regulations. In all cases, strict standards are enforced by law to ensure that environmentally protective practices are followed. Regulations for Class II injection in EOR projects is mature in most states. Geologic and engineering information is carefully evaluated before injection well construction can begin and is reviewed after drilling has been completed, and before injection operations are authorized. Continuous protection of all usable groundwater is accomplished by rigid construction and monitoring requirements. In addition to strict construction requirements, annual testing and limitation of waste type, disposal volume and injection well pressure limits are required to further promote protection of the accessible environment. Detailed records of wastes disposed and all site operations must be submitted to the EPA regulators and made available to the public. Twenty-four-hour monitoring of operations is required to verify safe operation and permit compliance.</p>
+          <p className="mb-2">You can learn more about Class VI injection wells by visiting the EPA website at: <a href="https://www.epa.gov/uic/class-vi-wells-used-geologic-sequestration-co2" className="text-[#166534] font-bold hover:underline" target="_blank" rel="noopener noreferrer">https://www.epa.gov/uic/class-vi-wells-used-geologic-sequestration-co2</a></p>
+          <p>You can learn more about Class II EOR wells by visiting the EPA website at: <a href="https://www.epa.gov/uic/class-ii-oil-and-gas-related-injection-wells" className="text-[#166534] font-bold hover:underline" target="_blank" rel="noopener noreferrer">https://www.epa.gov/uic/class-ii-oil-and-gas-related-injection-wells</a></p>
         </>
       )
     },
@@ -74,8 +73,8 @@ const CaptureStorage = () => {
       content: "By almost any definition, the naturally occurring waters typically present in injection zones are highly saline and unfit for use. The salinity of the native brines is often several times the concentration of normal seawater."
     },
     {
-      question: "How do well operators prevent liquid backing up into the pipe and having nowhere to go?",
-      content: "The pore space (void space inside the rock [picture a hard sponge]) in the formations at several thousand feet of depth in the vicinity of disposal wells are already 100% saturated with natural brines. In many injection zones, these brines have specific gravities of between 1.05 and 1.2. This brine can be several times the salinity of seawater. When operated, Class VI wells have CO2 inside the tubing from the surface all the way down to the injection zone. By adding a carefully controlled amount of pressure to the fluid by pumping during disposal operations, wells can be used to add the CO2 to the brine already present in the injection formation. This is accomplished by pushing natural fluids out of the rock pore spaces near the well and into neighboring pore spaces by compressing these moving fluids and the fluid already contained inside those rock spaces to a higher pressure. This effect continues radially away from the well."
+      question: "How do well operators inject CO2 into the ground?",
+      content: "The pore space (void space inside the rock [picture a hard sponge]) in the formations at several thousand feet of depth in the vicinity of disposal wells is already 100% saturated with natural salt water called brine. In many injection zones, the brine has a specific gravity of between 1.05 and 1.2 (i.e., several times the salinity of seawater).  When operated, Class VI wells have CO2  inside the tubing from the surface all the way down to the injection zone. By adding a controlled amount of pressure to the fluid by pumping during disposal operations, wells can be used to add CO2 to the brine already present in the injection formation. This is accomplished by pushing natural fluids out of the rock pore spaces near the well and into neighboring pore spaces.  This is accomplished by compressing the CO2 and the native fluid inside the rock spaces to a higher pressure. This effect continues radially away from the well."
     },
     {
       question: "Does the permitting process consider how long such a well can be used?",
@@ -110,7 +109,7 @@ const CaptureStorage = () => {
               <Leaf className="w-10 h-10" style={{ color: maroon }} />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">Carbon Capture & Storage (CCS)</h1>
-            <p className="text-xl text-[#22C55E] font-bold mb-6">Geologic Sequestration and Class VI Permitting</p>
+            <p className="text-xl text-[#166534] font-bold mb-6">Geologic Sequestration and Class VI Permitting</p>
             <div className="w-24 h-1 mb-8" style={{ backgroundColor: maroon }}></div>
           </div>
 
@@ -130,7 +129,7 @@ const CaptureStorage = () => {
                   {servicesList.map((item, i) => (
                     <li key={i} className="flex items-start">
                       {/* Replaced CheckCircle2 with a custom styled bullet point */}
-                      <span className="w-2 h-2 mt-2 mr-3 bg-[#22C55E] rounded-full flex-shrink-0"></span>
+                      <span className="w-2 h-2 mt-2 mr-3 bg-[#166534] rounded-full flex-shrink-0"></span>
                       <span className="text-gray-700 font-medium text-sm leading-relaxed">{item}</span>
                     </li>
                   ))}
@@ -150,19 +149,19 @@ const CaptureStorage = () => {
 
           {/* CCS Well FYI Accordion Section */}
           <div className="max-w-4xl mx-auto mb-20">
-            <h2 className="text-2xl md:text-3xl font-bold text-[#22C55E] mb-8 flex items-center">
+            <h2 className="text-2xl md:text-3xl font-bold text-[#166534] mb-8 flex items-center">
               <HelpCircle className="mr-3" /> CCS Well FYI
             </h2>
             
             <div className="space-y-4">
               {accordionData.map((item, index) => (
-                <div key={index} className="border border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white hover:border-[#22C55E]">
+                <div key={index} className="border border-gray-200 rounded-xl overflow-hidden shadow-sm bg-white hover:border-[#166534]">
                   <button
                     onClick={() => toggleAccordion(index)}
                     className="w-full px-6 py-5 text-left flex justify-between items-center hover:bg-gray-50 transition-colors"
                   >
                     <span className="font-bold text-lg text-gray-900">{item.question}</span>
-                    <span className="ml-4 text-[#22C55E]">
+                    <span className="ml-4 text-[#166534]">
                       {openIndex === index ? <Minus size={24} /> : <Plus size={24} />}
                     </span>
                   </button>
@@ -187,7 +186,7 @@ const CaptureStorage = () => {
              <Link 
                to="/" 
                onClick={() => setTimeout(() => document.getElementById('contact')?.scrollIntoView({behavior: 'smooth'}), 100)}
-               className="inline-flex items-center px-8 py-4 bg-[#22C55E] text-white font-bold rounded-lg hover:brightness-110 transition-all shadow-lg"
+               className="inline-flex items-center px-8 py-4 bg-[#166534] text-white font-bold rounded-lg hover:brightness-110 transition-all shadow-lg"
              >
                Contact Our CCS Experts <ChevronRight className="ml-2 w-5 h-5" />
              </Link>

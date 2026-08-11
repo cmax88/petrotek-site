@@ -16,7 +16,7 @@ import {
 
 const Leachate = () => {
   // Using a Deep Teal/Green for the Waste Management / Leachate theme
-  const themeColor = "#0D9488"; // Teal-600
+  const themeColor = "#0F766E"; // Teal-600
   const maroon = "#8B1E3F"; // Your primary brand color for consistency
 
   const leachateServices = [
@@ -80,7 +80,7 @@ const Leachate = () => {
                   <h3 className="text-lg font-bold text-gray-900 m-0">Why Deep Well Injection?</h3>
                 </div>
                 <p className="text-sm m-0">
-                  By utilizing deep, isolated geological formations, landfill operators can dispose of large volumes of leachate safely below the <strong>Lowest Billable Underground Source of Drinking Water (USDW)</strong>, reducing surface footprint and transportation risks.
+                  By utilizing deep, isolated geological formations, landfill operators can dispose of large volumes of leachate safely below the <strong>Lowest Underground Source of Drinking Water (USDW)</strong>, reducing surface footprint and transportation risks.
                 </p>
               </div>
             </div>
@@ -122,21 +122,21 @@ const Leachate = () => {
           </div>
 
           {/* Strategic Benefit Block */}
-          <div className="bg-gray-900 text-white rounded-3xl p-10 md:p-14 shadow-2xl mb-20 relative overflow-hidden">
+          <div className="bg-gray-300 text-white rounded-3xl p-10 md:p-14 shadow-2xl mb-20 relative overflow-hidden">
             <div className="relative z-10">
-              <h3 className="text-3xl font-bold mb-6">Built for the Waste Industry</h3>
+              <h3 className="text-3xl font-bold mb-6 text-black">Built for the Waste Industry</h3>
               <div className="grid md:grid-cols-3 gap-8">
                 <div className="space-y-2">
                   <div className="text-2xl font-bold" style={{ color: themeColor }}>Cost Reductions</div>
-                  <p className="text-gray-400 text-sm">Eliminate the rising costs of third-party treatment and trucking logistics.</p>
+                  <p className="text-gray-600 text-sm">Eliminate the rising costs of third-party treatment and trucking logistics.</p>
                 </div>
                 <div className="space-y-2">
                   <div className="text-2xl font-bold" style={{ color: themeColor }}>Reliability</div>
-                  <p className="text-gray-400 text-sm">On-site disposal provides 24/7 uptime regardless of weather or municipal capacity.</p>
+                  <p className="text-gray-600 text-sm">On-site disposal provides 24/7 uptime regardless of weather or municipal capacity.</p>
                 </div>
                 <div className="space-y-2">
                   <div className="text-2xl font-bold" style={{ color: themeColor }}>Longevity</div>
-                  <p className="text-gray-400 text-sm">Wells are engineered for decades of service to match the lifespan of the landfill.</p>
+                  <p className="text-gray-600 text-sm">Wells are engineered for decades of service to match the lifespan of the landfill.</p>
                 </div>
               </div>
             </div>

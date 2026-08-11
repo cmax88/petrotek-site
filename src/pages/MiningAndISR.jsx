@@ -43,8 +43,8 @@ const MiningAndISR = () => {
 
   const isrServices = [
     { title: "Strategic Planning", icon: <FileCheck className="w-5 h-5" />, items: ["Feasibility studies", "Hydrogeologic support for NI-43-101 (PEA/PFS)", "Expert testimony"] },
-    { title: "Regulatory & Permitting", icon: <Scale className="w-5 h-5" />, items: ["Mining Permits (State level)", "Radioactive Materials Licenses (NRC)", "Aquifer exemption applications"] },
-    { title: "Characterization & Modeling", icon: <Layers className="w-5 h-5" />, items: ["Aquifer characterization and assessments", "Analytical and numerical fate & transport modeling", "Restoration demonstrations"] },
+    { title: "Regulatory & Permitting", icon: <Scale className="w-5 h-5" />, items: ["Mining Permit Applications (NRC or State level)", "Radioactive Materials License Applications (NRC or State level)", "Aquifer exemption applications"] },
+    { title: "Groundwater Characterization & Modeling", icon: <Layers className="w-5 h-5" />, items: ["Aquifer characterization and assessments", "Analytical and numerical fate & transport modeling", "Restoration demonstrations"] },
     { title: "Chemical & Water Management", icon: <Beaker className="w-5 h-5" />, items: ["Geochemical evaluations and modeling", "Wastewater management via Class I disposal wells", "Wellfield fluid control"] }
   ];
 
@@ -102,10 +102,10 @@ const MiningAndISR = () => {
                   </div>
                   <p className="text-xl text-[#EAB308] font-bold mb-6">Uniting Fluid Flow, Petroleum Engineering, and Hydrology</p>
                   <p>
-                    The in-situ recovery (ISR) industry is unique in that a specific combination of expertise in fluid flow, petroleum engineering, and hydrology is needed for the diverse nature of operations.
+                    The in-situ recovery (ISR) industry is unique in that a specific combination of expertise in fluid flow, petroleum engineering, hydrology, and geochemistry is needed for the diverse nature of operations.
                   </p><br></br>
                   <p>
-                    Petrotek currently provides consulting services to <strong>all of the major uranium operators in the U.S.</strong> with production or production visibility, as well as a number of companies in the advanced and junior exploration stages.
+                    Petrotek currently provides consulting services to <strong>most of the major uranium operators in the U.S.</strong> with production or production visibility, as well as a number of companies in the advanced and junior exploration stages.
                   </p>
                   <div className="my-8 p-6 bg-gray-50 rounded-xl border-l-4" style={{ borderColor: colors.isr }}>
                     <div className="flex items-center mb-3">
@@ -113,11 +113,11 @@ const MiningAndISR = () => {
                       <h3 className="text-lg font-bold text-gray-900 m-0">Global Technical Support</h3>
                     </div>
                     <p className="text-sm m-0">
-                      Our staff provides technical support for uranium ISR and mining reclamation projects across the globe, including <strong>Australia, Canada, Kazakhstan, Paraguay, South Africa, and Turkey.</strong>
+                      Our staff provides technical support for uranium ISR and mining reclamation projects across the globe, including <strong>United States, Australia, Canada, Kazakhstan, Paraguay, South Africa, and Turkey.</strong>
                     </p>
                   </div>
                   <p>
-                    We are deeply knowledgeable regarding all federal and state regulatory requirements related to groundwater flow at ISR projects, ensuring that operations remain compliant from exploration through final reclamation.
+                    We are deeply experienced regarding all federal and state regulatory requirements related to groundwater flow at ISR projects, ensuring that operations remain compliant from exploration through final reclamation.
                   </p>
                 </div>
               <div className="lg:w-5/5 sticky top-32" >
@@ -155,7 +155,7 @@ const MiningAndISR = () => {
                   </div>
                   <p className="text-xl text-[#78350F] font-bold mb-6">Characterization, Modeling, and Regulatory Compliance</p>
                   <p>
-                    The Petrotek Team has over one hundred years of combined experience in performing hydrogeologic characterizations for evaluating soil and water impacts.
+                    The Petrotek Team has over one hundred years of combined experience in performing hydrogeologic characterizations for evaluating soil and water impacts from proposed mining operations.
                   </p><br></br>
                   <p>
                     We specialize in assessing ground water and surface water interactions at new and active hard rock mining and mineral processing sites. Our work bridges the gap between complex geology and the stringent requirements of modern environmental stewardship.
@@ -184,7 +184,7 @@ const MiningAndISR = () => {
                     </ul>
                   </div>
                 </div>
-              <div className="lg:w-3/5 sticky top-32" >
+              <div className="lg:w-4/5 sticky top-32" >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
                 <img 
                   src="/mining.jpg" 
@@ -203,11 +203,11 @@ const MiningAndISR = () => {
                 </div>
               </div>
 
-              <div className="bg-gray-900 text-white rounded-3xl p-10 md:p-14 shadow-2xl mb-20 relative overflow-hidden">
+              <div className="bg-gray-300 text-white rounded-3xl p-10 md:p-14 shadow-2xl mb-20 relative overflow-hidden">
                 <div className="relative z-10 grid md:grid-cols-3 gap-8 items-center">
                   <div className="md:col-span-2">
-                    <h3 className="text-3xl font-bold mb-4">Proactive Water Management</h3>
-                    <p className="text-gray-300 text-lg leading-relaxed mb-6">
+                    <h3 className="text-3xl font-bold mb-4 text-black">Proactive Water Management</h3>
+                    <p className="text-gray-600 text-lg leading-relaxed mb-6">
                       From baseline studies for new permits to long-term monitoring for active operations and post-operational closures, we provide the technical depth required for the industry's most challenging subsurface environments.
                     </p>
                     <div className="flex items-center space-x-2 text-[#78350F] font-bold">
@@ -217,8 +217,8 @@ const MiningAndISR = () => {
                   </div>
                   <div className="hidden md:flex justify-center">
                     <div className="w-32 h-32 border-4 border-[#78350F] rounded-full flex items-center justify-center">
-                      <span className="text-3xl font-bold text-white">100+</span>
-                      <span className="text-[10px] absolute mt-12 uppercase tracking-widest text-gray-400 text-center">Combined<br/>Exp.</span>
+                      <span className="text-3xl mb-6 font-bold text-black">100+</span>
+                      <span className="text-[10px] absolute mt-12 uppercase tracking-widest text-gray-600 text-center">Combined<br/>Exp.</span>
                     </div>
                   </div>
                 </div>
