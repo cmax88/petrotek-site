@@ -42,7 +42,7 @@ const Safety = () => {
           {/* Header Section */}
           <div className="mb-12">
             <div className="mb-6 p-4 bg-gray-50 inline-block rounded-2xl border border-gray-100 shadow-sm">
-              <ShieldCheck className="w-10 h-10" style={{ color: maroon }} />
+              <HardHat className="w-10 h-10" style={{ color: maroon }} />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Safety</h1>
             <p className="text-xl text-[#F97316] font-bold mb-6">Safety is Everyone's Responsibility</p>
@@ -53,7 +53,7 @@ const Safety = () => {
           <div className="flex flex-col lg:flex-row gap-12 mb-20 items-start">
             <div className="lg:w-3/5">
               <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed mb-8">
-                <p className="text-xl text-gray-800 font-medium">
+                <p className="text-lg text-gray-800 font-medium">
                   We encourage safety to be everyone’s responsibility, not just the "safety guy’s." 
                 </p>
                 <br></br>

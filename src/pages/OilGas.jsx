@@ -60,10 +60,6 @@ const OilGas = () => {
           {/* Background & Principals Section */}
           <div className="flex flex-col lg:flex-row gap-12 mb-20 items-start">
             <div className="lg:w-3/5">
-              <div className="flex items-center mb-6 text-gray-900">
-                <History className="mr-3 w-6 h-6" style={{ color: maroon }} />
-                <h2 className="text-2xl font-bold">Our Professional Roots</h2>
-              </div>
               <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed">
                 <p className="mb-4">
                   The principals of Petrotek all started their careers in oil and gas exploration and development. We carry a legacy of experience from major oil and gas operators and service companies.
@@ -72,9 +68,11 @@ const OilGas = () => {
                   Our backgrounds encompass the full lifecycle of the well, involving <strong>well operation, drilling, reservoir engineering, geology, and environmental compliance.</strong>
                 </p>
                 <br></br>
-                <p className="font-semibold text-gray-800 border-l-4 pl-4" style={{ borderColor: maroon }}>
-                  Please contact us to discuss how we can help with project efficiency and economics in the current price environment.
-                </p>
+                  <div className="my-8 p-6 bg-gray-50 rounded-xl border-l-4" style={{ borderColor: maroon }}>
+                    <p className="text-sm m-0">
+                     <strong>Please contact us to discuss how we can help with project efficiency and economics in the current price environment.</strong>
+                    </p>
+                  </div>
               </div>
             </div>
           {/* Right Column: Image - REMOVED WRAPPER DIV STYLING */}

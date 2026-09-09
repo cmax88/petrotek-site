@@ -86,11 +86,11 @@ const Leachate = () => {
             </div>
 
             {/* Right Column: Image */}
-              <div className="lg:w-3/5 sticky top-32" >
+              <div className="lg:w-5/5 sticky top-32" >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
                 <img 
-                  src="https://images.unsplash.com/photo-1611284446314-60a58ac0deb9?q=80&w=2670&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D" 
-                  alt="Petrotek Field Operations" 
+                  src="/Landfill Leachate.png" 
+                  alt="Landfill Leachate System Diagram" 
                 />
               </div>
             </div>

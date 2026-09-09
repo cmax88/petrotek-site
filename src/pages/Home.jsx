@@ -301,7 +301,7 @@ const industries = [
       <div className="lg:w-[55%] flex flex-col justify-center text-center lg:text-left pt-12 lg:pt-0">
         <div className="max-w-3xl [@media(min-width:1600px)]:max-w-5xl">
           {/* Headline: Added heavy custom text-shadow for readability */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl [@media(min-width:1600px)]:text-7xl font-extrabold text-white leading-tight mb-6 lg:mb-8 [@media(min-width:1600px)]:mb-12 tracking-tight [text-shadow:_0_4px_8px_rgb(0_0_0_/_0.8)]">
+          <h1 className="text-4xl md:text-5xl lg:text-6xl [@media(min-width:1600px)]:text-7xl font-extrabold text-white leading-tight mb-6 lg:mb-8 [@media(min-width:1600px)]:mb-12 tracking-tight drop-shadow-[0_4px_10px_rgba(0,0,0,100)]">
             Injection Well and Subsurface Resources Consultants
           </h1>
           
@@ -428,8 +428,8 @@ const industries = [
             {/* Enlarged, "clean" image container */}
             <div className="flex justify-center items-center">
               <img 
-                src="https://petrotek.com/wp-content/uploads/elementor/thumbs/Injection-Well-3D-qg3dwrpdvagdnjryarnr1gnw6cokhg4cmbgdmeshz4.png" 
-                alt="3D Model" 
+                src="/Injection Well 3D.png" 
+                alt="Injection Well 3D Model" 
                 className="w-full max-w-xl h-auto drop-shadow-xl" // Increased to max-w-xl, removed shadow/border classes
               />
             </div>
@@ -521,7 +521,17 @@ const industries = [
           <div className="relative max-w-5xl mx-auto rounded-[1rem] overflow-hidden shadow-2xl border border-gray-100 bg-white group">
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/10 pointer-events-none"></div>
             <img 
-              src="/PEC Client Map.png" 
+              src="/Client Map v2.png" 
+              alt="Client Map" 
+              className="w-full h-auto object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 ease-in-out"
+              onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=2000"; }}
+            />
+          </div>
+
+          <div className="relative max-w-5xl mx-auto rounded-[1rem] overflow-hidden shadow-2xl border border-gray-100 bg-white group">
+            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/10 pointer-events-none"></div>
+            <img 
+              src="/Client Map.png" 
               alt="Client Map" 
               className="w-full h-auto object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 ease-in-out"
               onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=2000"; }}

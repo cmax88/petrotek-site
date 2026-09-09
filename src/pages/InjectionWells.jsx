@@ -56,7 +56,7 @@ const InjectionWells = () => {
   const [fyiOpenIndex, setFyiOpenIndex] = useState(null);
 
   // Placeholder image URL - replace with your actual image later
-  const injectionWellImage = "https://petrotek.com/wp-content/uploads/elementor/thumbs/Injection-Well-3D-qg3dwrpdvagdnjryarnr1gnw6cokhg4cmbgdmeshz4.png";
+  const injectionWellImage = "/Injection Well 3D.png";
 
   const toggleTechAccordion = (index) => {
     setTechOpenIndex(techOpenIndex === index ? null : index);
@@ -312,7 +312,7 @@ const InjectionWells = () => {
             <div className="relative rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
               <img 
                 src={injectionWellImage} 
-                alt="Injection Well Diagram" 
+                alt="Injection Well 3D Diagram" 
                 className="w-full h-full object-cover cursor-zoom-in"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
