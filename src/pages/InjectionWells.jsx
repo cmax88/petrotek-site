@@ -56,7 +56,7 @@ const InjectionWells = () => {
   const [fyiOpenIndex, setFyiOpenIndex] = useState(null);
 
   // Placeholder image URL - replace with your actual image later
-  const injectionWellImage = "/Injection Well 3D.png";
+  const injectionWellImage = "/2026_Update.png";
 
   const toggleTechAccordion = (index) => {
     setTechOpenIndex(techOpenIndex === index ? null : index);

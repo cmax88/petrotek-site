@@ -549,7 +549,7 @@ const industries = [
             {/* Enlarged, "clean" image container */}
             <div className="flex justify-center items-center">
               <img 
-                src="/Injection Well 3D.png" 
+                src="/2026_Update.png" 
                 alt="Injection Well 3D Model" 
                 className="w-full max-w-xl h-auto drop-shadow-xl" // Increased to max-w-xl, removed shadow/border classes
               />
