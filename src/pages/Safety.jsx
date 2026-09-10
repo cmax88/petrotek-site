@@ -122,7 +122,7 @@ const Safety = () => {
             </div>
 
             {/* Right Column: Image */}
-              <div className="lg:w-1.5/5 sticky top-32" >
+              <div className="lg:w-1.5/5 top-32" >
               <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
                 <img 
                   src="/safety.jpg" 

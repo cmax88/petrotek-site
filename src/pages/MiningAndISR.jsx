@@ -122,9 +122,9 @@ const MiningAndISR = () => {
                 </div>
               <div className="lg:w-5/5 sticky top-32" >
                 <img 
-                  src="/InSitu Uranium or Copper Recovery.jpg" 
+                  src="/InSitu_Uranium_Recov_2026.png" 
                   alt="Petrotek Field Operations" 
-                  className="w-full h-auto object-cover" // Changed h-full to h-auto to maintain aspect ratio without wrapper
+                  className="w-full h-auto object-contain cursor-zoom-in"
                 />
             </div>
               </div>

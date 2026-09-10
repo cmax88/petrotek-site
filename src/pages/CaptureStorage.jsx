@@ -142,7 +142,7 @@ const CaptureStorage = () => {
                 <img 
                   src="/CO2_Storage_Rev_2026.png" 
                   alt="CO2 Storage Options" 
-                  className="w-full h-auto object-cover" // Changed h-full to h-auto to maintain aspect ratio without wrapper
+                  className="w-full h-auto object-contain cursor-zoom-in"
                 />
             </div>
           </div>

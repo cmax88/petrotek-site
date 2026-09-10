@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Outlet, Link, useNavigate, useLocation } from 'react-router-dom';
 import { Menu, X, ChevronDown, MapPin, Phone, Mail, Plus, Minus, RotateCcw } from 'lucide-react';
 import { SpeedInsights } from "@vercel/speed-insights/react";
@@ -10,6 +10,7 @@ const ImageModal = ({ src, alt, isOpen, onClose }) => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [startPos, setStartPos] = useState({ x: 0, y: 0 });
+  const containerRef = useRef(null);
 
   // Reset zoom/pan when image changes or modal closes
   useEffect(() => {
@@ -19,16 +20,45 @@ const ImageModal = ({ src, alt, isOpen, onClose }) => {
     }
   }, [src, isOpen]);
 
+  // Non-passive wheel listener to allow e.preventDefault()
+  useEffect(() => {
+    const container = containerRef.current;
+    if (!isOpen || !container) return;
+
+    const handleWheel = (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+
+      const zoomFactor = 0.0015;
+      const delta = -e.deltaY * zoomFactor;
+
+      setScale((prev) => {
+        const next = Math.min(Math.max(prev + delta, 1), 6);
+        if (next === 1) {
+          setPosition({ x: 0, y: 0 });
+        }
+        return next;
+      });
+    };
+
+    container.addEventListener('wheel', handleWheel, { passive: false });
+    return () => container.removeEventListener('wheel', handleWheel);
+  }, [isOpen]);
+
   if (!isOpen) return null;
 
   const handleZoomIn = (e) => {
     e.stopPropagation();
-    setScale(prev => Math.min(prev + 0.5, 4));
+    setScale((prev) => Math.min(prev + 0.5, 6));
   };
 
   const handleZoomOut = (e) => {
     e.stopPropagation();
-    setScale(prev => Math.max(prev - 0.5, 1));
+    setScale((prev) => {
+      const next = Math.max(prev - 0.5, 1);
+      if (next === 1) setPosition({ x: 0, y: 0 });
+      return next;
+    });
   };
 
   const handleReset = (e) => {
@@ -47,7 +77,7 @@ const ImageModal = ({ src, alt, isOpen, onClose }) => {
     if (!isDragging) return;
     setPosition({
       x: e.clientX - startPos.x,
-      y: e.clientY - startPos.y
+      y: e.clientY - startPos.y,
     });
   };
 
@@ -66,7 +96,7 @@ const ImageModal = ({ src, alt, isOpen, onClose }) => {
         <X size={28} />
       </button>
 
-      {/* Controls Overlay - Force user to use these to zoom */}
+      {/* Controls Overlay */}
       <div 
         className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/40 backdrop-blur-xl p-2 rounded-2xl border border-white/10 z-[10001] shadow-2xl"
         onClick={(e) => e.stopPropagation()}
@@ -84,6 +114,7 @@ const ImageModal = ({ src, alt, isOpen, onClose }) => {
 
       {/* Image Container */}
       <div 
+        ref={containerRef}
         className="relative w-full h-full flex items-center justify-center overflow-hidden"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
@@ -94,7 +125,7 @@ const ImageModal = ({ src, alt, isOpen, onClose }) => {
         <img
           src={src}
           alt={alt}
-          className="max-w-[90%] max-h-[90%] object-contain transition-transform duration-200 ease-out select-none"
+          className="max-w-[90%] max-h-[90%] object-contain transition-transform duration-75 ease-out select-none"
           style={{ 
             transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
             cursor: scale > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default'

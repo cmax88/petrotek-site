@@ -87,12 +87,11 @@ const Leachate = () => {
 
             {/* Right Column: Image */}
               <div className="lg:w-5/5 sticky top-32" >
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
                 <img 
                   src="/Landfill Leachate.png" 
-                  alt="Landfill Leachate System Diagram" 
+                  alt="Landfill Leachate System Diagram"
+                  className="w-full h-auto object-contain cursor-zoom-in"
                 />
-              </div>
             </div>
           </div>
 

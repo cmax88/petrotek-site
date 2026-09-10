@@ -309,14 +309,11 @@ const InjectionWells = () => {
 
           {/* Right Column: Image */}
           <div className="lg:w-3/5 sticky top-32">
-            <div className="relative rounded-2xl shadow-2xl overflow-hidden border border-gray-100">
               <img 
                 src={injectionWellImage} 
                 alt="Injection Well 3D Diagram" 
-                className="w-full h-full object-cover cursor-zoom-in"
+                className="w-full h-auto object-contain cursor-zoom-in"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/10 to-transparent pointer-events-none"></div>
-            </div>
           </div>
           </div>
 

@@ -64,6 +64,67 @@ const UraniumIcon = ({ className, style }) => (
   />
 );
 
+const IndustryCard = ({ item, maroon, onInquire }) => {
+  const [isFlipped, setIsFlipped] = useState(false);
+  const [hasInteracted, setHasInteracted] = useState(false);
+
+  const handleFlip = () => {
+    setIsFlipped((prev) => !prev);
+    setHasInteracted(true);
+  };
+
+  return (
+    <div 
+      className="group h-[280px] [perspective:1000px] cursor-pointer"
+      onClick={handleFlip}
+    >
+      <div className={`relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''} md:group-hover:[transform:rotateY(180deg)]`}>
+        
+        {/* Front Side */}
+        <div className="absolute inset-0 h-full w-full rounded-xl overflow-hidden shadow-sm [backface-visibility:hidden]">
+          <img src={item.img} alt={item.name} className="h-full w-full object-cover" />
+
+          <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4">
+            {!hasInteracted && (
+              <span className="text-[10px] text-white/60 uppercase tracking-widest mb-2 md:hidden animate-pulse">
+                Tap to flip
+              </span>
+            )}
+            
+            <div className="flex items-center space-x-2 text-white">
+              <CheckCircle2 className="w-4 h-4 shrink-0" style={{ color: maroon }} />
+              <span className="text-sm font-bold text-left">{item.name}</span>
+            </div>
+          </div>
+        </div>
+
+        {/* Back Side */}
+        <div 
+          className="absolute inset-0 h-full w-full rounded-xl bg-gray-50 p-6 flex flex-col justify-center items-center text-center [backface-visibility:hidden] [transform:rotateY(180deg)] border-2" 
+          style={{ borderColor: maroon }}
+        >
+          <h3 className="text-base font-bold mb-2 uppercase" style={{ color: maroon }}>
+            {item.name}
+          </h3>
+          <p className="text-xs text-gray-600 leading-relaxed">
+            {item.description}
+          </p>
+          <button 
+            onClick={(e) => {
+              e.stopPropagation();
+              onInquire('#contact');
+            }} 
+            className="mt-4 text-[10px] font-bold uppercase tracking-widest border-b border-[#8B1E3F] hover:opacity-80 transition-opacity" 
+            style={{ color: maroon }}
+          >
+            Inquire
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
 const Home = () => {
   const [scrollOffset, setScrollOffset] = useState(0);
   const [activeSection, setActiveSection] = useState("home");
@@ -236,29 +297,89 @@ const services = [
   ];
 
 const industries = [
-    // TIER 1: PRIMARY FOCUS (Waste & Landfills)
-    { name: "Landfill Services", img: "https://img.canarymedia.com/content/uploads/coffin-butte-hero.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=1492&q=80&w=3360&s=cfb58f4b133c5cdb0328a2411fac82fc" },
-    { name: "Environmental Remediation", img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=400" },
-    { name: "Municipal Water Supply", img: "https://images.unsplash.com/photo-1600965487524-8b8c37f6c394?q=80&w=1170&auto=format&fit=crop" },
+  // TIER 1: PRIMARY FOCUS (Waste & Landfills)
+  { 
+    name: "Landfill Services", 
+    img: "https://img.canarymedia.com/content/uploads/coffin-butte-hero.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=1492&q=80&w=3360&s=cfb58f4b133c5cdb0328a2411fac82fc",
+    description: "Deep well injection permitting, feasibility, and high-capacity leachate disposal solutions."
+  },
+  { 
+    name: "Environmental Remediation", 
+    img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=400",
+    description: "Groundwater cleanups, plume containment, and complex subsurface remediation engineering."
+  },
+  { 
+    name: "Municipal Water Supply", 
+    img: "https://images.unsplash.com/photo-1600965487524-8b8c37f6c394?q=80&w=1170&auto=format&fit=crop",
+    description: "Drinking water aquifer protection, source evaluations, and deep disposal monitoring."
+  },
 
-    // TIER 2: HIGH-STAKE INDUSTRIAL & RESOURCES
-    { name: "Chemical Plants", img: "https://images.unsplash.com/photo-1704130092069-30ae33e2def0?q=80&w=1170&auto=format&fit=crop" },
-    { name: "Oil and Gas", img: "https://images.unsplash.com/photo-1516199423456-1f1e91b06f25?q=80&w=1149&auto=format&fit=crop" },
-    { name: "Mining", img: "/mining.jpg" },
-    { name: "Refineries", img: "https://images.unsplash.com/photo-1611581372056-30cf28a7bd2e?q=80&w=1074&auto=format&fit=crop" },
+  // TIER 2: HIGH-STAKE INDUSTRIAL & RESOURCES
+  { 
+    name: "Chemical Plants", 
+    img: "https://images.unsplash.com/photo-1704130092069-30ae33e2def0?q=80&w=1170&auto=format&fit=crop",
+    description: "Class I industrial waste stream management, deep isolation, and Land Ban compliance."
+  },
+  { 
+    name: "Oil and Gas", 
+    img: "https://images.unsplash.com/photo-1516199423456-1f1e91b06f25?q=80&w=1149&auto=format&fit=crop",
+    description: "Class II disposal, produced water management, DSU spacing, and reservoir modeling."
+  },
+  { 
+    name: "Mining", 
+    img: "/mining.jpg",
+    description: "In-situ recovery hydrogeology, hard rock dewatering, and mine reclamation support."
+  },
+  { 
+    name: "Refineries", 
+    img: "https://images.unsplash.com/photo-1611581372056-30cf28a7bd2e?q=80&w=1074&auto=format&fit=crop",
+    description: "High-volume process effluent management and secure deep formation disposal."
+  },
 
-    // TIER 3: SPECIALIZED MANUFACTURING & ENERGY
-    { name: "Pharmaceuticals", img: "https://plus.unsplash.com/premium_photo-1661374914839-a84dc1314c86?w=600&auto=format&fit=crop&q=60" },
-    { name: "Power Generation", img: "https://images.unsplash.com/photo-1694551073674-f8809f1685f4?q=80&w=1170&auto=format&fit=crop" },
-    { name: "Gas Storage", img: "https://diversegy.com/wp-content/uploads/2024/07/lng-storage-containers.png" },
-    { name: "Ethanol Plants", img: "https://www.iowacorn.org/wp-content/uploads/2024/05/24138_ICGA_DRONE_ETHANOLPLANT_-21-scaled.jpg" },
+  // TIER 3: SPECIALIZED MANUFACTURING & ENERGY
+  { 
+    name: "Pharmaceuticals", 
+    img: "https://plus.unsplash.com/premium_photo-1661374914839-a84dc1314c86?w=600&auto=format&fit=crop&q=60",
+    description: "Permitted subsurface management for aqueous byproducts and process solvent residues."
+  },
+  { 
+    name: "Power Generation", 
+    img: "https://images.unsplash.com/photo-1694551073674-f8809f1685f4?q=80&w=1170&auto=format&fit=crop",
+    description: "Cooling blowdown water handling and carbon sequestration evaluation."
+  },
+  { 
+    name: "Gas Storage", 
+    img: "https://diversegy.com/wp-content/uploads/2024/07/lng-storage-containers.png",
+    description: "Underground gas storage reservoir characterization and integrity testing."
+  },
+  { 
+    name: "Ethanol Plants", 
+    img: "https://www.iowacorn.org/wp-content/uploads/2024/05/24138_ICGA_DRONE_ETHANOLPLANT_-21-scaled.jpg",
+    description: "Biofuel byproduct disposal, process water isolation, and Class VI CO2 planning."
+  },
 
-    // TIER 4: GENERAL MANUFACTURING
-    { name: "Heavy Manufacturing", img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400" },
-    { name: "Food Production", img: "https://images.unsplash.com/photo-1516594798947-e65505dbb29d?auto=format&fit=crop&q=80&w=400" },
-    { name: "Cosmetics", img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=400" },
-    { name: "Cloth Manufacturing", img: "https://images.unsplash.com/photo-1612685179841-3965cf0c3f70?q=80&w=1378&auto=format&fit=crop" }
-  ];
+  // TIER 4: GENERAL MANUFACTURING
+  { 
+    name: "Heavy Manufacturing", 
+    img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400",
+    description: "Inorganic process solutions, metal-plating rinses, and long-term UIC compliance."
+  },
+  { 
+    name: "Food Production", 
+    img: "https://images.unsplash.com/photo-1516594798947-e65505dbb29d?auto=format&fit=crop&q=80&w=400",
+    description: "Large-volume organic wash waters and specialized agricultural byproduct disposal."
+  },
+  { 
+    name: "Cosmetics", 
+    img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=400",
+    description: "Dilute aqueous formulation waste handling and compliant deepwell injection."
+  },
+  { 
+    name: "Cloth Manufacturing", 
+    img: "https://images.unsplash.com/photo-1612685179841-3965cf0c3f70?q=80&w=1378&auto=format&fit=crop",
+    description: "Textile wash effluent and chemical dye liquor disposal management."
+  }
+];
 
   const subNavItems = [
     { name: "Who We Are", href: "#whoweare" },
@@ -447,28 +568,32 @@ const industries = [
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-              <div key={index} className="group p-8 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-full">
-                
-                {/* Icon Container: Larger size with a subtle background "halo" */}
-                <div className="mb-8 relative inline-flex items-center justify-center w-20 h-20 rounded-2xl transition-transform duration-500 group-hover:scale-110" style={{ backgroundColor: `${service.accent}15` }}> 
-                  <div style={{ color: service.accent }}>
-                    {/* Cloning the icon to force a larger size */}
-                    {React.cloneElement(service.icon, { className: "w-10 h-10 stroke-[1.5]" })}
-                  </div>
+            <div 
+              key={index} 
+              className="group p-8 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-full hover:border-[var(--service-accent)]"
+              style={{ '--service-accent': service.accent }}
+            >
+              {/* Icon Container */}
+              <div 
+                className="mb-8 relative inline-flex items-center justify-center w-20 h-20 rounded-2xl transition-transform duration-500 group-hover:scale-110" 
+                style={{ backgroundColor: `${service.accent}15` }}
+              > 
+                <div style={{ color: service.accent }}>
+                  {React.cloneElement(service.icon, { className: "w-10 h-10 stroke-[1.5]" })}
                 </div>
-
-                <h3 className="text-2xl font-extrabold mb-4 text-gray-900 tracking-tight">{service.title}</h3>
-                <p className="text-gray-600 leading-relaxed mb-6 flex-grow text-lg">{service.description}</p>
-                
-                {/* UPDATED BUTTON LINK */}
-                <Link 
-                  to={service.link} 
-                  className="inline-flex items-center w-max px-6 py-3 mt-auto text-sm font-bold text-white uppercase tracking-widest rounded-sm shadow-sm transition-all hover:brightness-110" 
-                  style={{ backgroundColor: service.accent }}
-                >
-                  Learn More <ChevronRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-                </Link>
               </div>
+
+              <h3 className="text-2xl font-extrabold mb-4 text-gray-900 tracking-tight">{service.title}</h3>
+              <p className="text-gray-600 leading-relaxed mb-6 flex-grow text-lg">{service.description}</p>
+              
+              <Link 
+                to={service.link} 
+                className="inline-flex items-center w-max px-6 py-3 mt-auto text-sm font-bold text-white uppercase tracking-widest rounded-sm shadow-sm transition-all hover:brightness-110" 
+                style={{ backgroundColor: service.accent }}
+              >
+                Learn More <ChevronRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
+              </Link>
+            </div>
             ))}
           </div>
         </div>
@@ -554,63 +679,16 @@ const industries = [
             <p className="text-lg text-gray-600 italic">Some of the industries we serve include:</p>
             <br></br>
             <br></br>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-          {industries.map((item, index) => {
-            const [isFlipped, setIsFlipped] = useState(false);
-            const [hasInteracted, setHasInteracted] = useState(false);
-
-            const handleFlip = () => {
-              setIsFlipped(!isFlipped);
-              setHasInteracted(true);
-            };
-
-            return (
-              <div 
-                key={index} 
-                className="group h-[280px] [perspective:1000px] cursor-pointer"
-                onClick={handleFlip}
-              >
-                <div className={`relative h-full w-full transition-all duration-700 [transform-style:preserve-3d] ${isFlipped ? '[transform:rotateY(180deg)]' : ''} md:group-hover:[transform:rotateY(180deg)]`}>
-                  
-                  {/* Front Side */}
-                  <div className="absolute inset-0 h-full w-full rounded-xl overflow-hidden shadow-sm [backface-visibility:hidden]">
-                    <img src={item.img} alt={item.name} className="h-full w-full object-cover" />
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4">
-                      {/* Pulsing Hint for Mobile - Disappears after first tap */}
-                      {!hasInteracted && (
-                        <span className="text-[10px] text-white/60 uppercase tracking-widest mb-2 md:hidden animate-pulse">
-                          Tap to flip
-                        </span>
-                      )}
-                      
-                      <div className="flex items-center space-x-2 text-white">
-                        <CheckCircle2 className="w-4 h-4" style={{ color: maroon }} />
-                        <span className="text-sm font-bold">{item.name}</span>
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Back Side */}
-                  <div className="absolute inset-0 h-full w-full rounded-xl bg-gray-50 p-6 flex flex-col justify-center items-center text-center [backface-visibility:hidden] [transform:rotateY(180deg)] border-2" style={{ borderColor: maroon }}>
-                    <h3 className="text-base font-bold mb-2 uppercase" style={{ color: maroon }}>{item.name}</h3>
-                    <p className="text-[11px] text-gray-600">Subsurface support for {item.name.toLowerCase()}.</p>
-                    <button 
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        scrollToId('#contact');
-                      }} 
-                      className="mt-4 text-[10px] font-bold uppercase tracking-widest border-b border-[#8B1E3F]" 
-                      style={{ color: maroon }}
-                    >
-                      Inquire
-                    </button>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-          </div>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+              {industries.map((item, index) => (
+                <IndustryCard 
+                  key={index} 
+                  item={item} 
+                  maroon={maroon} 
+                  onInquire={scrollToId} 
+                />
+              ))}
+            </div>
         </div>
       </section>
 

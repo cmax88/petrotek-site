@@ -136,12 +136,12 @@ const OurTeam = () => {
       personal: "In his spare time, Chuck enjoys hiking, hunting, fishing, and spending time with his kids and grandkids."
     },
     {
-      name: "Don McLeod, B.S.",
+      name: "Donald McLeod, B.S., P.E. (Retired)",
       role: "Senior Process Engineer",
       education: "B.S. Chemical Engineering; MBA",
-      tags: [],
-      bio: "Placeholder",
-      personal: "Placeholder"
+      tags: ["Process Engineering", "Landfill Leachate", "Water & Surface Treatment", "SCADA & Facility Optimization"],
+      bio: "Don McLeod is a professional engineer, retired, with over 40 years of engineering and management experience in surface treatment design and operation, chemical manufacturing, landfill leachate treatment and filtration, and water treatment. Don’s experience includes work for chemical plants, landfills, RCRA and Superfund sites, oil and gas operators, and Class I and Class II injection well operators. He has worked on a wide variety of projects to increase capacity, improve reliability, upgrade SCADA systems, and reduce operating costs. Don holds a B.S. degree in Chemical Engineering and an MBA.",
+      personal: "Don resides in the hills of central Kentucky. In his spare time, Don enjoys hiking, reading, and tinkering on old Porsches."
     },
     {
       name: "James Klutho, B.S., P.E.",
@@ -167,11 +167,11 @@ const OurTeam = () => {
       bio: "Matthew holds dual graduate degrees in geology and geospatial tech. He has been using his skills in geological writing and research to help complete Class I-VI well permits and build the company’s geological reference database. Matthew assists with GIS mapping projects and has technical knowledge in wireline logging operations, log interpretation, environmental permitting, and stratigraphic characterization.",
       personal: "In his spare time, Matthew enjoys hiking, fishing, camping, and traveling with his family."
     },
-        {
+    {
       name: "Michael Kinney, B.S.",
       role: "Wellsite Supervisor/Specialist",
       education: "B.S. Chemical Engineering, Colorado School of Mines",
-      tags: [],
+      tags: ["Class I", "Class II", "Well Testing & Analysis", "Completions & Workovers",],
       bio: "Mike Kenney has over 35 years of experience in well testing operations, well test analysis, and Class I and Class II wellsite supervision (drilling, completions, testing, stimulations, workovers). Mike has completed classes at Colorado School of Mines (Chemical Engineering).",
       personal: "Mike and his wife reside in northeastern Colorado. In his spare time, Mike enjoys spending time with family and time outdoors fishing, camping, hiking, playing tennis and golfing."
     },
