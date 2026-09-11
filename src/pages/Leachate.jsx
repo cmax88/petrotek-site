@@ -66,6 +66,18 @@ const Leachate = () => {
           {/* Intro Section */}
           <div className="flex flex-col lg:flex-row gap-12 mb-20 items-start">
             <div className="lg:w-3/5 prose prose-lg max-w-none text-gray-600 leading-relaxed">
+              <div className="my-8 p-6 bg-gray-50 rounded-xl border-l-4" style={{ borderColor: themeColor }}>
+                <div className="flex items-center mb-3">
+                  <Waves className="w-6 h-6 mr-3" style={{ color: themeColor }} />
+                  <h3 className="text-lg font-bold text-gray-900 m-0">Why Deep Well Injection?</h3>
+                </div>
+                <p className="text-sm text-gray-600 leading-relaxed mb-3">
+                  By utilizing deep, isolated geological formations, landfill operators can dispose of large volumes of leachate safely below the <strong>Lowest Underground Source of Drinking Water (USDW)</strong>, significantly reducing surface footprint and transportation risks.
+                </p>
+                <p className="text-sm text-gray-600 leading-relaxed m-0">
+                  This permanent isolation is especially critical as persistent compounds like <strong>PFAS and PFOS</strong>, originating from widespread consumer goods and now encountered across shallow water networks, are passively collected in modern waste facilities. Deep well injection provides a permanent geologic barrier that prevents these compounds from cycling through municipal treatment plants and returning to local water resources.
+                </p>
+              </div>
               <p>
                 As landfill operations expand, the management of leachate becomes a critical operational and financial challenge. Petrotek provides specialized engineering and geological expertise to help landfill operators transition from costly "haul and treat" methods to long-term, on-site disposal solutions.
               </p>
@@ -73,16 +85,6 @@ const Leachate = () => {
               <p>
                 Our team specializes in the <strong>Class I Deep Well Injection</strong> of landfill leachate, offering a disposal method that is both environmentally protective and significantly more cost-effective than traditional municipal treatment or surface discharge.
               </p>
-              
-              <div className="my-8 p-6 bg-gray-50 rounded-xl border-l-4" style={{ borderColor: themeColor }}>
-                <div className="flex items-center mb-3">
-                  <Waves className="w-6 h-6 mr-3" style={{ color: themeColor }} />
-                  <h3 className="text-lg font-bold text-gray-900 m-0">Why Deep Well Injection?</h3>
-                </div>
-                <p className="text-sm m-0">
-                  By utilizing deep, isolated geological formations, landfill operators can dispose of large volumes of leachate safely below the <strong>Lowest Underground Source of Drinking Water (USDW)</strong>, reducing surface footprint and transportation risks.
-                </p>
-              </div>
             </div>
 
             {/* Right Column: Image */}

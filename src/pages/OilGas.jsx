@@ -10,7 +10,8 @@ import {
   ChevronRight,
   BarChart3,
   History,
-  Droplet
+  Droplet,
+  HelpCircle
 } from 'lucide-react';
 
 // Custom Oil Well Icon - Now uses a mask to inherit color
@@ -24,6 +25,35 @@ const OilWell = ({ className, style }) => (
       WebkitMask: 'url("/regular-oil-well.svg") no-repeat center / contain',
     }} 
   />
+);
+
+// Custom Oil Derrick Icon - Built to match Lucide's stroke style
+const OilDerrick = ({ className, style }) => (
+  <svg 
+    xmlns="http://www.w3.org/2000/svg" 
+    viewBox="0 0 24 24" 
+    fill="none" 
+    stroke="currentColor" 
+    strokeWidth="2" 
+    strokeLinecap="round" 
+    strokeLinejoin="round" 
+    className={className} 
+    style={style}
+  >
+    {/* Derrick Legs */}
+    <path d="M10 2L5 22" />
+    <path d="M14 2L19 22" />
+    {/* Center Drill Pipe */}
+    <path d="M12 2v20" />
+    {/* Top Platform */}
+    <path d="M8 2h8" />
+    {/* Ground */}
+    <path d="M3 22h18" />
+    {/* Cross Braces */}
+    <path d="M8.75 7h6.5" />
+    <path d="M7.5 12h9" />
+    <path d="M6.25 17h11.5" />
+  </svg>
 );
 
 const OilGas = () => {
@@ -50,29 +80,33 @@ const OilGas = () => {
           {/* Header Section */}
           <div className="mb-16">
             <div className="mb-6 p-4 bg-gray-50 inline-block rounded-2xl border border-gray-100 shadow-sm">
-              <OilWell className="w-10 h-10" style={{ color: maroon }} />
+              <OilDerrick className="w-10 h-10" style={{ color: maroon }} />
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">Oil & Gas Upstream E&P</h1>
-            <p className="text-xl text-[#8B1E3F] font-bold mb-6">Expertise Rooted in Decades of Field and Reservoir Experience</p>
+            <p className="text-xl text-[#8B1E3F] font-bold mb-6">Expertise Grounded in Decades of Field and Reservoir Experience</p>
             <div className="w-24 h-1 mb-8" style={{ backgroundColor: maroon }}></div>
           </div>
 
           {/* Background & Principals Section */}
           <div className="flex flex-col lg:flex-row gap-12 mb-20 items-start">
             <div className="lg:w-3/5">
+              <div className="mb-10 p-6 bg-gray-50 rounded-xl border-l-4" style={{ borderColor: maroon }}>
+                <div className="flex items-center mb-3">
+                  <OilWell className="w-6 h-6 mr-3" style={{ color: maroon }} />
+                  <h3 className="text-lg font-bold text-gray-900 m-0">Why E&P Engineering Matters</h3>
+                </div>
+                <p className="text-sm text-gray-600 leading-relaxed m-0">
+                  Developing oil and gas assets requires a balance of sound geology, practical field execution, and regulatory adherence. From initial drilling permits and spacing unit evaluations to secondary recovery and Class II brine disposal, each phase directly impacts reservoir recovery and operating costs. Petrotek provides the technical analysis and on-site oversight necessary to resolve complex reservoir issues, maintain environmental compliance, and support long-term field economics.
+                </p>
+              </div>
               <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed">
                 <p className="mb-4">
-                  The principals of Petrotek all started their careers in oil and gas exploration and development. We carry a legacy of experience from major oil and gas operators and service companies.
+                  The principals of Petrotek all started their careers in oil and gas exploration and development, carrying a legacy of operational experience from major operators and service companies. Across Colorado and Wyoming alone, we have assisted operators in thousands of DSU hearings, providing expert testimony, drainage modeling, and regulatory support.
                 </p>
                 <p className="mb-4">
                   Our backgrounds encompass the full lifecycle of the well, involving <strong>well operation, drilling, reservoir engineering, geology, and environmental compliance.</strong>
                 </p>
                 <br></br>
-                  <div className="my-8 p-6 bg-gray-50 rounded-xl border-l-4" style={{ borderColor: maroon }}>
-                    <p className="text-sm m-0">
-                     <strong>Please contact us to discuss how we can help with project efficiency and economics in the current price environment.</strong>
-                    </p>
-                  </div>
               </div>
             </div>
           {/* Right Column: Image - REMOVED WRAPPER DIV STYLING */}

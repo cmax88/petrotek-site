@@ -383,7 +383,7 @@ const industries = [
 
   const subNavItems = [
     { name: "Who We Are", href: "#whoweare" },
-    { name: "What We Do", href: "#whatwedo" },
+    { name: "Our Core Capabilities", href: "#whatwedo" },
     { name: "Clients Served", href: "#clientsserved" },
     { name: "Industries Served", href: "#industries" },
     { name: "Contact", href: "#contact" }
@@ -551,7 +551,7 @@ const industries = [
               <img 
                 src="/2026_Update.png" 
                 alt="Injection Well 3D Model" 
-                className="w-full max-w-xl h-auto drop-shadow-xl" // Increased to max-w-xl, removed shadow/border classes
+                className="w-full max-w-xl h-auto drop-shadow-xl cursor-zoom-in" // Increased to max-w-xl, removed shadow/border classes
               />
             </div>
           </div>
@@ -648,7 +648,7 @@ const industries = [
             <img 
               src="/Client Map v2.png" 
               alt="Client Map" 
-              className="w-full h-auto object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 ease-in-out"
+              className="w-full h-auto object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 ease-in-out cursor-zoom-in"
               onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=2000"; }}
             />
           </div>
@@ -658,7 +658,7 @@ const industries = [
             <img 
               src="/Client Map.png" 
               alt="Client Map" 
-              className="w-full h-auto object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 ease-in-out"
+              className="w-full h-auto object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 ease-in-out cursor-zoom-in"
               onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=2000"; }}
             />
           </div>
