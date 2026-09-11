@@ -647,17 +647,7 @@ const industries = [
             <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/10 pointer-events-none"></div>
             <img 
               src="/Client Map v2.png" 
-              alt="Client Map" 
-              className="w-full h-auto object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 ease-in-out cursor-zoom-in"
-              onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=2000"; }}
-            />
-          </div>
-
-          <div className="relative max-w-5xl mx-auto rounded-[1rem] overflow-hidden shadow-2xl border border-gray-100 bg-white group">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/10 pointer-events-none"></div>
-            <img 
-              src="/Client Map.png" 
-              alt="Client Map" 
+              alt="Petrotek Client Map" 
               className="w-full h-auto object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 ease-in-out cursor-zoom-in"
               onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=2000"; }}
             />
