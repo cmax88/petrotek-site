@@ -74,9 +74,9 @@ const OurTeam = () => {
     {
       name: "Tyler Burton, PhD",
       role: "Senior Technical and Business Advisor",
-      education: "PhD Law (CEPMLP), M.S. Economics (Oxford)",
+      education: "PhD Energy Policy and Economics (CEPMLP Dundee), LLM Energy Law & Policy (CEPMLP), PGDip Energy Economics (Oxford), MBA Technology Management (Phoenix), MSc Environmental Engineering (Anchorage), BSc Petroleum Engineering (Fairbanks)",
       tags: ["Class VI CCS", "Risk and Economic Evaluation", "Regulatory Law", "Sustainability"],
-      bio: "Dr. Burton has degrees in Petroleum Engineering from the University of Alaska, a graduate degree in economics from the University of Oxford, and graduate degrees in law from the CEPMLP where he continued as a Research Fellow with concentration on corporate & regulatory climate law, policy, & economics. With Petrotek, Tyler assists with Class VI permit applications, advises on carbon capture and storage markets including market credits, offsets valuation, and financial incentives. He is an FSA credentialed Sustainability Accounting Professional at the Sustainability Accounting Standards Board.",
+      bio: "Dr. Burton has worked as a Research Fellow with concentration on corporate & regulatory climate and energy law and policy, and energy economics. With Petrotek, Tyler assists with Classes I, III, and VI permit applications, advises on carbon sequestration and storage markets including market and 45Q credits, offsets valuation, projects financial assurance and incentives, contracts assessment, and risk evaluation. He is a Project Management Professional at PMI, a Cost Professional/Engineer at AACEI, an Energy Risk Professional at GARP, an FSA credentialed Sustainability Accounting Professional at the SASB, and a Six Sigma Black Belt.",
       personal: ""
     },
     {
@@ -136,7 +136,7 @@ const OurTeam = () => {
       personal: "In his spare time, Chuck enjoys hiking, hunting, fishing, and spending time with his kids and grandkids."
     },
     {
-      name: "Donald McLeod, B.S., P.E. (Retired)",
+      name: "Donald McLeod, B.S., P.E.",
       role: "Senior Process Engineer",
       education: "B.S. Chemical Engineering; MBA",
       tags: ["Process Engineering", "Landfill Leachate", "Water & Surface Treatment", "SCADA & Facility Optimization"],
@@ -287,7 +287,7 @@ const OurTeam = () => {
                   <h2 className="text-3xl font-bold text-gray-900 mb-2">{selectedMember.name}</h2>
                   <p className="text-xl text-[#8B1E3F] font-bold">{selectedMember.role}</p>
                   <div className="flex items-center mt-4 text-gray-500 font-medium">
-                    <GraduationCap className="w-5 h-5 mr-3 text-[#8B1E3F]" />
+                    <GraduationCap className="w-5 h-5 mr-3 shrink-0 text-[#8B1E3F]" />
                     {selectedMember.education}
                   </div>
                 </div>
