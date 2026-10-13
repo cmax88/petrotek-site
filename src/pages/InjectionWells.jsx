@@ -15,7 +15,9 @@ import {
   Minus,
   HelpCircle,
   AlertTriangle,
-  CheckCircle
+  CheckCircle,
+  Layers,
+  Briefcase
 } from 'lucide-react';
 
 /* =========================================================================
@@ -46,17 +48,21 @@ const nonHazQuotes = [
 
 const nonHazCategories = [
   {
-    title: "Permitting and Feasibility",
+    title: "Feasibility and Permitting",
     icon: <ClipboardCheck className="w-6 h-6" style={{ color: "#1E40AF" }} />,
     bgImage: "https://www.napawatersheds.org/img/managed/AppPage/11088/image.jpg", 
     items: [
-      "Permitting for all well classes (I, II, III, V, VI)",
-      "Fluid flow and transport modeling",
+      "Feasibility and Permitting for all well classes (I, II, III, V, VI)",
+      "Geologic characterization",
+      "Area of Review evaluation",
+      "Injectate plume and Cone of Influence modeling",
+      "Well design, installation, completion, & testing",
+      "Geochemical and construction material compatibility",
+      "Stimulations and workovers",
+      "Waste analysis plans",
       "Aquifer exemption applications",
-      "Geologic and reservoir evaluation",
       "Litigation support & expert witness testimony",
-      "Well design, installation, completion & testing",
-      "Support at public meetings"
+      "Public meeting support"
     ]
   },
   {
@@ -64,11 +70,11 @@ const nonHazCategories = [
     icon: <Beaker className="w-6 h-6" style={{ color: "#1E40AF" }} />,
     bgImage: "https://testwells.com/wp-content/uploads/simple-well-test-analysis-.jpg",
     items: [
-      "Part I and Part II mechanical integrity testing",
-      "Falloff/step-rate pressure transient testing",
-      "Open and cased hole log evaluation",
-      "Performance diagnostics",
-      "Well feasibility and risk assessment"
+      "Falloff testing design and analysis",
+      "Step-rate testing design and analysis",
+      "Well performance diagnostics",
+      "Pressure interference evaluation",
+      "Well testing site supervision"
     ]
   },
   {
@@ -76,11 +82,37 @@ const nonHazCategories = [
     icon: <Settings className="w-6 h-6" style={{ color: "#1E40AF" }} />,
     bgImage: "https://www.emag.com/blog/en/wp-content/uploads/sites/2/2025/06/Blog_How-does-it-work_drill-rig_1170x781-px-1024x684.jpg",
     items: [
-      "Workovers, maintenance and repair",
-      "Wellsite drilling and workover supervision",
-      "Stimulation and completion optimization",
+      "Well intervention and workovers planning and site supervision",
+      "Drilling and completion",
+      "Stimulations",
+      "Well testing",
+      "Wellsite planning",
       "Wellsite project management",
-      "Well closure (plugging and abandonment)"
+      "Field procedure design and execution",
+      "Well closure (plugging & abandonment)"
+    ]
+  },
+  {
+    title: "Reservoir Modeling",
+    icon: <Layers className="w-6 h-6" style={{ color: "#1E40AF" }} />,
+    bgImage: "https://www.slb.com/-/media/images/di/intersect/intersect_hero_1416x1140.jpg?la=en&h=1140&w=1416&hash=A127AD275A8446B4060AF2F7CC105731",
+    items: [
+      "Plume boundary and drift",
+      "Cone of Influence",
+      "Offset injection effects",
+      "Geologic effects",
+      "Experts in a variety of public and proprietary softwares to model injection"
+    ]
+  },
+  {
+    title: "Commercial Operations",
+    icon: <Briefcase className="w-6 h-6" style={{ color: "#1E40AF" }} />,
+    bgImage: "https://singermultiprod.fantasktic.com/wp-content/uploads/sites/10/2025/06/Blog_Tank-Truck-Transfer-1-1600x1000.webp",
+    items: [
+      "Additional record keeping and monitoring",
+      "Waste Analysis/Acceptance Plans",
+      "Fingerprint analysis",
+      "Additional commercial-specific requirements support"
     ]
   },
   {
@@ -88,9 +120,11 @@ const nonHazCategories = [
     icon: <ShieldCheck className="w-6 h-6" style={{ color: "#1E40AF" }} />,
     bgImage: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop",
     items: [
-      "Operations and compliance training",
+      "Permit compliance support",
+      "Operational support",
       "State and Federal monitoring reports",
-      "Compliance auditing and evaluation",
+      "Compliance audit and evaluation support",
+      "Operator and compliance training",
       "Contract injection operation"
     ]
   }
@@ -199,10 +233,8 @@ const nonHazFyiData = [
     question: "How are injection wells monitored to ensure safety and compliance with the law?",
     content: (
       <>
-        <p className="mb-4">Monitoring conducted to verify the suitability of the well for continued injection of waste is includes two types: continuous and periodic. Continuous monitoring provides data regarding how the well is operated, and is used to document operational changes that could signal any change in the well condition. Periodic monitoring is used to validate the continuous monitoring, and to more thoroughly investigate well and disposal reservoir conditions to verify waste containment.</p>
-        <p className="mb-4">Continuous monitoring of injection rate, injection pressure and annulus pressure and other parameters will also be accomplished as required by regulation. Analysis of the waste stream for chemical and physical parameters is also completed on a case-by-case basis as required by permit.</p>
-        <p className="mb-4">Periodic mechanical integrity testing of well systems is conducted as required by regulations. Based on initial completion as a non-hazardous well, Part I annual testing may consist of standard annulus pressure testing and an associated reservoir falloff test. The annulus pressure test measurements are recorded using a calibrated pressure gauge on the wellhead, and are often witnessed by a regulatory inspector. A maximum change in pressure is allowed during the 30- to 60-minute test. The gauges used to monitor pressure during the casing/tubing annular pressure tests are calibrated with a deadweight tester which is accurate to 0.1% of indicated pressure. Copies of gauge certifications are included with the pressure test records and reports.</p>
-        <p>"Part II periodic mechanical integrity testing generally is required every 2 to 5 years for non-hazardous waste wells, depending on state and permit specifications."</p>
+        <p className="mb-4">Periodic mechanical integrity testing of well systems is conducted as required by federal and state regulations. Based on initial completion as a Class I well, Part I mechanical integrity testing usually consists of annulus pressure testing and an associated reservoir pressure falloff test. The annulus pressure test measurements are recorded using a calibrated pressure gauge on the wellhead, and are often witnessed by a regulatory inspector. A predetermined pressure change is allowed during the 30- to 60-minute test to determine pass/fail criteria. The gauges used to monitor pressure during the casing/tubing annular pressure tests are calibrated to 0.1% of indicated actual pressure. Copies of gauge certifications are included with the pressure test records and reports.</p>
+        <p className="mb-4">Part II periodic mechanical integrity testing is completed before wells become operational and thereafter on a two- to five-year cycle as required by regulations and/or permit. For well Class I wells, part II mechanical integrity testing consists of a radioactive tracer survey or equivalent acceptable method to verify the adequacy of the cement at the base of the protection casing. In addition, part II mechanical integrity test well logs designed to investigate vertical movement of fluids behind pipe will be conducted in the form of temperature, noise, oxygen activation or equivalent logs. Part II mechanical integrity testing generally is required on an annual basis for wells used to dispose of hazardous wastes and every 2 to 5 years for non-hazardous waste wells.</p>
       </>
     )
   }
@@ -285,43 +317,43 @@ const NonHazardousContent = ({
       </div>
     </div>
 
-    {/* Service Categories Grid */}
-    <div className="grid md:grid-cols-2 gap-8 mb-20">
-      {nonHazCategories.map((cat, idx) => (
-        <div 
-          key={idx} 
-          className="flex flex-col group rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 bg-white shadow-sm hover:border-[#1E40AF]"
-        >
-          <div className="relative h-56 w-full overflow-hidden shrink-0">
-            <img 
-              src={cat.bgImage} 
-              alt={cat.title} 
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-          </div>
+{/* Service Categories Grid */}
+<div className="grid md:grid-cols-2 gap-8 mb-20">
+  {nonHazCategories.map((cat, idx) => (
+    <div 
+      key={idx} 
+      className="flex flex-col group rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 bg-white shadow-sm hover:border-[#1E40AF]"
+    >
+      <div className="relative h-56 w-full overflow-hidden shrink-0">
+        <img 
+          src={cat.bgImage} 
+          alt={cat.title} 
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+      </div>
 
-          <div className="relative p-8 flex flex-col flex-grow">
-            <div className="absolute -top-8 left-8 bg-white p-4 rounded-xl shadow-md border border-gray-50 flex items-center justify-center">
-              {React.cloneElement(cat.icon, { style: { color: themeColor }, className: "w-7 h-7" })}
-            </div>
-
-            <h3 className="text-xl font-bold mb-6 mt-4 text-gray-900 transition-colors group-hover:text-[#1E40AF]">
-              {cat.title}
-            </h3>
-            
-            <ul className="space-y-3 flex-grow">
-              {cat.items.map((item, i) => (
-                <li key={i} className="flex items-start">
-                  <CheckCircle2 className="w-4 h-4 mr-3 mt-1 shrink-0" style={{ color: themeColor }} />
-                  <span className="text-gray-600 font-medium text-sm leading-relaxed">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <div className="relative p-8 flex flex-col flex-grow">
+        <div className="absolute -top-8 left-8 bg-white p-4 rounded-xl shadow-md border border-gray-50 flex items-center justify-center">
+          {React.cloneElement(cat.icon, { style: { color: themeColor }, className: "w-7 h-7" })}
         </div>
-      ))}
+
+        <h3 className="text-xl font-bold mb-6 mt-4 text-gray-900 transition-colors group-hover:text-[#1E40AF]">
+          {cat.title}
+        </h3>
+        
+        <ul className="space-y-2.5 flex-grow">
+          {cat.items.map((item, i) => (
+            <li key={i} className="flex items-start">
+              <CheckCircle2 className="w-4 h-4 mr-2.5 mt-0.5 shrink-0" style={{ color: themeColor }} />
+              <span className="text-gray-600 font-medium text-sm leading-snug">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
+  ))}
+</div>
 
     {/* Technology Accordion Section */}
     <div className="max-w-4xl mx-auto mb-20">
@@ -442,18 +474,21 @@ const hazQuotes = [
 
 const hazCategories = [
   {
-    title: "Permitting and Feasibility",
+    title: "Feasibility Studies, Permitting, and Land Ban Petition Exemptions",
     icon: <ClipboardCheck className="w-6 h-6" style={{ color: "#1E40AF" }} />,
     bgImage: "https://www.napawatersheds.org/img/managed/AppPage/11088/image.jpg", 
     items: [
-      "Permitting for all well classes (I, II, III, V, VI)",
-      "Fluid flow and transport modeling",
+      "Geologic characterization",
+      "Area of Review evaluation",
+      "Injectate plume and Cone of Influence modeling",
+      "Hazardous waste fate and transport",
+      "Geochemical and construction material compatibility",
+      "Well design, installation, completion, & testing",
+      "Stimulations and workovers",
+      "Waste analysis plans",
       "Aquifer exemption applications",
-      "Geologic and reservoir evaluation",
-      "Land-ban disposal exemption petitions",
       "Litigation support & expert witness testimony",
-      "Well design, installation, completion & testing",
-      "Support at public meetings"
+      "Public meeting support"
     ]
   },
   {
@@ -461,11 +496,11 @@ const hazCategories = [
     icon: <Beaker className="w-6 h-6" style={{ color: "#1E40AF" }} />,
     bgImage: "https://testwells.com/wp-content/uploads/simple-well-test-analysis-.jpg",
     items: [
-      "Part I and Part II mechanical integrity testing",
-      "Falloff/step-rate pressure transient testing",
-      "Open and cased hole log evaluation",
-      "Performance diagnostics",
-      "Well feasibility and risk assessment"
+      "Falloff testing design and analysis",
+      "Step-rate testing design and analysis",
+      "Well performance diagnostics",
+      "Pressure interference evaluation",
+      "Well testing site supervision"
     ]
   },
   {
@@ -473,11 +508,38 @@ const hazCategories = [
     icon: <Settings className="w-6 h-6" style={{ color: "#1E40AF" }} />,
     bgImage: "https://www.emag.com/blog/en/wp-content/uploads/sites/2/2025/06/Blog_How-does-it-work_drill-rig_1170x781-px-1024x684.jpg",
     items: [
-      "Workovers, maintenance and repair",
-      "Wellsite drilling and workover supervision",
-      "Stimulation and completion optimization",
+      "Well intervention and workovers planning and site supervision",
+      "Drilling and completion",
+      "Stimulations",
+      "Well testing",
+      "Wellsite planning",
       "Wellsite project management",
-      "Well closure (plugging and abandonment)"
+      "Field procedure design and execution",
+      "Well closure (plugging & abandonment)"
+    ]
+  },
+  {
+    title: "Land Ban Petition No Migration Demonstration Modeling",
+    icon: <Layers className="w-6 h-6" style={{ color: "#1E40AF" }} />,
+    bgImage: "https://www.slb.com/-/media/images/di/intersect/intersect_hero_1416x1140.jpg?la=en&h=1140&w=1416&hash=A127AD275A8446B4060AF2F7CC105731",
+    items: [
+      "Plume boundary and 10,000-year drift",
+      "Cone of Influence",
+      "Offset injection effects",
+      "Geologic effects",
+      "Fate and transport modeling",
+      "Experts in a variety of public and proprietary softwares to model injection"
+    ]
+  },
+  {
+    title: "Commercial Operations",
+    icon: <Briefcase className="w-6 h-6" style={{ color: "#1E40AF" }} />,
+    bgImage: "https://singermultiprod.fantasktic.com/wp-content/uploads/sites/10/2025/06/Blog_Tank-Truck-Transfer-1-1600x1000.webp",
+    items: [
+      "Additional record keeping and monitoring",
+      "Waste Analysis/Acceptance Plans",
+      "Fingerprint analysis",
+      "Additional commercial-specific requirements support"
     ]
   },
   {
@@ -485,9 +547,11 @@ const hazCategories = [
     icon: <ShieldCheck className="w-6 h-6" style={{ color: "#1E40AF" }} />,
     bgImage: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop",
     items: [
-      "Operations and compliance training",
+      "Permit compliance support",
+      "Operational support",
       "State and Federal monitoring reports",
-      "Compliance auditing and evaluation",
+      "Compliance audit and evaluation support",
+      "Operator and compliance training",
       "Contract injection operation"
     ]
   }
@@ -596,10 +660,8 @@ const hazFyiData = [
     question: "How are injection wells monitored to ensure safety and compliance with the law?",
     content: (
       <>
-        <p className="mb-4">Monitoring conducted to verify the suitability of the well for continued injection of waste is includes two types: continuous and periodic. Continuous monitoring provides data regarding how the well is operated, and is used to document operational changes that could signal any change in the well condition. Periodic monitoring is used to validate the continuous monitoring, and to more thoroughly investigate well and disposal reservoir conditions to verify waste containment.</p>
-        <p className="mb-4">Continuous monitoring of injection rate, injection pressure and annulus pressure and other parameters will also be accomplished as required by regulation. Analysis of the waste stream for chemical and physical parameters is also completed on a case-by-case basis as required by permit.</p>
-        <p className="mb-4">Periodic mechanical integrity testing of well systems is conducted as required by regulations. Based on initial completion as a non-hazardous well, Part I annual testing may consist of standard annulus pressure testing and an associated reservoir falloff test. The annulus pressure test measurements are recorded using a calibrated pressure gauge on the wellhead, and are often witnessed by a regulatory inspector. A maximum change in pressure is allowed during the 30- to 60-minute test. The gauges used to monitor pressure during the casing/tubing annular pressure tests are calibrated with a deadweight tester which is accurate to 0.1% of indicated pressure. Copies of gauge certifications are included with the pressure test records and reports.</p>
-        <p>Part II periodic mechanical integrity testing is completed before wells become operational and thereafter on a two- to five-year cycle or as required by permit. For wells used to inject non-hazardous waste, this testing consists of a radioactive tracer survey or equivalent acceptable method to verify the adequacy of the cement at the base of the long-string casing. In addition, well logging designed to investigate vertical movement of fluids behind pipe will be conducted in the form of temperature, noise, oxygen activation logging or equivalent acceptable testing. Part II periodic mechanical integrity testing generally is required on an annual basis for wells used to dispose of hazardous wastes and every 2 to 5 years for non-hazardous waste wells.</p>
+        <p className="mb-4">Periodic mechanical integrity testing of well systems is conducted as required by federal and state regulations. Based on initial completion as a Class I well, Part I mechanical integrity testing usually consists of annulus pressure testing and an associated reservoir pressure falloff test. The annulus pressure test measurements are recorded using a calibrated pressure gauge on the wellhead, and are often witnessed by a regulatory inspector. A predetermined pressure change is allowed during the 30- to 60-minute test to determine pass/fail criteria. The gauges used to monitor pressure during the casing/tubing annular pressure tests are calibrated to 0.1% of indicated actual pressure. Copies of gauge certifications are included with the pressure test records and reports.</p>
+        <p className="mb-4">Part II periodic mechanical integrity testing is completed before wells become operational and thereafter on a two- to five-year cycle as required by regulations and/or permit. For well Class I wells, part II mechanical integrity testing consists of a radioactive tracer survey or equivalent acceptable method to verify the adequacy of the cement at the base of the protection casing. In addition, part II mechanical integrity test well logs designed to investigate vertical movement of fluids behind pipe will be conducted in the form of temperature, noise, oxygen activation or equivalent logs. Part II mechanical integrity testing generally is required on an annual basis for wells used to dispose of hazardous wastes and every 2 to 5 years for non-hazardous waste wells.</p>
       </>
     )
   }
@@ -622,24 +684,20 @@ const HazardousContent = ({
         <div className="mb-10 p-6 bg-gray-50 rounded-xl border-l-4" style={{ borderColor: themeColor }}>
           <div className="flex items-center mb-3">
             <HelpCircle className="w-6 h-6 mr-3" style={{ color: themeColor }} />
-            <h3 className="text-lg font-bold text-gray-900 m-0">Why Are Injection Wells Important?</h3>
+            <h3 className="text-lg font-bold text-gray-900 m-0">Why are hazardous waste Class I injection wells important?</h3>
           </div>
           <p className="text-sm text-gray-600 leading-relaxed m-0">
-            Most industrial processes generate low-concentration waste streams called wastewater. Often these liquids are pre-treated, but some or all of the fluid volume cannot be discharged to the surface environment or into shallow aquifers. For these reasons, many liquid wastes are managed via non-hazardous deep injection wells. These wells inject wastewater into deep subsurface geologic formations that are isolated from any potential drinking water aquifers.
-          </p>
-          <br/>
-          <p className="text-sm text-gray-600 leading-relaxed m-0">
-            In addition, with stricter requirements surrounding PFAS disposal,  EPA (April 20, 2026) stated that deep injection wells provide an option for waste management of PFAS with a lower potential for release than other technologies. The same rationale applies to and has been proven for other waste streams predating the Safe Drinking Water Act.
+            Disposal of Hazardous waste is difficult. One of the EPA recommended methods of disposal is through the use of UIC Class I hazardous waste injection wells. Hazardous waste may be determined based on the industrial process as classified by RCRA or if certain constituents in the fluid are greater than the EPA-defined health-based limit. Class I wells can be a safe and economic option to effectively dispose hazardous waste.
           </p>
         </div>
 
         <div className="prose prose-lg max-w-none text-gray-600 leading-relaxed mb-10">
           <p>
-            Our team has hundreds of years of combined injection well permitting, operating, monitoring, and testing experience. We are knowledgeable of state and federal regulations. We have positive working relationships with state and federal regulators throughout the country. Petrotek personnel maintain Professional Engineer (P.E.) and Professional Geology (P.G.) and offers these services where licensed. Our staff provides technical consulting and field services regarding a wide variety of issues to ensure the continued safe and responsible operation for all UIC injection well classes.
+            Our team has extensive experience with hazardous waste wells and permitting from several hazardous waste sites throughout the country. We provide feasibility studies and permit applications for hazardous waste wells. In addition, we are experts in land ban petition exemption applications and renewals, which are required for Class I hazardous waste wells. The land ban petition exemption must be submitted to the EPA to ensure that hazardous waste will be confined within the injection zone for a period of at least 10,000 years. We have a good working relationship with EPA regulators and extensive experience with the land ban petition exemption process and regulations.
           </p>
           <br/>
           <p>
-            Petrotek staff are experienced with deepwell permitting issues related to existing and new facilities throughout the United States, providing UIC permit applications and renewals that have been approved by state and federal regulatory agencies.
+            Engineers at Petrotek have designed and constructed Class I hazardous waste wells in complex geology and using specialized tubulars and cements that can withstand hazardous waste. 
           </p>
         </div>
 
@@ -682,43 +740,43 @@ const HazardousContent = ({
       </div>
     </div>
 
-    {/* Service Categories Grid */}
-    <div className="grid md:grid-cols-2 gap-8 mb-20">
-      {hazCategories.map((cat, idx) => (
-        <div 
-          key={idx} 
-          className="flex flex-col group rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 bg-white shadow-sm hover:border-[#1E40AF]"
-        >
-          <div className="relative h-56 w-full overflow-hidden shrink-0">
-            <img 
-              src={cat.bgImage} 
-              alt={cat.title} 
-              className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
-            />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
-          </div>
+{/* Service Categories Grid */}
+<div className="grid md:grid-cols-2 gap-8 mb-20">
+  {hazCategories.map((cat, idx) => (
+    <div 
+      key={idx} 
+      className="flex flex-col group rounded-2xl border border-gray-100 overflow-hidden hover:shadow-xl transition-all duration-300 bg-white shadow-sm hover:border-[#1E40AF]"
+    >
+      <div className="relative h-56 w-full overflow-hidden shrink-0">
+        <img 
+          src={cat.bgImage} 
+          alt={cat.title} 
+          className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105" 
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/40 via-transparent to-transparent"></div>
+      </div>
 
-          <div className="relative p-8 flex flex-col flex-grow">
-            <div className="absolute -top-8 left-8 bg-white p-4 rounded-xl shadow-md border border-gray-50 flex items-center justify-center">
-              {React.cloneElement(cat.icon, { style: { color: themeColor }, className: "w-7 h-7" })}
-            </div>
-
-            <h3 className="text-xl font-bold mb-6 mt-4 text-gray-900 transition-colors group-hover:text-[#1E40AF]">
-              {cat.title}
-            </h3>
-            
-            <ul className="space-y-3 flex-grow">
-              {cat.items.map((item, i) => (
-                <li key={i} className="flex items-start">
-                  <CheckCircle2 className="w-4 h-4 mr-3 mt-1 shrink-0" style={{ color: themeColor }} />
-                  <span className="text-gray-600 font-medium text-sm leading-relaxed">{item}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
+      <div className="relative p-8 flex flex-col flex-grow">
+        <div className="absolute -top-8 left-8 bg-white p-4 rounded-xl shadow-md border border-gray-50 flex items-center justify-center">
+          {React.cloneElement(cat.icon, { style: { color: themeColor }, className: "w-7 h-7" })}
         </div>
-      ))}
+
+        <h3 className="text-xl font-bold mb-6 mt-4 text-gray-900 transition-colors group-hover:text-[#1E40AF]">
+          {cat.title}
+        </h3>
+        
+        <ul className="space-y-2.5 flex-grow">
+          {cat.items.map((item, i) => (
+            <li key={i} className="flex items-start">
+              <CheckCircle2 className="w-4 h-4 mr-2.5 mt-0.5 shrink-0" style={{ color: themeColor }} />
+              <span className="text-gray-600 font-medium text-sm leading-snug">{item}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
+  ))}
+</div>
 
     {/* Technology Accordion Section */}
     <div className="max-w-4xl mx-auto mb-20">
