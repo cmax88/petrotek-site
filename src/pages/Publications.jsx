@@ -9,14 +9,32 @@ import {
   User, 
   Mail,
   ArrowUp,
-  X // Added X for the modal close button
+  X
 } from 'lucide-react';
 
 const Publications = () => {
   const maroon = "#8B1E3F";
   const [searchTerm, setSearchTerm] = useState("");
   const [activeFilter, setActiveFilter] = useState("All");
-  const [showBackToTop, setShowBackToTop] = useState(false);
+  
+  // --- Scroll to Top state & handler ---
+  const [showTopBtn, setShowTopBtn] = useState(false);
+
+  useEffect(() => {
+    const checkScroll = () => {
+      setShowTopBtn(window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', checkScroll);
+    return () => window.removeEventListener('scroll', checkScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
   
   // New state for the modal
   const [selectedPub, setSelectedPub] = useState(null);
@@ -588,14 +606,18 @@ const Publications = () => {
           </div>
         )}
 
-        {showBackToTop && (
-          <button 
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
-            className="fixed bottom-8 right-8 p-4 bg-[#8B1E3F] text-white rounded-full shadow-2xl hover:scale-110 transition-transform z-50"
+          {/* Floating Back to Top Button */}
+          <button
+            onClick={scrollToTop}
+            aria-label="Back to top"
+            className={`fixed bottom-6 right-6 z-40 p-3.5 rounded-full shadow-2xl transition-all duration-300 transform active:scale-90 text-white bg-[#8B1E3F] hover:brightness-110 ${
+              showTopBtn 
+                ? 'opacity-100 translate-y-0 pointer-events-auto' 
+                : 'opacity-0 translate-y-4 pointer-events-none'
+            }`}
           >
-            <ArrowUp className="w-6 h-6" />
+            <ArrowUp className="w-5 h-5 transition-transform hover:-translate-y-0.5" />
           </button>
-        )}
       </div>
     </div>
   );

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { 
   ArrowRight, 
@@ -7,7 +7,8 @@ import {
   X,
   ChevronRight,
   Scale,
-  History
+  History,
+  ArrowUp
 } from 'lucide-react';
 
 const OurTeam = () => {
@@ -15,6 +16,25 @@ const OurTeam = () => {
   // Logic: searchTerm state has been removed
   const [selectedMember, setSelectedMember] = useState(null);
   const [showCredits, setShowCredits] = useState(false);
+
+  // --- Scroll to Top state & handler ---
+  const [showTopBtn, setShowTopBtn] = useState(false);
+
+  useEffect(() => {
+    const checkScroll = () => {
+      setShowTopBtn(window.scrollY > 400);
+    };
+
+    window.addEventListener('scroll', checkScroll);
+    return () => window.removeEventListener('scroll', checkScroll);
+  }, []);
+
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   const teamData = [
     {
@@ -411,6 +431,19 @@ const OurTeam = () => {
             Contact a Specialist
           </Link>
         </div>
+
+          {/* Floating Back to Top Button */}
+          <button
+            onClick={scrollToTop}
+            aria-label="Back to top"
+            className={`fixed bottom-6 right-6 z-40 p-3.5 rounded-full shadow-2xl transition-all duration-300 transform active:scale-90 text-white bg-[#8B1E3F] hover:brightness-110 ${
+              showTopBtn 
+                ? 'opacity-100 translate-y-0 pointer-events-auto' 
+                : 'opacity-0 translate-y-4 pointer-events-none'
+            }`}
+          >
+            <ArrowUp className="w-5 h-5 transition-transform hover:-translate-y-0.5" />
+          </button>
       </div>
     </div>
   );
