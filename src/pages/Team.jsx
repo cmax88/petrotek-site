@@ -89,7 +89,7 @@ const OurTeam = () => {
     },
     {
       name: "Lee Shafer, B.S., P.E.",
-      role: "Senior Chemial Engineer",
+      role: "Senior Chemical Engineer",
       education: "B.S. Chemical Engineering, University of Wyoming",
       tags: ["Water Recycling", "Uranium Mining", "Patents", "Process Engineering"],
       bio: "Lee has over 40 years of process engineering experience in the petroleum and uranium industries. Lee’s experience includes uranium solution mining, coal bed methane water treatment, fracturing fluid optimization, and oil field water recycling for fracturing. The oil field water recycling includes projects in Wyoming, Utah, Oklahoma, and Texas; the work in Wyoming yielded 7 patents for his clients. Lee is also experienced in oil field production operations and well completions. Lee is a member of the Society of Petroleum Engineers and the American Institute of Chemical Engineers.",
@@ -168,7 +168,7 @@ const OurTeam = () => {
       personal: "In his spare time, Matthew enjoys hiking, fishing, camping, and traveling with his family."
     },
     {
-      name: "Michael Kinney, B.S.",
+      name: "Michael Kenney, B.S.",
       role: "Wellsite Supervisor/Specialist",
       education: "B.S. Chemical Engineering, Colorado School of Mines",
       tags: ["Class I", "Class II", "Well Testing & Analysis", "Completions & Workovers",],
@@ -214,42 +214,67 @@ const OurTeam = () => {
           <div className="w-24 h-1 mt-8" style={{ backgroundColor: maroon }}></div>
         </div>
 
-        {/* Professional Grid - Now uses teamData directly */}
+        {/* Professional Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-          {teamData.map((member, idx) => (
-            <div 
-              key={idx} 
-              className="bg-white border border-gray-100 rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all cursor-pointer group flex flex-col border-t-4"
-              style={{ borderTopColor: idx < 4 ? maroon : 'transparent' }}
-              onClick={() => setSelectedMember(member)}
-            >
-              <div className="flex-grow">
-                <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#8B1E3F] transition-colors mb-1">
-                  {member.name}
-                </h3>
-                <p className="text-xs font-bold text-[#8B1E3F] mb-4 uppercase tracking-wider">{member.role}</p>
-                
-                <div className="flex items-center text-[11px] text-gray-500 mb-6 font-medium">
-                  <GraduationCap className="w-3.5 h-3.5 mr-2 shrink-0 text-gray-400" />
-                  {member.education}
-                </div>
+          {teamData.map((member, idx) => {
+            const isPrincipal = idx < 4;
 
-                <div className="flex flex-wrap gap-1.5 mb-6">
-                  {member.tags.map(tag => (
-                    <span key={tag} className="px-2 py-0.5 bg-gray-50 text-gray-500 text-[10px] font-bold rounded border border-gray-100">
-                      {tag}
+            return (
+              <div 
+                key={idx} 
+                className={`relative rounded-2xl p-6 shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer group flex flex-col ${
+                  isPrincipal
+                    ? 'border-2 border-[#8B1E3F] bg-[#8B1E3F]/[0.02] shadow-[#8B1E3F]/5'
+                    : 'bg-white border border-gray-100 hover:border-gray-300'
+                }`}
+                onClick={() => setSelectedMember(member)}
+              >
+                {/* Principal Leadership Badge */}
+                {isPrincipal && (
+                  <div className="absolute top-4 right-4">
+                    <span className="inline-flex items-center px-2.5 py-0.5 rounded-full text-[10px] font-extrabold uppercase tracking-wider bg-[#8B1E3F] text-white shadow-sm">
+                      Principal
                     </span>
-                  ))}
+                  </div>
+                )}
+
+                <div className="flex-grow">
+                  <h3 className="text-lg font-bold text-gray-900 group-hover:text-[#8B1E3F] transition-colors mb-1 pr-16">
+                    {member.name}
+                  </h3>
+                  <p className="text-xs font-bold text-[#8B1E3F] mb-4 uppercase tracking-wider">
+                    {member.role}
+                  </p>
+                  
+                  <div className="flex items-center text-[11px] text-gray-500 mb-6 font-medium">
+                    <GraduationCap className="w-3.5 h-3.5 mr-2 shrink-0 text-[#8B1E3F]" />
+                    {member.education}
+                  </div>
+
+                  <div className="flex flex-wrap gap-1.5 mb-6">
+                    {member.tags.map(tag => (
+                      <span 
+                        key={tag} 
+                        className={`px-2 py-0.5 text-[10px] font-bold rounded border ${
+                          isPrincipal 
+                            ? 'bg-white text-gray-700 border-[#8B1E3F]/20' 
+                            : 'bg-gray-50 text-gray-500 border-gray-100'
+                        }`}
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex items-center text-[10px] font-bold text-[#8B1E3F] uppercase tracking-[0.2em] pt-4 border-t border-gray-100 mt-auto">
+                  Read Professional Bio <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
                 </div>
               </div>
+            );
+          })}
 
-              <div className="flex items-center text-[10px] font-bold text-[#8B1E3F] uppercase tracking-[0.2em] pt-4 border-t border-gray-50 mt-auto">
-                Read Professional Bio <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
-              </div>
-            </div>
-          ))}
-
-          {/* NEW: Historical Credits Card - Centered at the bottom */}
+          {/* Historical Credits Card - Centered at the bottom */}
           <div className="md:col-span-2 lg:col-span-3 flex justify-center mt-8">
             <div 
               className="w-full max-w-lg bg-gray-50 border border-gray-200 rounded-2xl p-8 shadow-sm hover:shadow-xl transition-all cursor-pointer group flex flex-col items-center justify-center text-center"
@@ -268,7 +293,7 @@ const OurTeam = () => {
                 Read Acknowledgements <ChevronRight className="w-3 h-3 ml-1 group-hover:translate-x-1 transition-transform" />
               </div>
             </div>
-            </div>
+          </div>
         </div>
 
         {/* Bio Modal Overlay */}
