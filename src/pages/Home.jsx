@@ -34,22 +34,16 @@ const OilDerrick = ({ className, style }) => (
     className={className} 
     style={style}
   >
-    {/* Derrick Legs */}
     <path d="M10 2L5 22" />
     <path d="M14 2L19 22" />
-    {/* Center Drill Pipe */}
     <path d="M12 2v20" />
-    {/* Top Platform */}
     <path d="M8 2h8" />
-    {/* Ground */}
     <path d="M3 22h18" />
-    {/* Cross Braces */}
     <path d="M8.75 7h6.5" />
     <path d="M7.5 12h9" />
     <path d="M6.25 17h11.5" />
   </svg>
 );
-
 
 // Custom Uranium Icon - Now uses a mask to inherit color
 const UraniumIcon = ({ className, style }) => (
@@ -86,8 +80,8 @@ const IndustryCard = ({ item, maroon, onInquire }) => {
 
           <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/40 to-transparent flex flex-col justify-end p-4">
             {!hasInteracted && (
-              <span className="text-[10px] text-white/60 uppercase tracking-widest mb-2 md:hidden animate-pulse">
-                Tap to flip
+              <span className="text-[10px] text-white/70 uppercase tracking-widest mb-2 md:hidden animate-pulse">
+                Tap to view details
               </span>
             )}
             
@@ -100,7 +94,7 @@ const IndustryCard = ({ item, maroon, onInquire }) => {
 
         {/* Back Side */}
         <div 
-          className="absolute inset-0 h-full w-full rounded-xl bg-gray-50 p-6 flex flex-col justify-center items-center text-center [backface-visibility:hidden] [transform:rotateY(180deg)] border-2" 
+          className="absolute inset-0 h-full w-full rounded-xl bg-gray-50 p-6 flex flex-col justify-center items-center text-center [backface-visibility:hidden] [transform:rotateY(180deg)] border-2 shadow-sm" 
           style={{ borderColor: maroon }}
         >
           <h3 className="text-base font-bold mb-2 uppercase" style={{ color: maroon }}>
@@ -114,8 +108,8 @@ const IndustryCard = ({ item, maroon, onInquire }) => {
               e.stopPropagation();
               onInquire('#contact');
             }} 
-            className="mt-4 text-[10px] font-bold uppercase tracking-widest border-b border-[#8B1E3F] hover:opacity-80 transition-opacity" 
-            style={{ color: maroon }}
+            className="mt-4 text-[11px] font-bold uppercase tracking-widest border-b-2 hover:opacity-80 transition-opacity pb-0.5" 
+            style={{ color: maroon, borderColor: maroon }}
           >
             Inquire
           </button>
@@ -130,7 +124,6 @@ const Home = () => {
   const [activeSection, setActiveSection] = useState("home");
   const recaptchaRef = useRef();
 
-  // Parallax & Scrollspy Logic
   useEffect(() => {
     const handleScroll = () => setScrollOffset(window.scrollY);
 
@@ -162,7 +155,7 @@ const Home = () => {
   const scrollToId = (id) => {
     const element = document.getElementById(id.replace('#', ''));
     if (element) {
-      const offset = 120;
+      const offset = 100;
       const bodyRect = document.body.getBoundingClientRect().top;
       const elementRect = element.getBoundingClientRect().top;
       const elementPosition = elementRect - bodyRect;
@@ -175,30 +168,22 @@ const Home = () => {
     }
   };
 
-// Counter State
-// 1. Initialize the states for the numbers
   const [counts, setCounts] = useState({ clients: 0, projects: 0 });
   const [hasCounted, setHasCounted] = useState(false);
-  
-  // 2. Define the ref to fix the 'ReferenceError'
   const statsRef = useRef(null);
 
-  // 3. The Counter Animation Logic
   useEffect(() => {
-    // Trigger when the Scrollspy highlights 'clientsserved' in the nav
     if (activeSection === 'clientsserved' && !hasCounted) {
       setHasCounted(true);
       
       let frame = 0;
-      const duration = 5000; // Animation lasts 2 seconds
-      const frameDuration = 1000 / 60; // 60fps
+      const duration = 2500;
+      const frameDuration = 1000 / 60;
       const totalFrames = Math.round(duration / frameDuration);
       
       const timer = setInterval(() => {
         frame++;
         const progress = frame / totalFrames;
-        
-        // Apple-style ease-out formula (fast start, smooth finish)
         const easeOut = 1 - Math.pow(1 - progress, 4); 
         
         setCounts({
@@ -214,19 +199,16 @@ const Home = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     
-    // 1. Verify reCAPTCHA
-    const token = recaptchaRef.current.getValue();
+    const token = recaptchaRef.current?.getValue();
     if (!token) {
       alert("Please complete the reCAPTCHA verification.");
       return;
     }
 
-    // 2. EmailJS Configuration from .env
     const serviceId = import.meta.env.VITE_EMAILJS_SERVICE_ID;
     const templateId = import.meta.env.VITE_EMAILJS_TEMPLATE_ID;
     const publicKey = import.meta.env.VITE_EMAILJS_PUBLIC_KEY;
 
-    // 3. Prepare Template Params
     const templateParams = {
       from_name: e.target.firstName.value + " " + e.target.lastName.value,
       reply_to: e.target.email.value,
@@ -234,13 +216,12 @@ const Home = () => {
       'g-recaptcha-response': token,
     };
 
-    // 4. Send Email
     emailjs.send(serviceId, templateId, templateParams, publicKey)
       .then((result) => {
         console.log('Email successfully sent!', result.status, result.text);
-        alert("Message sent! I'll be in touch at cjmax88@gmail.com soon.");
+        alert("Message sent! We will be in touch soon.");
         e.target.reset();
-        recaptchaRef.current.reset();
+        recaptchaRef.current?.reset();
       }, (error) => {
         console.error('Email failed to send:', error);
         alert("Failed to send message. Please check the console for errors.");
@@ -250,27 +231,26 @@ const Home = () => {
   const maroon = "#8B1E3F";
   const anniversaryGraphic = "/33-years-service-graphic.png";
 
-const services = [
+  const services = [
     { 
       title: "Injection Well Services", 
-      description: "Our company has hundreds of years of combined injection well experience. We are knowledgeable of state and federal regulations. We have positive working relationships with state and federal regulators throughout the country.", 
+      description: "Our company has hundreds of years of combined injection well experience. We are knowledgeable of state and federal regulations with positive working relationships across state and federal agencies.", 
       icon: <Droplet className="w-8 h-8" />, 
       link: "/injection-wells",
-      accent: "#1E40AF" // Dark Blue
+      accent: "#1E40AF"
     },
     { 
       title: "Landfill Leachate", 
-      description: "We provide expert Underground Injection Control and geological services for Class I deep well injection. We help landfill operators secure reliable, high-capacity leachate disposal solutions that meet rigorous UIC standards.", 
+      description: "We provide expert Underground Injection Control and geological services for Class I deep well injection, securing reliable, high-capacity leachate disposal solutions that meet UIC standards.", 
       icon: <Recycle className="w-8 h-8" />, 
       link: "/leachate-services",
-      accent: "#0F766E" // Richer Teal
+      accent: "#0F766E"
     },
     { 
-      // MERGED ITEM
       title: "Mining", 
-      description: "We have over 30 years of experience in groundwater characterization and modeling for both In-Situ Recovery (Uranium/Copper) and hard rock mining operations.", 
+      description: "Over 30 years of experience in groundwater characterization and modeling for both In-Situ Recovery (Uranium/Copper) and hard rock mining operations.", 
       icon: <Pickaxe className="w-8 h-8" />, 
-      link: "/mining-and-isr", // Update this to your new route
+      link: "/mining-and-isr",
       accent: "#EAB308" 
     },
     { 
@@ -278,101 +258,101 @@ const services = [
       description: "We provide support for oil and gas well permitting, including drill spacing unit permitting, decline curve analysis, correlative rights, and expert witness testimony.", 
       icon: <OilDerrick className="w-8 h-8" />, 
       link: "/oil-and-gas",
-      accent: "#8B1E3F" // Maroon
+      accent: "#8B1E3F"
     },
     { 
       title: "Carbon Capture (CO2 CCS)", 
-      description: "We provide comprehensive feasibility studies and have prepared several Class VI permit applications. We evaluate options for tax equity partnerships.", 
+      description: "We provide comprehensive feasibility studies, Class VI permit applications, and technical evaluations for geologic sequestration and tax equity partnerships.", 
       icon: <Leaf className="w-8 h-8" />, 
       link: "/carbon-capture",
-      accent: "#166534" // Forest Green
+      accent: "#166534"
     },
     { 
       title: "Safety", 
       description: "Safety is our top priority. We maintain an impeccable safety record and full compliance with ISNetworld and Avetta contractor management services.", 
       icon: <HardHat className="w-8 h-8" />, 
       link: "/safety",
-      accent: "#F97316" // Orange (Tailwind orange-500)
+      accent: "#F97316"
     }
   ];
 
-const industries = [
-  { 
-    name: "Landfill Services", 
-    img: "https://img.canarymedia.com/content/uploads/coffin-butte-hero.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=1492&q=80&w=3360&s=cfb58f4b133c5cdb0328a2411fac82fc",
-    description: "Deep well injection permitting, feasibility, and high-capacity leachate disposal solutions."
-  },
-  { 
-    name: "Municipal Water Supply", 
-    img: "https://images.unsplash.com/photo-1600965487524-8b8c37f6c394?q=80&w=1170&auto=format&fit=crop",
-    description: "Drinking water aquifer protection, source evaluations, and deep disposal monitoring."
-  },
-  { 
-    name: "Power Generation", 
-    img: "https://assets.weforum.org/article/image/responsive_big_webp_ZceAxbIcK8seaoQU8DFS-l_Dq7YPPzmx_MNYE2C0aOU.webp",
-    description: "Cooling blowdown water handling and carbon sequestration evaluation."
-  },
-  { 
-    name: "Oil and Gas", 
-    img: "https://images.unsplash.com/photo-1516199423456-1f1e91b06f25?q=80&w=1149&auto=format&fit=crop",
-    description: "Decline curve analysis; DSU applications rather than spacing, forced pooling, and reservoir modeling."
-  },
-  { 
-    name: "Mining", 
-    img: "/mining.jpg",
-    description: "In-situ recovery hydrogeology, hard rock dewatering, and mine reclamation support."
-  },
-  { 
-    name: "Heavy Manufacturing", 
-    img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400",
-    description: "Inorganic process solutions, metal-plating rinses, and long-term UIC compliance."
-  },
-  { 
-    name: "Chemical Plants", 
-    img: "https://images.unsplash.com/photo-1704130092069-30ae33e2def0?q=80&w=1170&auto=format&fit=crop",
-    description: "Class I industrial waste stream management and UIC hazardous waste compliance."
-  },
-  { 
-    name: "Refineries", 
-    img: "https://images.unsplash.com/photo-1611581372056-30cf28a7bd2e?q=80&w=1074&auto=format&fit=crop",
-    description: "High-volume process effluent management and secure deep formation disposal."
-  },
-  { 
-    name: "Pharmaceuticals", 
-    img: "https://plus.unsplash.com/premium_photo-1661374914839-a84dc1314c86?w=600&auto=format&fit=crop&q=60",
-    description: "Permitted subsurface management for aqueous byproducts and process solvent residues."
-  },
-  { 
-    name: "Gas Storage", 
-    img: "https://diversegy.com/wp-content/uploads/2024/07/lng-storage-containers.png",
-    description: "Underground gas storage reservoir characterization and integrity testing."
-  },
-  { 
-    name: "Ethanol Plants", 
-    img: "https://www.iowacorn.org/wp-content/uploads/2024/05/24138_ICGA_DRONE_ETHANOLPLANT_-21-scaled.jpg",
-    description: "Biofuel byproduct disposal, process water isolation, and Class VI CO2 planning."
-  },
-  { 
-    name: "Food Production", 
-    img: "https://images.unsplash.com/photo-1516594798947-e65505dbb29d?auto=format&fit=crop&q=80&w=400",
-    description: "Large-volume organic wash waters and specialized agricultural byproduct disposal."
-  },
-  { 
-    name: "Cosmetics", 
-    img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=400",
-    description: "Dilute aqueous formulation waste handling and compliant deepwell injection."
-  },
-  { 
-    name: "Cloth Manufacturing", 
-    img: "https://images.unsplash.com/photo-1612685179841-3965cf0c3f70?q=80&w=1378&auto=format&fit=crop",
-    description: "Textile wash effluent and chemical dye liquor disposal management."
-  },
-  { 
-    name: "Environmental Remediation", 
-    img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=400",
-    description: "Groundwater cleanups, plume containment, and complex subsurface remediation engineering."
-  }
-];
+  const industries = [
+    { 
+      name: "Landfill Services", 
+      img: "https://img.canarymedia.com/content/uploads/coffin-butte-hero.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=1492&q=80&w=3360&s=cfb58f4b133c5cdb0328a2411fac82fc",
+      description: "Deep well injection permitting, feasibility, and high-capacity leachate disposal solutions."
+    },
+    { 
+      name: "Municipal Water Supply", 
+      img: "https://images.unsplash.com/photo-1600965487524-8b8c37f6c394?q=80&w=1170&auto=format&fit=crop",
+      description: "Drinking water aquifer protection, source evaluations, and deep disposal monitoring."
+    },
+    { 
+      name: "Power Generation", 
+      img: "https://assets.weforum.org/article/image/responsive_big_webp_ZceAxbIcK8seaoQU8DFS-l_Dq7YPPzmx_MNYE2C0aOU.webp",
+      description: "Cooling blowdown water handling and carbon sequestration evaluation."
+    },
+    { 
+      name: "Oil and Gas", 
+      img: "https://images.unsplash.com/photo-1516199423456-1f1e91b06f25?q=80&w=1149&auto=format&fit=crop",
+      description: "Decline curve analysis, DSU applications, forced pooling, and reservoir modeling."
+    },
+    { 
+      name: "Mining", 
+      img: "/mining.jpg",
+      description: "In-situ recovery hydrogeology, hard rock dewatering, and mine reclamation support."
+    },
+    { 
+      name: "Heavy Manufacturing", 
+      img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400",
+      description: "Inorganic process solutions, metal-plating rinses, and long-term UIC compliance."
+    },
+    { 
+      name: "Chemical Plants", 
+      img: "https://images.unsplash.com/photo-1704130092069-30ae33e2def0?q=80&w=1170&auto=format&fit=crop",
+      description: "Class I industrial waste stream management and UIC hazardous waste compliance."
+    },
+    { 
+      name: "Refineries", 
+      img: "https://images.unsplash.com/photo-1611581372056-30cf28a7bd2e?q=80&w=1074&auto=format&fit=crop",
+      description: "High-volume process effluent management and secure deep formation disposal."
+    },
+    { 
+      name: "Pharmaceuticals", 
+      img: "https://plus.unsplash.com/premium_photo-1661374914839-a84dc1314c86?w=600&auto=format&fit=crop&q=60",
+      description: "Permitted subsurface management for aqueous byproducts and process solvent residues."
+    },
+    { 
+      name: "Gas Storage", 
+      img: "https://diversegy.com/wp-content/uploads/2024/07/lng-storage-containers.png",
+      description: "Underground gas storage reservoir characterization and integrity testing."
+    },
+    { 
+      name: "Ethanol Plants", 
+      img: "https://www.iowacorn.org/wp-content/uploads/2024/05/24138_ICGA_DRONE_ETHANOLPLANT_-21-scaled.jpg",
+      description: "Biofuel byproduct disposal, process water isolation, and Class VI CO2 planning."
+    },
+    { 
+      name: "Food Production", 
+      img: "https://images.unsplash.com/photo-1516594798947-e65505dbb29d?auto=format&fit=crop&q=80&w=400",
+      description: "Large-volume organic wash waters and specialized agricultural byproduct disposal."
+    },
+    { 
+      name: "Cosmetics", 
+      img: "https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?auto=format&fit=crop&q=80&w=400",
+      description: "Dilute aqueous formulation waste handling and compliant deepwell injection."
+    },
+    { 
+      name: "Cloth Manufacturing", 
+      img: "https://images.unsplash.com/photo-1612685179841-3965cf0c3f70?q=80&w=1378&auto=format&fit=crop",
+      description: "Textile wash effluent and chemical dye liquor disposal management."
+    },
+    { 
+      name: "Environmental Remediation", 
+      img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=400",
+      description: "Groundwater cleanups, plume containment, and complex subsurface remediation engineering."
+    }
+  ];
 
   const subNavItems = [
     { name: "Who We Are", href: "#whoweare" },
@@ -384,330 +364,367 @@ const industries = [
 
   return (
     <>
-      <style>
-        {`
-          @keyframes bounceDown {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(-10px); }
-            60% { transform: translateY(-5px); }
-          }
-          .animate-bounce-down { animation: bounceDown 2s infinite; }
-        `}
-      </style>
-
-{/* Hero Section */}
-<header id="home" className="relative flex flex-col h-screen overflow-hidden bg-white">
-  
-  {/* 1. Background Image Container */}
-  <div className="relative h-[90%] w-full overflow-hidden bg-gray-900 shrink-0">
-    <div className="absolute inset-0 opacity-100 overflow-hidden">
-      <div className="absolute inset-0 bg-black/20 z-10"></div>
-        <img 
-          src="/Hero.jpg" 
-          alt="Petrotek Background" 
-          className="h-full w-full object-cover"
-        />
-    </div>
-
-  {/* Hero Text Content - Using ultra-specific media queries for 2K+ */}
-    <div className="w-full px-6 md:px-12 lg:px-20 [@media(min-width:1600px)]:px-40 relative z-20 flex flex-col lg:flex-row items-center justify-center h-full max-w-[2000px] mx-auto"> 
-      
-      <div className="lg:w-[55%] flex flex-col justify-center text-center lg:text-left pt-12 lg:pt-0">
-        <div className="max-w-3xl [@media(min-width:1600px)]:max-w-5xl">
-          {/* Headline: Added heavy custom text-shadow for readability */}
-          <h1 className="text-4xl md:text-5xl lg:text-6xl [@media(min-width:1600px)]:text-7xl font-extrabold text-white leading-tight mb-6 lg:mb-8 [@media(min-width:1600px)]:mb-12 tracking-tight drop-shadow-[0_4px_10px_rgba(0,0,0,100)]">
-            Injection Well and Subsurface Resources Consultants
-          </h1>
-          
-          <div className="flex flex-col sm:flex-row gap-3 md:gap-4 [@media(min-width:1600px)]:gap-8 justify-center lg:justify-start items-center lg:items-start">
-            <button 
-              onClick={() => scrollToId('#whatwedo')} 
-              className="w-[180px] sm:w-auto px-4 sm:px-8 [@media(min-width:1600px)]:px-14 py-3 md:py-4 [@media(min-width:1600px)]:py-6 text-white text-xs sm:text-base [@media(min-width:1600px)]:text-xl font-bold rounded-sm shadow-xl transition-all hover:brightness-110 text-center" 
-              style={{ backgroundColor: maroon }}
-            >
-              Explore Services
-            </button>
+      {/* Hero Section */}
+      <header id="home" className="relative flex flex-col min-h-[100svh] lg:h-screen overflow-hidden bg-white">
+        
+        {/* 1. Background Image Container */}
+        <div className="relative flex-1 w-full overflow-hidden bg-gray-900 shrink-0 flex items-center justify-center">
+          <div className="absolute inset-0 opacity-100 overflow-hidden">
+            <div className="absolute inset-0 bg-black/30 z-10"></div>
+            <img 
+              src="/Hero.jpg" 
+              alt="Petrotek Background" 
+              className="h-full w-full object-cover"
+            />
           </div>
-        </div>
-      </div>
 
-      {/* Anniversary Graphic: Only scales up past 1600px wide */}
-      <div className="lg:w-[30%] flex justify-center items-center pt-8 lg:pt-0">
-        <img 
-          src={anniversaryGraphic} 
-          alt="33 Years of UIC Service" 
-          className="w-24 h-24 md:w-48 md:h-48 lg:w-64 lg:h-64 [@media(min-width:1600px)]:w-[400px] [@media(min-width:1600px)]:h-[400px] object-contain filter drop-shadow-2xl opacity-90 transition-transform hover:scale-105" 
-          onError={(e) => { e.target.style.display = 'none'; }} 
-        />
-      </div>
-    </div>
-  </div>
-
-      {/* 2. Slogan Section - Forced Single Line with Inset Separators */}
-      <div 
-        className="w-full h-[10%] min-h-[60px] flex justify-center items-center overflow-hidden" 
-        style={{ backgroundColor: maroon }}
-      >
-        <div className="w-full px-2 sm:px-6 md:px-12 lg:px-20 mx-auto max-w-[2000px] h-full flex items-center">
-          
-          <div className="flex flex-row w-full items-center justify-evenly h-full">
+          {/* Hero Content - Perfectly Vertically Centered Across All Viewports */}
+          <div className="w-full px-6 sm:px-10 md:px-16 lg:px-20 [@media(min-width:1600px)]:px-40 relative z-20 flex flex-col lg:flex-row items-center justify-between max-w-[2000px] mx-auto py-28 lg:py-0 gap-10 lg:gap-12"> 
             
-            {/* Slot 1 */}
-            <div className="flex-1 flex items-center justify-center h-full relative px-1">
-              <span className="text-[2.8vw] sm:text-[2.5vw] md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold tracking-tighter sm:tracking-tight text-center leading-none">
-                Building Relationships
-              </span>
-              {/* Separator Line */}
-              <div className="absolute right-0 h-1/2 w-px bg-white/30"></div>
+            {/* Left Column: Headline & Action */}
+            <div className="w-full lg:w-[60%] flex flex-col justify-center text-center lg:text-left">
+              <div className="max-w-3xl [@media(min-width:1600px)]:max-w-5xl mx-auto lg:mx-0">
+                <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-5xl xl:text-6xl [@media(min-width:1600px)]:text-7xl font-extrabold text-white leading-[1.15] mb-6 sm:mb-8 tracking-tight drop-shadow-[0_4px_14px_rgba(0,0,0,0.95)]">
+                  Injection Well and Subsurface Resources Consultants
+                </h1>
+                
+                <div className="flex justify-center lg:justify-start items-center">
+                  <button 
+                    onClick={() => scrollToId('#whatwedo')} 
+                    className="w-full sm:w-auto px-8 sm:px-10 py-3.5 sm:py-4 [@media(min-width:1600px)]:px-14 [@media(min-width:1600px)]:py-5 text-white text-sm sm:text-base [@media(min-width:1600px)]:text-lg font-bold rounded-lg shadow-xl transition-all hover:brightness-110 active:scale-95 text-center" 
+                    style={{ backgroundColor: maroon }}
+                  >
+                    Explore Services
+                  </button>
+                </div>
+              </div>
             </div>
 
-            {/* Slot 2 */}
-            <div className="flex-1 flex items-center justify-center h-full relative px-1">
-              <span className="text-[2.8vw] sm:text-[2.5vw] md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold tracking-tighter sm:tracking-tight text-center leading-none">
-                Solving Problems
-              </span>
-              {/* Separator Line */}
-              <div className="absolute right-0 h-1/2 w-px bg-white/30"></div>
-            </div>
-
-            {/* Slot 3 */}
-            <div className="flex-1 flex items-center justify-center h-full px-1">
-              <span className="text-[2.8vw] sm:text-[2.5vw] md:text-2xl lg:text-3xl [@media(min-width:1600px)]:text-4xl text-white italic font-bold tracking-tighter sm:tracking-tight text-center leading-none">
-                Adding Value
-              </span>
+            {/* Right Column: Anniversary Graphic (Fluid & Prominent on Wide Screens) */}
+            <div className="w-full lg:w-[38%] flex justify-center items-center">
+              <img 
+                src={anniversaryGraphic} 
+                alt="33 Years of UIC Service" 
+                className="w-32 h-32 sm:w-44 sm:h-44 md:w-56 md:h-56 lg:w-72 lg:h-72 xl:w-80 xl:h-80 2xl:w-[380px] 2xl:h-[380px] [@media(min-width:1600px)]:w-[440px] [@media(min-width:1600px)]:h-[440px] object-contain filter drop-shadow-[0_10px_25px_rgba(0,0,0,0.7)] transition-transform duration-300 hover:scale-105" 
+                onError={(e) => { e.target.style.display = 'none'; }} 
+              />
             </div>
 
           </div>
         </div>
-      </div>
-</header>
 
-{/* Sticky Sub-Navigation */}
-<nav 
-  id="section-nav" 
-  className="hidden md:block sticky top-[4rem] lg:top-[5rem] z-40 bg-white/80 backdrop-blur-xl border-b border-gray-100 shadow-sm overflow-x-auto whitespace-nowrap scrollbar-hide"
->
-  <div className="container mx-auto px-6 flex justify-center">
-    <ul className="flex items-center space-x-8 lg:space-x-12">
-      {subNavItems.map((item) => {
-        const isActive = activeSection === item.href.replace('#', '');
-        return (
-          <li key={item.name}>
-            <button 
-              onClick={() => scrollToId(item.href)}
-              className={`text-xs lg:text-sm font-bold uppercase tracking-widest transition-colors relative group py-5 ${isActive ? 'text-[#8B1E3F]' : 'text-gray-500 hover:text-[#8B1E3F]'}`}
-            >
-              {item.name}
-              <span className={`absolute bottom-4 left-0 h-0.5 bg-[#8B1E3F] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
-            </button>
-          </li>
-        );
-      })}
-    </ul>
-  </div>
-</nav>
+        {/* 2. Slogan Section - Clickable Section Anchors */}
+        <div 
+          className="w-full py-4 sm:py-5 lg:h-[10%] lg:min-h-[72px] [@media(min-width:1600px)]:min-h-[90px] flex justify-center items-center shrink-0 border-t border-white/10" 
+          style={{ backgroundColor: maroon }}
+        >
+          <div className="w-full px-4 sm:px-6 md:px-12 lg:px-20 [@media(min-width:1600px)]:px-40 mx-auto max-w-[2000px]">
+            <div className="flex flex-row items-center justify-between sm:justify-evenly gap-2 sm:gap-4">
+              
+              {/* Item 1 -> Clients Served */}
+              <button 
+                onClick={() => scrollToId('#clientsserved')}
+                className="flex-1 text-center px-1 group cursor-pointer transition-transform active:scale-95 focus:outline-none"
+              >
+                <span className="text-[12px] sm:text-base md:text-xl lg:text-2xl [@media(min-width:1600px)]:text-3xl font-bold tracking-tight text-white italic leading-tight block group-hover:underline underline-offset-4 decoration-white/60 transition-all">
+                  Building Relationships
+                </span>
+              </button>
 
-      {/* Sections */}
+              {/* Separator 1 */}
+              <div className="h-8 sm:h-10 md:h-12 lg:h-14 [@media(min-width:1600px)]:h-16 w-px bg-white/30 shrink-0"></div>
+
+              {/* Item 2 -> Core Capabilities */}
+              <button 
+                onClick={() => scrollToId('#whatwedo')}
+                className="flex-1 text-center px-1 group cursor-pointer transition-transform active:scale-95 focus:outline-none"
+              >
+                <span className="text-[12px] sm:text-base md:text-xl lg:text-2xl [@media(min-width:1600px)]:text-3xl font-bold tracking-tight text-white italic leading-tight block group-hover:underline underline-offset-4 decoration-white/60 transition-all">
+                  Solving Problems
+                </span>
+              </button>
+
+              {/* Separator 2 */}
+              <div className="h-8 sm:h-10 md:h-12 lg:h-14 [@media(min-width:1600px)]:h-16 w-px bg-white/30 shrink-0"></div>
+
+              {/* Item 3 -> Industries Served */}
+              <button 
+                onClick={() => scrollToId('#industries')}
+                className="flex-1 text-center px-1 group cursor-pointer transition-transform active:scale-95 focus:outline-none"
+              >
+                <span className="text-[12px] sm:text-base md:text-xl lg:text-2xl [@media(min-width:1600px)]:text-3xl font-bold tracking-tight text-white italic leading-tight block group-hover:underline underline-offset-4 decoration-white/60 transition-all">
+                  Adding Value
+                </span>
+              </button>
+
+            </div>
+          </div>
+        </div>
+      </header>
+
+      {/* Sticky Sub-Navigation */}
+      <nav 
+        id="section-nav" 
+        className="hidden md:block sticky top-[4rem] lg:top-[5rem] z-40 bg-white/80 backdrop-blur-xl border-b border-gray-100 shadow-sm overflow-x-auto whitespace-nowrap scrollbar-hide"
+      >
+        <div className="container mx-auto px-6 flex justify-center">
+          <ul className="flex items-center space-x-8 lg:space-x-12">
+            {subNavItems.map((item) => {
+              const isActive = activeSection === item.href.replace('#', '');
+              return (
+                <li key={item.name}>
+                  <button 
+                    onClick={() => scrollToId(item.href)}
+                    className={`text-xs lg:text-sm font-bold uppercase tracking-widest transition-colors relative group py-5 ${isActive ? 'text-[#8B1E3F]' : 'text-gray-500 hover:text-[#8B1E3F]'}`}
+                  >
+                    {item.name}
+                    <span className={`absolute bottom-4 left-0 h-0.5 bg-[#8B1E3F] transition-all duration-300 ${isActive ? 'w-full' : 'w-0 group-hover:w-full'}`}></span>
+                  </button>
+                </li>
+              );
+            })}
+          </ul>
+        </div>
+      </nav>
+
       {/* Who We Are Section */}
-      <section id="whoweare" className="py-24 bg-gray-50 scroll-mt-20">
+      <section id="whoweare" className="py-20 md:py-24 bg-gray-50 scroll-mt-20">
         <div className="container mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="w-fit mb-8">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Who We Are</h2>
-              <div className="w-full h-1 mb-8" style={{ backgroundColor: maroon }}></div>
+                <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Who We Are</h2>
+                <div className="w-full h-1" style={{ backgroundColor: maroon }}></div>
               </div>
-              <p className="text-lg text-gray-600 mb-6 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 mb-6 leading-relaxed">
                 Petrotek Corporation is a results-oriented consulting firm that specializes in subsurface fluid flow and injection well projects, providing engineering, geoscience, and field supervision services. 
               </p>
-              <p className="text-lg text-gray-600 mb-8 leading-relaxed">
+              <p className="text-base sm:text-lg text-gray-600 mb-8 leading-relaxed">
                 Our company was founded in 1993 with a mission of providing cost-effective contract services to industrial and governmental clients. Our firm takes pride in meeting that goal with the highest degree of integrity and professionalism.
               </p>
               
               <div className="flex items-center space-x-6 mb-8">
-                <img src={anniversaryGraphic} alt="33 Years" className="w-20 h-20 grayscale brightness-0 opacity-100" />
-                <span className="text-lg font-bold text-gray-800 uppercase tracking-wider border-l-2 border-[#8B1E3F] pl-6">
+                <img src={anniversaryGraphic} alt="33 Years" className="w-16 h-16 sm:w-20 sm:h-20 grayscale brightness-0 opacity-100 shrink-0" />
+                <span className="text-sm sm:text-base font-bold text-gray-800 uppercase tracking-wider border-l-2 border-[#8B1E3F] pl-4 sm:pl-6 leading-snug">
                   Over Three Decades of <br /> Professional Excellence
                 </span>
               </div>
 
-              {/* Short Mission Box */}
-              <div className="p-6 rounded-lg text-white" style={{ backgroundColor: maroon }}>
-                <p className="text-lg font-bold leading-tight">
+              <div className="p-6 rounded-xl text-white shadow-md" style={{ backgroundColor: maroon }}>
+                <p className="text-base sm:text-lg font-bold leading-relaxed m-0">
                   Our mission is to provide industry-leading technical expertise and innovative subsurface solutions for every client, every time.
                 </p>
               </div>
             </div>
 
-            {/* Enlarged, "clean" image container */}
-            <div className="flex justify-center items-center">
+            <div className="flex justify-center items-center mt-6 md:mt-0">
               <img 
                 src="/2026_Update.png" 
                 alt="Injection Well 3D Model" 
-                className="w-full max-w-xl h-auto drop-shadow-xl cursor-zoom-in" // Increased to max-w-xl, removed shadow/border classes
+                className="w-full max-w-lg h-auto drop-shadow-xl cursor-zoom-in"
               />
             </div>
           </div>
         </div>
       </section>
 
-      <section id="whatwedo" className="py-24 bg-white scroll-mt-20">
+      {/* Capabilities Section */}
+      <section id="whatwedo" className="py-20 md:py-24 bg-white scroll-mt-20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 flex justify-center">
             <div className="w-fit">
-              <h2 className="text-4xl font-bold text-gray-900 mb-4">Our Core Capabilities</h2>
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Capabilities</h2>
               <div className="w-full h-1" style={{ backgroundColor: maroon }}></div>
             </div>
           </div>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {services.map((service, index) => (
-            <div 
-              key={index} 
-              className="group p-8 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-2 flex flex-col h-full hover:border-[var(--service-accent)]"
-              style={{ '--service-accent': service.accent }}
-            >
-              {/* Icon Container */}
               <div 
-                className="mb-8 relative inline-flex items-center justify-center w-20 h-20 rounded-2xl transition-transform duration-500 group-hover:scale-110" 
-                style={{ backgroundColor: `${service.accent}15` }}
-              > 
-                <div style={{ color: service.accent }}>
-                  {React.cloneElement(service.icon, { className: "w-10 h-10 stroke-[1.5]" })}
-                </div>
-              </div>
-
-              <h3 className="text-2xl font-extrabold mb-4 text-gray-900 tracking-tight transition-colors duration-300 group-hover:!text-[var(--service-accent)]">
-                {service.title}
-              </h3>
-              <p className="text-gray-600 leading-relaxed mb-6 flex-grow text-lg">{service.description}</p>
-              
-              <Link 
-                to={service.link} 
-                className="inline-flex items-center w-max px-6 py-3 mt-auto text-sm font-bold text-white uppercase tracking-widest rounded-sm shadow-sm transition-all hover:brightness-110" 
-                style={{ backgroundColor: service.accent }}
+                key={index} 
+                className="group p-6 sm:p-8 bg-white border border-gray-100 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-500 hover:-translate-y-1 flex flex-col h-full hover:border-[var(--service-accent)]"
+                style={{ '--service-accent': service.accent }}
               >
-                Learn More <ChevronRight className="w-5 h-5 ml-2 transition-transform group-hover:translate-x-1" />
-              </Link>
-            </div>
+                <div 
+                  className="mb-6 relative inline-flex items-center justify-center w-16 h-16 sm:w-20 sm:h-20 rounded-2xl transition-transform duration-500 group-hover:scale-105" 
+                  style={{ backgroundColor: `${service.accent}15` }}
+                > 
+                  <div style={{ color: service.accent }}>
+                    {React.cloneElement(service.icon, { className: "w-8 h-8 sm:w-10 sm:h-10 stroke-[1.5]" })}
+                  </div>
+                </div>
+
+                <h3 className="text-xl sm:text-2xl font-extrabold mb-3 text-gray-900 tracking-tight transition-colors duration-300 group-hover:!text-[var(--service-accent)]">
+                  {service.title}
+                </h3>
+                <p className="text-gray-600 leading-relaxed mb-6 flex-grow text-sm sm:text-base">{service.description}</p>
+                
+                <Link 
+                  to={service.link} 
+                  className="inline-flex items-center w-fit px-5 py-2.5 sm:px-6 sm:py-3 mt-auto text-xs sm:text-sm font-bold text-white uppercase tracking-wider rounded-lg shadow-sm transition-all hover:brightness-110" 
+                  style={{ backgroundColor: service.accent }}
+                >
+                  Learn More <ChevronRight className="w-4 h-4 ml-1.5 transition-transform group-hover:translate-x-1" />
+                </Link>
+              </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Client Map & Stats Section */}
-      <section id="clientsserved" className="py-24 bg-gray-50 relative overflow-hidden scroll-mt-20">
+      {/* Clients & Map Section */}
+      <section id="clientsserved" className="py-20 md:py-24 bg-gray-50 relative overflow-hidden scroll-mt-20">
         <div className="container mx-auto px-6 relative z-10">
-          <div className="text-center mb-20 flex flex-col items-center">
-            <Globe className="w-12 h-12 mb-4" style={{ color: maroon }} />
-            <div className="w-fit mb-8">
+          <div className="text-center mb-16 flex flex-col items-center">
+            <Globe className="w-10 h-10 md:w-12 md:h-12 mb-4" style={{ color: maroon }} />
+            <div className="w-fit mb-6">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Clients Served</h2>
               <div className="w-full h-1" style={{ backgroundColor: maroon }}></div>
             </div>
-            <p className="max-w-2xl mx-auto text-lg text-gray-600 leading-relaxed">
+            <p className="max-w-2xl mx-auto text-base sm:text-lg text-gray-600 leading-relaxed">
               Petrotek provides specialized engineering for complex subsurface challenges across North America and beyond.
             </p>
           </div>
 
-          {/* Numerical Stats - No Boxes, Centered Typography */}
-          <div ref={statsRef} className="flex flex-col md:flex-row justify-center items-center gap-12 md:gap-32 mb-20">
+          {/* Stats Display */}
+          <div ref={statsRef} className="flex flex-col sm:flex-row justify-center items-center gap-8 sm:gap-16 md:gap-32 mb-16">
             <div className="text-center">
               <div 
-                className="text-7xl md:text-8xl font-black tracking-tighter mb-2 transition-all duration-300" 
-                style={{ 
-                  color: maroon
-                }}
+                className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tighter mb-1 transition-all duration-300" 
+                style={{ color: maroon }}
               >
                 {counts.clients}+
               </div>
-              <div className="text-sm font-bold uppercase tracking-[0.3em] text-gray-400">Clients Served</div>
+              <div className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em] text-gray-400">Clients Served</div>
             </div>
             
-            <div className="hidden md:block w-px h-24 bg-gray-100"></div>
+            <div className="hidden sm:block w-px h-20 md:h-24 bg-gray-200"></div>
 
             <div className="text-center">
               <div 
-                className="text-7xl md:text-8xl font-black tracking-tighter mb-2 transition-all duration-300" 
-                style={{ 
-                  color: maroon,
-                }}
+                className="text-5xl sm:text-7xl md:text-8xl font-black tracking-tighter mb-1 transition-all duration-300" 
+                style={{ color: maroon }}
               >
                 {counts.projects}+
               </div>
-              <div className="text-sm font-bold uppercase tracking-[0.3em] text-gray-400">Projects Supported</div>
+              <div className="text-xs sm:text-sm font-bold uppercase tracking-[0.2em] sm:tracking-[0.3em] text-gray-400">Projects Supported</div>
             </div>
           </div>
 
-          {/* Map Container - Large Radius Glass Look */}
-          <div className="relative max-w-5xl mx-auto rounded-[1rem] overflow-hidden shadow-2xl border border-gray-100 bg-white group">
-            <div className="absolute inset-0 bg-gradient-to-b from-transparent to-white/10 pointer-events-none"></div>
+          {/* Map Image */}
+          <div className="relative max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-xl border border-gray-100 bg-white group">
             <img 
               src="/Client Map v2.png" 
               alt="Petrotek Client Map" 
-              className="w-full h-auto object-cover grayscale-[20%] group-hover:grayscale-0 transition-all duration-1000 ease-in-out cursor-zoom-in"
+              className="w-full h-auto object-cover grayscale-[15%] group-hover:grayscale-0 transition-all duration-700 cursor-zoom-in"
               onError={(e) => { e.target.src = "https://images.unsplash.com/photo-1526778548025-fa2f459cd5c1?auto=format&fit=crop&q=80&w=2000"; }}
             />
           </div>
         </div>
       </section>
 
-      <section id="industries" className="py-24 bg-white scroll-mt-20">
-      <div className="w-full px-6 md:px-12 mx-auto max-w-[1728px] text-center">
-        <div className="flex flex-col items-center mb-8">
-          <Activity className="w-12 h-12 mb-4" style={{ color: maroon }} />
-          <div className="w-fit">
-            <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Industries Served</h2>
-            <div className="w-full h-1" style={{ backgroundColor: maroon }}></div>
-          </div>
-        </div>
-          <p className="max-w-4xl mx-auto text-lg text-gray-700">Petrotek provides consulting services to many industries for managing wastewater that is protective of drinking water sources and the environment.</p>
-            <br></br>
-            <p className="text-lg text-gray-600 italic">Some of the industries we serve include:</p>
-            <br></br>
-            <br></br>
-            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
-              {industries.map((item, index) => (
-                <IndustryCard 
-                  key={index} 
-                  item={item} 
-                  maroon={maroon} 
-                  onInquire={scrollToId} 
-                />
-              ))}
+      {/* Industries Grid */}
+      <section id="industries" className="py-20 md:py-24 bg-white scroll-mt-20">
+        <div className="w-full px-5 sm:px-8 md:px-12 mx-auto max-w-[1728px] text-center">
+          <div className="flex flex-col items-center mb-6">
+            <Activity className="w-10 h-10 md:w-12 md:h-12 mb-4" style={{ color: maroon }} />
+            <div className="w-fit mb-6">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Industries Served</h2>
+              <div className="w-full h-1" style={{ backgroundColor: maroon }}></div>
             </div>
+          </div>
+          
+          <p className="max-w-3xl mx-auto text-base sm:text-lg text-gray-700 mb-3">
+            Petrotek provides consulting services to many industries for managing wastewater that is protective of drinking water sources and the environment.
+          </p>
+          <p className="text-sm sm:text-base text-gray-500 italic mb-12">
+            Some of the industries we serve include:
+          </p>
+          
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+            {industries.map((item, index) => (
+              <IndustryCard 
+                key={index} 
+                item={item} 
+                maroon={maroon} 
+                onInquire={scrollToId} 
+              />
+            ))}
+          </div>
         </div>
       </section>
 
-      <section id="contact" className="py-24 bg-gray-50 border-t border-gray-200 scroll-mt-20">
-        <div className="container mx-auto px-6">
-          <div className="bg-white rounded-2xl shadow-2xl overflow-hidden grid lg:grid-cols-5">
-            <div className="lg:col-span-2 p-12 text-white" style={{ backgroundColor: maroon }}>
-              <h2 className="text-3xl font-bold mb-8">Get In Touch</h2>
-              <div className="space-y-6">
-                <div className="flex items-start space-x-4"><MapPin className="w-6 h-6 mt-1" /><p>5935 South Zang Street, Suite 200<br />Littleton, Colorado USA 80127</p></div>
-                <div className="flex items-center space-x-4"><Phone className="w-6 h-6" /><p><a href="tel:3032909414">(303) 290-9414</a></p></div>
+      {/* Contact Section */}
+      <section id="contact" className="py-20 md:py-24 bg-gray-50 border-t border-gray-200 scroll-mt-20">
+        <div className="container mx-auto px-5 sm:px-6">
+          <div className="bg-white rounded-2xl shadow-xl overflow-hidden grid lg:grid-cols-5">
+            
+            {/* Contact Details Left Panel */}
+            <div className="lg:col-span-2 p-6 sm:p-10 lg:p-12 text-white flex flex-col justify-between" style={{ backgroundColor: maroon }}>
+              <div>
+                <h2 className="text-2xl sm:text-3xl font-bold mb-6">Get In Touch</h2>
+                <div className="space-y-5 text-sm sm:text-base">
+                  <div className="flex items-start space-x-3.5">
+                    <MapPin className="w-5 h-5 mt-1 shrink-0" />
+                    <p className="leading-relaxed">5935 South Zang Street, Suite 200<br />Littleton, Colorado USA 80127</p>
+                  </div>
+                  <div className="flex items-center space-x-3.5">
+                    <Phone className="w-5 h-5 shrink-0" />
+                    <p><a href="tel:3032909414" className="hover:underline font-semibold">(303) 290-9414</a></p>
+                  </div>
+                </div>
               </div>
-              <div className="mt-10 rounded-xl overflow-hidden shadow-lg border border-white/20">
+
+              <div className="mt-8 rounded-xl overflow-hidden shadow-inner border border-white/20">
                 <iframe 
                   src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=5935 South Zang Street, Suite 200 Littleton, Colorado USA 80127&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
-                  width="100%" height="325" style={{ border: 0 }} allowFullScreen="" loading="lazy" title="Office Location"
+                  width="100%" 
+                  height="260" 
+                  style={{ border: 0 }} 
+                  allowFullScreen="" 
+                  loading="lazy" 
+                  title="Office Location"
                 ></iframe>
               </div>
             </div>
-            <form className="lg:col-span-3 p-12 space-y-6" onSubmit={handleFormSubmit}>
-              <div className="grid md:grid-cols-2 gap-6">
-                <div className="space-y-2"><label className="text-sm font-bold">First Name</label><input required name="firstName" type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none" /></div>
-                <div className="space-y-2"><label className="text-sm font-bold">Last Name</label><input required name="lastName" type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none" /></div>
+
+            {/* Form Right Panel */}
+            <form className="lg:col-span-3 p-6 sm:p-10 lg:p-12 space-y-5" onSubmit={handleFormSubmit}>
+              <div className="grid sm:grid-cols-2 gap-5">
+                <div className="space-y-1.5">
+                  <label className="text-xs sm:text-sm font-bold text-gray-700">First Name</label>
+                  <input required name="firstName" type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#8B1E3F] outline-none text-sm transition-all" />
+                </div>
+                <div className="space-y-1.5">
+                  <label className="text-xs sm:text-sm font-bold text-gray-700">Last Name</label>
+                  <input required name="lastName" type="text" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#8B1E3F] outline-none text-sm transition-all" />
+                </div>
               </div>
-              <div className="space-y-2"><label className="text-sm font-bold">Email Address</label><input required name="email" type="email" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none" /></div>
-              <div className="space-y-2"><label className="text-sm font-bold">Message</label><textarea required name="message" rows="4" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded focus:ring-2 focus:ring-[#8B1E3F] outline-none"></textarea></div>
-              <div className="flex justify-center md:justify-start">
+              
+              <div className="space-y-1.5">
+                <label className="text-xs sm:text-sm font-bold text-gray-700">Email Address</label>
+                <input required name="email" type="email" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#8B1E3F] outline-none text-sm transition-all" />
+              </div>
+              
+              <div className="space-y-1.5">
+                <label className="text-xs sm:text-sm font-bold text-gray-700">Message</label>
+                <textarea required name="message" rows="4" className="w-full px-4 py-3 bg-gray-50 border border-gray-200 rounded-lg focus:ring-2 focus:ring-[#8B1E3F] outline-none text-sm transition-all"></textarea>
+              </div>
+
+              <div className="overflow-x-auto py-1">
                 {import.meta.env.VITE_RECAPTCHA_SITE ? (
                   <ReCAPTCHA ref={recaptchaRef} sitekey={import.meta.env.VITE_RECAPTCHA_SITE} />
                 ) : (
-                  <p className="text-red-500 text-sm italic">reCAPTCHA Key Missing (Check .env)</p>
+                  <p className="text-red-500 text-xs italic">reCAPTCHA Key Missing</p>
                 )}
               </div>
-              <button type="submit" className="w-full py-4 text-white font-bold rounded-sm uppercase tracking-widest shadow-lg hover:brightness-110 transition-all" style={{ backgroundColor: maroon }}>Send Message</button>
+
+              <button 
+                type="submit" 
+                className="w-full py-4 text-white text-xs sm:text-sm font-bold rounded-lg uppercase tracking-widest shadow-md hover:brightness-110 active:scale-[0.99] transition-all" 
+                style={{ backgroundColor: maroon }}
+              >
+                Send Message
+              </button>
             </form>
           </div>
         </div>

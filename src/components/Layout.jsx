@@ -4,15 +4,21 @@ import { Menu, X, ChevronDown, MapPin, Phone, Mail, Plus, Minus, RotateCcw } fro
 import { SpeedInsights } from "@vercel/speed-insights/react";
 import { Analytics } from "@vercel/analytics/react";
 
-// --- GLOBAL IMAGE MODAL COMPONENT ---
+// --- MOBILE-OPTIMIZED GLOBAL IMAGE MODAL COMPONENT ---
 const ImageModal = ({ src, alt, isOpen, onClose }) => {
   const [scale, setScale] = useState(1);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [startPos, setStartPos] = useState({ x: 0, y: 0 });
-  const containerRef = useRef(null);
 
-  // Reset zoom/pan when image changes or modal closes
+  // Touch tracking refs
+  const containerRef = useRef(null);
+  const touchStartDistRef = useRef(null);
+  const touchStartScaleRef = useRef(1);
+  const lastTouchRef = useRef({ x: 0, y: 0 });
+  const lastTapTimeRef = useRef(0);
+
+  // Reset coordinates on open or image switch
   useEffect(() => {
     if (isOpen) {
       setScale(1);
@@ -20,7 +26,7 @@ const ImageModal = ({ src, alt, isOpen, onClose }) => {
     }
   }, [src, isOpen]);
 
-  // Non-passive wheel listener to allow e.preventDefault()
+  // Non-passive desktop trackpad & mouse wheel listener
   useEffect(() => {
     const container = containerRef.current;
     if (!isOpen || !container) return;
@@ -34,9 +40,7 @@ const ImageModal = ({ src, alt, isOpen, onClose }) => {
 
       setScale((prev) => {
         const next = Math.min(Math.max(prev + delta, 1), 6);
-        if (next === 1) {
-          setPosition({ x: 0, y: 0 });
-        }
+        if (next === 1) setPosition({ x: 0, y: 0 });
         return next;
       });
     };
@@ -47,6 +51,7 @@ const ImageModal = ({ src, alt, isOpen, onClose }) => {
 
   if (!isOpen) return null;
 
+  // Zoom Button Handlers
   const handleZoomIn = (e) => {
     e.stopPropagation();
     setScale((prev) => Math.min(prev + 0.5, 6));
@@ -67,6 +72,7 @@ const ImageModal = ({ src, alt, isOpen, onClose }) => {
     setPosition({ x: 0, y: 0 });
   };
 
+  // --- Mouse Dragging (Desktop) ---
   const handleMouseDown = (e) => {
     if (scale <= 1) return;
     setIsDragging(true);
@@ -83,51 +89,144 @@ const ImageModal = ({ src, alt, isOpen, onClose }) => {
 
   const handleMouseUp = () => setIsDragging(false);
 
+  // --- Touch Gestures (Mobile Pinch-to-Zoom & Pan) ---
+  const getTouchDistance = (touches) => {
+    const dx = touches[0].clientX - touches[1].clientX;
+    const dy = touches[0].clientY - touches[1].clientY;
+    return Math.hypot(dx, dy);
+  };
+
+  const handleTouchStart = (e) => {
+    // 2-Finger Pinch
+    if (e.touches.length === 2) {
+      touchStartDistRef.current = getTouchDistance(e.touches);
+      touchStartScaleRef.current = scale;
+      return;
+    }
+
+    // 1-Finger Tap or Pan
+    if (e.touches.length === 1) {
+      const now = Date.now();
+      const timeSinceLastTap = now - lastTapTimeRef.current;
+
+      // Double Tap detection (< 300ms)
+      if (timeSinceLastTap < 300 && timeSinceLastTap > 0) {
+        if (scale > 1) {
+          setScale(1);
+          setPosition({ x: 0, y: 0 });
+        } else {
+          setScale(2.5);
+        }
+        lastTapTimeRef.current = 0;
+        return;
+      }
+      lastTapTimeRef.current = now;
+
+      // One-finger Pan initialization when zoomed
+      lastTouchRef.current = {
+        x: e.touches[0].clientX - position.x,
+        y: e.touches[0].clientY - position.y
+      };
+    }
+  };
+
+  const handleTouchMove = (e) => {
+    // Pinch Scaling
+    if (e.touches.length === 2 && touchStartDistRef.current) {
+      e.preventDefault();
+      const currentDist = getTouchDistance(e.touches);
+      const ratio = currentDist / touchStartDistRef.current;
+      const nextScale = Math.min(Math.max(touchStartScaleRef.current * ratio, 1), 6);
+      
+      setScale(nextScale);
+      if (nextScale === 1) setPosition({ x: 0, y: 0 });
+      return;
+    }
+
+    // Single-Finger Pan
+    if (e.touches.length === 1 && scale > 1) {
+      e.preventDefault();
+      setPosition({
+        x: e.touches[0].clientX - lastTouchRef.current.x,
+        y: e.touches[0].clientY - lastTouchRef.current.y
+      });
+    }
+  };
+
+  const handleTouchEnd = (e) => {
+    if (e.touches.length < 2) {
+      touchStartDistRef.current = null;
+    }
+    // Snap back to origin if scale settled at 1
+    if (scale <= 1) {
+      setPosition({ x: 0, y: 0 });
+    }
+  };
+
   return (
     <div 
-      className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/90 backdrop-blur-md p-4 md:p-10 transition-opacity duration-300"
+      className="fixed inset-0 z-[10000] flex items-center justify-center bg-black/90 backdrop-blur-md transition-opacity duration-300 touch-none select-none"
       onClick={onClose}
     >
-      {/* Close Button */}
+      {/* Top Close Button - Elevated hit target for touch devices */}
       <button 
         onClick={onClose}
-        className="absolute top-6 right-6 text-white hover:text-gray-300 z-[10001] bg-white/10 p-3 rounded-full backdrop-blur-md border border-white/10 transition-all hover:bg-white/20"
+        aria-label="Close modal"
+        className="absolute top-4 right-4 sm:top-6 sm:right-6 text-white hover:text-gray-300 z-[10001] bg-white/10 active:bg-white/30 p-3 sm:p-3.5 rounded-full backdrop-blur-md border border-white/10 transition-all shadow-lg"
       >
-        <X size={28} />
+        <X size={24} className="sm:w-7 sm:h-7" />
       </button>
 
-      {/* Controls Overlay */}
+      {/* Floating Controls Overlay - Safe-area positioned on mobile */}
       <div 
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-2 bg-black/40 backdrop-blur-xl p-2 rounded-2xl border border-white/10 z-[10001] shadow-2xl"
+        className="absolute bottom-6 sm:bottom-10 left-1/2 -translate-x-1/2 flex items-center gap-1 sm:gap-2 bg-black/60 backdrop-blur-xl p-1.5 sm:p-2 rounded-2xl border border-white/15 z-[10001] shadow-2xl"
         onClick={(e) => e.stopPropagation()}
       >
-        <button onClick={handleZoomOut} className="p-3 text-white hover:bg-white/10 rounded-xl transition-colors">
+        <button 
+          onClick={handleZoomOut} 
+          aria-label="Zoom out"
+          className="p-3 text-white active:bg-white/20 sm:hover:bg-white/10 rounded-xl transition-colors"
+        >
           <Minus size={20} />
         </button>
-        <button onClick={handleReset} className="flex items-center gap-2 px-4 text-white text-xs font-bold uppercase tracking-widest hover:bg-white/10 rounded-xl py-3 transition-colors">
-          <RotateCcw size={16} /> Reset
+
+        <button 
+          onClick={handleReset} 
+          aria-label="Reset zoom"
+          className="flex items-center gap-1.5 px-3 sm:px-4 text-white text-[11px] sm:text-xs font-bold uppercase tracking-wider active:bg-white/20 sm:hover:bg-white/10 rounded-xl py-3 transition-colors"
+        >
+          <RotateCcw size={15} /> 
+          <span>Reset</span>
         </button>
-        <button onClick={handleZoomIn} className="p-3 text-white hover:bg-white/10 rounded-xl transition-colors">
+
+        <button 
+          onClick={handleZoomIn} 
+          aria-label="Zoom in"
+          className="p-3 text-white active:bg-white/20 sm:hover:bg-white/10 rounded-xl transition-colors"
+        >
           <Plus size={20} />
         </button>
       </div>
 
-      {/* Image Container */}
+      {/* Gesture-Aware Image Container */}
       <div 
         ref={containerRef}
-        className="relative w-full h-full flex items-center justify-center overflow-hidden"
+        className="relative w-full h-full flex items-center justify-center overflow-hidden touch-none"
         onMouseDown={handleMouseDown}
         onMouseMove={handleMouseMove}
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
         onClick={(e) => e.stopPropagation()}
       >
         <img
           src={src}
           alt={alt}
-          className="max-w-[90%] max-h-[90%] object-contain transition-transform duration-75 ease-out select-none"
+          className="max-w-[95%] max-h-[85%] sm:max-w-[90%] sm:max-h-[90%] object-contain transition-transform duration-75 ease-out select-none pointer-events-none"
           style={{ 
-            transform: `translate(${position.x}px, ${position.y}px) scale(${scale})`,
+            transform: `translate3d(${position.x}px, ${position.y}px, 0px) scale(${scale})`,
             cursor: scale > 1 ? (isDragging ? 'grabbing' : 'grab') : 'default'
           }}
           draggable="false"
@@ -140,6 +239,7 @@ const ImageModal = ({ src, alt, isOpen, onClose }) => {
 const Layout = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [isServicesExpanded, setIsServicesExpanded] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const [modalData, setModalData] = useState({ isOpen: false, src: '', alt: '' });
   
@@ -156,7 +256,6 @@ const Layout = () => {
   // Global Image Click Listener
   useEffect(() => {
     const handleGlobalClick = (e) => {
-      // Trigger zoom if target is an IMG, not in nav/footer, and not marked 'no-zoom'
       const isImage = e.target.tagName === 'IMG';
       const isNotNav = !e.target.closest('nav');
       const isNotNoZoom = !e.target.classList.contains('no-zoom');
@@ -178,6 +277,7 @@ const Layout = () => {
 
   useEffect(() => {
     setIsMenuOpen(false);
+    setIsServicesExpanded(false);
   }, [location]);
 
   const services = [
@@ -219,6 +319,7 @@ const Layout = () => {
             <img src="/Petrotek.png" alt="Petrotek" className="h-8 md:h-10 [@media(min-width:1600px)]:h-12 w-auto transition-all no-zoom" />
           </Link>
 
+          {/* Desktop Navigation */}
           <div className="hidden min-[1001px]:flex space-x-8 lg:space-x-12 [@media(min-width:1600px)]:space-x-16 items-center">
             <Link to="/" className={linkClass()}>Home</Link>
             
@@ -246,29 +347,122 @@ const Layout = () => {
             </button>
           </div>
 
-          <button onClick={() => setIsMenuOpen(!isMenuOpen)} className="min-[1001px]:hidden p-2 text-gray-900 transition-colors relative" style={{ zIndex: 9999 }}>
-            {isMenuOpen ? <X size={32} /> : <Menu size={32} />}
+          {/* Mobile Menu Toggle Button */}
+          <button 
+            onClick={() => setIsMenuOpen(!isMenuOpen)} 
+            className="min-[1001px]:hidden p-2 text-gray-900 transition-colors relative" 
+            style={{ zIndex: 9999 }}
+            aria-label="Toggle navigation menu"
+          >
+            {isMenuOpen ? <X size={30} /> : <Menu size={30} />}
           </button>
         </div>
 
+        {/* Clean Mobile Navigation Drawer */}
         <div 
-          className={`fixed inset-0 w-screen h-screen transition-transform duration-500 ease-in-out min-[1001px]:hidden ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
-          style={{ zIndex: 9998, backgroundColor: 'rgba(255, 255, 255, 1)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)' }}
+          className={`fixed inset-0 w-screen h-screen transition-all duration-300 ease-in-out min-[1001px]:hidden flex flex-col ${
+            isMenuOpen 
+              ? 'opacity-100 pointer-events-auto translate-x-0' 
+              : 'opacity-0 pointer-events-none translate-x-full'
+          }`}
+          style={{ 
+            zIndex: 9998, 
+            backgroundColor: 'rgba(255, 255, 255, 0.98)', 
+            backdropFilter: 'blur(24px)', 
+            WebkitBackdropFilter: 'blur(24px)' 
+          }}
         >
-          <div className="flex flex-col h-full w-full p-8 overflow-y-auto">
-            <div className="mt-24 flex flex-col">
-              <Link to="/" className={linkClass(true)}>Home</Link>
-              <div className="py-6 border-b border-gray-900/10">
-                <p className="text-[10px] font-black uppercase tracking-[0.3em] text-gray-500 mb-6">Our Services</p>
-                <div className="grid grid-cols-1 gap-6 pl-4">
-                  {services.map(s => (
-                    <Link key={s.id} to={s.id} className="text-gray-900 font-bold uppercase text-lg hover:text-[#8B1E3F] transition-colors">{s.title}</Link>
-                  ))}
+          {/* Drawer Top Header */}
+          <div className="flex items-center justify-between px-6 py-4 border-b border-gray-100">
+            <Link to="/" onClick={() => setIsMenuOpen(false)} className="shrink-0">
+              <img src="/Petrotek.png" alt="Petrotek" className="h-8 w-auto no-zoom" />
+            </Link>
+          </div>
+
+          {/* Drawer Scrollable Links */}
+          <div className="flex-1 overflow-y-auto px-6 py-6 flex flex-col justify-between">
+            <div className="space-y-1">
+              <Link 
+                to="/" 
+                onClick={() => setIsMenuOpen(false)}
+                className="flex items-center justify-between py-3.5 text-xl font-bold tracking-tight text-gray-900 hover:text-[#8B1E3F] transition-colors"
+              >
+                <span>Home</span>
+              </Link>
+
+              {/* Collapsible Services Accordion */}
+              <div className="border-y border-gray-100 py-1">
+                <button
+                  type="button"
+                  onClick={() => setIsServicesExpanded(!isServicesExpanded)}
+                  className="w-full flex items-center justify-between py-3.5 text-xl font-bold tracking-tight text-gray-900 hover:text-[#8B1E3F] transition-colors"
+                >
+                  <span>Our Services</span>
+                  <ChevronDown 
+                    size={20} 
+                    className={`text-gray-400 transition-transform duration-300 ${isServicesExpanded ? 'rotate-180 text-[#8B1E3F]' : ''}`} 
+                  />
+                </button>
+
+                <div 
+                  className={`overflow-hidden transition-all duration-300 ease-in-out ${
+                    isServicesExpanded ? 'max-h-96 opacity-100 pb-3' : 'max-h-0 opacity-0'
+                  }`}
+                >
+                  <div className="grid grid-cols-1 gap-1 pl-3 border-l-2 border-[#8B1E3F]/20 ml-1">
+                    {services.map((s) => (
+                      <Link 
+                        key={s.id} 
+                        to={s.id} 
+                        onClick={() => setIsMenuOpen(false)}
+                        className="py-2 px-3 text-sm font-semibold tracking-wide text-gray-600 hover:text-[#8B1E3F] hover:bg-gray-50 rounded-lg transition-all"
+                      >
+                        {s.title}
+                      </Link>
+                    ))}
+                  </div>
                 </div>
               </div>
-              <Link to="/team" className={linkClass(true)}>Our Team</Link>
-              <Link to="/publications" className={linkClass(true)}>Publications</Link>
-              <button onClick={handleContactClick} className="mt-12 w-full py-6 text-white font-bold rounded-sm uppercase tracking-widest text-center shadow-2xl" style={{ backgroundColor: maroon }}>Contact Us</button>
+
+              <Link 
+                to="/team" 
+                onClick={() => setIsMenuOpen(false)}
+                className="flex items-center justify-between py-3.5 text-xl font-bold tracking-tight text-gray-900 hover:text-[#8B1E3F] transition-colors"
+              >
+                <span>Our Team</span>
+              </Link>
+
+              <Link 
+                to="/publications" 
+                onClick={() => setIsMenuOpen(false)}
+                className="flex items-center justify-between py-3.5 text-xl font-bold tracking-tight text-gray-900 hover:text-[#8B1E3F] transition-colors"
+              >
+                <span>Publications</span>
+              </Link>
+            </div>
+
+            {/* Drawer Bottom Info & Action */}
+            <div className="mt-8 pt-6 border-t border-gray-100 space-y-4">
+              <div className="space-y-2 text-xs text-gray-500">
+                <div className="flex items-center gap-2">
+                  <Phone size={14} className="text-[#8B1E3F]" />
+                  <a href="tel:3032909414" className="hover:underline font-semibold text-gray-700">
+                    (303) 290-9414
+                  </a>
+                </div>
+                <div className="flex items-start gap-2">
+                  <MapPin size={14} className="text-[#8B1E3F] shrink-0 mt-0.5" />
+                  <span>5935 S Zang St, Suite 200, Littleton, CO</span>
+                </div>
+              </div>
+
+              <button 
+                onClick={handleContactClick} 
+                className="w-full py-4 text-white text-xs font-bold uppercase tracking-widest rounded-lg shadow-md hover:brightness-110 active:scale-[0.99] transition-all" 
+                style={{ backgroundColor: maroon }}
+              >
+                Contact Us
+              </button>
             </div>
           </div>
         </div>
@@ -278,16 +472,19 @@ const Layout = () => {
         <Outlet />
       </main>
 
-      {/* UPDATED DARKER GREY FOOTER */}
+      {/* FOOTER */}
       <footer className="bg-gray-800 text-gray-200 py-20 border-t border-gray-700">
         <div className="w-full px-6 md:px-12 [@media(min-width:1600px)]:px-40 mx-auto max-w-[2000px]">
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-12 mb-16 md:mb-24">
             
             <div className="flex flex-col items-start">
               <img src="/Petrotek.png" alt="Petrotek" className="h-12 w-auto brightness-125 mb-8 no-zoom" />
-              <p className="text-base md:text-lg leading-relaxed max-w-sm mb-8 text-gray-300">Petrotek Corporation specializes in engineering evaluation and field operations for subsurface fluid flow.</p>
+              <p className="text-base md:text-lg leading-relaxed max-w-sm mb-8 text-gray-300">
+                Petrotek Corporation specializes in engineering evaluation and field operations for subsurface fluid flow.
+              </p>
               <div className="flex items-center space-x-3 text-sm md:text-base font-bold uppercase tracking-widest text-gray-400">
-                <div className="h-px w-8 bg-[#8B1E3F]"></div><span>Established 1993</span>
+                <div className="h-px w-8 bg-[#8B1E3F]"></div>
+                <span>Established 1993</span>
               </div>
             </div>
             
