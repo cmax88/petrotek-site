@@ -297,28 +297,20 @@ const services = [
   ];
 
 const industries = [
-  // TIER 1: PRIMARY FOCUS (Waste & Landfills)
   { 
     name: "Landfill Services", 
     img: "https://img.canarymedia.com/content/uploads/coffin-butte-hero.jpg?auto=compress%2Cformat&crop=focalpoint&fit=crop&fp-x=0.5&fp-y=0.5&h=1492&q=80&w=3360&s=cfb58f4b133c5cdb0328a2411fac82fc",
     description: "Deep well injection permitting, feasibility, and high-capacity leachate disposal solutions."
   },
   { 
-    name: "Environmental Remediation", 
-    img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=400",
-    description: "Groundwater cleanups, plume containment, and complex subsurface remediation engineering."
-  },
-  { 
     name: "Municipal Water Supply", 
     img: "https://images.unsplash.com/photo-1600965487524-8b8c37f6c394?q=80&w=1170&auto=format&fit=crop",
     description: "Drinking water aquifer protection, source evaluations, and deep disposal monitoring."
   },
-
-  // TIER 2: HIGH-STAKE INDUSTRIAL & RESOURCES
   { 
-    name: "Chemical Plants", 
-    img: "https://images.unsplash.com/photo-1704130092069-30ae33e2def0?q=80&w=1170&auto=format&fit=crop",
-    description: "Class I industrial waste stream management and UIC hazardous waste compliance."
+    name: "Power Generation", 
+    img: "https://assets.weforum.org/article/image/responsive_big_webp_ZceAxbIcK8seaoQU8DFS-l_Dq7YPPzmx_MNYE2C0aOU.webp",
+    description: "Cooling blowdown water handling and carbon sequestration evaluation."
   },
   { 
     name: "Oil and Gas", 
@@ -331,21 +323,24 @@ const industries = [
     description: "In-situ recovery hydrogeology, hard rock dewatering, and mine reclamation support."
   },
   { 
+    name: "Heavy Manufacturing", 
+    img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400",
+    description: "Inorganic process solutions, metal-plating rinses, and long-term UIC compliance."
+  },
+  { 
+    name: "Chemical Plants", 
+    img: "https://images.unsplash.com/photo-1704130092069-30ae33e2def0?q=80&w=1170&auto=format&fit=crop",
+    description: "Class I industrial waste stream management and UIC hazardous waste compliance."
+  },
+  { 
     name: "Refineries", 
     img: "https://images.unsplash.com/photo-1611581372056-30cf28a7bd2e?q=80&w=1074&auto=format&fit=crop",
     description: "High-volume process effluent management and secure deep formation disposal."
   },
-
-  // TIER 3: SPECIALIZED MANUFACTURING & ENERGY
   { 
     name: "Pharmaceuticals", 
     img: "https://plus.unsplash.com/premium_photo-1661374914839-a84dc1314c86?w=600&auto=format&fit=crop&q=60",
     description: "Permitted subsurface management for aqueous byproducts and process solvent residues."
-  },
-  { 
-    name: "Power Generation", 
-    img: "https://assets.weforum.org/article/image/responsive_big_webp_ZceAxbIcK8seaoQU8DFS-l_Dq7YPPzmx_MNYE2C0aOU.webp",
-    description: "Cooling blowdown water handling and carbon sequestration evaluation."
   },
   { 
     name: "Gas Storage", 
@@ -356,13 +351,6 @@ const industries = [
     name: "Ethanol Plants", 
     img: "https://www.iowacorn.org/wp-content/uploads/2024/05/24138_ICGA_DRONE_ETHANOLPLANT_-21-scaled.jpg",
     description: "Biofuel byproduct disposal, process water isolation, and Class VI CO2 planning."
-  },
-
-  // TIER 4: GENERAL MANUFACTURING
-  { 
-    name: "Heavy Manufacturing", 
-    img: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?auto=format&fit=crop&q=80&w=400",
-    description: "Inorganic process solutions, metal-plating rinses, and long-term UIC compliance."
   },
   { 
     name: "Food Production", 
@@ -378,6 +366,11 @@ const industries = [
     name: "Cloth Manufacturing", 
     img: "https://images.unsplash.com/photo-1612685179841-3965cf0c3f70?q=80&w=1378&auto=format&fit=crop",
     description: "Textile wash effluent and chemical dye liquor disposal management."
+  },
+  { 
+    name: "Environmental Remediation", 
+    img: "https://images.unsplash.com/photo-1500382017468-9049fed747ef?auto=format&fit=crop&q=80&w=400",
+    description: "Groundwater cleanups, plume containment, and complex subsurface remediation engineering."
   }
 ];
 
@@ -558,7 +551,7 @@ const industries = [
         </div>
       </section>
 
-<section id="whatwedo" className="py-24 bg-white scroll-mt-20">
+      <section id="whatwedo" className="py-24 bg-white scroll-mt-20">
         <div className="container mx-auto px-6">
           <div className="text-center mb-16 flex justify-center">
             <div className="w-fit">
@@ -583,7 +576,9 @@ const industries = [
                 </div>
               </div>
 
-              <h3 className="text-2xl font-extrabold mb-4 text-gray-900 tracking-tight">{service.title}</h3>
+              <h3 className="text-2xl font-extrabold mb-4 text-gray-900 tracking-tight transition-colors duration-300 group-hover:!text-[var(--service-accent)]">
+                {service.title}
+              </h3>
               <p className="text-gray-600 leading-relaxed mb-6 flex-grow text-lg">{service.description}</p>
               
               <Link 

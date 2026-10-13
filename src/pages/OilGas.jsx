@@ -124,17 +124,23 @@ const OilGas = () => {
             <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">E&P Operations & Services</h2>
             <div className="grid md:grid-cols-2 gap-8">
               {upstreamServices.map((service, idx) => (
-                <div key={idx} className="p-8 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow hover:border-[#8B1E3F]">
+                <div 
+                  key={idx} 
+                  style={{ '--card-theme': maroon }}
+                  className="group p-8 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:!border-[var(--card-theme)]"
+                >
                   <div className="flex items-center mb-6">
-                    <div className="p-2 rounded-lg bg-gray-50 mr-4" style={{ color: maroon }}>
+                    <div className="p-2 rounded-lg bg-gray-50 mr-4 transition-colors" style={{ color: maroon }}>
                       {service.icon}
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900">{service.title}</h3>
+                    <h3 className="text-xl font-bold text-gray-900 transition-colors group-hover:!text-[var(--card-theme)]">
+                      {service.title}
+                    </h3>
                   </div>
                   <ul className="space-y-3">
                     {service.items.map((item, i) => (
                       <li key={i} className="flex items-start text-gray-700">
-                        <CheckCircle2 className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" style={{ color: maroon }} />
+                        <CheckCircle2 className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0 transition-colors" style={{ color: maroon }} />
                         <span className="text-md">{item}</span>
                       </li>
                     ))}

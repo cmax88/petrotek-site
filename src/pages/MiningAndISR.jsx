@@ -31,6 +31,31 @@ const UraniumIcon = ({ className, style }) => (
   />
 );
 
+// Extracted Sub-component for Service Cards with Dynamic Hover
+const ServiceCard = ({ service, color }) => (
+  <div 
+    style={{ '--card-theme': color }}
+    className="group p-8 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:!border-[var(--card-theme)]"
+  >
+    <div className="flex items-center mb-6">
+      <div className="p-2 rounded-lg bg-gray-50 mr-4 transition-colors" style={{ color }}>
+        {service.icon}
+      </div>
+      <h3 className="text-xl font-bold text-gray-900 transition-colors group-hover:!text-[var(--card-theme)]">
+        {service.title}
+      </h3>
+    </div>
+    <ul className="space-y-3">
+      {service.items.map((item, i) => (
+        <li key={i} className="flex items-start text-gray-700">
+          <CheckCircle2 className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0 transition-colors" style={{ color }} />
+          <span className="text-md">{item}</span>
+        </li>
+      ))}
+    </ul>
+  </div>
+);
+
 const MiningAndISR = () => {
   const [activeTab, setActiveTab] = useState('isr'); // 'isr' or 'mining'
 
@@ -69,25 +94,25 @@ const MiningAndISR = () => {
 
           {/* Header */}
           <div className="mb-8">
-            <div className="mb-6 p-4 bg-gray-50 inline-block rounded-2xl border border-gray-100 shadow-sm" style={{ color: currentThemeColor }}>
+            <div className="mb-6 p-4 bg-gray-50 inline-block rounded-2xl border border-gray-100 shadow-sm transition-colors duration-300" style={{ color: currentThemeColor }}>
               {activeTab === 'isr' ? (
-                <UraniumIcon className="w-10 h-10" />
+                <UraniumIcon className="w-10 h-10 transition-colors duration-300" />
               ) : (
-                <Pickaxe className="w-10 h-10" style={{ color: colors.mining }} />
+                <Pickaxe className="w-10 h-10 transition-colors duration-300" style={{ color: colors.mining }} />
               )}
             </div>
             <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
               {activeTab === 'isr' ? 'In-Situ Recovery: Uranium & Copper' : 'Conventional Mining'}
             </h1>
-            <p className="text-xl font-bold mb-6" style={{ color: currentThemeColor }}>
+            <p className="text-xl font-bold mb-6 transition-colors duration-300" style={{ color: currentThemeColor }}>
               {activeTab === 'isr' 
                 ? 'Uniting Fluid Flow, Petroleum Engineering, and Hydrology' 
                 : 'Characterization, Modeling, and Regulatory Compliance'}
             </p>
-            <div className="w-24 h-1 mb-8" style={{ backgroundColor: currentThemeColor }}></div>
+            <div className="w-24 h-1 mb-8 transition-colors duration-300" style={{ backgroundColor: currentThemeColor }}></div>
           </div>
 
-          {/* Tab Selection Navigation (Matching Injection Wells) */}
+          {/* Tab Selection Navigation */}
           <div className="flex border-b border-gray-200 mb-12 space-x-2 sm:space-x-4">
             <button
               onClick={() => setActiveTab('isr')}
@@ -199,14 +224,14 @@ const MiningAndISR = () => {
                         { loc: "Idaho", res: "Ag, Pb, Zn" }
                       ].map((item, i) => (
                         <li key={i} className="flex items-center">
-                          <CheckCircle2 className="w-3 h-3 mr-2 text-[#8B1E3F]" /> 
+                          <CheckCircle2 className="w-3.5 h-3.5 mr-2 shrink-0 transition-colors" style={{ color: colors.mining }} /> 
                           <strong className="mr-1">{item.loc}:</strong> {item.res}
                         </li>
                       ))}
                     </ul>
                   </div>
                 </div>
-                <div className="lg:w-4/5 sticky top-32">
+                <div className="lg:w-4/5 top-32">
                   <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
                     <img 
                       src="/mining.jpg" 
@@ -232,13 +257,13 @@ const MiningAndISR = () => {
                     <p className="text-gray-600 text-lg leading-relaxed mb-6">
                       From baseline studies for new permits to long-term monitoring for active operations and post-operational closures, we provide the technical depth required for the industry's most challenging subsurface environments.
                     </p>
-                    <div className="flex items-center space-x-2 text-[#78350F] font-bold">
+                    <div className="flex items-center space-x-2 font-bold transition-colors" style={{ color: colors.mining }}>
                       <TrendingUp className="w-5 h-5" />
                       <span>Compliance & Operational Stability</span>
                     </div>
                   </div>
                   <div className="hidden md:flex justify-center">
-                    <div className="w-32 h-32 border-4 border-[#78350F] rounded-full flex items-center justify-center">
+                    <div className="w-32 h-32 border-4 rounded-full flex items-center justify-center transition-colors" style={{ borderColor: colors.mining }}>
                       <span className="text-3xl mb-6 font-bold text-black">100+</span>
                       <span className="text-[10px] absolute mt-12 uppercase tracking-widest text-gray-600 text-center">Combined<br/>Exp.</span>
                     </div>
@@ -273,25 +298,5 @@ const MiningAndISR = () => {
     </div>
   );
 };
-
-// Extracted Sub-component for Service Cards
-const ServiceCard = ({ service, color }) => (
-  <div className="p-8 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow hover:border-[#EAB308]">
-    <div className="flex items-center mb-6">
-      <div className="p-2 rounded-lg bg-gray-50 mr-4" style={{ color }}>
-        {service.icon}
-      </div>
-      <h3 className="text-xl font-bold text-gray-900">{service.title}</h3>
-    </div>
-    <ul className="space-y-3">
-      {service.items.map((item, i) => (
-        <li key={i} className="flex items-start text-gray-700">
-          <CheckCircle2 className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" style={{ color }} />
-          <span className="text-md">{item}</span>
-        </li>
-      ))}
-    </ul>
-  </div>
-);
 
 export default MiningAndISR;

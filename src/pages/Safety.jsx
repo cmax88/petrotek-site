@@ -137,11 +137,20 @@ const Safety = () => {
             <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Our Commitment to You</h2>
             <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
               {safetyCommitments.map((item, idx) => (
-                <div key={idx} className="p-8 hover:border-[#F97316] bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all group">
+                <div 
+                  key={idx} 
+                  style={{ '--card-theme': maroon }}
+                  className="group p-8 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:!border-[var(--card-theme)]"
+                >
                   <div className="mb-4 p-3 bg-gray-50 rounded-lg w-fit transition-colors">
-                    {React.cloneElement(item.icon, { className: "w-6 h-6 group-hover:text-white transition-colors", style: { color: maroon } })}
+                    {React.cloneElement(item.icon, { 
+                      className: "w-6 h-6 transition-colors", 
+                      style: { color: maroon } 
+                    })}
                   </div>
-                  <h3 className="text-lg font-bold text-gray-900 mb-3">{item.title}</h3>
+                  <h3 className="text-lg font-bold text-gray-900 mb-3 transition-colors group-hover:!text-[var(--card-theme)]">
+                    {item.title}
+                  </h3>
                   <p className="text-sm text-gray-600 leading-relaxed">{item.text}</p>
                 </div>
               ))}

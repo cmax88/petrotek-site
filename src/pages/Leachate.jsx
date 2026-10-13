@@ -97,30 +97,36 @@ const Leachate = () => {
             </div>
           </div>
 
-          {/* Services Grid */}
-          <div className="mb-20">
-            <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Comprehensive Leachate Management</h2>
-            <div className="grid md:grid-cols-2 gap-8">
-              {leachateServices.map((service, idx) => (
-                <div key={idx} className="p-8 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-shadow hover:border-[#0D9488]">
-                  <div className="flex items-center mb-6">
-                    <div className="p-2 rounded-lg bg-gray-50 mr-4" style={{ color: themeColor }}>
-                      {service.icon}
+            {/* Services Grid */}
+            <div className="mb-20">
+              <h2 className="text-3xl font-bold text-gray-900 mb-12 text-center">Comprehensive Leachate Management</h2>
+              <div className="grid md:grid-cols-2 gap-8">
+                {leachateServices.map((service, idx) => (
+                  <div 
+                    key={idx} 
+                    style={{ '--card-theme': themeColor }}
+                    className="group p-8 bg-white border border-gray-100 rounded-xl shadow-sm hover:shadow-md transition-all duration-300 hover:!border-[var(--card-theme)]"
+                  >
+                    <div className="flex items-center mb-6">
+                      <div className="p-2 rounded-lg bg-gray-50 mr-4 transition-colors" style={{ color: themeColor }}>
+                        {service.icon}
+                      </div>
+                      <h3 className="text-xl font-bold text-gray-900 transition-colors group-hover:!text-[var(--card-theme)]">
+                        {service.title}
+                      </h3>
                     </div>
-                    <h3 className="text-xl font-bold text-gray-900">{service.title}</h3>
+                    <ul className="space-y-3">
+                      {service.items.map((item, i) => (
+                        <li key={i} className="flex items-start text-gray-700">
+                          <CheckCircle2 className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0 transition-colors" style={{ color: themeColor }} />
+                          <span className="text-md">{item}</span>
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                  <ul className="space-y-3">
-                    {service.items.map((item, i) => (
-                      <li key={i} className="flex items-start text-gray-700">
-                        <CheckCircle2 className="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" style={{ color: themeColor }} />
-                        <span className="text-md">{item}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              ))}
+                ))}
+              </div>
             </div>
-          </div>
 
           {/* Strategic Benefit Block */}
           <div className="bg-gray-300 text-white rounded-3xl p-10 md:p-14 shadow-2xl mb-20 relative overflow-hidden">
