@@ -253,14 +253,14 @@ const Home = () => {
 const services = [
     { 
       title: "Injection Well Services", 
-      description: "Our personnel have hundreds of years of combined injection well experience and are familiar with state and federal regulators and regulations throughout the country.", 
+      description: "Our company has hundreds of years of combined injection well experience. We are knowledgeable of state and federal regulations. We have positive working relationships with state and federal regulators throughout the country.", 
       icon: <Droplet className="w-8 h-8" />, 
       link: "/injection-wells",
       accent: "#1E40AF" // Dark Blue
     },
     { 
-      title: "Landfill Leachate Services", 
-      description: "Expert engineering and geological services for Class I deep well injection. We help landfill operators secure reliable, high-capacity leachate disposal solutions that meet rigorous UIC standards.", 
+      title: "Landfill Leachate", 
+      description: "We provide expert Underground Injection Control and geological services for Class I deep well injection. We help landfill operators secure reliable, high-capacity leachate disposal solutions that meet rigorous UIC standards.", 
       icon: <Recycle className="w-8 h-8" />, 
       link: "/leachate-services",
       accent: "#0F766E" // Richer Teal
@@ -268,21 +268,21 @@ const services = [
     { 
       // MERGED ITEM
       title: "Mining", 
-      description: "Over 30 years of experience in groundwater characterization and modeling for both In-Situ Recovery (Uranium/Copper) and hard rock mining operations.", 
+      description: "We have over 30 years of experience in groundwater characterization and modeling for both In-Situ Recovery (Uranium/Copper) and hard rock mining operations.", 
       icon: <Pickaxe className="w-8 h-8" />, 
       link: "/mining-and-isr", // Update this to your new route
       accent: "#EAB308" 
     },
     { 
       title: "Oil and Gas", 
-      description: "We provide services regarding specialized technical issues including drilling spacing unit permitting, correlative rights, and reservoir simulation.", 
+      description: "We provide support for oil and gas well permitting, including drill spacing unit permitting, decline curve analysis, correlative rights, and expert witness testimony.", 
       icon: <OilDerrick className="w-8 h-8" />, 
       link: "/oil-and-gas",
       accent: "#8B1E3F" // Maroon
     },
     { 
       title: "Carbon Capture (CO2 CCS)", 
-      description: "Petrotek is a leader in conducting CCS feasibility studies and preparing Class VI UIC permit applications. We evaluate options for tax equity partnerships.", 
+      description: "We provide comprehensive feasibility studies and have prepared several Class VI permit applications. We evaluate options for tax equity partnerships.", 
       icon: <Leaf className="w-8 h-8" />, 
       link: "/carbon-capture",
       accent: "#166534" // Forest Green
@@ -318,12 +318,12 @@ const industries = [
   { 
     name: "Chemical Plants", 
     img: "https://images.unsplash.com/photo-1704130092069-30ae33e2def0?q=80&w=1170&auto=format&fit=crop",
-    description: "Class I industrial waste stream management, deep isolation, and Land Ban compliance."
+    description: "Class I industrial waste stream management and UIC hazardous waste compliance."
   },
   { 
     name: "Oil and Gas", 
     img: "https://images.unsplash.com/photo-1516199423456-1f1e91b06f25?q=80&w=1149&auto=format&fit=crop",
-    description: "Class II disposal, produced water management, DSU spacing, and reservoir modeling."
+    description: "Decline curve analysis; DSU applications rather than spacing, forced pooling, and reservoir modeling."
   },
   { 
     name: "Mining", 
@@ -344,7 +344,7 @@ const industries = [
   },
   { 
     name: "Power Generation", 
-    img: "https://images.unsplash.com/photo-1694551073674-f8809f1685f4?q=80&w=1170&auto=format&fit=crop",
+    img: "https://assets.weforum.org/article/image/responsive_big_webp_ZceAxbIcK8seaoQU8DFS-l_Dq7YPPzmx_MNYE2C0aOU.webp",
     description: "Cooling blowdown water handling and carbon sequestration evaluation."
   },
   { 
@@ -525,7 +525,7 @@ const industries = [
               <div className="w-full h-1 mb-8" style={{ backgroundColor: maroon }}></div>
               </div>
               <p className="text-lg text-gray-600 mb-6 leading-relaxed">
-                Petrotek Corporation is a results-oriented firm that specializes in engineering evaluation and field operations regarding subsurface fluid flow and injection well projects.
+                Petrotek Corporation is a results-oriented consulting firm that specializes in subsurface fluid flow and injection well projects, providing engineering, geoscience, and field supervision services. 
               </p>
               <p className="text-lg text-gray-600 mb-8 leading-relaxed">
                 Our company was founded in 1993 with a mission of providing cost-effective contract services to industrial and governmental clients. Our firm takes pride in meeting that goal with the highest degree of integrity and professionalism.
@@ -693,7 +693,7 @@ const industries = [
               </div>
               <div className="mt-10 rounded-xl overflow-hidden shadow-lg border border-white/20">
                 <iframe 
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3072.764491953255!2d-105.15182932353066!3d39.632468403217496!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x876b7e61e6955555%3A0x7d7c67c52697b0d7!2s5935%20S%20Zang%20St%2C%20Littleton%2C%20CO%2080127!5e0!3m2!1sen!2sus!4v1700000000000"
+                  src="https://maps.google.com/maps?width=600&amp;height=400&amp;hl=en&amp;q=5935 South Zang Street, Suite 200 Littleton, Colorado USA 80127&amp;t=&amp;z=14&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
                   width="100%" height="325" style={{ border: 0 }} allowFullScreen="" loading="lazy" title="Office Location"
                 ></iframe>
               </div>

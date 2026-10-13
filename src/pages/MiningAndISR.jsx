@@ -67,29 +67,59 @@ const MiningAndISR = () => {
             <ArrowRight className="rotate-180 w-4 h-4 mr-2 group-hover:-translate-x-1 transition-transform" /> Back to Home
           </Link>
 
-          {/* Header & Tab Switcher */}
-          <div className="mb-12">
-            <h1 className="text-4xl md:text-5xl font-bold mb-6 text-gray-900">
+          {/* Header */}
+          <div className="mb-8">
+            <div className="mb-6 p-4 bg-gray-50 inline-block rounded-2xl border border-gray-100 shadow-sm" style={{ color: currentThemeColor }}>
+              {activeTab === 'isr' ? (
+                <UraniumIcon className="w-10 h-10" />
+              ) : (
+                <Pickaxe className="w-10 h-10" style={{ color: colors.mining }} />
+              )}
+            </div>
+            <h1 className="text-4xl md:text-5xl font-bold mb-4 text-gray-900">
               {activeTab === 'isr' ? 'In-Situ Recovery: Uranium & Copper' : 'Conventional Mining'}
             </h1>
-            
-            <div className="flex flex-wrap gap-4 p-1 bg-gray-50 rounded-xl w-fit border border-gray-100 mb-8">
-              <button 
-                onClick={() => setActiveTab('isr')}
-                className={`px-6 py-3 rounded-lg font-bold transition-all ${activeTab === 'isr' ? 'bg-white shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
-                style={activeTab === 'isr' ? { color: colors.isr } : {}}
-              >
-                ISR Recovery
-              </button>
-              <button 
-                onClick={() => setActiveTab('mining')}
-                className={`px-6 py-3 rounded-lg font-bold transition-all ${activeTab === 'mining' ? 'bg-white shadow-sm' : 'text-gray-400 hover:text-gray-600'}`}
-                style={activeTab === 'mining' ? { color: colors.mining } : {}}
-              >
-                Conventional Mining
-              </button>
-            </div>
-            <div className="w-24 h-1" style={{ backgroundColor: currentThemeColor }}></div>
+            <p className="text-xl font-bold mb-6" style={{ color: currentThemeColor }}>
+              {activeTab === 'isr' 
+                ? 'Uniting Fluid Flow, Petroleum Engineering, and Hydrology' 
+                : 'Characterization, Modeling, and Regulatory Compliance'}
+            </p>
+            <div className="w-24 h-1 mb-8" style={{ backgroundColor: currentThemeColor }}></div>
+          </div>
+
+          {/* Tab Selection Navigation (Matching Injection Wells) */}
+          <div className="flex border-b border-gray-200 mb-12 space-x-2 sm:space-x-4">
+            <button
+              onClick={() => setActiveTab('isr')}
+              className={`pb-4 px-4 sm:px-6 text-base sm:text-lg font-bold flex items-center transition-all relative border-b-2 -mb-[2px] ${
+                activeTab === 'isr'
+                  ? 'border-[#EAB308] text-[#EAB308]'
+                  : 'border-transparent text-gray-500 hover:text-gray-900'
+              }`}
+            >
+              <UraniumIcon 
+                className={`w-5 h-5 mr-2 transition-colors ${
+                  activeTab === 'isr' ? 'text-[#EAB308]' : 'text-gray-400'
+                }`} 
+              />
+              ISR Recovery
+            </button>
+
+            <button
+              onClick={() => setActiveTab('mining')}
+              className={`pb-4 px-4 sm:px-6 text-base sm:text-lg font-bold flex items-center transition-all relative border-b-2 -mb-[2px] ${
+                activeTab === 'mining'
+                  ? 'border-[#78350F] text-[#78350F]'
+                  : 'border-transparent text-gray-500 hover:text-gray-900'
+              }`}
+            >
+              <Pickaxe 
+                className={`w-5 h-5 mr-2 transition-colors ${
+                  activeTab === 'mining' ? 'text-[#78350F]' : 'text-gray-400'
+                }`} 
+              />
+              Conventional Mining
+            </button>
           </div>
 
           {/* Dynamic Content: ISR */}
@@ -97,13 +127,9 @@ const MiningAndISR = () => {
             <div className="animate-in fade-in duration-500">
               <div className="flex flex-col lg:flex-row gap-12 mb-20 items-start">
                 <div className="lg:w-3/5 prose prose-lg max-w-none text-gray-600 leading-relaxed">
-                  <div className="mb-6 p-4 bg-gray-50 inline-block rounded-2xl border border-gray-100 shadow-sm text-[#EAB308]">
-                    <UraniumIcon className="w-10 h-10" />
-                  </div>
-                  <p className="text-xl text-[#EAB308] font-bold mb-6">Uniting Fluid Flow, Petroleum Engineering, and Hydrology</p>
                   <p>
                     The in-situ recovery (ISR) industry is unique in that a specific combination of expertise in fluid flow, petroleum engineering, hydrology, and geochemistry is needed for the diverse nature of operations.
-                  </p><br></br>
+                  </p><br />
                   <p>
                     Petrotek currently provides consulting services to <strong>most of the major uranium operators in the U.S.</strong> with production or production visibility, as well as a number of companies in the advanced and junior exploration stages.
                   </p>
@@ -120,13 +146,13 @@ const MiningAndISR = () => {
                     We are deeply experienced regarding all federal and state regulatory requirements related to groundwater flow at ISR projects, ensuring that operations remain compliant from exploration through final reclamation.
                   </p>
                 </div>
-              <div className="lg:w-5/5 sticky top-32" >
-                <img 
-                  src="/InSitu_Uranium_Recov_2026.png" 
-                  alt="Petrotek Field Operations" 
-                  className="w-full h-auto object-contain cursor-zoom-in"
-                />
-            </div>
+                <div className="lg:w-5/5 sticky top-32">
+                  <img 
+                    src="/InSitu_Uranium_Recov_2026.png" 
+                    alt="Petrotek Field Operations" 
+                    className="w-full h-auto object-contain cursor-zoom-in"
+                  />
+                </div>
               </div>
 
               <div className="mb-20">
@@ -150,13 +176,9 @@ const MiningAndISR = () => {
             <div className="animate-in fade-in duration-500">
               <div className="flex flex-col lg:flex-row gap-12 mb-20 items-start">
                 <div className="lg:w-3/5 prose prose-lg max-w-none text-gray-600 leading-relaxed">
-                  <div className="mb-6 p-4 bg-gray-50 inline-block rounded-2xl border border-gray-100 shadow-sm">
-                    <Pickaxe className="w-10 h-10" style={{ color: colors.mining }} />
-                  </div>
-                  <p className="text-xl text-[#78350F] font-bold mb-6">Characterization, Modeling, and Regulatory Compliance</p>
                   <p>
                     The Petrotek Team has over one hundred years of combined experience in performing hydrogeologic characterizations for evaluating soil and water impacts from proposed mining operations.
-                  </p><br></br>
+                  </p><br />
                   <p>
                     We specialize in assessing ground water and surface water interactions at new and active hard rock mining and mineral processing sites. Our work bridges the gap between complex geology and the stringent requirements of modern environmental stewardship.
                   </p>
@@ -184,14 +206,14 @@ const MiningAndISR = () => {
                     </ul>
                   </div>
                 </div>
-              <div className="lg:w-4/5 sticky top-32" >
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
-                <img 
-                  src="/mining.jpg" 
-                  alt="Petrotek Field Operations" 
-                />
-              </div>
-            </div>
+                <div className="lg:w-4/5 sticky top-32">
+                  <div className="relative rounded-2xl overflow-hidden shadow-2xl group">
+                    <img 
+                      src="/mining.jpg" 
+                      alt="Petrotek Field Operations" 
+                    />
+                  </div>
+                </div>
               </div>
 
               <div className="mb-20">
