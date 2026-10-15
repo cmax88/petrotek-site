@@ -215,7 +215,7 @@ const OurTeam = () => {
 
   return (
     <div className="pt-32 pb-20 px-6 bg-white min-h-screen">
-      <div className="container mx-auto max-w-7xl">
+      <div className="container mx-auto max-w-8xl">
         
         {/* Navigation */}
         <Link to="/" className="flex items-center text-[#8B1E3F] font-bold mb-8 hover:underline group w-fit">

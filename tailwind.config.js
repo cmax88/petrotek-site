@@ -11,7 +11,7 @@ export default {
           '4k': '3800px',
         },
         maxWidth: {
-          '8xl': '88rem',
+          '8xl': '90rem',
           '9xl': '96rem',
         },
       colors: {

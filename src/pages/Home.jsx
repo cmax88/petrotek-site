@@ -421,53 +421,53 @@ const Home = () => {
           </div>
         </div>
 
-        {/* 2. Slogan Section - Clickable Section Anchors */}
-        <div 
-          className="w-full py-4 sm:py-5 lg:h-[10%] lg:min-h-[72px] [@media(min-width:1600px)]:min-h-[90px] flex justify-center items-center shrink-0 border-t border-white/10" 
-          style={{ backgroundColor: maroon }}
-        >
-          <div className="w-full px-4 sm:px-6 md:px-12 lg:px-20 [@media(min-width:1600px)]:px-40 mx-auto max-w-[2000px]">
-            <div className="flex flex-row items-center justify-between sm:justify-evenly gap-2 sm:gap-4">
-              
-              {/* Item 1 -> Clients Served */}
-              <button 
-                onClick={() => scrollToId('#clientsserved')}
-                className="flex-1 text-center px-1 group cursor-pointer transition-transform active:scale-95 focus:outline-none"
-              >
-                <span className="text-[12px] sm:text-base md:text-xl lg:text-2xl [@media(min-width:1600px)]:text-3xl font-bold tracking-tight text-white italic leading-tight block group-hover:underline underline-offset-4 decoration-white/60 transition-all">
-                  Building Relationships
-                </span>
-              </button>
+        {/* 2. Slogan Section - Height locked to top nav (h-16 / lg:h-20) */}
+          <div 
+            className="w-full h-16 lg:h-25 flex justify-center items-center shrink-0 border-t border-white/10" 
+            style={{ backgroundColor: maroon }}
+          >
+            <div className="w-full px-4 sm:px-6 md:px-12 lg:px-20 [@media(min-width:1600px)]:px-40 mx-auto max-w-[2000px]">
+              <div className="flex flex-row items-center justify-between sm:justify-evenly gap-2 sm:gap-4">
+                
+                {/* Item 1 -> Clients Served */}
+                <button 
+                  onClick={() => scrollToId('#clientsserved')}
+                  className="flex-1 text-center px-1 group cursor-pointer transition-transform active:scale-95 focus:outline-none"
+                >
+                  <span className="text-[12px] sm:text-base md:text-xl lg:text-2xl font-bold tracking-tight text-white italic leading-tight block group-hover:underline underline-offset-4 decoration-white/60 transition-all">
+                    Building Relationships
+                  </span>
+                </button>
 
-              {/* Separator 1 */}
-              <div className="h-8 sm:h-10 md:h-12 lg:h-14 [@media(min-width:1600px)]:h-16 w-px bg-white/30 shrink-0"></div>
+                {/* Separator 1 */}
+                <div className="h-6 sm:h-8 lg:h-10 w-px bg-white/30 shrink-0"></div>
 
-              {/* Item 2 -> Core Capabilities */}
-              <button 
-                onClick={() => scrollToId('#whatwedo')}
-                className="flex-1 text-center px-1 group cursor-pointer transition-transform active:scale-95 focus:outline-none"
-              >
-                <span className="text-[12px] sm:text-base md:text-xl lg:text-2xl [@media(min-width:1600px)]:text-3xl font-bold tracking-tight text-white italic leading-tight block group-hover:underline underline-offset-4 decoration-white/60 transition-all">
-                  Solving Problems
-                </span>
-              </button>
+                {/* Item 2 -> Core Capabilities */}
+                <button 
+                  onClick={() => scrollToId('#whatwedo')}
+                  className="flex-1 text-center px-1 group cursor-pointer transition-transform active:scale-95 focus:outline-none"
+                >
+                  <span className="text-[12px] sm:text-base md:text-xl lg:text-2xl font-bold tracking-tight text-white italic leading-tight block group-hover:underline underline-offset-4 decoration-white/60 transition-all">
+                    Solving Problems
+                  </span>
+                </button>
 
-              {/* Separator 2 */}
-              <div className="h-8 sm:h-10 md:h-12 lg:h-14 [@media(min-width:1600px)]:h-16 w-px bg-white/30 shrink-0"></div>
+                {/* Separator 2 */}
+                <div className="h-6 sm:h-8 lg:h-10 w-px bg-white/30 shrink-0"></div>
 
-              {/* Item 3 -> Industries Served */}
-              <button 
-                onClick={() => scrollToId('#industries')}
-                className="flex-1 text-center px-1 group cursor-pointer transition-transform active:scale-95 focus:outline-none"
-              >
-                <span className="text-[12px] sm:text-base md:text-xl lg:text-2xl [@media(min-width:1600px)]:text-3xl font-bold tracking-tight text-white italic leading-tight block group-hover:underline underline-offset-4 decoration-white/60 transition-all">
-                  Adding Value
-                </span>
-              </button>
+                {/* Item 3 -> Industries Served */}
+                <button 
+                  onClick={() => scrollToId('#industries')}
+                  className="flex-1 text-center px-1 group cursor-pointer transition-transform active:scale-95 focus:outline-none"
+                >
+                  <span className="text-[12px] sm:text-base md:text-xl lg:text-2xl font-bold tracking-tight text-white italic leading-tight block group-hover:underline underline-offset-4 decoration-white/60 transition-all">
+                    Adding Value
+                  </span>
+                </button>
 
+              </div>
             </div>
           </div>
-        </div>
       </header>
 
       {/* Sticky Sub-Navigation */}
@@ -475,7 +475,7 @@ const Home = () => {
         id="section-nav" 
         className="hidden md:block sticky top-[4rem] lg:top-[5rem] z-40 bg-white/80 backdrop-blur-xl border-b border-gray-100 shadow-sm overflow-x-auto whitespace-nowrap scrollbar-hide"
       >
-        <div className="container mx-auto px-6 flex justify-center">
+        <div className="max-w-[1440px] mx-auto px-6 flex justify-center">
           <ul className="flex items-center space-x-8 lg:space-x-12">
             {subNavItems.map((item) => {
               const isActive = activeSection === item.href.replace('#', '');
@@ -497,7 +497,7 @@ const Home = () => {
 
       {/* Who We Are Section */}
       <section id="whoweare" className="py-20 md:py-24 bg-gray-50 scroll-mt-20">
-        <div className="container mx-auto px-6">
+        <div className="max-w-[1440px] mx-auto px-6">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
               <div className="w-fit mb-8">
@@ -538,7 +538,7 @@ const Home = () => {
 
       {/* Capabilities Section */}
       <section id="whatwedo" className="py-20 md:py-24 bg-white scroll-mt-20">
-        <div className="container mx-auto px-6">
+        <div className="max-w-[1440px] mx-auto px-6">
           <div className="text-center mb-16 flex justify-center">
             <div className="w-fit">
               <h2 className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Our Core Capabilities</h2>
@@ -581,7 +581,7 @@ const Home = () => {
 
       {/* Clients & Map Section */}
       <section id="clientsserved" className="py-20 md:py-24 bg-gray-50 relative overflow-hidden scroll-mt-20">
-        <div className="container mx-auto px-6 relative z-10">
+        <div className="max-w-[1440px] mx-auto px-6 relative z-10">
           <div className="text-center mb-16 flex flex-col items-center">
             <Globe className="w-10 h-10 md:w-12 md:h-12 mb-4" style={{ color: maroon }} />
             <div className="w-fit mb-6">
@@ -619,7 +619,7 @@ const Home = () => {
           </div>
 
           {/* Map Image */}
-          <div className="relative max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-xl border border-gray-100 bg-white group">
+          <div className="relative max-w-8xl mx-auto rounded-2xl overflow-hidden shadow-xl border border-gray-100 bg-white group">
             <img 
               src="/Client Map v2.png" 
               alt="Petrotek Client Map" 
@@ -632,7 +632,7 @@ const Home = () => {
 
       {/* Industries Grid */}
       <section id="industries" className="py-20 md:py-24 bg-white scroll-mt-20">
-        <div className="w-full px-5 sm:px-8 md:px-12 mx-auto max-w-[1728px] text-center">
+        <div className="w-full px-6 mx-auto max-w-[1440px] text-center">
           <div className="flex flex-col items-center mb-6">
             <Activity className="w-10 h-10 md:w-12 md:h-12 mb-4" style={{ color: maroon }} />
             <div className="w-fit mb-6">
@@ -663,7 +663,7 @@ const Home = () => {
 
       {/* Contact Section */}
       <section id="contact" className="py-20 md:py-24 bg-gray-50 border-t border-gray-200 scroll-mt-20">
-        <div className="container mx-auto px-5 sm:px-6">
+        <div className="max-w-[1440px] mx-auto px-6">
           <div className="bg-white rounded-2xl shadow-xl overflow-hidden grid lg:grid-cols-5">
             
             {/* Contact Details Left Panel */}
