@@ -39,7 +39,7 @@ const OurTeam = () => {
   const teamData = [
     {
       name: "Wes Janes, B.S., P.G.",
-      role: "Operations Manager/Geologist and Principal",
+      role: "Principal, Operations Manager/Geologist",
       education: "B.S. Geology, University of South Alabama",
       tags: ["Geology", "Field Operations", "Corporate Operations", "Contract Negotiations"],
       bio: (
@@ -53,7 +53,7 @@ const OurTeam = () => {
     },
     {
       name: "Hal Demuth, M.S.",
-      role: "Managing Principal and Senior Engineer/Hydrogeologist",
+      role: "Principal, Senior Engineer/Hydrogeologist",
       education: "B.S. Petroleum Engineering, University of Tulsa; M.S. Hydrogeology, University of Idaho",
       tags: ["Hydrogeology", "Petroleum Engineering", "ISR Uranium", "Expert Witness"],
       bio: "Hal is one of the managing principals of Petrotek and is a Senior Engineer and Hydrogeologist. He has more than 40 years of applied industry experience, and holds a B.S. degree in Petroleum Engineering and an M.S. degree in Hydrogeology. He is passionate about the application of creative technical and regulatory solutions to assist clients with complex projects. He is a Technical Team Leader for produced water and wastewater management via Class I, Class II and Class V injection wells for oil and gas production across the United States. His drilling and completions experience includes vertical, directional and horizontal wells in the Gulf of America, Alaska, and the continental U.S. Hal leads the technical team for ISR uranium Class III permitting and operations support for projects in Wyoming, Texas, Nebraska and South Dakota. His ISR uranium experience includes the majority of projects in the US as well as selected projects overseas. His team has also completed groundwater characterization and assessment projects for conventional hard rock mines (silver, lead/zinc, copper) and rare earth element mining projects in the U.S. Hal has provided expert witness testimony for oil and gas operators and ISR uranium operations related to technical, regulatory and contractual issues in Federal and State Courts.",
@@ -61,7 +61,7 @@ const OurTeam = () => {
     },
     {
       name: "Ken Cooper, M.S., P.E.",
-      role: "Principal and Engineering Manager and Senior Engineer",
+      role: "Principal, Engineering Manager/Senior Engineer",
       education: "B.S. Petroleum Engineering, Montana College of Mineral Science and Technology; M.S. Petroleum Engineering, Montana Tech of the University of Montana",
       tags: ["Engineering", "Reservoir Simulation", "Well Feasibility", "Expert Witness"],
       bio: "Ken Cooper is one of the managing principals of Petrotek and serves as the Director of Engineering. Prior to helping found Petrotek in 1993, he gained engineering experience working in the petroleum industry and for petroleum/uranium/injection well consultancies. Ken has more than 35 years of experience working with all classes of injection wells and specializes in investigating well feasibility, reservoir issues and testing, reservoir simulation, well compliance and permitting, along with optimizing injection well operation and maintenance. Ken has published and given a variety of talks and short-courses regarding subsurface injection, pressure transient well testing, and the simulation of subsurface fluid flow over the years, and provides expert witness testimony regarding well permitting, subsurface resources and injection wells. He is a board member of the GWREF and UITC, and has been an active member of both the GWPC (formerly the UIPC) and the Society of Petroleum Engineers (SPE) since the 1980s.",
@@ -77,7 +77,7 @@ const OurTeam = () => {
     },
     {
       name: "Ken Schlieper, B.S.",
-      role: "Hydrogeology Field Manager and Senior Scientist",
+      role: "Hydrogeology Field Manager/Senior Scientist",
       education: "B.S. Environmental Studies, Slippery Rock University",
       tags: ["CERCLA", "RCRA", "Hydrogeologic Characterization", "Class I", "Operations"],
       bio: "Ken has extensive multi-disciplinary skills gained through more than 31 years of field and project management experience in hydrogeologic characterization at numerous CERCLA, RCRA, and other regulated sites throughout the U.S. He has performed numerous aquifer tests for uranium ISR operations throughout the country. More recently, he has been a lead technical contributor to numerous Class I hazardous and nonhazardous injection well projects across the country related to permitting, supervision of workovers, stimulations, drilling operations, and mechanical integrity testing.",
@@ -85,7 +85,7 @@ const OurTeam = () => {
     },
     {
       name: "Brian Ault, B.S.",
-      role: "Senior Technical and Project Manager",
+      role: "Senior Technical/Project Manager",
       education: "B.S. Petroleum Engineering, Marietta College",
       tags: ["Project Management", "Well Completions", "Production"],
       bio: "Brian began his career in the oilfield service industry spending five years working for The Western Company of North America. He then spent five years working for Meridian Oil/Burlington Resources in the San Juan Basin. After more than eight years with Ultra Petroleum; working in permitting, reservoir evaluation, drilling, completions, production and regulatory reporting; helping to guide them to over seven billion dollars of market capitalization, he joined Petrotek. Brian gained extensive experience primarily in the areas of well completions and production. Brian’s expertise relates to his vast experience across many disciplines within the oil and gas arena, but primarily in his ability to deliver projects safely, on schedule, on budget, and aligned with business goals.",
@@ -93,7 +93,7 @@ const OurTeam = () => {
     },
     {
       name: "Tyler Burton, PhD",
-      role: "Senior Technical and Business Advisor",
+      role: "Senior Technical/Business Advisor",
       education: "PhD Energy Policy and Economics (CEPMLP Dundee), LLM Energy Law & Policy (CEPMLP), PGDip Energy Economics (Oxford), MBA Technology Management (Phoenix), MSc Environmental Engineering (Anchorage), BSc Petroleum Engineering (Fairbanks)",
       tags: ["Class VI CCS", "Risk and Economic Evaluation", "Regulatory Law", "Sustainability"],
       bio: "Dr. Burton has worked as a Research Fellow with concentration on corporate & regulatory climate and energy law and policy, and energy economics. With Petrotek, Tyler assists with Classes I, III, and VI permit applications, advises on carbon sequestration and storage markets including market and 45Q credits, offsets valuation, projects financial assurance and incentives, contracts assessment, and risk evaluation. He is a Project Management Professional at PMI, a Cost Professional/Engineer at AACEI, an Energy Risk Professional at GARP, an FSA credentialed Sustainability Accounting Professional at the SASB, and a Six Sigma Black Belt.",
@@ -149,7 +149,7 @@ const OurTeam = () => {
     },
     {
       name: "Chuck Wilson, B.S.",
-      role: "Drilling and Completions Manager",
+      role: "Drilling/Completions Manager",
       education: "B.S. Petroleum Engineering, University of Wyoming",
       tags: ["Drilling", "Field Operations", "Class VI", "Well Planning"],
       bio: "Chuck has forty years of petroleum engineering experience that varies from drilling and field operations to the management of technical teams for upstream E&P operations. Chuck has drilled more than 2,000 wells in many different basins in the U.S. and internationally. At Petrotek, Chuck provides field and engineering support for Class I industrial, Class VI CCUS, and specialized test well design, well planning, and supervision of field drilling operations.",
@@ -173,7 +173,7 @@ const OurTeam = () => {
     },
     {
       name: "Jeremiah Demuth, A.A., STS",
-      role: "HSE Manager, Permitting Specialist, and Wellsite Supervisor",
+      role: "HSE Manager/Permitting Specialist/Wellsite Supervisor",
       education: "A.A., Red Rocks Community College; Safety and Health Specialist in General Industry, Rocky Mountain Education Center",
       tags: ["HSE", "Safety Officer", "Site Supervision", "HAZWOPER"],
       bio: "Jeremiah has supervised permitting and drilling operations for multiple Class II wells in the DJ Basin. He works with industrial, ISR, and oil and gas clients to provide site supervision for drilling and workover operations, as well as site safety and annual mechanical integrity testing. Jeremiah also serves as the corporate health and safety officer for Petrotek and has specific training in the OHSA 1910 standards, Lockout/tagout, and maintains HAZWOPER certification.",
